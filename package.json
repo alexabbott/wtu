@@ -1,0 +1,37 @@
+{
+  "name": "musicMap",
+  "description": "Music map",
+  "version": "0.0.0",
+  "author": "alexabbott",
+  "license": "MIT",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "src/**",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
+  "dependencies": {
+    "firebase": "3.x.x"
+  },
+  "peerDependencies": {
+    "angular": "^1.3.0",
+    "firebase": "3.x.x"
+  },
+  "devDependencies": {
+    "angular": "^1.3.0",
+    "angular-mocks": "~1.4.6",
+    "browser-sync": "^2.18.7",
+    "connect-history-api-fallback": "^1.3.0",
+    "coveralls": "^2.11.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^5.0.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0"
+  }
+}
