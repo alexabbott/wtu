@@ -8,7 +8,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 	    })
 	    .when('/:slug', {
 	        templateUrl: '/components/pages/portfolio.tpl',
-	        reloadOnSearch: false
+	        reloadOnSearch: false,
+	        // resolve: {
+	        // 	bloobs: 'bloobs',
+	        // }
 	    })
 	    .otherwise('/');
 

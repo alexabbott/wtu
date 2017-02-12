@@ -446,6 +446,13 @@ template {
   display: none;
 }
 
+/**
+ * Sorry if this is completely fucked up!
+ */
+.block {
+  display: block;
+}
+
 nav {
   background: #3F51B5;
   color: #FFF;
@@ -457,4 +464,9 @@ nav {
 
 .portfolio {
   background: #FFF;
+}
+
+.portfolio img {
+  max-width: 90%;
+  margin: 1em auto 0;
 }
