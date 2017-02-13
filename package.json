@@ -1,6 +1,6 @@
 {
-  "name": "musicMap",
-  "description": "Music map",
+  "name": "wtu",
+  "description": "WordPress REST + AngularJS",
   "version": "0.0.0",
   "author": "alexabbott",
   "license": "MIT",
@@ -22,11 +22,14 @@
   "devDependencies": {
     "angular": "^1.3.0",
     "angular-mocks": "~1.4.6",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-es2017": "^6.22.0",
     "browser-sync": "^2.18.7",
     "connect-history-api-fallback": "^1.3.0",
     "coveralls": "^2.11.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^5.0.0",
     "gulp-minify-css": "^1.2.4",

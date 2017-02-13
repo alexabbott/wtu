@@ -3,6 +3,7 @@ var gulp = require('gulp'),
 	sass = require('gulp-sass'),
 	prefix = require('gulp-autoprefixer'),
 	minifycss = require('gulp-minify-css'),
+	babel = require('gulp-babel'),
 	concat = require('gulp-concat'),
 	uglify = require('gulp-uglify'),
 	rename = require('gulp-rename'),
@@ -40,10 +41,13 @@ gulp.task('sass', function (){
 
 gulp.task('optimize', function (){
 	gulp.src(['./app.js', './components/*/*.js'])
+	.pipe(babel({
+		presets: ['es2015']
+ 	}))
 	.pipe(concat('all.js'))
 	// .pipe(uglify())
 	.pipe(gulp.dest('./'));
 });
 
 
-gulp.task('default', ['serve'], function() {});
+gulp.task('default', ['sass', 'optimize', 'serve'], function() {});

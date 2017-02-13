@@ -1,6 +1,6 @@
-var app = angular.module('weThemUs', ['ngRoute', 'ngSanitize']);
+var app = angular.module('weThemUs', ['ngRoute', 'ngSanitize'])
 
-app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
+.config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
 	$routeProvider
 	    .when('/', {
 	        templateUrl: '/components/pages/home.tpl',
