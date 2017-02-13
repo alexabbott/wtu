@@ -36,19 +36,34 @@ app.component('portfolio', {
 
         getBg('http://thecatapi.com/api/images/get?format=src&type=gif');
 
+
+
+        // State:
         // WordpressData should pass in the index/key of
         // the current portfolio client, along with the key
         // of the previous + next clients for the nav buttons.
         // Question: will we use anchor tags for those buttons
         // or is there an ng-element that can update state /
         // alert $routeProvider to rerender component without
-        // refresh (similar to <Link/> in react)?
+        // refresh (similar to <Link/> in react)? Something like:
 
-        // content: needs to be structured like a standard
-        // Wordpress post, basically a glob of HTML; this is
-        // because for some clients they'll wanna have photos,
-        // a description, bulleted list who knows wtf what. So
-        // I think the ideal JSON would look like:
+        // ~ portfolio.js ~
+        // ctrl.shiftClient = (title) => {
+        //   $routeProvider.render('/%s', title)
+        // }
+
+        // ~ portfolio.tpl ~
+        // <el title="zayn" ng-click="shiftClient(this.title)">next</el>
+
+
+
+        // Content:
+        // Needs to be structured like a standard Wordpress post,
+        // basically a glob of HTML; this is because for some clients
+        // they'll wanna have photos, a description, bulleted list,
+        // iframes, who knows wtf what. So I think the ideal JSON
+        // would look like:
+
         // Data{
         //   parris: {
         //     title: "Paris Goebel",
