@@ -25,6 +25,16 @@ app.component('home', {
         });
     }]
 });
+app.factory('WordpressData', function ($http) {
+  return {
+    listHome: function (callback) {
+      $http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/home/12').then(callback);
+    },
+    listPortfolio: function (callback) {
+      $http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/portfolio/18').then(callback);
+    }
+  };
+});
 app.component('portfolio', {
   templateUrl: '/components/portfolio/portfolio.tpl',
   controller: ['$scope', 'WordpressData', '$http', function ($scope, WordpressData, $http) {
@@ -96,8 +106,6 @@ app.component('portfolio', {
 
     // ~ portfolio.js ~
     // ctrl.shiftClient = (title) => {
-    //   $scope.prevClient = ...;
-    //   $scope.nextClient = ...;
     //   $routeProvider.render('/%s', title);
     // }
 
@@ -113,14 +121,4 @@ app.component('sidenav', {
 
         $scope.test = 'this is only a test';
     }]
-});
-app.factory('WordpressData', function ($http) {
-  return {
-    listHome: function (callback) {
-      $http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/home/12').then(callback);
-    },
-    listPortfolio: function (callback) {
-      $http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/portfolio/18').then(callback);
-    }
-  };
 });

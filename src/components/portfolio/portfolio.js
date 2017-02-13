@@ -73,8 +73,6 @@ app.component('portfolio', {
 
         // ~ portfolio.js ~
         // ctrl.shiftClient = (title) => {
-        //   $scope.prevClient = ...;
-        //   $scope.nextClient = ...;
         //   $routeProvider.render('/%s', title);
         // }
 
