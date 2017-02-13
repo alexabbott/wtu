@@ -96,12 +96,23 @@ app.component('portfolio', {
 
     // ~ portfolio.js ~
     // ctrl.shiftClient = (title) => {
-    //   $routeProvider.render('/%s', title)
+    //   $scope.prevClient = ...;
+    //   $scope.nextClient = ...;
+    //   $routeProvider.render('/%s', title);
     // }
 
     // ~ portfolio.tpl ~
-    // <el title="zayn" ng-click="shiftClient(this.title)">next</el>
+    // <el title="zayn" ng-click="shiftClient(nextClient.title)">next</el>
   }]
+});
+app.component('sidenav', {
+    templateUrl: '/components/sidenav/sidenav.tpl',
+    controller: ['$scope', function ($scope) {
+
+        var ctrl = this;
+
+        $scope.test = 'this is only a test';
+    }]
 });
 app.factory('WordpressData', function ($http) {
   return {
@@ -112,13 +123,4 @@ app.factory('WordpressData', function ($http) {
       $http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/portfolio/18').then(callback);
     }
   };
-});
-app.component('sidenav', {
-    templateUrl: '/components/sidenav/sidenav.tpl',
-    controller: ['$scope', function ($scope) {
-
-        var ctrl = this;
-
-        $scope.test = 'this is only a test';
-    }]
 });
