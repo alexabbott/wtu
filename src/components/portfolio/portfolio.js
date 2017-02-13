@@ -38,25 +38,6 @@ app.component('portfolio', {
 
 
 
-        // State:
-        // WordpressData should pass in the index/key of
-        // the current portfolio client, along with the key
-        // of the previous + next clients for the nav buttons.
-        // Question: will we use anchor tags for those buttons
-        // or is there an ng-element that can update state /
-        // alert $routeProvider to rerender component without
-        // refresh (similar to <Link/> in react)? Something like:
-
-        // ~ portfolio.js ~
-        // ctrl.shiftClient = (title) => {
-        //   $routeProvider.render('/%s', title)
-        // }
-
-        // ~ portfolio.tpl ~
-        // <el title="zayn" ng-click="shiftClient(this.title)">next</el>
-
-
-
         // Content:
         // Needs to be structured like a standard Wordpress post,
         // basically a glob of HTML; this is because for some clients
@@ -78,5 +59,24 @@ app.component('portfolio', {
 
         // would this^ be something that I need to specify in
         // functions.php or wherever we configure wp-json?
+
+
+
+        // State:
+        // WordpressData should pass in the index/key of
+        // the current portfolio client, along with the key
+        // of the previous + next clients for the nav buttons.
+        // Question: will we use anchor tags for those buttons
+        // or is there an ng-element that can update state /
+        // alert $routeProvider to rerender component without
+        // refresh (similar to <Link/> in react)? Something like:
+
+        // ~ portfolio.js ~
+        // ctrl.shiftClient = (title) => {
+        //   $routeProvider.render('/%s', title)
+        // }
+
+        // ~ portfolio.tpl ~
+        // <el title="zayn" ng-click="shiftClient(this.title)">next</el>
     }]
 });
