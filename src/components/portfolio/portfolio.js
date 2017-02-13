@@ -1,4 +1,4 @@
-app.component('portfolio', {
+let Portfolio = {
     templateUrl: '/components/portfolio/portfolio.tpl',
     controller: ['$scope', 'WordpressData', ($scope, WordpressData) => {
 
@@ -9,4 +9,6 @@ app.component('portfolio', {
             console.log('data', $scope.data);
         });
     }]
-});
+};
+
+export default Portfolio;
