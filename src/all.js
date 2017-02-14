@@ -1,128 +1,3 @@
-<<<<<<< HEAD
-var app = angular.module('weThemUs', ['ngRoute', 'ngSanitize']);
-
-app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-	$routeProvider.when('/', {
-		templateUrl: '/components/pages/home.tpl',
-		reloadOnSearch: false
-	}).when('/:slug', {
-		templateUrl: '/components/pages/portfolio.tpl',
-		reloadOnSearch: false
-	}).otherwise('/');
-
-	$locationProvider.html5Mode(true);
-}]);
-app.component('home', {
-    templateUrl: '/components/home/home.tpl',
-    controller: ['$scope', 'WordpressData', function ($scope, WordpressData) {
-
-        var ctrl = this;
-
-        $scope.test = 'testing';
-
-        WordpressData.listHome(function (response) {
-            $scope.data = response.data.acf;
-            console.log('data', $scope.data);
-        });
-    }]
-});
-app.factory('WordpressData', function ($http) {
-  return {
-    listHome: function (callback) {
-      $http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/home/12').then(callback);
-    },
-    listPortfolio: function (callback) {
-      $http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/portfolio/18').then(callback);
-    }
-  };
-});
-app.component('portfolio', {
-  templateUrl: '/components/portfolio/portfolio.tpl',
-  controller: ['$scope', 'WordpressData', '$http', function ($scope, WordpressData, $http) {
-
-    var ctrl = this;
-
-    $scope.test = 'portfolio testing';
-
-    // why does this appear to work /
-    // trigger rerender only 90% of the time?
-    setTimeout(() => {
-      $scope.bish = 'bish';
-    }, 1000);
-
-    WordpressData.listPortfolio(response => {
-      $scope.data = response.data.acf;
-      console.log('databebedaa', $scope.data);
-      console.log($scope.bloobs);
-    });
-
-    // in reality this will be pulled from WordpressData
-    const getBg = url => {
-      console.log("getting guy");
-      $http({
-        method: 'GET',
-        url: url
-      }).then(img => {
-        $scope.bg = img.config.url;
-        console.log('scope', $scope.bg);
-      }, e => {
-        console.log('fawk', e);
-        $scope.bg = 'https://http.cat/404.jpg';
-      });
-    };
-
-    getBg('http://thecatapi.com/api/images/get?format=src&type=gif');
-
-    // Content:
-    // Needs to be structured like a standard Wordpress post,
-    // basically a glob of HTML; this is because for some clients
-    // they'll wanna have photos, a description, bulleted list,
-    // iframes, who knows wtf what. So I think the ideal JSON
-    // would look like:
-
-    // Data{
-    //   parris: {
-    //     title: "Paris Goebel",
-    //     shortTitle: "Parris",
-    //     bgImg: "http://wethem.us/path/to/wp-content/media-id/hashtag/awful/path",
-    //     content: "<div class='arbitrary-wp-class'>stuff</div>",
-    //     ...
-    //   },
-    //   zayn: {...},
-    //   ...
-    // }
-
-    // would this^ be something that I need to specify in
-    // functions.php or wherever we configure wp-json?
-
-
-    // State:
-    // WordpressData should pass in the index/key of
-    // the current portfolio client, along with the key
-    // of the previous + next clients for the nav buttons.
-    // Question: will we use anchor tags for those buttons
-    // or is there an ng-element that can update state /
-    // alert $routeProvider to rerender component without
-    // refresh (similar to <Link/> in react)? Something like:
-
-    // ~ portfolio.js ~
-    // ctrl.shiftClient = (title) => {
-    //   $routeProvider.render('/%s', title);
-    // }
-
-    // ~ portfolio.tpl ~
-    // <el title="zayn" ng-click="shiftClient(nextClient.title)">next</el>
-  }]
-});
-app.component('sidenav', {
-    templateUrl: '/components/sidenav/sidenav.tpl',
-    controller: ['$scope', function ($scope) {
-
-        var ctrl = this;
-
-        $scope.test = 'this is only a test';
-    }]
-=======
 !function(e){function r(e,r,t){e in l||(l[e]={name:e,declarative:!0,deps:r,declare:t,normalizedDeps:r})}function t(e){return p[e]||(p[e]={name:e,dependencies:[],exports:{},importers:[]})}function n(r){if(!r.module){var o=r.module=t(r.name),a=r.module.exports,u=r.declare.call(e,function(e,r){if(o.locked=!0,"object"==typeof e)for(var t in e)a[t]=e[t];else a[e]=r;for(var n=0,u=o.importers.length;u>n;n++){var i=o.importers[n];if(!i.locked)for(var l=0;l<i.dependencies.length;++l)i.dependencies[l]===o&&i.setters[l](a)}return o.locked=!1,r},r.name);o.setters=u.setters,o.execute=u.execute;for(var s=0,d=r.normalizedDeps.length;d>s;s++){var f,c=r.normalizedDeps[s],v=l[c],m=p[c];m?f=m.exports:v&&!v.declarative?f=v.esModule:v?(n(v),m=v.module,f=m.exports):f=i(c),m&&m.importers?(m.importers.push(o),o.dependencies.push(m)):o.dependencies.push(null),o.setters[s]&&o.setters[s](f)}}}function o(r){var t={};if(("object"==typeof r||"function"==typeof r)&&r!==e)if(d)for(var n in r)"default"!==n&&a(t,r,n);else{var o=r&&r.hasOwnProperty;for(var n in r)"default"===n||o&&!r.hasOwnProperty(n)||(t[n]=r[n])}return t["default"]=r,c(t,"__useDefault",{value:!0}),t}function a(e,r,t){try{var n;(n=Object.getOwnPropertyDescriptor(r,t))&&c(e,t,n)}catch(o){return e[t]=r[t],!1}}function u(r,t){var n=l[r];if(n&&!n.evaluated&&n.declarative){t.push(r);for(var o=0,a=n.normalizedDeps.length;a>o;o++){var d=n.normalizedDeps[o];-1==s.call(t,d)&&(l[d]?u(d,t):i(d))}n.evaluated||(n.evaluated=!0,n.module.execute.call(e))}}function i(e){if(m[e])return m[e];if("@node/"==e.substr(0,6))return m[e]=o(v(e.substr(6)));var r=l[e];if(!r)throw"Module "+e+" not present.";return n(l[e]),u(e,[]),l[e]=void 0,r.declarative&&c(r.module.exports,"__esModule",{value:!0}),m[e]=r.declarative?r.module.exports:r.esModule}var l={},s=Array.prototype.indexOf||function(e){for(var r=0,t=this.length;t>r;r++)if(this[r]===e)return r;return-1},d=!0;try{Object.getOwnPropertyDescriptor({a:0},"a")}catch(f){d=!1}var c;!function(){try{Object.defineProperty({},"a",{})&&(c=Object.defineProperty)}catch(e){c=function(e,r,t){try{e[r]=t.value||t.get.call(e)}catch(n){}}}}();var p={},v="undefined"!=typeof System&&System._nodeRequire||"undefined"!=typeof require&&require.resolve&&"undefined"!=typeof process&&require,m={"@empty":{}};return function(e,t,n,a){return function(u){u(function(u){for(var l=0;l<t.length;l++)(function(e,r){r&&r.__esModule?m[e]=r:m[e]=o(r)})(t[l],arguments[l]);a({register:r});var s=i(e[0]);if(e.length>1)for(var l=1;l<e.length;l++)i(e[l]);return n?s["default"]:s})}}}("undefined"!=typeof self?self:global)
 
 (["1"], [], false, function($__System) {
@@ -173,28 +48,87 @@ $__System.register('3', [], function (_export) {
 });
 
 $__System.register('4', [], function (_export) {
-    'use strict';
+  'use strict';
 
-    var Portfolio;
-    return {
-        setters: [],
-        execute: function () {
-            Portfolio = {
-                templateUrl: '/components/portfolio/portfolio.tpl',
-                controller: ['$scope', 'WordpressData', function ($scope, WordpressData) {
+  var Portfolio;
+  return {
+    setters: [],
+    execute: function () {
+      Portfolio = {
+        templateUrl: '/components/portfolio/portfolio.tpl',
+        controller: ['$scope', 'WordpressData', '$http', function ($scope, WordpressData, $http) {
 
-                    $scope.test = 'portfolio testing';
+          $scope.test = 'portfolio testing';
 
-                    WordpressData.listPortfolio(function (response) {
-                        $scope.data = response.data.acf;
-                        console.log('data', $scope.data);
-                    });
-                }]
-            };
+          WordpressData.listPortfolio(function (response) {
+            $scope.data = response.data.acf;
+            console.log('databebedaa', $scope.data);
+            console.log($scope.bloobs);
+          });
 
-            _export('default', Portfolio);
-        }
-    };
+          // in reality this will be pulled from WordpressData
+          var getBg = function getBg(url) {
+            console.log("getting guy");
+            $http({
+              method: 'GET',
+              url: url
+            }).then(function (img) {
+              $scope.bg = img.config.url;
+              console.log('scope', $scope.bg);
+            }, function (e) {
+              console.log('fawk', e);
+              $scope.bg = 'https://http.cat/404.jpg';
+            });
+          };
+
+          getBg('http://thecatapi.com/api/images/get?format=src&type=gif');
+
+          // Content:
+          // Needs to be structured like a standard Wordpress post,
+          // basically a glob of HTML; this is because for some clients
+          // they'll wanna have photos, a description, bulleted list,
+          // iframes, who knows wtf what. So I think the ideal JSON
+          // would look like:
+
+          // Data{
+          //   parris: {
+          //     title: "Paris Goebel",
+          //     shortTitle: "Parris",
+          //     bgImg: "http://wethem.us/path/to/wp-content/media-id/hashtag/awful/path",
+          //     content: "<div class='arbitrary-wp-class'>stuff</div>",
+          //     ...
+          //   },
+          //   zayn: {...},
+          //   ...
+          // }
+
+          // would this^ be something that I need to specify in
+          // functions.php or wherever we configure wp-json?
+
+          // bloobs all.js
+
+          // State:
+          // WordpressData should pass in the index/key of
+          // the current portfolio client, along with the key
+          // of the previous + next clients for the nav buttons.
+          // Question: will we use anchor tags for those buttons
+          // or is there an ng-element that can update state /
+          // alert $routeProvider to rerender component without
+          // refresh (similar to <Link/> in react)? Something like:
+
+          // ~ portfolio.js ~
+          // ctrl.shiftClient = (title) => {
+          //   $routeProvider.render('/%s', title);
+          // }
+
+          // ~ portfolio.tpl ~
+          // <el title="zayn" ng-click="shiftClient(nextClient.title)">next</el>
+        }]
+      };
+
+      _export('default', Portfolio);
+    }
+  };
 });
 
 $__System.register('1', ['2', '3', '4'], function (_export) {
@@ -217,7 +151,10 @@ $__System.register('1', ['2', '3', '4'], function (_export) {
 								}).when('/:slug', {
 										templateUrl: '/components/pages/portfolio.tpl',
 										reloadOnSearch: false
-								}).otherwise('/');
+								}). // resolve: {
+								// 	bloobs: 'bloobs',
+								// }
+								otherwise('/');
 
 								$locationProvider.html5Mode(true);
 						}]).factory('WordpressData', function ($http) {
@@ -237,5 +174,4 @@ $__System.register('1', ['2', '3', '4'], function (_export) {
 })
 (function(factory) {
   factory();
->>>>>>> master
 });

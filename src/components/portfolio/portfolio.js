@@ -1,6 +1,6 @@
 let Portfolio = {
     templateUrl: '/components/portfolio/portfolio.tpl',
-    controller: ['$scope', 'WordpressData', ($scope, WordpressData) => {
+    controller: ['$scope', 'WordpressData', '$http', ($scope, WordpressData, $http) => {
 
         $scope.test = 'portfolio testing';
 
@@ -52,7 +52,7 @@ let Portfolio = {
         // would this^ be something that I need to specify in
         // functions.php or wherever we configure wp-json?
 
-
+        // bloobs all.js
 
         // State:
         // WordpressData should pass in the index/key of
