@@ -21,20 +21,23 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize'])
 
 .factory('WordpressData', ($http) => {
 
- //  let portfolio;
-	// $http.get('http://alex-abbott.com/wtu/wp-json/wp/v2/portfolio')
-	// 					 // required setting "Show in REST API" within WCK
-	// 					 // Post Type editor (portfolio, advanced options)
- //  .then((data) => {
- // 		portfolio = data;
- // 	});
+  var portfolio = null;
 
   return {
     listHome: (callback) => {
       $http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/home/12').then(callback);
     },
-    listPortfolio: (callback) => {
-  		$http.get('http://alex-abbott.com/wtu/wp-json/wp/v2/portfolio').then(callback);
+    renderPortfolio: (callback) => {
+    	if (!portfolio) {
+  			console.log('getting polio...');
+  			// get it green...
+  			return $http.get('http://alex-abbott.com/wtu/wp-json/wp/v2/portfolio')
+  									.then((data) => {
+  										portfolio = data;
+  										callback(portfolio);
+  									});
+    	}
+    	callback(portfolio);
   	}
   }
 })

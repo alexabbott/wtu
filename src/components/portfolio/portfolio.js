@@ -4,7 +4,7 @@ let Portfolio = {
 
         $scope.test = 'portfolio testing';
 
-        WordpressData.listPortfolio((data) => {
+        WordpressData.renderPortfolio((data) => {
             const keys = {}
             data.data.forEach((c,i,a) => {
                 let next = a[i+1];
@@ -22,23 +22,6 @@ let Portfolio = {
             }
         })
 
-
-        // State:
-        // WordpressData should pass in the index/key of
-        // the current portfolio client, along with the key
-        // of the previous + next clients for the nav buttons.
-        // Question: will we use anchor tags for those buttons
-        // or is there an ng-element that can update state /
-        // alert $routeProvider to rerender component without
-        // refresh (similar to <Link/> in react)? Something like:
-
-        // ~ portfolio.js ~
-        // ctrl.shiftClient = (title) => {
-        //   $routeProvider.render('/%s', title);
-        // }
-
-        // ~ portfolio.tpl ~
-        // <el title="zayn" ng-click="shiftClient(nextClient.title)">next</el>
     }]
 };
 

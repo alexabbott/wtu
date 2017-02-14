@@ -60,7 +60,7 @@ $__System.register('4', [], function (_export) {
 
                     $scope.test = 'portfolio testing';
 
-                    WordpressData.listPortfolio(function (data) {
+                    WordpressData.renderPortfolio(function (data) {
                         var keys = {};
                         data.data.forEach(function (c, i, a) {
                             var next = a[i + 1];
@@ -77,23 +77,6 @@ $__System.register('4', [], function (_export) {
                             backgroundImage: 'url(' + $scope.current.acf.bg_img + ')'
                         };
                     });
-
-                    // State:
-                    // WordpressData should pass in the index/key of
-                    // the current portfolio client, along with the key
-                    // of the previous + next clients for the nav buttons.
-                    // Question: will we use anchor tags for those buttons
-                    // or is there an ng-element that can update state /
-                    // alert $routeProvider to rerender component without
-                    // refresh (similar to <Link/> in react)? Something like:
-
-                    // ~ portfolio.js ~
-                    // ctrl.shiftClient = (title) => {
-                    //   $routeProvider.render('/%s', title);
-                    // }
-
-                    // ~ portfolio.tpl ~
-                    // <el title="zayn" ng-click="shiftClient(nextClient.title)">next</el>
                 }]
             };
 
@@ -127,20 +110,22 @@ $__System.register('1', ['2', '3', '4'], function (_export) {
         $locationProvider.html5Mode(true);
       }]).factory('WordpressData', function ($http) {
 
-        //  let portfolio;
-        // $http.get('http://alex-abbott.com/wtu/wp-json/wp/v2/portfolio')
-        // 					 // required setting "Show in REST API" within WCK
-        // 					 // Post Type editor (portfolio, advanced options)
-        //  .then((data) => {
-        // 		portfolio = data;
-        // 	});
+        var portfolio = null;
 
         return {
           listHome: function listHome(callback) {
             $http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/home/12').then(callback);
           },
-          listPortfolio: function listPortfolio(callback) {
-            $http.get('http://alex-abbott.com/wtu/wp-json/wp/v2/portfolio').then(callback);
+          renderPortfolio: function renderPortfolio(callback) {
+            if (!portfolio) {
+              console.log('getting polio...');
+              // get it green...
+              return $http.get('http://alex-abbott.com/wtu/wp-json/wp/v2/portfolio').then(function (data) {
+                portfolio = data;
+                callback(portfolio);
+              });
+            }
+            callback(portfolio);
           }
         };
       }).component('sidenav', Sidenav).component('home', Home).component('portfolio', Portfolio);
