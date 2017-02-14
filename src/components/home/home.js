@@ -1,14 +1,14 @@
-app.component('home', {
+let Home = {
     templateUrl: '/components/home/home.tpl',
-    controller: ['$scope', 'WordpressData', function($scope, WordpressData) {
+    controller: ['$scope', 'WordpressData', ($scope, WordpressData) => {
 
-        var ctrl = this;
+        $scope.test = 'testin';
 
-        $scope.test = 'testing';
-
-        WordpressData.listHome(function(response) {
+        WordpressData.listHome((response) => {
             $scope.data = response.data.acf;
             console.log('data', $scope.data);
         });
     }]
-});
+};
+
+export default Home;

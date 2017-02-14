@@ -1,16 +1,8 @@
-app.component('portfolio', {
+let Portfolio = {
     templateUrl: '/components/portfolio/portfolio.tpl',
-    controller: ['$scope', 'WordpressData', '$http', function($scope, WordpressData, $http) {
-
-        var ctrl = this;
+    controller: ['$scope', 'WordpressData', ($scope, WordpressData) => {
 
         $scope.test = 'portfolio testing';
-
-        // why does this appear to work /
-        // trigger rerender only 90% of the time?
-        setTimeout(() => {
-          $scope.bish = 'bish';
-        }, 1000);
 
         WordpressData.listPortfolio((response) => {
             $scope.data = response.data.acf;
@@ -79,4 +71,6 @@ app.component('portfolio', {
         // ~ portfolio.tpl ~
         // <el title="zayn" ng-click="shiftClient(nextClient.title)">next</el>
     }]
-});
+};
+
+export default Portfolio;

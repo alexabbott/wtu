@@ -2,9 +2,7 @@
 var gulp = require('gulp'),
 	sass = require('gulp-sass'),
 	prefix = require('gulp-autoprefixer'),
-	minifycss = require('gulp-minify-css'),
-  babel = require('gulp-babel'),
-	concat = require('gulp-concat'),
+	jspm = require('gulp-jspm'),
 	uglify = require('gulp-uglify'),
 	rename = require('gulp-rename'),
 	browserSync = require('browser-sync').create(),
@@ -22,8 +20,7 @@ gulp.task('serve', function() {
 
   gulp.watch(['./*.html', './components/*/*.tpl']).on('change', browserSync.reload);
 
-  gulp.watch(['./app.js', './components/*/*.js'], ['optimize'])
-  .on('change', browserSync.reload);
+  gulp.watch(['./app.js', './components/*/*.js'], ['js-watch']);
 });
 
 gulp.task('sass', function (){
@@ -40,14 +37,16 @@ gulp.task('sass', function (){
 });
 
 gulp.task('optimize', function (){
-	gulp.src(['./app.js', './components/*/*.js'])
-	.pipe(babel({
-    presets: ['es2017']
-  }))
-  .pipe(concat('all.js'))
-	// .pipe(uglify())
+	return gulp.src(['./app.js'])
+	.pipe(jspm({selfExecutingBundle: true}))
+	.pipe(rename('all.js'))
 	.pipe(gulp.dest('./'));
 });
 
+gulp.task('js-watch', ['optimize'], function (done) {
+    browserSync.reload();
+    done();
+});
 
-gulp.task('default', ['serve'], function() {});
+
+gulp.task('default', ['optimize', 'sass', 'serve'], function() {});
