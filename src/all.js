@@ -56,7 +56,7 @@ $__System.register('4', [], function (_export) {
         execute: function () {
             Portfolio = {
                 templateUrl: '/components/portfolio/portfolio.tpl',
-                controller: ['$scope', 'WordpressData', '$http', function ($scope, WordpressData, $http) {
+                controller: ['$scope', 'WordpressData', '$routeParams', function ($scope, WordpressData, $routeParams) {
 
                     $scope.test = 'portfolio testing';
 
@@ -72,7 +72,7 @@ $__System.register('4', [], function (_export) {
 
                         $scope.portfolio = keys;
 
-                        $scope.current = $scope.portfolio['parris'];
+                        $scope.current = $scope.portfolio[$routeParams.slug];
                         $scope.bgStyle = {
                             backgroundImage: 'url(' + $scope.current.acf.bg_img + ')'
                         };

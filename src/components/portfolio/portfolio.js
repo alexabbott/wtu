@@ -1,6 +1,6 @@
 let Portfolio = {
     templateUrl: '/components/portfolio/portfolio.tpl',
-    controller: ['$scope', 'WordpressData', '$http', ($scope, WordpressData, $http) => {
+    controller: ['$scope', 'WordpressData', '$routeParams', ($scope, WordpressData, $routeParams) => {
 
         $scope.test = 'portfolio testing';
 
@@ -16,7 +16,7 @@ let Portfolio = {
 
             $scope.portfolio = keys;
 
-            $scope.current = $scope.portfolio['parris'];
+            $scope.current = $scope.portfolio[$routeParams.slug];
             $scope.bgStyle = {
                 backgroundImage: `url(${$scope.current.acf.bg_img})`
             }
