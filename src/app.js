@@ -12,7 +12,7 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize'])
 	    })
 	    .when('/:slug', {
 	        templateUrl: '/components/pages/portfolio.tpl',
-	        reloadOnSearch: false,
+	        reloadOnSearch: false
 	    })
 	    .otherwise('/');
 
@@ -29,13 +29,19 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize'])
     },
     renderPortfolio: (callback) => {
     	if (!portfolio) {
-  			console.log('getting polio...');
   			// get it green...
-  			return $http.get('http://alex-abbott.com/wtu/wp-json/wp/v2/portfolio')
-  									.then((data) => {
-  										portfolio = data;
-  										callback(portfolio);
-  									});
+  			console.log('getting polio...');
+  			return(
+  				$http.get(
+							'http://alex-abbott.com/wtu/wp-json/wp/v2/portfolio'
+							// required setting "Show in REST API" within WCK
+			 				// Post Type editor (portfolio, advanced options)
+					)
+					.then((data) => {
+							portfolio = data;
+							callback(portfolio);
+					})
+				)
     	}
     	callback(portfolio);
   	}
