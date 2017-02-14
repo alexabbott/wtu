@@ -48,127 +48,104 @@ $__System.register('3', [], function (_export) {
 });
 
 $__System.register('4', [], function (_export) {
-  'use strict';
+    'use strict';
 
-  var Portfolio;
-  return {
-    setters: [],
-    execute: function () {
-      Portfolio = {
-        templateUrl: '/components/portfolio/portfolio.tpl',
-        controller: ['$scope', 'WordpressData', '$http', function ($scope, WordpressData, $http) {
+    var Portfolio;
+    return {
+        setters: [],
+        execute: function () {
+            Portfolio = {
+                templateUrl: '/components/portfolio/portfolio.tpl',
+                controller: ['$scope', 'WordpressData', '$http', function ($scope, WordpressData, $http) {
 
-          $scope.test = 'portfolio testing';
+                    $scope.test = 'portfolio testing';
 
-          WordpressData.listPortfolio(function (response) {
-            $scope.data = response.data.acf;
-            console.log('databebedaa', $scope.data);
-            console.log($scope.bloobs);
-          });
+                    WordpressData.listPortfolio(function (data) {
+                        var keys = {};
+                        data.data.forEach(function (c, i, a) {
+                            var next = a[i + 1];
+                            var prev = a[i - 1];
+                            c.next = next ? '/' + next.slug : null;
+                            c.prev = prev ? '/' + prev.slug : null;
+                            keys[c.slug] = c;
+                        });
 
-          // in reality this will be pulled from WordpressData
-          var getBg = function getBg(url) {
-            console.log("getting guy");
-            $http({
-              method: 'GET',
-              url: url
-            }).then(function (img) {
-              $scope.bg = img.config.url;
-              console.log('scope', $scope.bg);
-            }, function (e) {
-              console.log('fawk', e);
-              $scope.bg = 'https://http.cat/404.jpg';
-            });
-          };
+                        $scope.portfolio = keys;
 
-          getBg('http://thecatapi.com/api/images/get?format=src&type=gif');
+                        $scope.current = $scope.portfolio['parris'];
+                        $scope.bgStyle = {
+                            backgroundImage: 'url(' + $scope.current.acf.bg_img + ')'
+                        };
+                    });
 
-          // Content:
-          // Needs to be structured like a standard Wordpress post,
-          // basically a glob of HTML; this is because for some clients
-          // they'll wanna have photos, a description, bulleted list,
-          // iframes, who knows wtf what. So I think the ideal JSON
-          // would look like:
+                    // State:
+                    // WordpressData should pass in the index/key of
+                    // the current portfolio client, along with the key
+                    // of the previous + next clients for the nav buttons.
+                    // Question: will we use anchor tags for those buttons
+                    // or is there an ng-element that can update state /
+                    // alert $routeProvider to rerender component without
+                    // refresh (similar to <Link/> in react)? Something like:
 
-          // Data{
-          //   parris: {
-          //     title: "Paris Goebel",
-          //     shortTitle: "Parris",
-          //     bgImg: "http://wethem.us/path/to/wp-content/media-id/hashtag/awful/path",
-          //     content: "<div class='arbitrary-wp-class'>stuff</div>",
-          //     ...
-          //   },
-          //   zayn: {...},
-          //   ...
-          // }
+                    // ~ portfolio.js ~
+                    // ctrl.shiftClient = (title) => {
+                    //   $routeProvider.render('/%s', title);
+                    // }
 
-          // would this^ be something that I need to specify in
-          // functions.php or wherever we configure wp-json?
+                    // ~ portfolio.tpl ~
+                    // <el title="zayn" ng-click="shiftClient(nextClient.title)">next</el>
+                }]
+            };
 
-          // bloobs all.js
-
-          // State:
-          // WordpressData should pass in the index/key of
-          // the current portfolio client, along with the key
-          // of the previous + next clients for the nav buttons.
-          // Question: will we use anchor tags for those buttons
-          // or is there an ng-element that can update state /
-          // alert $routeProvider to rerender component without
-          // refresh (similar to <Link/> in react)? Something like:
-
-          // ~ portfolio.js ~
-          // ctrl.shiftClient = (title) => {
-          //   $routeProvider.render('/%s', title);
-          // }
-
-          // ~ portfolio.tpl ~
-          // <el title="zayn" ng-click="shiftClient(nextClient.title)">next</el>
-        }]
-      };
-
-      _export('default', Portfolio);
-    }
-  };
+            _export('default', Portfolio);
+        }
+    };
 });
 
 $__System.register('1', ['2', '3', '4'], function (_export) {
-		'use strict';
+  'use strict';
 
-		var Sidenav, Home, Portfolio, app;
-		return {
-				setters: [function (_) {
-						Sidenav = _['default'];
-				}, function (_2) {
-						Home = _2['default'];
-				}, function (_3) {
-						Portfolio = _3['default'];
-				}],
-				execute: function () {
-						app = angular.module('weThemUs', ['ngRoute', 'ngSanitize']).config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-								$routeProvider.when('/', {
-										templateUrl: '/components/pages/home.tpl',
-										reloadOnSearch: false
-								}).when('/:slug', {
-										templateUrl: '/components/pages/portfolio.tpl',
-										reloadOnSearch: false
-								}). // resolve: {
-								// 	bloobs: 'bloobs',
-								// }
-								otherwise('/');
+  var Sidenav, Home, Portfolio, app;
+  return {
+    setters: [function (_) {
+      Sidenav = _['default'];
+    }, function (_2) {
+      Home = _2['default'];
+    }, function (_3) {
+      Portfolio = _3['default'];
+    }],
+    execute: function () {
+      app = angular.module('weThemUs', ['ngRoute', 'ngSanitize']).config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+        $routeProvider.when('/', {
+          templateUrl: '/components/pages/home.tpl',
+          reloadOnSearch: false
+        }).when('/:slug', {
+          templateUrl: '/components/pages/portfolio.tpl',
+          reloadOnSearch: false
+        }).otherwise('/');
 
-								$locationProvider.html5Mode(true);
-						}]).factory('WordpressData', function ($http) {
-								return {
-										listHome: function listHome(callback) {
-												$http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/home/12').then(callback);
-										},
-										listPortfolio: function listPortfolio(callback) {
-												$http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/portfolio/18').then(callback);
-										}
-								};
-						}).component('sidenav', Sidenav).component('home', Home).component('portfolio', Portfolio);
-				}
-		};
+        $locationProvider.html5Mode(true);
+      }]).factory('WordpressData', function ($http) {
+
+        //  let portfolio;
+        // $http.get('http://alex-abbott.com/wtu/wp-json/wp/v2/portfolio')
+        // 					 // required setting "Show in REST API" within WCK
+        // 					 // Post Type editor (portfolio, advanced options)
+        //  .then((data) => {
+        // 		portfolio = data;
+        // 	});
+
+        return {
+          listHome: function listHome(callback) {
+            $http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/home/12').then(callback);
+          },
+          listPortfolio: function listPortfolio(callback) {
+            $http.get('http://alex-abbott.com/wtu/wp-json/wp/v2/portfolio').then(callback);
+          }
+        };
+      }).component('sidenav', Sidenav).component('home', Home).component('portfolio', Portfolio);
+    }
+  };
 });
 
 })

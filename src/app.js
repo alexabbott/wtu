@@ -13,9 +13,6 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize'])
 	    .when('/:slug', {
 	        templateUrl: '/components/pages/portfolio.tpl',
 	        reloadOnSearch: false,
-	        // resolve: {
-	        // 	bloobs: 'bloobs',
-	        // }
 	    })
 	    .otherwise('/');
 
@@ -23,14 +20,23 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize'])
 }])
 
 .factory('WordpressData', ($http) => {
+
+ //  let portfolio;
+	// $http.get('http://alex-abbott.com/wtu/wp-json/wp/v2/portfolio')
+	// 					 // required setting "Show in REST API" within WCK
+	// 					 // Post Type editor (portfolio, advanced options)
+ //  .then((data) => {
+ // 		portfolio = data;
+ // 	});
+
   return {
     listHome: (callback) => {
       $http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/home/12').then(callback);
     },
     listPortfolio: (callback) => {
-      $http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/portfolio/18').then(callback);
-    },
-  };
+  		$http.get('http://alex-abbott.com/wtu/wp-json/wp/v2/portfolio').then(callback);
+  	}
+  }
 })
 
 .component('sidenav', Sidenav)

@@ -1,5 +1,7 @@
 .portfolio {
-	background: $color-white;
+  background-size: cover;
+  background-position: center center;
+  min-height: 100vh;
 
   img {
     max-width: 90%;

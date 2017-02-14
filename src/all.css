@@ -463,7 +463,9 @@ nav {
 }
 
 .portfolio {
-  background: #FFF;
+  background-size: cover;
+  background-position: center center;
+  min-height: 100vh;
 }
 
 .portfolio img {
