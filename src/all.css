@@ -633,6 +633,67 @@ nav .nav__main .nav__white-rabbit__image {
   font-size: 2em;
 }
 
+.home .contact {
+  background: #000;
+  height: 100vh;
+  position: relative;
+  text-align: center;
+  width: 100vw;
+  z-index: 1;
+}
+
+.home .contact .contact__text-container {
+  color: #FFF;
+  font-size: 3em;
+  left: 50%;
+  line-height: 0em;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.home .contact .contact__text-2 {
+  color: #FFF;
+  font-size: 3.8em;
+  left: 50%;
+  line-height: 1.1em;
+  max-width: 200px;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.home .white-rabbit {
+  background: #000;
+  height: 100vh;
+  position: relative;
+  text-align: center;
+  width: 100vw;
+  z-index: 1;
+}
+
+.home .white-rabbit .white-rabbit__text {
+  color: #FFF;
+  font-size: 4em;
+  left: 50%;
+  position: absolute;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  z-index: 2;
+}
+
+.home .white-rabbit .white-rabbit__video {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+}
+
 .portfolio {
   background: #FFF;
 }

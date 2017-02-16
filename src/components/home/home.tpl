@@ -63,9 +63,15 @@
     </section>
 
     <section id="contact" class="contact">
-	    <h2 class="contact__text-1">{{ data.contact_text_1 }}</h2>
-	    <a href="mailto:{{ data.contact_email }}">
-	    	<h2 class="contact__text-2">{{ data.contact_text_2 }}</h2>
+    	<div class="contact__text-container">
+		    <h2 class="contact__text-1">{{ data.contact_text_1 }}</h2>
+		    <h2 class="contact__text-1">{{ data.contact_text_1 }}</h2>
+		    <h2 class="contact__text-1">{{ data.contact_text_1 }}</h2>
+		    <h2 class="contact__text-1">{{ data.contact_text_1 }}</h2>
+		    <h2 class="contact__text-1">{{ data.contact_text_1 }}</h2>
+		</div>
+	    <a href="mailto:{{ data.contact_email }}" class="contact__text-2">
+	    	<h2>{{ data.contact_text_2 }}</h2>
 	    </a>
     </section>
 

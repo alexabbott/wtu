@@ -144,4 +144,65 @@
 			}
 		}
 	}
+
+	.contact {
+		background: $color-black;
+		height: 100vh;
+		position: relative;
+		text-align: center;
+		width: 100vw;
+		z-index: 1;
+
+		.contact__text-container {
+			color: $color-white;
+			font-size: 3em;
+			left: 50%;
+			line-height: 0em;
+			position: absolute;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.contact__text-2 {
+			color: $color-white;
+			font-size: 3.8em;
+			left: 50%;
+			line-height: 1.1em;
+			max-width: 200px;
+			position: absolute;
+			text-align: center;
+			text-decoration: none;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 2;
+		}
+	}
+
+	.white-rabbit {
+		background: $color-black;
+		height: 100vh;
+		position: relative;
+		text-align: center;
+		width: 100vw;
+		z-index: 1;
+
+		.white-rabbit__text {
+			color: $color-white;
+			font-size: 4em;
+			left: 50%;
+			position: absolute;
+			top: 40%;
+			transform: translate(-50%, -50%);
+			width: 100%;
+			z-index: 2;
+		}
+
+		.white-rabbit__video {
+			left: 50%;
+			position: absolute;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			width: 90%;
+		}
+	}
 }
