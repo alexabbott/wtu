@@ -1,4 +1,43 @@
 nav {
-	background: $color-primary;
 	color: $color-white;
+	height: 100vh;
+	left: 2%;
+	position: fixed;
+	top: 0;
+	width: 40px;
+	z-index: 2;
+
+	.nav__main {
+		box-sizing: border-box;
+		height: 100vh;
+		padding: 40px 0;
+		position: relative;
+
+		.nav__logo {
+			margin-bottom: 5vh;
+			width: 40px;
+		}
+
+		.nav__items {
+			position: absolute;
+			top: 50%;
+			transform: translate(-15px, -50%);
+
+			.nav__item {
+				display: block;
+				color: $color-white;
+				font-size: 0.7em;
+				margin: 90px 0;
+				text-decoration: none;
+				transform: rotate(270deg);
+			}
+		}
+
+		.nav__white-rabbit__image {
+			bottom: 50px;
+			left: 2%;
+			position: absolute;
+			width: 30px;
+		}
+	}
 }

@@ -442,17 +442,129 @@ template {
 /**
  * Add the correct display in IE 10-.
  */
-[hidden] {
+[hidden],
+.hidden {
   display: none;
 }
 
 nav {
-  background: #3F51B5;
   color: #FFF;
+  height: 100vh;
+  left: 2%;
+  position: fixed;
+  top: 0;
+  width: 40px;
+  z-index: 2;
 }
 
-.home {
-  background: #FFF;
+nav .nav__main {
+  box-sizing: border-box;
+  height: 100vh;
+  padding: 40px 0;
+  position: relative;
+}
+
+nav .nav__main .nav__logo {
+  margin-bottom: 5vh;
+  width: 40px;
+}
+
+nav .nav__main .nav__items {
+  position: absolute;
+  top: 50%;
+  transform: translate(-15px, -50%);
+}
+
+nav .nav__main .nav__items .nav__item {
+  display: block;
+  color: #FFF;
+  font-size: 0.7em;
+  margin: 90px 0;
+  text-decoration: none;
+  transform: rotate(270deg);
+}
+
+nav .nav__main .nav__white-rabbit__image {
+  bottom: 50px;
+  left: 2%;
+  position: absolute;
+  width: 30px;
+}
+
+.home .intro__image {
+  position: absolute;
+  width: 100vw;
+  z-index: -1;
+}
+
+.home .intro__gradient {
+  background: #de3510;
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #de3510), color-stop(20%, #de3510), color-stop(100%, #e7cbae));
+  background: linear-gradient(to bottom, #de3510 0%, #de3510 20%, #e7cbae 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de3510', endColorstr='#e7cbae', GradientType=0 );
+  height: 150vh;
+  left: 50%;
+  mix-blend-mode: multiply;
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  width: 100vw;
+}
+
+.home .intro {
+  height: 100vh;
+  position: relative;
+  width: 100vw;
+  z-index: 1;
+}
+
+.home .intro .intro__text {
+  color: #FFF;
+  left: 50%;
+  line-height: 1.5em;
+  max-width: 500px;
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.home .intro .intro__big-logo {
+  position: absolute;
+  top: 50%;
+  transform: translate3d(10vw, -50%, 0);
+  width: 12vw;
+}
+
+.home .intro .intro__scroll-down {
+  bottom: 50px;
+  color: #FFF;
+  cursor: pointer;
+  font-size: 0.6em;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.home .intro .intro__scroll-down .intro__scroll-down-arrow {
+  display: block;
+  margin: 10px auto 0 auto;
+  width: 20px;
+}
+
+.home .about-intro {
+  height: 100vh;
+  margin-top: 10vh;
+  position: relative;
+  width: 100vw;
+  z-index: 1;
+}
+
+.home .about-intro .about-intro__image-container {
+  position: absolute;
+  top: 50%;
+  transform: translate3d(8vw, -50%, 0);
 }
 
 .portfolio {

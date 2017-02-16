@@ -497,6 +497,7 @@ template {
  * Add the correct display in IE 10-.
  */
 
-[hidden] {
+[hidden],
+.hidden {
   display: none;
 }

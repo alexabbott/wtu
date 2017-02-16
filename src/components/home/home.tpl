@@ -1,7 +1,70 @@
 <div class="home">
-    <div>Home + {{ test }}</div>
+	<h1 class="hidden">WeThem.Us</h1>
 
-    <div ng-bind-html="data.intro"></div>
+	<img ng-src="{{ data.intro_image.url }}" class="intro__image">
 
-    link to <a href="/parris">portfolio page</a>
+	<div class="intro__gradient"></div>
+
+    <section id="intro" class="intro">
+    	<img ng-src="{{ data.intro_big_logo.url }}" class="intro__big-logo" alt="WeThem.Us">
+    	<div class="intro__text" ng-bind-html="data.intro_text"></div>
+    	<div class="intro__scroll-down">
+    		{{ data.intro_scroll_down_text }}
+    		<img ng-src="{{ data.intro_scroll_down_arrow.url }}" class="intro__scroll-down-arrow" alt="{{ data.intro_scroll_down_text }}">
+    	</div>
+    </section>
+
+    <section id="about-intro" class="about-intro">
+    	<div class="about-intro__image-container">
+    		<div class="about-intro__image-box">
+		    	<img ng-src="{{ data.about_image_1.url }}" class="about-intro__image-1 hidden" alt="{{ data.about_text_1 }}">
+		    	<img ng-src="{{ data.about_image_blur_1.url }}" class="about-intro__image-blur-1" alt="{{ data.about_text_1 }}">
+		    	<h3 class="about-intro__image-text">
+		    		{{ data.about_text_1 }}
+		    	</h3>
+		    </div>
+		    <!-- <div class="about-intro__image-box">
+		    	<img ng-src="{{ data.about_image_2.url }}" class="about-intro__image-2 hidden" alt="{{ data.about_text_2 }}">
+		    	<img ng-src="{{ data.about_image_blur_2.url }}" class="about-intro__image-blur-2 hidden" alt="{{ data.about_text_2 }}">
+		    	<h3 class="about-intro__image-text">
+		    		{{ data.about_text_2 }}
+		    	</h3>
+		    </div>
+	    	<div class="about-intro__image-box">
+		    	<img ng-src="{{ data.about_image_3.url }}" class="about-intro__image-3 hidden" alt="{{ data.about_text_3 }}">
+		    	<img ng-src="{{ data.about_image_blur_3.url }}" class="about-intro__image-blur-3 hidden" alt="{{ data.about_text_3 }}">
+		    	<h3 class="about-intro__image-text">
+		    		{{ data.about_text_3 }}
+		    	</h3>
+		    </div> -->
+	    </div>
+
+	    <div class="about-intro__text">
+    		<h2 class="about-intro__text-1">{{ data.about_text_1 }}</h2>
+    		<h2 class="about-intro__text-2">{{ data.about_text_2 }}</h2>
+    		<h2 class="about-intro__text-3">{{ data.about_text_3 }}</h2>
+    	</div>
+    </section>
+
+    <section id="about" class="about">
+	    <div ng-bind-html="data.about_paragraph"></div>
+	    <div class="about__bottom-headline">{{ data.about_bottom_headline }}</div>
+	    <img ng-src="{{ data.about_gif_1.url }}" class="about__gif-1 hidden">
+	    <img ng-src="{{ data.about_gif_2.url }}" class="about__gif-2 hidden">
+	    <img ng-src="{{ data.about_gif_3.url }}" class="about__gif-3 hidden">
+	    <img ng-src="{{ data.about_gif_4.url }}" class="about__gif-4 hidden">
+	    <h2 class="about__scroll-text">{{ data.about_scroll_text }}</h2>
+    </section>
+
+    <section id="contact" class="contact">
+	    <h2 class="contact__text-1">{{ data.contact_text_1 }}</h2>
+	    <a href="mailto:{{ data.contact_email }}">
+	    	<h2 class="contact__text-2">{{ data.contact_text_2 }}</h2>
+	    </a>
+    </section>
+
+    <section id="white-rabbit" class="white-rabbit">
+	    <h2 class="white-rabbit__text">{{ data.white_rabbit_text }}</h2>
+	    <video ng-src="{{ data.white_rabbit_video }}" class="white-rabbit__video"></video>
+    </section>
 </div>

@@ -1,3 +1,82 @@
 .home {
-	background: $color-white;
+
+	.intro__image {
+		position: absolute;
+		width: 100vw;
+		z-index: -1;
+	}
+
+	.intro__gradient {
+		background: rgba(222,53,16,1);
+		background: -moz-linear-gradient(top, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
+		background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(222,53,16,1)), color-stop(20%, rgba(222,53,16,1)), color-stop(100%, rgba(231,203,174,1)));
+		background: -webkit-linear-gradient(top, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
+		background: -o-linear-gradient(top, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
+		background: -ms-linear-gradient(top, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
+		background: linear-gradient(to bottom, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de3510', endColorstr='#e7cbae', GradientType=0 );
+		height: 150vh;
+		left: 50%;
+	    mix-blend-mode: multiply;
+		position: absolute;
+		top: 0;
+		transform: translateX(-50%);
+		width: 100vw;
+	}
+
+	.intro {
+		height: 100vh;
+		position: relative;
+		width: 100vw;
+		z-index: 1;
+
+		.intro__text {
+			color: $color-white;
+			left: 50%;
+			line-height: 1.5em;
+			max-width: 500px;
+			position: absolute;
+			top: 50%;
+			text-align: center;
+			transform: translate(-50%, -50%);
+		}
+
+		.intro__big-logo {
+			position: absolute;
+			top: 50%;
+			transform: translate3d(10vw, -50%, 0);
+			width: 12vw;
+		}
+
+		.intro__scroll-down {
+			bottom: 50px;
+			color: $color-white;
+			cursor: pointer;
+			font-size: 0.6em;
+			left: 50%;
+			position: absolute;
+			text-align: center;
+			transform: translateX(-50%);
+
+			.intro__scroll-down-arrow {
+				display: block;
+				margin: 10px auto 0 auto;
+				width: 20px;
+			}
+		}
+	}
+
+	.about-intro {
+		height: 100vh;
+		margin-top: 10vh;
+		position: relative;
+		width: 100vw;
+		z-index: 1;
+
+		.about-intro__image-container {
+			position: absolute;
+			top: 50%;
+			transform: translate3d(8vw, -50%, 0);
+		}
+	}
 }

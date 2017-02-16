@@ -11,9 +11,12 @@ $__System.register('2', [], function (_export) {
         execute: function () {
             Sidenav = {
                 templateUrl: '/components/sidenav/sidenav.tpl',
-                controller: ['$scope', function ($scope) {
+                controller: ['$scope', 'WordpressData', function ($scope, WordpressData) {
 
-                    $scope.test = 'this is only a test';
+                    WordpressData.listNav(function (response) {
+                        $scope.data = response.data.acf;
+                        console.log('nav data', $scope.data);
+                    });
                 }]
             };
 
@@ -37,7 +40,7 @@ $__System.register('3', [], function (_export) {
 
                     WordpressData.listHome(function (response) {
                         $scope.data = response.data.acf;
-                        console.log('data', $scope.data);
+                        console.log('home data', $scope.data);
                     });
                 }]
             };
@@ -73,40 +76,43 @@ $__System.register('4', [], function (_export) {
 });
 
 $__System.register('1', ['2', '3', '4'], function (_export) {
-		'use strict';
+  'use strict';
 
-		var Sidenav, Home, Portfolio, app;
-		return {
-				setters: [function (_) {
-						Sidenav = _['default'];
-				}, function (_2) {
-						Home = _2['default'];
-				}, function (_3) {
-						Portfolio = _3['default'];
-				}],
-				execute: function () {
-						app = angular.module('weThemUs', ['ngRoute', 'ngSanitize']).config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-								$routeProvider.when('/', {
-										templateUrl: '/components/pages/home.tpl',
-										reloadOnSearch: false
-								}).when('/:slug', {
-										templateUrl: '/components/pages/portfolio.tpl',
-										reloadOnSearch: false
-								}).otherwise('/');
+  var Sidenav, Home, Portfolio, app;
+  return {
+    setters: [function (_) {
+      Sidenav = _['default'];
+    }, function (_2) {
+      Home = _2['default'];
+    }, function (_3) {
+      Portfolio = _3['default'];
+    }],
+    execute: function () {
+      app = angular.module('weThemUs', ['ngRoute', 'ngSanitize']).config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+        $routeProvider.when('/', {
+          templateUrl: '/components/pages/home.tpl',
+          reloadOnSearch: false
+        }).when('/:slug', {
+          templateUrl: '/components/pages/portfolio.tpl',
+          reloadOnSearch: false
+        }).otherwise('/');
 
-								$locationProvider.html5Mode(true);
-						}]).factory('WordpressData', function ($http) {
-								return {
-										listHome: function listHome(callback) {
-												$http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/home/12').then(callback);
-										},
-										listPortfolio: function listPortfolio(callback) {
-												$http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/portfolio/18').then(callback);
-										}
-								};
-						}).component('sidenav', Sidenav).component('home', Home).component('portfolio', Portfolio);
-				}
-		};
+        $locationProvider.html5Mode(true);
+      }]).factory('WordpressData', function ($http) {
+        return {
+          listNav: function listNav(callback) {
+            $http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/nav/42').then(callback);
+          },
+          listHome: function listHome(callback) {
+            $http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/home/12').then(callback);
+          },
+          listPortfolio: function listPortfolio(callback) {
+            $http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/portfolio/18').then(callback);
+          }
+        };
+      }).component('sidenav', Sidenav).component('home', Home).component('portfolio', Portfolio);
+    }
+  };
 });
 
 })

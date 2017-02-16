@@ -1,9 +1,11 @@
 let Sidenav = {
     templateUrl: '/components/sidenav/sidenav.tpl',
-    controller: ['$scope', ($scope) => {
-    
-        $scope.test = 'this is only a test';
+    controller: ['$scope', 'WordpressData', ($scope, WordpressData) => {
 
+        WordpressData.listNav((response) => {
+            $scope.data = response.data.acf;
+            console.log('nav data', $scope.data);
+        });
     }]
 };
 

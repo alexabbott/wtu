@@ -6,7 +6,7 @@ let Home = {
 
         WordpressData.listHome((response) => {
             $scope.data = response.data.acf;
-            console.log('data', $scope.data);
+            console.log('home data', $scope.data);
         });
     }]
 };
