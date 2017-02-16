@@ -56,9 +56,7 @@ $__System.register('4', [], function (_export) {
         execute: function () {
             Portfolio = {
                 templateUrl: '/components/portfolio/portfolio.tpl',
-                controller: ['$scope', 'WordpressData', '$routeParams', function ($scope, WordpressData, $routeParams) {
-
-                    $scope.test = 'portfolio testing';
+                controller: ['$scope', 'WordpressData', '$routeParams', '$sce', function ($scope, WordpressData, $routeParams, $sce) {
 
                     WordpressData.renderPortfolio(function (data) {
                         var keys = {};
@@ -76,6 +74,8 @@ $__System.register('4', [], function (_export) {
                         $scope.bgStyle = {
                             backgroundImage: 'url(' + $scope.current.acf.bg_img + ')'
                         };
+
+                        $scope.content = $sce.trustAsHtml($scope.current.acf.content);
                     });
                 }]
             };

@@ -1,8 +1,6 @@
 let Portfolio = {
     templateUrl: '/components/portfolio/portfolio.tpl',
-    controller: ['$scope', 'WordpressData', '$routeParams', ($scope, WordpressData, $routeParams) => {
-
-        $scope.test = 'portfolio testing';
+    controller: ['$scope', 'WordpressData', '$routeParams', '$sce', ($scope, WordpressData, $routeParams, $sce) => {
 
         WordpressData.renderPortfolio((data) => {
             const keys = {}
@@ -20,6 +18,8 @@ let Portfolio = {
             $scope.bgStyle = {
                 backgroundImage: `url(${$scope.current.acf.bg_img})`
             }
+
+            $scope.content = $sce.trustAsHtml($scope.current.acf.content)
         })
 
     }]

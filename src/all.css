@@ -465,7 +465,24 @@ nav {
   min-height: 100vh;
 }
 
-.portfolio img {
-  max-width: 90%;
-  margin: 1em auto 0;
+.portfolio .nav {
+  padding: 1em 0 2em;
+  text-align: center;
+}
+
+.portfolio .content {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.portfolio .content img {
+  max-width: 100%;
+}
+
+.portfolio .content iframe {
+  width: 90vw;
+  height: 50.625vw;
+  max-width: 800px;
+  max-height: 450px;
 }

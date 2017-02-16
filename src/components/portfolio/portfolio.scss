@@ -3,8 +3,25 @@
   background-position: center center;
   min-height: 100vh;
 
-  img {
-    max-width: 90%;
-    margin: 1em auto 0;
+  .nav {
+    padding: 1em 0 2em;
+    text-align: center;
+  }
+
+  .content {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+
+    img {
+      max-width: 100%;
+    }
+
+    iframe {
+      width: 90vw;
+      height: 50.625vw;
+      max-width: 800px;
+      max-height: 450px;
+    }
   }
 }
