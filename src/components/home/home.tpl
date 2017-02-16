@@ -14,6 +14,8 @@
     	</div>
     </section>
 
+    <img ng-src="{{ data.pink_blotch.url }}" class="pink-blotch">
+
     <section id="about-intro" class="about-intro">
     	<div class="about-intro__image-container">
     		<div class="about-intro__image-box">
@@ -47,13 +49,17 @@
     </section>
 
     <section id="about" class="about">
-	    <div ng-bind-html="data.about_paragraph"></div>
-	    <div class="about__bottom-headline">{{ data.about_bottom_headline }}</div>
-	    <img ng-src="{{ data.about_gif_1.url }}" class="about__gif-1 hidden">
-	    <img ng-src="{{ data.about_gif_2.url }}" class="about__gif-2 hidden">
-	    <img ng-src="{{ data.about_gif_3.url }}" class="about__gif-3 hidden">
-	    <img ng-src="{{ data.about_gif_4.url }}" class="about__gif-4 hidden">
-	    <h2 class="about__scroll-text">{{ data.about_scroll_text }}</h2>
+    	<div class="about__text">
+		    <div ng-bind-html="data.about_paragraph" class="about__text-main"></div>
+		    <div class="about__bottom-headline">{{ data.about_bottom_headline }}</div>
+		    <img ng-src="{{ data.about_gif_1.url }}" class="about__gif-1 hidden">
+		    <img ng-src="{{ data.about_gif_2.url }}" class="about__gif-2 hidden">
+		    <img ng-src="{{ data.about_gif_3.url }}" class="about__gif-3 hidden">
+		    <img ng-src="{{ data.about_gif_4.url }}" class="about__gif-4 hidden">
+		</div>
+		<marquee direction="left" scrollamount="20">
+		    <h2 class="about__scroll-text">{{ data.about_scroll_text }}</h2>
+		</marquee>
     </section>
 
     <section id="contact" class="contact">

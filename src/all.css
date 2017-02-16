@@ -25,6 +25,7 @@ html {
  */
 body {
   margin: 0;
+  overflow-x: hidden;
 }
 
 /**
@@ -553,9 +554,18 @@ nav .nav__main .nav__white-rabbit__image {
   width: 20px;
 }
 
+.home .pink-blotch {
+  left: 0;
+  mix-blend-mode: multiply;
+  position: absolute;
+  top: 100vh;
+  width: 50vw;
+  z-index: 1;
+}
+
 .home .about-intro {
   height: 100vh;
-  margin-top: 10vh;
+  margin-top: 30vh;
   position: relative;
   width: 100vw;
   z-index: 1;
@@ -565,6 +575,62 @@ nav .nav__main .nav__white-rabbit__image {
   position: absolute;
   top: 50%;
   transform: translate3d(8vw, -50%, 0);
+  width: 50vw;
+}
+
+.home .about-intro .about-intro__image-container .about-intro__image-box {
+  position: relative;
+}
+
+.home .about-intro .about-intro__image-container .about-intro__image-box .about-intro__image-text {
+  color: #FFF;
+  font-size: 1.5em;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.home .about-intro .about-intro__image-container img {
+  width: 100%;
+}
+
+.home .about-intro .about-intro__text {
+  color: #000;
+  font-size: 5em;
+  line-height: 0em;
+  position: absolute;
+  top: 50%;
+  transform: translate3d(60vw, -50%, 0);
+  width: 30vw;
+}
+
+.home .about {
+  height: 100vh;
+  margin-top: 30vh;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100vw;
+  z-index: 1;
+}
+
+.home .about .about__text {
+  left: 50%;
+  max-width: 500px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.home .about marquee {
+  right: -40vw;
+  position: absolute;
+  transform: rotate(90deg);
+}
+
+.home .about marquee .about__scroll-text {
+  font-size: 2em;
 }
 
 .portfolio {
