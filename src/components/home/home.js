@@ -26,7 +26,7 @@ let Home = {
 		let window_ = $window;
 		let lastScrollTop = window_.scrollY;
 
-		if (raf) {
+		if (raf && loop) {
 		    loop();
 		}
 
