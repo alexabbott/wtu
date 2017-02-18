@@ -5,7 +5,7 @@ nav {
 	position: fixed;
 	top: 0;
 	width: 40px;
-	z-index: 2;
+	z-index: 9;
 
 	.nav__main {
 		box-sizing: border-box;
@@ -26,10 +26,13 @@ nav {
 			.nav__item {
 				display: block;
 				color: $color-white;
-				font-size: 0.7em;
+				font-family: $druk-condensed;
+				font-size: 0.9em;
+				font-style: italic;
+				letter-spacing: 0.2em;
 				margin: 90px 0;
 				text-decoration: none;
-				transform: rotate(270deg);
+				transform: rotate(90deg);
 			}
 		}
 

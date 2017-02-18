@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'druk-condensed';
+  src: url("./fonts/DrukCond-Super.woff2") format("woff2"), url("./fonts/DrukCond-Super.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'druk-wide';
+  src: url("./fonts/DrukWide-Medium.woff2") format("woff2"), url("./fonts/DrukWide-Medium.ttf") format("truetype");
+}
+
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Change the default font family in all browsers (opinionated).
@@ -455,7 +465,7 @@ nav {
   position: fixed;
   top: 0;
   width: 40px;
-  z-index: 2;
+  z-index: 9;
 }
 
 nav .nav__main {
@@ -479,10 +489,13 @@ nav .nav__main .nav__items {
 nav .nav__main .nav__items .nav__item {
   display: block;
   color: #FFF;
-  font-size: 0.7em;
+  font-family: "druk-condensed", "Futura", Arial, sans-serif;
+  font-size: 0.9em;
+  font-style: italic;
+  letter-spacing: 0.2em;
   margin: 90px 0;
   text-decoration: none;
-  transform: rotate(270deg);
+  transform: rotate(90deg);
 }
 
 nav .nav__main .nav__white-rabbit__image {
@@ -493,7 +506,7 @@ nav .nav__main .nav__white-rabbit__image {
 }
 
 .home .intro__image {
-  position: absolute;
+  position: fixed;
   width: 100vw;
   z-index: -1;
 }
@@ -506,13 +519,20 @@ nav .nav__main .nav__white-rabbit__image {
   height: 150vh;
   left: 50%;
   mix-blend-mode: multiply;
-  position: absolute;
+  position: fixed;
   top: 0;
   transform: translateX(-50%);
   width: 100vw;
 }
 
 .home .intro {
+  height: 100vh;
+  position: fixed;
+  width: 100vw;
+  z-index: 8;
+}
+
+.home .intro .intro__container {
   height: 100vh;
   position: relative;
   width: 100vw;
@@ -521,13 +541,15 @@ nav .nav__main .nav__white-rabbit__image {
 
 .home .intro .intro__text {
   color: #FFF;
+  font-weight: bold;
   left: 50%;
   line-height: 1.5em;
-  max-width: 500px;
+  max-width: 400px;
   position: absolute;
   top: 50%;
-  text-align: center;
-  transform: translate(-50%, -50%);
+  text-align: justify;
+  text-align-last: center;
+  transform: translate(-50%, -50%) scale(5);
 }
 
 .home .intro .intro__big-logo {
@@ -541,8 +563,11 @@ nav .nav__main .nav__white-rabbit__image {
   bottom: 50px;
   color: #FFF;
   cursor: pointer;
-  font-size: 0.6em;
+  font-family: "druk-condensed", "Futura", Arial, sans-serif;
+  font-size: 0.9em;
+  font-style: italic;
   left: 50%;
+  letter-spacing: 0.2em;
   position: absolute;
   text-align: center;
   transform: translateX(-50%);
@@ -565,6 +590,14 @@ nav .nav__main .nav__white-rabbit__image {
 
 .home .about-intro {
   height: 100vh;
+  position: fixed;
+  top: 100vh;
+  width: 100vw;
+  z-index: 7;
+}
+
+.home .about-intro .about-intro__container {
+  height: 100vh;
   margin-top: 30vh;
   position: relative;
   width: 100vw;
@@ -584,6 +617,7 @@ nav .nav__main .nav__white-rabbit__image {
 
 .home .about-intro .about-intro__image-container .about-intro__image-box .about-intro__image-text {
   color: #FFF;
+  font-family: "druk-wide", "Futura", Arial, sans-serif;
   font-size: 1.5em;
   left: 50%;
   position: absolute;
@@ -597,7 +631,9 @@ nav .nav__main .nav__white-rabbit__image {
 
 .home .about-intro .about-intro__text {
   color: #000;
-  font-size: 5em;
+  cursor: pointer;
+  font-family: "druk-condensed", "Futura", Arial, sans-serif;
+  font-size: 7em;
   line-height: 0em;
   position: absolute;
   top: 50%;
@@ -606,6 +642,14 @@ nav .nav__main .nav__white-rabbit__image {
 }
 
 .home .about {
+  height: 100vh;
+  position: fixed;
+  top: 200vh;
+  width: 100vw;
+  z-index: 6;
+}
+
+.home .about .about__container {
   height: 100vh;
   margin-top: 30vh;
   overflow: hidden;
@@ -616,6 +660,7 @@ nav .nav__main .nav__white-rabbit__image {
 }
 
 .home .about .about__text {
+  font-family: "druk-wide", "Futura", Arial, sans-serif;
   left: 50%;
   max-width: 500px;
   position: absolute;
@@ -631,9 +676,22 @@ nav .nav__main .nav__white-rabbit__image {
 
 .home .about marquee .about__scroll-text {
   font-size: 2em;
+  font-family: "druk-wide", "Futura", Arial, sans-serif;
+}
+
+.home .about .about__bottom-headline {
+  margin-top: 20%;
 }
 
 .home .contact {
+  height: 100vh;
+  position: fixed;
+  top: 300vh;
+  width: 100vw;
+  z-index: 5;
+}
+
+.home .contact .contact__container {
   background: #000;
   height: 100vh;
   position: relative;
@@ -643,11 +701,13 @@ nav .nav__main .nav__white-rabbit__image {
 }
 
 .home .contact .contact__text-container {
-  color: #FFF;
+  color: #000;
+  font-family: "druk-wide", "Futura", Arial, sans-serif;
   font-size: 3em;
   left: 50%;
   line-height: 0em;
   position: absolute;
+  text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF;
   top: 50%;
   transform: translate(-50%, -50%);
 }
@@ -667,6 +727,14 @@ nav .nav__main .nav__white-rabbit__image {
 }
 
 .home .white-rabbit {
+  height: 100vh;
+  position: fixed;
+  top: 400vh;
+  width: 100vw;
+  z-index: 4;
+}
+
+.home .white-rabbit .white-rabbit__container {
   background: #000;
   height: 100vh;
   position: relative;
@@ -677,6 +745,7 @@ nav .nav__main .nav__white-rabbit__image {
 
 .home .white-rabbit .white-rabbit__text {
   color: #FFF;
+  font-family: "druk-wide", "Futura", Arial, sans-serif;
   font-size: 4em;
   left: 50%;
   position: absolute;

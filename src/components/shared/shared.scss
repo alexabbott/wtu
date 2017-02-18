@@ -28,13 +28,28 @@
   }
 }
 
-%transition {
-  transition: 0.2s ease-out;
+@font-face {
+  font-family: 'druk-condensed';
+  src: url('./fonts/DrukCond-Super.woff2') format('woff2'), /* Super Modern Browsers */
+       url('./fonts/DrukCond-Super.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'druk-wide';
+  src: url('./fonts/DrukWide-Medium.woff2') format('woff2'), /* Super Modern Browsers */
+       url('./fonts/DrukWide-Medium.ttf')  format('truetype'), /* Safari, Android, iOS */
 }
 
 $color-black: #000;
 $color-primary: #3F51B5;
 $color-white: #FFF;
+$druk-condensed: 'druk-condensed', 'Futura', Arial, sans-serif;
+$druk-wide: 'druk-wide', 'Futura', Arial, sans-serif;
+
+%transition {
+  transition: 0.2s ease-out;
+}
+
 
 
 //////////////////////// Normalize CSS ////////////////////////////

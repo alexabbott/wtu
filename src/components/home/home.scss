@@ -1,7 +1,7 @@
 .home {
 
 	.intro__image {
-		position: absolute;
+		position: fixed;
 		width: 100vw;
 		z-index: -1;
 	}
@@ -18,7 +18,7 @@
 		height: 150vh;
 		left: 50%;
 	    mix-blend-mode: multiply;
-		position: absolute;
+		position: fixed;
 		top: 0;
 		transform: translateX(-50%);
 		width: 100vw;
@@ -26,19 +26,29 @@
 
 	.intro {
 		height: 100vh;
-		position: relative;
+		position: fixed;
 		width: 100vw;
-		z-index: 1;
+		z-index: 8;
+
+		.intro__container {
+			height: 100vh;
+			position: relative;
+			width: 100vw;
+			z-index: 1;
+		}
 
 		.intro__text {
 			color: $color-white;
+			font-weight: bold;
 			left: 50%;
 			line-height: 1.5em;
-			max-width: 500px;
+			max-width: 400px;
 			position: absolute;
 			top: 50%;
-			text-align: center;
-			transform: translate(-50%, -50%);
+			text-align: justify;
+		    -moz-text-align-last: center;
+		    text-align-last: center;
+			transform: translate(-50%, -50%) scale(5);
 		}
 
 		.intro__big-logo {
@@ -52,8 +62,11 @@
 			bottom: 50px;
 			color: $color-white;
 			cursor: pointer;
-			font-size: 0.6em;
+			font-family: $druk-condensed;
+			font-size: 0.9em;
+			font-style: italic;
 			left: 50%;
+			letter-spacing: 0.2em;
 			position: absolute;
 			text-align: center;
 			transform: translateX(-50%);
@@ -77,10 +90,18 @@
 
 	.about-intro {
 		height: 100vh;
-		margin-top: 30vh;
-		position: relative;
+		position: fixed;
+		top: 100vh;
 		width: 100vw;
-		z-index: 1;
+		z-index: 7;
+
+		.about-intro__container {
+			height: 100vh;
+			margin-top: 30vh;
+			position: relative;
+			width: 100vw;
+			z-index: 1;
+		}
 
 		.about-intro__image-container {
 			position: absolute;
@@ -93,6 +114,7 @@
 
 				.about-intro__image-text {
 					color: $color-white;
+					font-family: $druk-wide;
 					font-size: 1.5em;
 					left: 50%;
 					position: absolute;
@@ -108,7 +130,9 @@
 
 		.about-intro__text {
 			color: $color-black;
-			font-size: 5em;
+			cursor: pointer;
+			font-family: $druk-condensed;
+			font-size: 7em;
 			line-height: 0em;
 			position: absolute;
 			top: 50%;
@@ -119,14 +143,23 @@
 
 	.about {
 		height: 100vh;
-		margin-top: 30vh;
-		overflow: hidden;
-		position: relative;
-		text-align: center;
+		position: fixed;
+		top: 200vh;
 		width: 100vw;
-		z-index: 1;
+		z-index: 6;
+
+		.about__container {
+			height: 100vh;
+			margin-top: 30vh;
+			overflow: hidden;
+			position: relative;
+			text-align: center;
+			width: 100vw;
+			z-index: 1;
+		}
 
 		.about__text {
+			font-family: $druk-wide;
 			left: 50%;
 			max-width: 500px;
 			position: absolute;
@@ -141,24 +174,43 @@
 
 			.about__scroll-text {
 				font-size: 2em;
+				font-family: $druk-wide;
 			}
+		}
+
+		.about__bottom-headline {
+			margin-top: 20%;
 		}
 	}
 
 	.contact {
-		background: $color-black;
 		height: 100vh;
-		position: relative;
-		text-align: center;
+		position: fixed;
+		top: 300vh;
 		width: 100vw;
-		z-index: 1;
+		z-index: 5;
+
+		.contact__container {
+			background: $color-black;
+			height: 100vh;
+			position: relative;
+			text-align: center;
+			width: 100vw;
+			z-index: 1;
+		}
 
 		.contact__text-container {
-			color: $color-white;
+			color: $color-black;
+			font-family: $druk-wide;
 			font-size: 3em;
 			left: 50%;
 			line-height: 0em;
 			position: absolute;
+			text-shadow:
+			   -1px -1px 0 $color-white,  
+			    1px -1px 0 $color-white,
+			    -1px 1px 0 $color-white,
+			     1px 1px 0 $color-white;
 			top: 50%;
 			transform: translate(-50%, -50%);
 		}
@@ -179,15 +231,24 @@
 	}
 
 	.white-rabbit {
-		background: $color-black;
 		height: 100vh;
-		position: relative;
-		text-align: center;
+		position: fixed;
+		top: 400vh;
 		width: 100vw;
-		z-index: 1;
+		z-index: 4;
+
+		.white-rabbit__container {
+			background: $color-black;
+			height: 100vh;
+			position: relative;
+			text-align: center;
+			width: 100vw;
+			z-index: 1;
+		}
 
 		.white-rabbit__text {
 			color: $color-white;
+			font-family: $druk-wide;
 			font-size: 4em;
 			left: 50%;
 			position: absolute;

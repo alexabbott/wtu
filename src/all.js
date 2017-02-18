@@ -26,28 +26,59 @@ $__System.register('2', [], function (_export) {
 });
 
 $__System.register('3', [], function (_export) {
-    'use strict';
+				'use strict';
 
-    var Home;
-    return {
-        setters: [],
-        execute: function () {
-            Home = {
-                templateUrl: '/components/home/home.tpl',
-                controller: ['$scope', 'WordpressData', function ($scope, WordpressData) {
+				var Home;
+				return {
+								setters: [],
+								execute: function () {
+												Home = {
+																templateUrl: '/components/home/home.tpl',
+																controller: ['WordpressData', '$scope', '$window', function (WordpressData, $scope, $window) {
 
-                    $scope.test = 'testin';
+																				WordpressData.listHome(function (response) {
+																								$scope.data = response.data.acf;
+																								console.log('home data', $scope.data);
+																				});
 
-                    WordpressData.listHome(function (response) {
-                        $scope.data = response.data.acf;
-                        console.log('home data', $scope.data);
-                    });
-                }]
-            };
+																				var introText = document.querySelector('.intro__text');
 
-            _export('default', Home);
-        }
-    };
+																				var changeIntroTextSize = function changeIntroTextSize() {
+																								var scrollY = $window.scrollY;
+																								console.log('scroll', window_.scrollY);
+																								if (scrollY < 400) {
+																												introText.style.transform = 'translate(-50%, -50%) scale(' + (5 - scrollY / 100) + ')';
+																								}
+																				};
+
+																				var raf = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame;
+
+																				var window_ = $window;
+																				var lastScrollTop = window_.scrollY;
+
+																				if (raf) {
+																								loop();
+																				}
+
+																				var loop = function loop() {
+																								var scrollTop = window_.scrollY;
+																								if (lastScrollTop === scrollTop) {
+																												raf(loop);
+																												return;
+																								} else {
+																												lastScrollTop = scrollTop;
+
+																												// fire scroll function if scrolls vertically
+																												changeIntroTextSize();
+																												raf(loop);
+																								}
+																				};
+																}]
+												};
+
+												_export('default', Home);
+								}
+				};
 });
 
 $__System.register('4', [], function (_export) {
