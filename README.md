@@ -18,5 +18,5 @@ No WordPress files are stored in this repo, this is only the frontend component.
 ## Local Development
 
 * `cd src/`
-* Run `gulp` -- uses BrowserSync for live reload
+* Run `gulp` (might need to `npm install -g gulp`) -- uses BrowserSync for live reload
 * Do not edit all.js or all.css directly -- these are compiled files
