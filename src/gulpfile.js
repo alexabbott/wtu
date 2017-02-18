@@ -39,7 +39,6 @@ gulp.task('sass', function (){
 gulp.task('optimize', function (){
 	return gulp.src(['./app.js'])
 	.pipe(jspm({selfExecutingBundle: true}))
-	// .pipe(uglify())
 	.pipe(rename('all.js'))
 	.pipe(gulp.dest('./'));
 });

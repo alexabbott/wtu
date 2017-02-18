@@ -56,13 +56,26 @@ $__System.register('4', [], function (_export) {
         execute: function () {
             Portfolio = {
                 templateUrl: '/components/portfolio/portfolio.tpl',
-                controller: ['$scope', 'WordpressData', function ($scope, WordpressData) {
+                controller: ['$scope', 'WordpressData', '$routeParams', '$sce', function ($scope, WordpressData, $routeParams, $sce) {
 
-                    $scope.test = 'portfolio testing';
+                    WordpressData.renderPortfolio(function (data) {
+                        var keys = {};
+                        data.data.forEach(function (c, i, a) {
+                            var next = a[i + 1];
+                            var prev = a[i - 1];
+                            c.next = next ? '/' + next.slug : null;
+                            c.prev = prev ? '/' + prev.slug : null;
+                            keys[c.slug] = c;
+                        });
 
-                    WordpressData.listPortfolio(function (response) {
-                        $scope.data = response.data.acf;
-                        console.log('data', $scope.data);
+                        $scope.portfolio = keys;
+
+                        $scope.current = $scope.portfolio[$routeParams.slug];
+                        $scope.bgStyle = {
+                            backgroundImage: 'url(' + $scope.current.acf.bg_img + ')'
+                        };
+
+                        $scope.content = $sce.trustAsHtml($scope.current.acf.content);
                     });
                 }]
             };
@@ -96,12 +109,26 @@ $__System.register('1', ['2', '3', '4'], function (_export) {
 
 								$locationProvider.html5Mode(true);
 						}]).factory('WordpressData', function ($http) {
+
+								var portfolio = null;
+
 								return {
 										listHome: function listHome(callback) {
 												$http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/home/12').then(callback);
 										},
-										listPortfolio: function listPortfolio(callback) {
-												$http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/portfolio/18').then(callback);
+										renderPortfolio: function renderPortfolio(callback) {
+												if (!portfolio) {
+														// get it green...
+														console.log('getting polio...');
+														return $http.get('http://alex-abbott.com/wtu/wp-json/wp/v2/portfolio'
+														// required setting "Show in REST API" within WCK
+														// Post Type editor (portfolio, advanced options)
+														).then(function (data) {
+																portfolio = data;
+																callback(portfolio);
+														});
+												}
+												callback(portfolio);
 										}
 								};
 						}).component('sidenav', Sidenav).component('home', Home).component('portfolio', Portfolio);

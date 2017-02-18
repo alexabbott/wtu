@@ -446,6 +446,10 @@ template {
   display: none;
 }
 
+.block {
+  display: block;
+}
+
 nav {
   background: #3F51B5;
   color: #FFF;
@@ -456,5 +460,34 @@ nav {
 }
 
 .portfolio {
-  background: #FFF;
+  background-size: cover;
+  background-position: center center;
+  min-height: 100vh;
+}
+
+.portfolio .nav {
+  padding: 1em 0 2em;
+  text-align: center;
+}
+
+.portfolio .content {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.portfolio .content p {
+  padding: 0;
+  margin: 0;
+}
+
+.portfolio .content img {
+  max-width: 100%;
+}
+
+.portfolio .content iframe {
+  width: 90vw;
+  height: 50.625vw;
+  max-width: 800px;
+  max-height: 450px;
 }
