@@ -9,26 +9,13 @@ let Home = {
 
         const introText = document.querySelector('.intro__text');
 
-        let changeIntroTextSize = function () {
-		    let scrollY = $window.scrollY;
-		    console.log('scroll', window_.scrollY);
+        let changeIntroTextSize = () => {
+			let scrollY = $window.scrollY;
+			console.log('scroll', window_.scrollY);
 		    if (scrollY < 400) {
 	            introText.style.transform = 'translate(-50%, -50%) scale(' + (5 - (scrollY / 100)) + ')';
             }
 		};
-
-		let raf = window.requestAnimationFrame ||
-		    window.webkitRequestAnimationFrame ||
-		    window.mozRequestAnimationFrame ||
-		    window.msRequestAnimationFrame ||
-		    window.oRequestAnimationFrame;
-
-		let window_ = $window;
-		let lastScrollTop = window_.scrollY;
-
-		if (raf) {
-		    loop();
-		}
 
 		let loop = () => {
 		    let scrollTop = window_.scrollY;
@@ -42,6 +29,19 @@ let Home = {
 		        changeIntroTextSize();
 		        raf(loop);
 		    }
+		};
+
+		let raf = window.requestAnimationFrame ||
+		    window.webkitRequestAnimationFrame ||
+		    window.mozRequestAnimationFrame ||
+		    window.msRequestAnimationFrame ||
+		    window.oRequestAnimationFrame;
+
+		let window_ = $window;
+		let lastScrollTop = window_.scrollY;
+
+		if (raf) {
+		    loop();
 		}
     }]
 };
