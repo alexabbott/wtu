@@ -51,15 +51,6 @@ $__System.register('3', [], function (_export) {
 																								}
 																				};
 
-																				var raf = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame;
-
-																				var window_ = $window;
-																				var lastScrollTop = window_.scrollY;
-
-																				if (raf && loop) {
-																								loop();
-																				}
-
 																				var loop = function loop() {
 																								var scrollTop = window_.scrollY;
 																								if (lastScrollTop === scrollTop) {
@@ -73,6 +64,15 @@ $__System.register('3', [], function (_export) {
 																												raf(loop);
 																								}
 																				};
+
+																				var raf = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame;
+
+																				var window_ = $window;
+																				var lastScrollTop = window_.scrollY;
+
+																				if (raf) {
+																								loop();
+																				}
 																}]
 												};
 
