@@ -43,6 +43,17 @@ let Home = {
 		if (raf) {
 		    loop();
 		}
+
+    const bindPortfolio = (data) => {
+        $scope.portfolio = data;
+    }
+    if (!WordpressData.portfolio) {
+        WordpressData.fetchPortfolio(bindPortfolio);
+    }
+    else {
+        bindPortfolio(WordpressData.portfolio);
+    }
+
     }]
 };
 

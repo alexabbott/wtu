@@ -1,4 +1,5 @@
 <div class="portfolio" ng-style="bgStyle">
+  <a href="/">home</a>
   <div class="nav">
     <a ng-if="current.prev" href="{{current.prev}}">back</a>
     <span>{{ current.slug }}</span>
