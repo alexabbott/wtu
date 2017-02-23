@@ -1,11 +1,12 @@
 <div class="portfolio" ng-style="bgStyle">
-  <a href="/">home</a>
   <div class="nav">
-    <a ng-if="current.prev" href="{{current.prev}}">back</a>
+    <a href="{{current.prev ? current.prev : last}}">back</a>
     <span>{{ current.slug }}</span>
-    <a ng-if="current.next" href="{{current.next}}">next</a>
+    <a href="{{current.next ? current.next : first}}">next</a>
   </div>
-  <div class="content" ng-bind-html="content">
+  <div class="content relative">
+    <a href="/" class="escape absolute"><img src="/images/portfolio-escape.svg"/></a>
+    <div class="wp-data" ng-bind-html="content"></div>
   </div>
   <img class="block" src="{{bg}}" />
 </div>
