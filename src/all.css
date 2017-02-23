@@ -8,6 +8,58 @@
   src: url("./fonts/DrukWide-Medium.woff2") format("woff2"), url("./fonts/DrukWide-Medium.ttf") format("truetype");
 }
 
+nav, nav .nav__main .nav__logo, nav .nav__main .nav__items .nav__item, .home .intro, .home .intro .intro__text, .home .intro .intro__big-logo, .home .intro .intro__scroll-down, .home .about, .home .contact, .home .white-rabbit {
+  transition: 0.7s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn ease-in 1;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+}
+
+.fade-in-out {
+  opacity: 0;
+  animation: fadeIn ease-in 1;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-duration: 1s;
+}
+
+.fade-in.one {
+  animation-delay: 0.3s;
+}
+
+.fade-in.two {
+  animation-delay: 0.6s;
+}
+
+.fade-in.three {
+  animation-delay: 0.9s;
+}
+
+.fade-in.four {
+  animation-delay: 1.2s;
+}
+
+.fade-in.five {
+  animation-delay: 1.5s;
+}
+
+.fade-in.six {
+  animation-delay: 1.8s;
+}
+
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Change the default font family in all browsers (opinionated).
@@ -462,14 +514,28 @@ template {
   display: block;
 }
 
+.no-opacity {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.absolute {
+  position: absolute !important;
+}
+
+.fixed {
+  position: fixed !important;
+}
+
 nav {
   color: #FFF;
   height: 100vh;
   left: 2%;
   position: fixed;
   top: 0;
+  transition-property: opacity;
   width: 40px;
-  z-index: 9;
+  z-index: 99;
 }
 
 nav .nav__main {
@@ -481,6 +547,8 @@ nav .nav__main {
 
 nav .nav__main .nav__logo {
   margin-bottom: 5vh;
+  position: absolute;
+  transition-property: opacity;
   width: 40px;
 }
 
@@ -493,6 +561,7 @@ nav .nav__main .nav__items {
 nav .nav__main .nav__items .nav__item {
   display: block;
   color: #FFF;
+  cursor: pointer;
   font-family: "druk-condensed", "Futura", Arial, sans-serif;
   font-size: 0.9em;
   font-style: italic;
@@ -500,6 +569,7 @@ nav .nav__main .nav__items .nav__item {
   margin: 90px 0;
   text-decoration: none;
   transform: rotate(90deg);
+  transition-property: color;
 }
 
 nav .nav__main .nav__white-rabbit__image {
@@ -509,10 +579,37 @@ nav .nav__main .nav__white-rabbit__image {
   width: 30px;
 }
 
+nav .nav__logo-alt {
+  opacity: 0;
+}
+
+nav.color-alt .nav__main .nav__items .nav__item {
+  color: #000;
+}
+
+nav.logo-alt .nav__logo-main {
+  opacity: 0;
+}
+
+nav.logo-alt .nav__logo-alt {
+  opacity: 1;
+}
+
+.home #intro-indicator {
+  position: absolute;
+  top: 0;
+}
+
 .home .intro__image {
   position: fixed;
+  right: 0;
   width: 100vw;
   z-index: -1;
+}
+
+.home .intro__image.absolute {
+  position: absolute;
+  top: 600px;
 }
 
 .home .intro__gradient {
@@ -529,9 +626,15 @@ nav .nav__main .nav__white-rabbit__image {
   width: 100vw;
 }
 
+.home .intro__gradient.absolute {
+  position: absolute;
+  top: 600px;
+}
+
 .home .intro {
   height: 100vh;
   position: fixed;
+  transition-property: opacity;
   width: 100vw;
   z-index: 8;
 }
@@ -554,13 +657,26 @@ nav .nav__main .nav__white-rabbit__image {
   text-align: justify;
   text-align-last: center;
   transform: translate(-50%, -50%) scale(5);
+  transition-property: opacity;
 }
 
 .home .intro .intro__big-logo {
   position: absolute;
   top: 50%;
-  transform: translate3d(10vw, -50%, 0);
+  transition-property: opacity, transform;
   width: 12vw;
+}
+
+.home .intro .intro__big-logo.low-position {
+  transform: translate3d(10vw, 50%, 0);
+}
+
+.home .intro .intro__big-logo.mid-position {
+  transform: translate3d(10vw, -50%, 0);
+}
+
+.home .intro .intro__big-logo.high-position {
+  transform: translate3d(10vw, -200%, 0);
 }
 
 .home .intro .intro__scroll-down {
@@ -575,6 +691,7 @@ nav .nav__main .nav__white-rabbit__image {
   position: absolute;
   text-align: center;
   transform: translateX(-50%);
+  transition-property: opacity;
 }
 
 .home .intro .intro__scroll-down .intro__scroll-down-arrow {
@@ -585,6 +702,7 @@ nav .nav__main .nav__white-rabbit__image {
 
 .home .pink-blotch {
   left: 0;
+  margin-bottom: 650vh;
   mix-blend-mode: multiply;
   position: absolute;
   top: 100vh;
@@ -594,15 +712,14 @@ nav .nav__main .nav__white-rabbit__image {
 
 .home .about-intro {
   height: 100vh;
-  position: fixed;
-  top: 100vh;
+  position: absolute;
+  top: 280vh;
   width: 100vw;
   z-index: 7;
 }
 
 .home .about-intro .about-intro__container {
   height: 100vh;
-  margin-top: 30vh;
   position: relative;
   width: 100vw;
   z-index: 1;
@@ -610,8 +727,8 @@ nav .nav__main .nav__white-rabbit__image {
 
 .home .about-intro .about-intro__image-container {
   position: absolute;
-  top: 50%;
-  transform: translate3d(8vw, -50%, 0);
+  top: 20%;
+  transform: translate3d(8vw, 0, 0);
   width: 50vw;
 }
 
@@ -645,17 +762,22 @@ nav .nav__main .nav__white-rabbit__image {
   width: 30vw;
 }
 
+.home #about-indicator {
+  position: absolute;
+  top: 2720px;
+}
+
 .home .about {
   height: 100vh;
   position: fixed;
-  top: 200vh;
+  top: 0;
+  transition-property: opacity;
   width: 100vw;
   z-index: 6;
 }
 
 .home .about .about__container {
   height: 100vh;
-  margin-top: 30vh;
   overflow: hidden;
   position: relative;
   text-align: center;
@@ -670,6 +792,11 @@ nav .nav__main .nav__white-rabbit__image {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+.home .about .about__text .about__text-main em {
+  cursor: default;
+  font-style: normal;
 }
 
 .home .about marquee {
@@ -687,10 +814,49 @@ nav .nav__main .nav__white-rabbit__image {
   margin-top: 20%;
 }
 
+.home .about .about__gif {
+  position: absolute;
+  pointer-events: none;
+}
+
+.home .about .about__gif-1 {
+  top: -20vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 12;
+}
+
+.home .about .about__gif-2 {
+  left: 18vw;
+  top: -20vh;
+  transform: translateX(-50%);
+  z-index: 12;
+}
+
+.home .about .about__gif-3 {
+  bottom: -20vh;
+  right: -45vw;
+  transform: translateX(-50%);
+  z-index: 12;
+}
+
+.home .about .about__gif-4 {
+  right: 50%;
+  bottom: -20vh;
+  transform: translateX(-50%);
+  z-index: 12;
+}
+
+.home #contact-indicator {
+  position: absolute;
+  top: 3910px;
+}
+
 .home .contact {
   height: 100vh;
   position: fixed;
-  top: 300vh;
+  top: 0;
+  transition-property: opacity;
   width: 100vw;
   z-index: 5;
 }
@@ -714,10 +880,12 @@ nav .nav__main .nav__white-rabbit__image {
   text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF;
   top: 50%;
   transform: translate(-50%, -50%);
+  width: 100%;
 }
 
-.home .contact .contact__text-2 {
+.home .contact .contact__email {
   color: #FFF;
+  font-family: "druk-wide", "Futura", Arial, sans-serif;
   font-size: 3.8em;
   left: 50%;
   line-height: 1.1em;
@@ -730,10 +898,16 @@ nav .nav__main .nav__white-rabbit__image {
   z-index: 2;
 }
 
+.home #white-rabbit-indicator {
+  position: absolute;
+  top: 4410px;
+}
+
 .home .white-rabbit {
   height: 100vh;
   position: fixed;
-  top: 400vh;
+  top: 0;
+  transition-property: opacity;
   width: 100vw;
   z-index: 4;
 }
@@ -752,6 +926,7 @@ nav .nav__main .nav__white-rabbit__image {
   font-family: "druk-wide", "Futura", Arial, sans-serif;
   font-size: 4em;
   left: 50%;
+  pointer-events: none;
   position: absolute;
   top: 40%;
   transform: translate(-50%, -50%);
@@ -760,11 +935,12 @@ nav .nav__main .nav__white-rabbit__image {
 }
 
 .home .white-rabbit .white-rabbit__video {
+  height: 50vw;
   left: 50%;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 90%;
+  width: 90vw;
 }
 
 .portfolio {

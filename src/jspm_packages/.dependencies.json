@@ -65,5 +65,6 @@
   "github:jspm/nodelibs-buffer@0.1.0": {
     "buffer": "npm:buffer@^3.0.1"
   },
-  "github:jspm/nodelibs-child_process@0.1.0": {}
+  "github:jspm/nodelibs-child_process@0.1.0": {},
+  "github:d-oliveros/ngSmoothScroll@2.0.0": {}
 }

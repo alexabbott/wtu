@@ -1,9 +1,20 @@
 .home {
 
+	#intro-indicator {
+		position: absolute;
+		top: 0;
+	}
+
 	.intro__image {
 		position: fixed;
+		right: 0;
 		width: 100vw;
 		z-index: -1;
+
+		&.absolute {
+			position: absolute;
+			top: 600px;
+		}
 	}
 
 	.intro__gradient {
@@ -22,11 +33,18 @@
 		top: 0;
 		transform: translateX(-50%);
 		width: 100vw;
+
+		&.absolute {
+			position: absolute;
+			top: 600px;
+		}
 	}
 
 	.intro {
+		@extend %transition-long;
 		height: 100vh;
 		position: fixed;
+		transition-property: opacity;
 		width: 100vw;
 		z-index: 8;
 
@@ -38,6 +56,7 @@
 		}
 
 		.intro__text {
+			@extend %transition-long;
 			color: $color-white;
 			font-weight: bold;
 			left: 50%;
@@ -49,16 +68,31 @@
 		    -moz-text-align-last: center;
 		    text-align-last: center;
 			transform: translate(-50%, -50%) scale(5);
+			transition-property: opacity;
 		}
 
 		.intro__big-logo {
+			@extend %transition-long;
 			position: absolute;
 			top: 50%;
-			transform: translate3d(10vw, -50%, 0);
+			transition-property: opacity, transform;
 			width: 12vw;
+
+			&.low-position {
+				transform: translate3d(10vw, 50%, 0);
+			}
+
+			&.mid-position {
+				transform: translate3d(10vw, -50%, 0);
+			}
+
+			&.high-position {
+				transform: translate3d(10vw, -200%, 0);
+			}
 		}
 
 		.intro__scroll-down {
+			@extend %transition-long;
 			bottom: 50px;
 			color: $color-white;
 			cursor: pointer;
@@ -70,6 +104,7 @@
 			position: absolute;
 			text-align: center;
 			transform: translateX(-50%);
+			transition-property: opacity;
 
 			.intro__scroll-down-arrow {
 				display: block;
@@ -81,6 +116,7 @@
 
 	.pink-blotch {
 		left: 0;
+		margin-bottom: 650vh;
 		mix-blend-mode: multiply;
 		position: absolute;
 		top: 100vh;
@@ -90,14 +126,13 @@
 
 	.about-intro {
 		height: 100vh;
-		position: fixed;
-		top: 100vh;
+		position: absolute;
+		top: 280vh;
 		width: 100vw;
 		z-index: 7;
 
 		.about-intro__container {
 			height: 100vh;
-			margin-top: 30vh;
 			position: relative;
 			width: 100vw;
 			z-index: 1;
@@ -105,8 +140,8 @@
 
 		.about-intro__image-container {
 			position: absolute;
-			top: 50%;
-			transform: translate3d(8vw, -50%, 0);
+			top: 20%;
+			transform: translate3d(8vw, 0, 0);
 			width: 50vw;
 
 			.about-intro__image-box {
@@ -141,16 +176,22 @@
 		}
 	}
 
+	#about-indicator {
+		position: absolute;
+		top: 2720px;
+	}
+
 	.about {
+		@extend %transition-long;
 		height: 100vh;
 		position: fixed;
-		top: 200vh;
+		top: 0;
+		transition-property: opacity;
 		width: 100vw;
 		z-index: 6;
 
 		.about__container {
 			height: 100vh;
-			margin-top: 30vh;
 			overflow: hidden;
 			position: relative;
 			text-align: center;
@@ -165,6 +206,13 @@
 			position: absolute;
 			top: 50%;
 			transform: translate(-50%, -50%);
+
+			.about__text-main {
+				em {
+					cursor: default;
+					font-style: normal;
+				}
+			}
 		}
 
 		marquee {
@@ -181,12 +229,52 @@
 		.about__bottom-headline {
 			margin-top: 20%;
 		}
+
+		.about__gif {
+			position: absolute;
+			pointer-events: none;
+		}
+
+		.about__gif-1 {
+			top: -20vh;
+			left: 50%;
+			transform: translateX(-50%);
+			z-index: 12;
+		}
+
+		.about__gif-2 {
+	    left: 18vw;
+			top: -20vh;
+			transform: translateX(-50%);
+			z-index: 12;
+		}
+
+		.about__gif-3 {
+			bottom: -20vh;
+			right: -45vw;
+			transform: translateX(-50%);
+			z-index: 12;
+		}
+
+		.about__gif-4 {
+			right: 50%;
+			bottom: -20vh;
+			transform: translateX(-50%);
+			z-index: 12;
+		}
+	}
+
+	#contact-indicator {
+		position: absolute;
+		top: 3910px;
 	}
 
 	.contact {
+		@extend %transition-long;
 		height: 100vh;
 		position: fixed;
-		top: 300vh;
+		top: 0;
+		transition-property: opacity;
 		width: 100vw;
 		z-index: 5;
 
@@ -213,10 +301,12 @@
 			     1px 1px 0 $color-white;
 			top: 50%;
 			transform: translate(-50%, -50%);
+			width: 100%;
 		}
 
-		.contact__text-2 {
+		.contact__email {
 			color: $color-white;
+			font-family: $druk-wide;
 			font-size: 3.8em;
 			left: 50%;
 			line-height: 1.1em;
@@ -230,10 +320,17 @@
 		}
 	}
 
+	#white-rabbit-indicator {
+		position: absolute;
+		top: 4410px;
+	}
+
 	.white-rabbit {
+		@extend %transition-long;
 		height: 100vh;
 		position: fixed;
-		top: 400vh;
+		top: 0;
+		transition-property: opacity;
 		width: 100vw;
 		z-index: 4;
 
@@ -251,6 +348,7 @@
 			font-family: $druk-wide;
 			font-size: 4em;
 			left: 50%;
+			pointer-events: none;
 			position: absolute;
 			top: 40%;
 			transform: translate(-50%, -50%);
@@ -259,11 +357,12 @@
 		}
 
 		.white-rabbit__video {
+			height: 50vw;
 			left: 50%;
 			position: absolute;
 			top: 50%;
 			transform: translate(-50%, -50%);
-			width: 90%;
+			width: 90vw;
 		}
 	}
 }

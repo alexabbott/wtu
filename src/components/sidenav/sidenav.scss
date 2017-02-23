@@ -1,11 +1,13 @@
 nav {
+	@extend %transition-long;
 	color: $color-white;
 	height: 100vh;
 	left: 2%;
 	position: fixed;
 	top: 0;
+	transition-property: opacity;
 	width: 40px;
-	z-index: 9;
+	z-index: 99;
 
 	.nav__main {
 		box-sizing: border-box;
@@ -14,7 +16,10 @@ nav {
 		position: relative;
 
 		.nav__logo {
+			@extend %transition-long;
 			margin-bottom: 5vh;
+			position: absolute;
+			transition-property: opacity;
 			width: 40px;
 		}
 
@@ -24,8 +29,10 @@ nav {
 			transform: translate(-15px, -50%);
 
 			.nav__item {
+				@extend %transition-long;
 				display: block;
 				color: $color-white;
+				cursor: pointer;
 				font-family: $druk-condensed;
 				font-size: 0.9em;
 				font-style: italic;
@@ -33,6 +40,7 @@ nav {
 				margin: 90px 0;
 				text-decoration: none;
 				transform: rotate(90deg);
+				transition-property: color;
 			}
 		}
 
@@ -41,6 +49,26 @@ nav {
 			left: 2%;
 			position: absolute;
 			width: 30px;
+		}
+	}
+
+	.nav__logo-alt {
+		opacity: 0;
+	}
+
+	&.color-alt {
+		.nav__main .nav__items .nav__item  {
+			color: $color-black;
+		}
+	}
+
+	&.logo-alt {
+		.nav__logo-main {
+			opacity: 0;
+		}
+
+		.nav__logo-alt {
+			opacity: 1;
 		}
 	}
 }

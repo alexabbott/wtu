@@ -5,11 +5,13 @@
 
 	<div class="intro__gradient"></div>
 
+	<div id="intro-indicator"></div>
+
     <section id="intro" class="intro">
     	<div class="intro__container">
-	    	<img ng-src="{{ data.intro_big_logo.url }}" class="intro__big-logo" alt="WeThem.Us">
+	    	<img ng-src="{{ data.intro_big_logo.url }}" class="intro__big-logo no-opacity low-position" alt="WeThem.Us">
 	    	<div class="intro__text" ng-bind-html="data.intro_text"></div>
-	    	<div class="intro__scroll-down">
+	    	<div class="intro__scroll-down no-opacity">
 	    		{{ data.intro_scroll_down_text }}
 	    		<img ng-src="{{ data.intro_scroll_down_arrow.url }}" class="intro__scroll-down-arrow" alt="{{ data.intro_scroll_down_text }}">
 	    	</div>
@@ -52,15 +54,17 @@
 	    </div>
     </section>
 
-    <section id="about" class="about">
+    <div id="about-indicator"></div>
+
+    <section id="about" class="about no-opacity">
     	<div class="about__container">
 	    	<div class="about__text">
 			    <div ng-bind-html="data.about_paragraph" class="about__text-main"></div>
-			    <div class="about__bottom-headline">{{ data.about_bottom_headline }}</div>
-			    <img ng-src="{{ data.about_gif_1.url }}" class="about__gif-1 hidden">
-			    <img ng-src="{{ data.about_gif_2.url }}" class="about__gif-2 hidden">
-			    <img ng-src="{{ data.about_gif_3.url }}" class="about__gif-3 hidden">
-			    <img ng-src="{{ data.about_gif_4.url }}" class="about__gif-4 hidden">
+			    <div class="about__bottom-headline fade-in-out">{{ data.about_bottom_headline }}</div>
+			    <img ng-src="{{ data.about_gif_1.url }}" class="about__gif about__gif-1 hidden">
+			    <img ng-src="{{ data.about_gif_2.url }}" class="about__gif about__gif-2 hidden">
+			    <img ng-src="{{ data.about_gif_3.url }}" class="about__gif about__gif-3 hidden">
+			    <img ng-src="{{ data.about_gif_4.url }}" class="about__gif about__gif-4 hidden">
 			</div>
 			<marquee direction="left" scrollamount="20">
 			    <h2 class="about__scroll-text">{{ data.about_scroll_text }}</h2>
@@ -68,25 +72,29 @@
 		</div>
     </section>
 
-    <section id="contact" class="contact">
+    <div id="contact-indicator"></div>
+
+    <section id="contact" class="contact no-opacity">
   		<div class="contact__container">
 	    	<div class="contact__text-container">
-			    <h2 class="contact__text-1">{{ data.contact_text_1 }}</h2>
-			    <h2 class="contact__text-1">{{ data.contact_text_1 }}</h2>
-			    <h2 class="contact__text-1">{{ data.contact_text_1 }}</h2>
-			    <h2 class="contact__text-1">{{ data.contact_text_1 }}</h2>
-			    <h2 class="contact__text-1">{{ data.contact_text_1 }}</h2>
+			    <h2 class="contact__text contact__text-1">{{ data.contact_text_1 }}</h2>
+			    <h2 class="contact__text-2">{{ data.contact_text_1 }}</h2>
+			    <h2 class="contact__text-3">{{ data.contact_text_1 }}</h2>
+			    <h2 class="contact__text-4">{{ data.contact_text_1 }}</h2>
+			    <h2 class="contact__text-5">{{ data.contact_text_1 }}</h2>
 			</div>
-		    <a href="mailto:{{ data.contact_email }}" class="contact__text-2">
+		    <a href="mailto:{{ data.contact_email }}" class="contact__email">
 		    	<h2>{{ data.contact_text_2 }}</h2>
 		    </a>
 		</div>
     </section>
 
-    <section id="white-rabbit" class="white-rabbit">
+    <div id="white-rabbit-indicator"></div>
+
+    <section id="white-rabbit" class="white-rabbit no-opacity">
     	<div class="white-rabbit__container">
 		    <h2 class="white-rabbit__text">{{ data.white_rabbit_text }}</h2>
-		    <video ng-src="{{ data.white_rabbit_video }}" class="white-rabbit__video"></video>
+		    <iframe ng-src="{{ data.white_rabbit_video | youtubeEmbedUrl }}" class="white-rabbit__video" frameborder="0" allowfullscreen></iframe>
 		</div>
     </section>
 </div>
