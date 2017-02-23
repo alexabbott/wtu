@@ -1,5 +1,6 @@
 <div class="home">
-	<h1 class="hidden">WeThem.Us</h1>
+	<a id="polio_test" class="fixed" href="/zayn">zayn</a>
+  <h1 class="hidden">WeThem.Us</h1>
 
 	<img ng-src="{{ data.intro_image.url }}" class="intro__image">
 

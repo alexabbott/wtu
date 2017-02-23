@@ -7,6 +7,16 @@ let Home = {
             console.log('home data', $scope.data);
         });
 
+        const bindPortfolio = (data) => {
+	        $scope.portfolio = data;
+	    }
+	    if (!WordpressData.portfolio) {
+	        WordpressData.fetchPortfolio(bindPortfolio);
+	    }
+	    else {
+	        bindPortfolio(WordpressData.portfolio);
+	    }
+
         const intro = angular.element(document.querySelector('.intro'));
         const introText = angular.element(document.querySelector('.intro__text'));
         const introScrollDown = angular.element(document.querySelector('.intro__scroll-down'));
@@ -244,8 +254,6 @@ let Home = {
 				angular.element(document.querySelector('.about__gif-4')).addClass('hidden');
 			});
 		}, 2000);
-
-
     }]
 };
 

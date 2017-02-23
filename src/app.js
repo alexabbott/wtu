@@ -22,34 +22,31 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll']
 
 .factory('WordpressData', ($http) => {
 
-  var portfolio = null;
-
-  return {
-  	listNav: (callback) => {
-      	$http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/nav/42').then(callback);
-    },
-    listHome: (callback) => {
-     	$http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/home/12').then(callback);
-    },
-    renderPortfolio: (callback) => {
-    	if (!portfolio) {
-  			// get it green...
-  			console.log('getting polio...');
-  			return(
-  				$http.get(
-							'http://alex-abbott.com/wtu/wp-json/wp/v2/portfolio'
-							// required setting "Show in REST API" within WCK
-			 				// Post Type editor (portfolio, advanced options)
-					)
+  const WPFactory = {
+	  	listNav: (callback) => {
+	      	$http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/nav/42').then(callback);
+	    },
+	    listHome: (callback) => {
+	     		$http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/home/12').then(callback);
+	    },
+	    fetchPortfolio: (callback) => {
+	  			console.log('getting polio...');
+					$http.get('http://alex-abbott.com/wtu/wp-json/wp/v2/portfolio')
 					.then((data) => {
-							portfolio = data;
-							callback(portfolio);
+							WPFactory.portfolio = {};
+							data.data.forEach((c,i,a) => {
+							    let next = a[i+1];
+							    let prev = a[i-1];
+							    c.next = next ? '/' + next.slug : null;
+							    c.prev = prev ? '/' + prev.slug : null;
+							    WPFactory.portfolio[c.slug] = c;
+							});
+							callback(WPFactory.portfolio);
 					})
-				)
-    	}
-    	callback(portfolio);
-  	}
+	  	}
   }
+
+  return WPFactory
 })
 
 .filter('youtubeEmbedUrl', ($sce) => {

@@ -1,3 +1,9 @@
+#polio_test {
+	bottom: 0;
+	right: 0;
+	z-index:300000
+}
+
 .home {
 
 	#intro-indicator {
@@ -295,7 +301,7 @@
 			line-height: 0em;
 			position: absolute;
 			text-shadow:
-			   -1px -1px 0 $color-white,  
+			   -1px -1px 0 $color-white,
 			    1px -1px 0 $color-white,
 			    -1px 1px 0 $color-white,
 			     1px 1px 0 $color-white;
