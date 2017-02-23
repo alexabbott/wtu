@@ -522,6 +522,26 @@ template {
   display: block;
 }
 
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
 .fixed {
-  position: fixed
+  position: fixed;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.druk {
+  font-family: "druk-condensed", "Futura", Arial, sans-serif;
+}
+
+.sans-serif {
+  font-family: sans-serif;
 }
