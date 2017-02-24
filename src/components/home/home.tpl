@@ -12,7 +12,7 @@
     	<div class="intro__container">
 	    	<img ng-src="{{ data.intro_big_logo.url }}" class="intro__big-logo no-opacity low-position" alt="WeThem.Us">
 	    	<div class="intro__text" ng-bind-html="data.intro_text"></div>
-	    	<div class="intro__scroll-down no-opacity">
+	    	<div class="intro__scroll-down no-opacity" scroll-to="about-indicator">
 	    		{{ data.intro_scroll_down_text }}
 	    		<img ng-src="{{ data.intro_scroll_down_arrow.url }}" class="intro__scroll-down-arrow" alt="{{ data.intro_scroll_down_text }}">
 	    	</div>
@@ -79,7 +79,7 @@
     	<div class="projects__container no-opacity">
     		<div ng-repeat="project in portfolio" class="projects__marquee-box">
 	    		<div class="projects__marquee" ng-mouseenter="showBg($index)" ng-mouseleave="hideBg($index)">
-	    			{{ project.acf.marquee_pre_context }}<a href="/{{ project.slug }}">{{ project.acf.short_title }}</a>{{ project.acf.marquee_post_context }}
+	    			<a href="/{{ project.slug }}">{{ project.acf.marquee_pre_context }}<span>{{ project.acf.short_title }}</span>{{ project.acf.marquee_post_context }}</a>
 	    		</div>
 	    		<div class="projects__bg no-opacity" style="background-image: url({{ project.acf.bg_img }});">
 	    		</div>

@@ -187,7 +187,7 @@
 
 	#about-indicator {
 		position: absolute;
-		top: 2720px;
+		top: 2100px;
 	}
 
 	.about {
@@ -311,10 +311,21 @@
 			    -1px 1px 0 $color-white,
 			     1px 1px 0 $color-white;
 
+			  &:hover {
+			  	span {
+			  		color: $color-white;
+			  	}
+			  }
+
 				a {
-					color: $color-white;
+					color: $color-black;
 					cursor: pointer;
 					text-decoration: none;
+				}
+
+				span {
+					@extend %transition-long;
+					transition-property: color;
 				}
 			}
 		}

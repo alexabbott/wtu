@@ -274,7 +274,7 @@ let Home = {
 		    	if (scrollTop > 3000) {
 		    		changeAboutOpacity(scrollTop);
 		    	}
-		    	if (scrollTop > 4000 && scrollTop < 6000) {
+		    	if (scrollTop > 3500 && scrollTop < 6000) {
 			        changeProjectsPosition(scrollTop);
 		    	}
 		    	if (scrollTop > 5000) {
