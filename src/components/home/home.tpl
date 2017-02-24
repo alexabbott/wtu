@@ -1,9 +1,10 @@
 <div class="home">
   <h1 class="hidden">WeThem.Us</h1>
 
-	<img ng-src="{{ data.intro_image.url }}" class="intro__image">
-
-	<div class="intro__gradient"></div>
+  <section class="intro__bg">
+		<img ng-src="{{ data.intro_image.url }}" class="intro__image">
+		<div class="intro__gradient"></div>
+	</section>
 
 	<div id="intro-indicator"></div>
 
@@ -24,8 +25,8 @@
     	<div class="about-intro__container">
 	    	<div class="about-intro__image-container">
 	    		<div class="about-intro__image-box">
-			    	<img ng-src="{{ data.about_image_1.url }}" class="about-intro__image-1 hidden" alt="{{ data.about_text_1 }}">
-			    	<img ng-src="{{ data.about_image_blur_1.url }}" class="about-intro__image-blur-1" alt="{{ data.about_text_1 }}">
+			    	<img ng-src="{{ data.about_image_1.url }}" class="about-intro__image-1 clear hidden" alt="{{ data.about_text_1 }}">
+			    	<img ng-src="{{ data.about_image_blur_1.url }}" class="about-intro__image-blur-1 blur" alt="{{ data.about_text_1 }}">
 			    	<h3 class="about-intro__image-text">
 			    		{{ data.about_text_1 }}
 			    	</h3>
@@ -47,7 +48,7 @@
 		    </div>
 
 		    <div class="about-intro__text">
-	    		<h2 class="about-intro__text-1">{{ data.about_text_1 }}</h2>
+	    		<h2 class="about-intro__text-1" ng-mouseenter="removeImageBlur(1)" ng-mouseleave="addImageBlur(1)">{{ data.about_text_1 }}</h2>
 	    		<h2 class="about-intro__text-2">{{ data.about_text_2 }}</h2>
 	    		<h2 class="about-intro__text-3">{{ data.about_text_3 }}</h2>
 	    	</div>
@@ -65,11 +66,25 @@
 			    <img ng-src="{{ data.about_gif_2.url }}" class="about__gif about__gif-2 hidden">
 			    <img ng-src="{{ data.about_gif_3.url }}" class="about__gif about__gif-3 hidden">
 			    <img ng-src="{{ data.about_gif_4.url }}" class="about__gif about__gif-4 hidden">
+				</div>
+				<marquee direction="left" scrollamount="20">
+				    <h2 class="about__scroll-text">{{ data.about_scroll_text }}</h2>
+				</marquee>
 			</div>
-			<marquee direction="left" scrollamount="20">
-			    <h2 class="about__scroll-text">{{ data.about_scroll_text }}</h2>
-			</marquee>
-		</div>
+    </section>
+
+    <div id="projects-indicator"></div>
+
+    <section id="projects" class="projects">
+    	<div class="projects__container no-opacity">
+    		<div ng-repeat="project in portfolio" class="projects__marquee-box">
+	    		<div class="projects__marquee" ng-mouseenter="showBg($index)" ng-mouseleave="hideBg($index)">
+	    			{{ project.acf.marquee_pre_context }}<a href="/{{ project.slug }}">{{ project.acf.short_title }}</a>{{ project.acf.marquee_post_context }}
+	    		</div>
+	    		<div class="projects__bg no-opacity" style="background-image: url({{ project.acf.bg_img }});">
+	    		</div>
+    		</div>
+    	</div>
     </section>
 
     <div id="contact-indicator"></div>

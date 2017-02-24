@@ -5,40 +5,49 @@
 		top: 0;
 	}
 
-	.intro__image {
+	.intro__bg {
+		height: 100vh;
 		position: fixed;
-		right: 0;
 		width: 100vw;
 		z-index: -1;
 
-		&.absolute {
-			position: absolute;
-			top: 600px;
+		.intro__image {
+			position: fixed;
+			right: 0;
+			top: 0;
+			width: 100vw;
+			z-index: -1;
+
+			&.absolute {
+				position: absolute;
+				// top: 600px;
+			}
+		}
+
+		.intro__gradient {
+			background: rgba(222,53,16,1);
+			background: -moz-linear-gradient(top, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
+			background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(222,53,16,1)), color-stop(20%, rgba(222,53,16,1)), color-stop(100%, rgba(231,203,174,1)));
+			background: -webkit-linear-gradient(top, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
+			background: -o-linear-gradient(top, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
+			background: -ms-linear-gradient(top, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
+			background: linear-gradient(to bottom, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de3510', endColorstr='#e7cbae', GradientType=0 );
+			height: 150vh;
+			left: 50%;
+		    mix-blend-mode: multiply;
+			position: fixed;
+			top: 0;
+			transform: translateX(-50%);
+			width: 100vw;
+
+			&.absolute {
+				position: absolute;
+				// top: 600px;
+			}
 		}
 	}
 
-	.intro__gradient {
-		background: rgba(222,53,16,1);
-		background: -moz-linear-gradient(top, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
-		background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(222,53,16,1)), color-stop(20%, rgba(222,53,16,1)), color-stop(100%, rgba(231,203,174,1)));
-		background: -webkit-linear-gradient(top, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
-		background: -o-linear-gradient(top, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
-		background: -ms-linear-gradient(top, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
-		background: linear-gradient(to bottom, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de3510', endColorstr='#e7cbae', GradientType=0 );
-		height: 150vh;
-		left: 50%;
-	    mix-blend-mode: multiply;
-		position: fixed;
-		top: 0;
-		transform: translateX(-50%);
-		width: 100vw;
-
-		&.absolute {
-			position: absolute;
-			top: 600px;
-		}
-	}
 
 	.intro {
 		@extend %transition-long;
@@ -116,18 +125,18 @@
 
 	.pink-blotch {
 		left: 0;
-		margin-bottom: 650vh;
+		margin-bottom: 750vh;
 		mix-blend-mode: multiply;
 		position: absolute;
-		top: 100vh;
+		top: 130vh;
 		width: 50vw;
-		z-index: 1;
+		z-index: -1;
 	}
 
 	.about-intro {
 		height: 100vh;
-		position: absolute;
-		top: 280vh;
+		position: fixed;
+		top: 100vh;
 		width: 100vw;
 		z-index: 7;
 
@@ -264,9 +273,69 @@
 		}
 	}
 
+	#projects-indicator {
+		position: absolute;
+		top: 5000px;
+	}
+
+	.projects {
+		@extend %transition-long;
+		background: $color-black;
+		height: 100vh;
+		position: fixed;
+		top: 100vh;
+		transition-property: opacity;
+		width: 100vw;
+		z-index: 5;
+
+		.projects__container {
+			@extend %transition-long;
+			background: $color-black;
+			height: 100vh;
+			overflow: hidden;
+			position: relative;
+			text-align: center;
+			transition-property: opacity;
+			width: 100vw;
+			z-index: 1;
+
+			.projects__marquee {
+				color: $color-black;
+				display: block;
+				font-family: $druk-wide;
+				font-size: 10vh;
+				overflow: hidden;
+				text-shadow:
+			   -1px -1px 0 $color-white,
+			    1px -1px 0 $color-white,
+			    -1px 1px 0 $color-white,
+			     1px 1px 0 $color-white;
+
+				a {
+					color: $color-white;
+					cursor: pointer;
+					text-decoration: none;
+				}
+			}
+		}
+
+		.projects__bg {
+			@extend %transition-long;
+			background-size: cover;
+			background-position: 50% 50%;
+			height: 100vh;
+			left: 0;
+			pointer-events: none;
+			position: absolute;
+			top: 0;
+			transition-property: opacity;
+			width: 100vw;
+		}
+	}
+
 	#contact-indicator {
 		position: absolute;
-		top: 3910px;
+		top: 5310px;
 	}
 
 	.contact {
@@ -306,6 +375,7 @@
 
 		.contact__email {
 			color: $color-white;
+			cursor: pointer;
 			font-family: $druk-wide;
 			font-size: 3.8em;
 			left: 50%;
@@ -322,7 +392,7 @@
 
 	#white-rabbit-indicator {
 		position: absolute;
-		top: 4410px;
+		top: 6310px;
 	}
 
 	.white-rabbit {

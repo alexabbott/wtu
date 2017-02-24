@@ -54,6 +54,11 @@ $druk-wide: 'druk-wide', 'Futura', Arial, sans-serif;
   transition: 0.7s ease-out;
 }
 
+@keyframes marquee {
+  0% { transform: translate3d(-150%,0,0); }
+  100% { transform: translate3d(0,0,0); }
+}
+
 @-webkit-keyframes fadeIn { 
   from { 
     opacity: 0; 
@@ -596,6 +601,10 @@ template {
 .no-opacity {
   opacity: 0;
   pointer-events: none;
+}
+
+.low-opacity {
+  opacity: 0.3;
 }
 
 .absolute {

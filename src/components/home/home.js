@@ -9,6 +9,7 @@ let Home = {
 
         const bindPortfolio = (data) => {
 	        $scope.portfolio = data;
+	        console.log('folio', $scope.portfolio);
 	    }
 	    if (!WordpressData.portfolio) {
 	        WordpressData.fetchPortfolio(bindPortfolio);
@@ -27,6 +28,8 @@ let Home = {
         const aboutIntroImage = angular.element(document.querySelector('.about-intro__image-container'));
         const aboutIntroText = angular.element(document.querySelector('.about-intro__text'));
         const about = angular.element(document.querySelector('.about'));
+        const projects = angular.element(document.querySelector('.projects'));
+        const projectsContainer = angular.element(document.querySelector('.projects__container'));
         const contact = angular.element(document.querySelector('.contact'));
         const contact1 = angular.element(document.querySelector('.contact__text-1'));
         const contact2 = angular.element(document.querySelector('.contact__text-2'));
@@ -74,11 +77,12 @@ let Home = {
 		    }
 		    if (scrollPos > 600 && scrollPos < 800) {
 		    	introImage.addClass('absolute');
+		    	introImage.css('top', (600 - scrollPos));
 		    	introImage.css('width', (100 - ((scrollPos - 601)/5)) + 'vw');
 		    }
 		    if (scrollPos > 799 && scrollPos < 1301) {
+		    	introImage.css('top', (600 - scrollPos));
 		    	introImage.addClass('absolute');
-		    	introImage.css('top', 0);
 		    }
 		    if (scrollPos > 1300 && scrollPos < 2300) {
 		    	introImage.removeClass('absolute');
@@ -86,81 +90,140 @@ let Home = {
 		    }
 		    if (scrollPos > 2299) {
 		    	introImage.addClass('absolute');
-		    	introImage.css('top', (2300 - 700) + 'px');
+		    	introImage.css('top', (1600 - scrollPos));
 		    }
 		};
 
 
 		let changeIntroGradientPosition = (scrollPos) => {
 		    if (scrollPos < 601) {
-		    	introGradient.removeClass('absolute');
 		    	introGradient.css('top', 0);
 		    	introGradient.css('width', '100vw');
 		    }
 		    if (scrollPos > 600 && scrollPos < 800) {
 		    	introGradient.addClass('absolute');
+		    	introGradient.css('top', (600 - scrollPos));
 		    	introGradient.css('width', (100 - ((scrollPos - 600)/15)) + 'vw');
 		    }
 		    if (scrollPos > 799 && scrollPos < 1301) {
+		    	introGradient.css('top', (600 - scrollPos));
 		    	introGradient.addClass('absolute');
-		    	introGradient.css('top', 0);
-		    }
-		    if (scrollPos > 1300 && scrollPos < 2300) {
-		    	introGradient.removeClass('absolute');
-		    	introGradient.css('top', '-700px');
 		    }
 		    if (scrollPos > 2299) {
 		    	introGradient.addClass('absolute');
-		    	introGradient.css('top', (2300 - 700) + 'px');
+		    	introGradient.css('top', (1600 - scrollPos));
 		    }
-		};
-
-		let getPositionAtBottom = (element) => {
-		  var data = element.getBoundingClientRect();
-		  return { y: data.top };
-		};
-
-
-		let getPositionAtTop = (element) => {
-		  var data = element.getBoundingClientRect();
-		  return { y: data.bottom };
-		};
-
-		let getDistanceBetweenElements = (a, b) => {
-		  let aPosition = getPositionAtTop(a);
-		  let bPosition = getPositionAtBottom(b);
-
-		  return bPosition.y - aPosition.y;
 		};
 
 
 		let changeAboutIntroPosition = (scrollPos) => {
-			// console.log('scrollPos', scrollPos);
-	    	// let distance = getDistanceBetweenElements(introGradient, aboutIntro);
-		    if (scrollPos > 1900 && scrollPos < 2300) {
-		    	aboutIntro.css('position', 'fixed');
-		    	aboutIntro.css('top', '12px');
+			let ogScrollPos = 0;
+		    if (scrollPos < 1399) {
+		    	aboutIntro.css('top', '100vh');
+		    	aboutIntro.css('bottom', 'auto');
 		    }
-		    if (scrollPos < 1899) {
-		    	aboutIntro.css('position', 'absolute');
-		    	aboutIntro.css('top', '280vh');
+		    if (scrollPos > 1398 && scrollPos < 2100) {
+		    	let aboutPos = scrollPos - (1399 + window_.innerHeight);
+		    	aboutIntro.css('top', 'auto');
+		    	aboutIntro.css('bottom', aboutPos + 'px');
 		    }
-		    if (scrollPos > 2300) {
-		    	aboutIntro.css('position', 'absolute');
-		    	aboutIntro.css('top', (2.8*document.documentElement.clientHeight) + 12 + 'px');
+		    if (scrollPos > 2700) {
+		    	let aboutPos = scrollPos - (1999 + window_.innerHeight);
+		    	aboutIntro.css('top', 'auto');
+		    	aboutIntro.css('bottom', aboutPos + 'px');
 		    }
 		};
 
+
 		let changeAboutOpacity = (scrollPos) => {
-			if (scrollPos > 2700 && scrollPos < 3200) {
+			if (scrollPos > 3400 && scrollPos < 4000) {
 				about.removeClass('no-opacity');
 			} else {
 				about.addClass('no-opacity');
 			}
 		};
 
+		let changeProjectsPosition = (scrollPos) => {
+			let ogScrollPos = 0;
+			console.log('scrollY', scrollPos);
+		    if (scrollPos < 4000) {
+		    	projects.css('top', '100vh');
+		    	projects.css('bottom', 'auto');
+		    	projects.removeClass('no-opacity');
+		    }
+		    if (scrollPos > 3999 && scrollPos < (3999 + window_.innerHeight)) {
+		    	let aboutPos = scrollPos - (3999 + window_.innerHeight);
+		    	projects.css('top', 'auto');
+		    	projects.css('bottom', aboutPos + 'px');
+		    	projects.removeClass('no-opacity');
+		    }
+		    if (scrollPos > (3999 + window_.innerHeight)) {
+		    	projectsContainer.removeClass('no-opacity');
+		    } else {
+		    	projectsContainer.addClass('no-opacity');
+		    }
+		    if (scrollPos > 5280) {
+		    	projects.addClass('no-opacity');
+		    }
+		    
+		};
+
+		$scope.removeImageBlur = (index) => {
+			angular.element(document.querySelector('.about-intro__image-box .clear')).removeClass('hidden');
+			angular.element(document.querySelector('.about-intro__image-box .blur')).addClass('hidden');
+		};
+
+		$scope.addImageBlur = (index) => {
+			angular.element(document.querySelector('.about-intro__image-box .clear')).addClass('hidden');
+			angular.element(document.querySelector('.about-intro__image-box .blur')).removeClass('hidden');
+		};
+
+		$scope.showBg = (index) => {
+			angular.element(document.querySelectorAll('.projects__bg')[index]).removeClass('no-opacity');
+			angular.element(document.querySelectorAll('.projects__bg')[index]).addClass('low-opacity');
+		};
+
+		$scope.hideBg = (index) => {
+			angular.element(document.querySelectorAll('.projects__bg')[index]).addClass('no-opacity');
+			angular.element(document.querySelectorAll('.projects__bg')[index]).removeClass('low-opacity');
+		};
+
+		let jq = $.noConflict();
+
+		jq(window).on('scroll', () => {
+			if (jq(window).scrollTop() > 4000 && !jq('.projects__marquee').hasClass('scrolling')) {
+				let portfolioLength = jq('.projects__marquee-box').length;
+				for (let i = 0; i < portfolioLength; i++) {
+					if (i % 2 != 0) {
+						jq('.projects__marquee-box:nth-of-type(' + (i + 1) + ') .projects__marquee').marquee({
+						    duration: 25000,
+						    gap: 10,
+						    delayBeforeStart: 0,
+						    direction: 'left',
+						    duplicated: true,
+						    pauseOnHover: true,
+						    startVisible: true
+							}); 
+						} else {
+							jq('.projects__marquee-box:nth-of-type(' + (i + 1) + ') .projects__marquee').marquee({
+						    duration: 25000,
+						    gap: 10,
+						    delayBeforeStart: 0,
+						    direction: 'right',
+						    duplicated: true,
+						    pauseOnHover: true,
+						    startVisible: true
+							});
+						}
+				}
+
+				jq('.projects__marquee').addClass('scrolling');
+
+			}
+		});
+
 		let changeContactOpacity = (scrollPos) => {
-			if (scrollPos > 3900 && scrollPos < 4400) {
+			if (scrollPos > 5250 && scrollPos < 6200) {
 				contact.removeClass('no-opacity');
 				contact1.addClass('fade-in one');
 				contact2.addClass('fade-in two');
@@ -180,9 +243,9 @@ let Home = {
 		};
 
 		let changeWhiteRabbitOpacity = (scrollPos) => {
-			if (scrollPos > 4399) {
+			if (scrollPos > 6201) {
 				whiteRabbit.removeClass('no-opacity');
-			} else if (scrollPos < 4400) {
+			} else if (scrollPos < 6900) {
 				whiteRabbit.addClass('no-opacity');
 			}
 		};
@@ -195,25 +258,29 @@ let Home = {
 		    } else {
 		        lastScrollTop = scrollTop;
 
-				// console.log(scrollTop);
 		        // fire scroll function if scrolls vertically
 		        if (scrollTop < 1000) {
 			        changeIntroTextSize(scrollTop);
 			        changeScrollOpacity(scrollTop);
 			        changeIntroLogoPosition(scrollTop);
 		        }
-		        if (scrollTop < 2599) {
+		        if (scrollTop < 2799) {
 			        changeIntroImagePosition(scrollTop);
 			        changeIntroGradientPosition(scrollTop);
+		    	}
+		    	if (scrollTop > 1400 && scrollTop < 3500) {
 			        changeAboutIntroPosition(scrollTop);
 		    	}
-		    	if (scrollTop > 2599) {
+		    	if (scrollTop > 3000) {
 		    		changeAboutOpacity(scrollTop);
 		    	}
-		    	if (scrollTop > 3800) {
+		    	if (scrollTop > 4000 && scrollTop < 6000) {
+			        changeProjectsPosition(scrollTop);
+		    	}
+		    	if (scrollTop > 5000) {
 		    		changeContactOpacity(scrollTop);
 		    	}
-		    	if (scrollTop > 4300) {
+		    	if (scrollTop > 6000) {
 		    		changeWhiteRabbitOpacity(scrollTop);
 		    	}
 		        raf(loop);
