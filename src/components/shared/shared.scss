@@ -50,7 +50,83 @@ $druk-wide: 'druk-wide', 'Futura', Arial, sans-serif;
   transition: 0.2s ease-out;
 }
 
+%transition-long {
+  transition: 0.7s ease-out;
+}
 
+@keyframes marquee {
+  0% { transform: translate3d(-150%,0,0); }
+  100% { transform: translate3d(0,0,0); }
+}
+
+@-webkit-keyframes fadeIn { 
+  from { 
+    opacity: 0; 
+  } 
+
+  to { 
+    opacity: 1; 
+  } 
+}
+
+@-moz-keyframes fadeIn { 
+  from { 
+    opacity: 0; 
+  } 
+
+  to { 
+    opacity: 1; 
+  } 
+}
+
+@keyframes fadeIn { 
+  from { 
+    opacity: 0; 
+  } 
+
+  to { 
+    opacity: 1; 
+  } 
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn ease-in 1;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+}
+
+.fade-in-out {
+    opacity: 0;
+    animation: fadeIn ease-in 1;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-duration: 1s;
+}
+
+.fade-in.one {
+  animation-delay: 0.3s;
+}
+
+.fade-in.two {
+  animation-delay: 0.6s;
+}
+
+.fade-in.three {
+  animation-delay: 0.9s;
+}
+
+.fade-in.four {
+  animation-delay: 1.2s;
+}
+
+.fade-in.five {
+  animation-delay: 1.5s;
+}
+
+.fade-in.six {
+  animation-delay: 1.8s;
+}
 
 //////////////////////// Normalize CSS ////////////////////////////
 
@@ -522,16 +598,25 @@ template {
   display: block;
 }
 
-.relative {
-  position: relative;
+.no-opacity {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.low-opacity {
+  opacity: 0.3;
 }
 
 .absolute {
-  position: absolute;
+  position: absolute !important;
 }
 
 .fixed {
-  position: fixed;
+  position: fixed !important;
+}
+
+.relative {
+  position: relative !important;
 }
 
 .text-center {
