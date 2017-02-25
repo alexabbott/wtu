@@ -119,24 +119,31 @@ let Home = {
 		let changeAboutIntroPosition = (scrollPos) => {
 			let ogScrollPos = 0;
 		    if (scrollPos < 1399) {
-		    	aboutIntro.css('top', '100vh');
-		    	aboutIntro.css('bottom', 'auto');
+		    	aboutIntroImage.css('top', '100vh');
+		    	aboutIntroImage.css('bottom', 'auto');
+		    	aboutIntroText.css('top', '100vh');
+		    	aboutIntroText.css('bottom', 'auto');
 		    }
 		    if (scrollPos > 1398 && scrollPos < 2100) {
 		    	let aboutPos = scrollPos - (1399 + window_.innerHeight);
-		    	aboutIntro.css('top', 'auto');
-		    	aboutIntro.css('bottom', aboutPos + 'px');
+		    	aboutIntroText.css('top', 'auto');
+		    	aboutIntroText.css('bottom', aboutPos + 'px');
 		    }
-		    if (scrollPos > 2700) {
-		    	let aboutPos = scrollPos - (1999 + window_.innerHeight);
-		    	aboutIntro.css('top', 'auto');
-		    	aboutIntro.css('bottom', aboutPos + 'px');
+		    if (scrollPos > 1398 && scrollPos < 4500) {
+		    	let aboutPos = scrollPos - (1399 + window_.innerHeight);
+		    	aboutIntroImage.css('top', 'auto');
+		    	aboutIntroImage.css('bottom', ((0.5 * aboutPos)  - 300) + 'px');
+		    }
+		    if (scrollPos > 2900) {
+		    	let aboutPos = scrollPos - (2199 + window_.innerHeight);
+		    	aboutIntroText.css('top', 'auto');
+		    	aboutIntroText.css('bottom', aboutPos + 'px');
 		    }
 		};
 
 
 		let changeAboutOpacity = (scrollPos) => {
-			if (scrollPos > 3400 && scrollPos < 4000) {
+			if (scrollPos > 4500 && scrollPos < 5400) {
 				about.removeClass('no-opacity');
 			} else {
 				about.addClass('no-opacity');
@@ -146,23 +153,23 @@ let Home = {
 		let changeProjectsPosition = (scrollPos) => {
 			let ogScrollPos = 0;
 			console.log('scrollY', scrollPos);
-		    if (scrollPos < 4000) {
+		    if (scrollPos < 5400) {
 		    	projects.css('top', '100vh');
 		    	projects.css('bottom', 'auto');
 		    	projects.removeClass('no-opacity');
 		    }
-		    if (scrollPos > 3999 && scrollPos < (3999 + window_.innerHeight)) {
-		    	let aboutPos = scrollPos - (3999 + window_.innerHeight);
+		    if (scrollPos > 5399 && scrollPos < (5399 + window_.innerHeight)) {
+		    	let aboutPos = scrollPos - (5399 + window_.innerHeight);
 		    	projects.css('top', 'auto');
 		    	projects.css('bottom', aboutPos + 'px');
 		    	projects.removeClass('no-opacity');
 		    }
-		    if (scrollPos > (3999 + window_.innerHeight)) {
+		    if (scrollPos > (5399 + window_.innerHeight)) {
 		    	projectsContainer.removeClass('no-opacity');
 		    } else {
 		    	projectsContainer.addClass('no-opacity');
 		    }
-		    if (scrollPos > 5280) {
+		    if (scrollPos > 6800) {
 		    	projects.addClass('no-opacity');
 		    }
 		    
@@ -191,7 +198,7 @@ let Home = {
 		let jq = $.noConflict();
 
 		jq(window).on('scroll', () => {
-			if (jq(window).scrollTop() > 4000 && !jq('.projects__marquee').hasClass('scrolling')) {
+			if (jq(window).scrollTop() > 5400 && !jq('.projects__marquee').hasClass('scrolling')) {
 				let portfolioLength = jq('.projects__marquee-box').length;
 				for (let i = 0; i < portfolioLength; i++) {
 					if (i % 2 != 0) {
@@ -223,7 +230,7 @@ let Home = {
 		});
 
 		let changeContactOpacity = (scrollPos) => {
-			if (scrollPos > 5250 && scrollPos < 6200) {
+			if (scrollPos > 6750 && scrollPos < 7400) {
 				contact.removeClass('no-opacity');
 				contact1.addClass('fade-in one');
 				contact2.addClass('fade-in two');
@@ -243,9 +250,9 @@ let Home = {
 		};
 
 		let changeWhiteRabbitOpacity = (scrollPos) => {
-			if (scrollPos > 6201) {
+			if (scrollPos > 7401) {
 				whiteRabbit.removeClass('no-opacity');
-			} else if (scrollPos < 6900) {
+			} else if (scrollPos < 7500) {
 				whiteRabbit.addClass('no-opacity');
 			}
 		};
@@ -268,13 +275,13 @@ let Home = {
 			        changeIntroImagePosition(scrollTop);
 			        changeIntroGradientPosition(scrollTop);
 		    	}
-		    	if (scrollTop > 1400 && scrollTop < 3500) {
+		    	if (scrollTop > 1100 && scrollTop < 5500) {
 			        changeAboutIntroPosition(scrollTop);
 		    	}
-		    	if (scrollTop > 3000) {
+		    	if (scrollTop > 3000 && scrollTop < 6500) {
 		    		changeAboutOpacity(scrollTop);
 		    	}
-		    	if (scrollTop > 3500 && scrollTop < 6000) {
+		    	if (scrollTop > 3500 && scrollTop < 7500) {
 			        changeProjectsPosition(scrollTop);
 		    	}
 		    	if (scrollTop > 5000) {
