@@ -125,7 +125,7 @@
 
 	.pink-blotch {
 		left: 0;
-		margin-bottom: 750vh;
+		margin-bottom: 930vh;
 		mix-blend-mode: multiply;
 		position: absolute;
 		top: 130vh;
@@ -135,8 +135,9 @@
 
 	.about-intro {
 		height: 100vh;
+		pointer-events: none;
 		position: fixed;
-		top: 100vh;
+		top: 0vh;
 		width: 100vw;
 		z-index: 7;
 
@@ -149,7 +150,7 @@
 
 		.about-intro__image-container {
 			position: absolute;
-			top: 20%;
+			top: 100vh;
 			transform: translate3d(8vw, 0, 0);
 			width: 50vw;
 
@@ -178,9 +179,10 @@
 			font-family: $druk-condensed;
 			font-size: 7em;
 			line-height: 0em;
+			pointer-events: initial;
 			position: absolute;
-			top: 50%;
-			transform: translate3d(60vw, -50%, 0);
+			top: 100vh;
+			transform: translate3d(60vw, 0%, 0);
 			width: 30vw;
 		}
 	}
