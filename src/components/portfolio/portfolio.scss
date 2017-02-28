@@ -1,29 +1,77 @@
 .portfolio {
   background-size: cover;
   background-position: center center;
+  background-attachment: fixed;
   min-height: 100vh;
   color: white;
 
   .nav {
-    padding: 20px 0 30px;
+    // padding: 20px 0 30px;
     text-transform: uppercase;
-    font-size: 2.33em;
+    // font-size: 2.33em;
     text-align: center;
-    a {
+
+    .navi {
+      display: inline-block;
+      font-size: 5em;
+      text-align: center;
+      width: 33vw;
+      height: 8vw;
+      max-width: 500px;
+      max-height: 121px;
+      overflow: hidden;
+      margin: 0;
       text-decoration: none;
-      color: black;
-      margin: 0 1em;
+
+      svg {
+        width: 100%;
+        height: 100%;
+        text {
+          fill: none;
+          transition: fill 1s ease;
+        }
+      }
+
+      &.slug {
+        svg {
+          text {
+            fill: $color-white;
+            animation: slide-slug 5s infinite;
+          }
+        }
+      }
 
       &:hover {
-        text-decoration: underline;
+        svg {
+          text {
+            // fill: $color-black;
+          }
+        }
+      }
+
+      &:hover.slug {
+        svg {
+          text {
+            fill: $color-white
+          }
+        }
       }
     }
+
   }
 
   .content {
-    width: 90%;
-    max-width: 800px;
-    margin: 0 auto;
+    padding-bottom: 80px;
+
+    .banner {
+      margin-bottom: 40px;
+      max-height: 500px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+      }
+    }
 
     .escape {
       top: -5%;
@@ -34,9 +82,14 @@
     }
 
     .wp-data {
+      width: 90%;
+      max-width: 800px;
+      margin: 0 auto;
+
       p {
         padding: 0;
-        margin: 0;
+        margin: 0 0 1em;
+        text-align: justify;
       }
 
       img {
@@ -51,6 +104,25 @@
         height: 50.625vw;
         max-width: 800px;
         max-height: 450px;
+      }
+    }
+  }
+}
+
+@keyframes slide-slug {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .portfolio {
+    .nav {
+      .navi {
+        font-size: 8.33vw;
       }
     }
   }
