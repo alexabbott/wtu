@@ -8,7 +8,7 @@
   .nav {
     text-transform: uppercase;
     text-align: center;
-    padding: 0.20vw 0 0.25vw;
+    padding: 0 0 1em;
 
     .navi {
       display: inline-block;
@@ -23,7 +23,7 @@
       text-decoration: none;
 
       svg {
-        min-width: 100%;
+        width: 100%;
         height: 100%;
         text {
           fill: none;
@@ -32,31 +32,15 @@
       }
 
       &.slug {
+        transform: translateX(0.66vw);
+        width: 34vw;
         svg {
-          // animation: slide-slug 8s infinite forwards linear;
-          // overflow: visible;
           g {
             animation: slide-slug 10s -5s infinite linear;
           }
           text {
             fill: $color-white;
             transform-origin: center;
-          }
-        }
-      }
-
-      &:hover {
-        svg {
-          text {
-            // fill: $color-black;
-          }
-        }
-      }
-
-      &:hover.slug {
-        svg {
-          text {
-            fill: $color-white
           }
         }
       }
@@ -69,11 +53,18 @@
 
     .banner {
       margin-bottom: 40px;
+      // height: 66vh;
+      // min-height: 250px;
       max-height: 500px;
       overflow: hidden;
+      position: relative;
+      background-size: cover;
+      background-position: center center;
 
       img {
+        // position: absolute;
         width: 100%;
+        // min-height: 200%;
       }
     }
 
@@ -97,6 +88,7 @@
       p {
         padding: 0;
         margin: 0 0 1em;
+        line-height: 1.5em;
         text-align: justify;
       }
 

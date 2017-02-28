@@ -13,6 +13,9 @@ let Portfolio = {
                 backgroundImage: `url(${$scope.current.acf.bg_img})`
             }
             if ($scope.current.acf.full_screen_banner_image) {
+                $scope.bannerImg = {
+                    backgroundImage: `url(${$scope.current.acf.full_screen_banner_image.url})`
+                }
                 $scope.bannerImgSrc = $scope.current.acf.full_screen_banner_image.url
             }
             if ($scope.current.acf.subtitle) {
