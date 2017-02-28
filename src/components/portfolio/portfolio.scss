@@ -6,10 +6,9 @@
   color: white;
 
   .nav {
-    // padding: 20px 0 30px;
     text-transform: uppercase;
-    // font-size: 2.33em;
     text-align: center;
+    padding: 0.20vw 0 0.25vw;
 
     .navi {
       display: inline-block;
@@ -24,7 +23,7 @@
       text-decoration: none;
 
       svg {
-        width: 100%;
+        min-width: 100%;
         height: 100%;
         text {
           fill: none;
@@ -34,9 +33,14 @@
 
       &.slug {
         svg {
+          // animation: slide-slug 8s infinite forwards linear;
+          // overflow: visible;
+          g {
+            animation: slide-slug 10s -5s infinite linear;
+          }
           text {
             fill: $color-white;
-            animation: slide-slug 5s infinite;
+            transform-origin: center;
           }
         }
       }
@@ -71,6 +75,10 @@
       img {
         width: 100%;
       }
+    }
+
+    .subtitle {
+      // margin: 0 auto;
     }
 
     .escape {
@@ -111,10 +119,10 @@
 
 @keyframes slide-slug {
   from {
-    transform: translateX(100%);
+    transform: translateX(110%);
   }
   to {
-    transform: translateX(-100%);
+    transform: translateX(-110%);
   }
 }
 

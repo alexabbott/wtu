@@ -9,10 +9,10 @@
     </svg>
   </a><span class="navi slug">
     <svg xmlns="http://www.w3.org/2000/svg"
-         width="80" height="80" viewBox="0 0 80 80">
-      <text x="-108" y="70" font-family="druk-wide" fill="rgba(255,255,255,1)" font-size="80">
+         width="auto" height="80" viewBox="0 0 80 80">
+      <g><text x="-108" y="70" font-family="druk-wide" fill="rgba(255,255,255,1)" font-size="80">
         {{ current.slug }}
-      </text>
+      </text></g>
     </svg>
   </span><a href="{{current.next ? current.next : first}}" class="navi">
     <svg xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +32,7 @@
 
 
     <div class="wp-data">
-      <h1 class="subtitle">{{ subtitle }}</h1>
+      <h1 ng-if="subtitle" class="subtitle">{{ subtitle }}</h1>
       <span ng-bind-html="content"></span>
     </div>
   </div>
