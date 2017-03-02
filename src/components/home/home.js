@@ -217,38 +217,37 @@ let Home = {
 		let loop = () => {
 		    let scrollTop = window_.scrollY;
 		    if (lastScrollTop === scrollTop) {
-		        raf(loop);
-		        return;
+		        return raf(loop);
 		    } else {
 		        lastScrollTop = scrollTop;
 
 		        // fire scroll function if scrolls vertically
-				console.log(scrollTop);
-		        if (scrollTop < 1000) {
-			        changeIntroTextSize(scrollTop);
-			        changeScrollOpacity(scrollTop);
-			        changeIntroLogoPosition(scrollTop);
-		        }
-		        if (scrollTop < 3000) {
-			        changeIntroImagePosition(scrollTop);
-			        changeIntroGradientPosition(scrollTop);
-		    	}
-		    	if (scrollTop > 700 && scrollTop < 4000) {
-			        changeAboutIntroPosition(scrollTop);
-		    	}
-		    	if (scrollTop > 3000 && scrollTop < 6500) {
-		    		changeAboutOpacity(scrollTop);
-		    	}
-		    	if (scrollTop > 3500 && scrollTop < 7500) {
-			        changeProjectsPosition(scrollTop);
-		    	}
-		    	if (scrollTop > 5000) {
-		    		changeContactOpacity(scrollTop);
-		    	}
-		    	if (scrollTop > 6000) {
-		    		changeWhiteRabbitOpacity(scrollTop);
-		    	}
-		        raf(loop);
+  				  // console.log(scrollTop);
+  	        if (scrollTop < 1000) {
+  		        changeIntroTextSize(scrollTop);
+  		        changeScrollOpacity(scrollTop);
+  		        changeIntroLogoPosition(scrollTop);
+  	        }
+  	        if (scrollTop < 3000) {
+  		        changeIntroImagePosition(scrollTop);
+  		        changeIntroGradientPosition(scrollTop);
+  		    	}
+  		    	if (scrollTop > 700 && scrollTop < 4000) {
+  			        changeAboutIntroPosition(scrollTop);
+  		    	}
+  		    	if (scrollTop > 3000 && scrollTop < 6500) {
+  		    		changeAboutOpacity(scrollTop);
+  		    	}
+  		    	if (scrollTop > 3500 && scrollTop < 7500) {
+  			        changeProjectsPosition(scrollTop);
+  		    	}
+  		    	if (scrollTop > 5000) {
+  		    		changeContactOpacity(scrollTop);
+  		    	}
+  		    	if (scrollTop > 6000) {
+  		    		changeWhiteRabbitOpacity(scrollTop);
+  		    	}
+  		      return raf(loop);
 		    }
 		};
 
@@ -316,7 +315,7 @@ let Home = {
 						    duplicated: true,
 						    pauseOnHover: true,
 						    startVisible: true
-							}); 
+							});
 						} else {
 							jq('.projects__marquee-box:nth-of-type(' + (i + 1) + ') .projects__marquee').marquee({
 						    duration: 25000,
