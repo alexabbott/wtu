@@ -1,7 +1,3 @@
-* {
-	backface-visibility: hidden;
-}
-
 .home {
 
 	#intro-indicator {
@@ -19,12 +15,9 @@
 			position: fixed;
 			right: 0;
 			top: 0;
+			transform-origin: 100% 0;
 			width: 100vw;
 			z-index: 0;
-
-			&.absolute {
-				position: absolute;
-			}
 		}
 
 		.intro__gradient {
@@ -37,19 +30,11 @@
 			background: linear-gradient(to bottom, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de3510', endColorstr='#e7cbae', GradientType=0 );
 			height: 150vh;
-			left: 50%;
 		    mix-blend-mode: multiply;
 			position: fixed;
 			top: 0;
-			transform: translateX(-50%);
-			-webkit-transform: translateX(-50%);
-			-moz-transform: translateX(-50%);
+			transform-origin: 50% 0;
 			width: 100vw;
-
-			&.absolute {
-				position: absolute;
-				// top: 600px;
-			}
 		}
 	}
 
@@ -70,7 +55,7 @@
 		}
 
 		.intro__text {
-			@extend %transition-long;
+			backface-visibility: hidden;
 			color: $color-white;
 			font-weight: bold;
 			left: 50%;
@@ -82,7 +67,8 @@
 		    -moz-text-align-last: center;
 		    text-align-last: center;
 			transform: translate(-50%, -50%) scale(5);
-			transition-property: opacity, transform;
+			transition: opacity 0.7s ease-out, transform 0.3s ease-out;
+			-webkit-font-smoothing: antialiased;
 		}
 
 		.intro__big-logo {
@@ -130,7 +116,7 @@
 
 	.pink-blotch {
 		left: 0;
-		margin-bottom: 930vh;
+		margin-bottom: 870vh;
 		mix-blend-mode: multiply;
 		position: absolute;
 		top: 130vh;
@@ -154,9 +140,8 @@
 		}
 
 		.about-intro__image-container {
-			position: absolute;
-			top: 100vh;
-			transform: translate3d(8vw, 0, 0);
+			position: fixed;
+			transform: translate3d(8vw, 100vh, 0);
 			width: 50vw;
 
 			.about-intro__image-box {
@@ -186,15 +171,14 @@
 			line-height: 0em;
 			pointer-events: initial;
 			position: absolute;
-			top: 100vh;
-			transform: translate3d(60vw, 0%, 0);
+			transform: translate3d(60vw, 100vh, 0);
 			width: 30vw;
 		}
 	}
 
 	#about-indicator {
 		position: absolute;
-		top: 2800px;
+		top: 3700px;
 	}
 
 	.about {
@@ -211,6 +195,7 @@
 			overflow: hidden;
 			position: relative;
 			text-align: center;
+			transform: scale(1.2);
 			width: 100vw;
 			z-index: 1;
 		}
@@ -232,7 +217,7 @@
 		}
 
 		marquee {
-			right: -40vw;
+			right: -36vw;
 			position: absolute;
 			transform: rotate(90deg);
 
@@ -282,7 +267,7 @@
 
 	#projects-indicator {
 		position: absolute;
-		top: 6600px;
+		top: 5600px;
 	}
 
 	.projects {
@@ -290,8 +275,8 @@
 		background: $color-black;
 		height: 100vh;
 		position: fixed;
-		top: 100vh;
 		transition-property: opacity;
+		transform: translate3d(0, 100vh, 0);
 		width: 100vw;
 		z-index: 5;
 
@@ -353,7 +338,7 @@
 
 	#contact-indicator {
 		position: absolute;
-		top: 6910px;
+		top: 6110px;
 	}
 
 	.contact {
@@ -410,7 +395,7 @@
 
 	#white-rabbit-indicator {
 		position: absolute;
-		top: 7510px;
+		top: 6510px;
 	}
 
 	.white-rabbit {
