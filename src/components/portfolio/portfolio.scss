@@ -68,6 +68,19 @@
       }
     }
 
+    .social-row {
+      .icon {
+        margin: 0 8px;
+
+        img {
+          width: auto;
+          height: auto;
+          max-width: 25px;
+          max-height: 25px;
+        }
+      }
+    }
+
     .subtitle {
       // margin: 0 auto;
     }

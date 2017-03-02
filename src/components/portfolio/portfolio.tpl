@@ -29,6 +29,12 @@
       <img src="{{bannerImgSrc}}" />
     </div>
 
+    <div ng-if="socials" class="social-row text-center">
+      <a ng-repeat="s in socials" href="{{s.url}}" target="_blank" class="icon inline-block">
+        <img src="{{s.icon}}" />
+      </a>
+    </div>
+
     <div class="wp-data">
       <h1 ng-if="subtitle" class="subtitle">{{ subtitle }}</h1>
       <span ng-bind-html="content"></span>

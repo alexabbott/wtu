@@ -598,6 +598,10 @@ template {
   display: block;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 .no-opacity {
   opacity: 0;
   pointer-events: none;

@@ -21,6 +21,9 @@ let Portfolio = {
             if ($scope.current.acf.subtitle) {
                 $scope.subtitle = $scope.current.acf.subtitle
             }
+            if ($scope.current.acf.socials) {
+                $scope.socials = $scope.current.acf.socials
+            }
             $scope.content = $sce.trustAsHtml($scope.current.acf.content)
         }
 
