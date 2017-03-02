@@ -24,14 +24,14 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll']
 
   const WPFactory = {
 	  	listNav: (callback) => {
-	      	$http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/nav/42').then(callback);
+	      	$http.get('//alex-abbott.com/wtu/wp-json/acf/v2/nav/42').then(callback);
 	    },
 	    listHome: (callback) => {
-	     		$http.get('http://alex-abbott.com/wtu/wp-json/acf/v2/home/12').then(callback);
+	     		$http.get('//alex-abbott.com/wtu/wp-json/acf/v2/home/12').then(callback);
 	    },
 	    fetchPortfolio: (callback) => {
 	  			console.log('getting polio...');
-					$http.get('http://alex-abbott.com/wtu/wp-json/wp/v2/portfolio')
+					$http.get('//alex-abbott.com/wtu/wp-json/wp/v2/portfolio')
 					.then((data) => {
 							WPFactory.portfolio = {};
 							data.data.forEach((c,i,a) => {
@@ -51,7 +51,7 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll']
 
 .filter('youtubeEmbedUrl', ($sce) => {
 	return function(videoId) {
-  		return $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + videoId + '?controls=0&rel=0&modestbranding=1&showinfo=0');
+  		return $sce.trustAsResourceUrl('//www.youtube.com/embed/' + videoId + '?controls=0&rel=0&modestbranding=1&showinfo=0');
 	};	
 })
 

@@ -41,7 +41,7 @@ let Home = {
 
         let changeIntroTextSize = (scrollPos) => {
 		    if (scrollPos < 400) {
-	            introText.css('transform', 'translate(-50%, -50%) scale(' + (5 - (scrollY / 100)) + ')');
+	            introText.css({'transform': 'translate(-50%, -50%) scale(' + (5 - (scrollY / 100)) + ')', '-webkit-transform': 'translate(-50%, -50%) scale(' + (5 - (scrollY / 100)) + ')', });
 	            intro.removeClass('no-opacity');
             } else if (scrollPos > 600) {
             	intro.addClass('no-opacity');
@@ -152,7 +152,6 @@ let Home = {
 
 		let changeProjectsPosition = (scrollPos) => {
 			let ogScrollPos = 0;
-			console.log('scrollY', scrollPos);
 		    if (scrollPos < 5400) {
 		    	projects.css('top', '100vh');
 		    	projects.css('bottom', 'auto');
@@ -194,40 +193,6 @@ let Home = {
 			angular.element(document.querySelectorAll('.projects__bg')[index]).addClass('no-opacity');
 			angular.element(document.querySelectorAll('.projects__bg')[index]).removeClass('low-opacity');
 		};
-
-		let jq = $.noConflict();
-
-		jq(window).on('scroll', () => {
-			if (jq(window).scrollTop() > 5400 && !jq('.projects__marquee').hasClass('scrolling')) {
-				let portfolioLength = jq('.projects__marquee-box').length;
-				for (let i = 0; i < portfolioLength; i++) {
-					if (i % 2 != 0) {
-						jq('.projects__marquee-box:nth-of-type(' + (i + 1) + ') .projects__marquee').marquee({
-						    duration: 25000,
-						    gap: 10,
-						    delayBeforeStart: 0,
-						    direction: 'left',
-						    duplicated: true,
-						    pauseOnHover: true,
-						    startVisible: true
-							}); 
-						} else {
-							jq('.projects__marquee-box:nth-of-type(' + (i + 1) + ') .projects__marquee').marquee({
-						    duration: 25000,
-						    gap: 10,
-						    delayBeforeStart: 0,
-						    direction: 'right',
-						    duplicated: true,
-						    pauseOnHover: true,
-						    startVisible: true
-							});
-						}
-				}
-
-				jq('.projects__marquee').addClass('scrolling');
-
-			}
-		});
 
 		let changeContactOpacity = (scrollPos) => {
 			if (scrollPos > 6750 && scrollPos < 7400) {
@@ -271,7 +236,7 @@ let Home = {
 			        changeScrollOpacity(scrollTop);
 			        changeIntroLogoPosition(scrollTop);
 		        }
-		        if (scrollTop < 2799) {
+		        if (scrollTop > 500 && scrollTop < 2799) {
 			        changeIntroImagePosition(scrollTop);
 			        changeIntroGradientPosition(scrollTop);
 		    	}
@@ -327,7 +292,40 @@ let Home = {
 				angular.element(document.querySelector('.about__gif-3')).addClass('hidden');
 				angular.element(document.querySelector('.about__gif-4')).addClass('hidden');
 			});
+
+			let jq = $.noConflict();
+
+			if (!jq('.projects__marquee').hasClass('scrolling')) {
+				let portfolioLength = jq('.projects__marquee-box').length;
+				for (let i = 0; i < portfolioLength; i++) {
+					if (i % 2 != 0) {
+						jq('.projects__marquee-box:nth-of-type(' + (i + 1) + ') .projects__marquee').marquee({
+						    duration: 25000,
+						    gap: 10,
+						    delayBeforeStart: 0,
+						    direction: 'left',
+						    duplicated: true,
+						    pauseOnHover: true,
+						    startVisible: true
+							}); 
+						} else {
+							jq('.projects__marquee-box:nth-of-type(' + (i + 1) + ') .projects__marquee').marquee({
+						    duration: 25000,
+						    gap: 10,
+						    delayBeforeStart: 0,
+						    direction: 'right',
+						    duplicated: true,
+						    pauseOnHover: true,
+						    startVisible: true
+							});
+						}
+				}
+
+				jq('.projects__marquee').addClass('scrolling');
+
+			}
 		}, 2000);
+
     }]
 };
 
