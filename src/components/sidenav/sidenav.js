@@ -19,13 +19,13 @@ let Sidenav = {
 		};
 
 		let changeNavColor = (scrollPos) => {
-			if (scrollPos > 1200 && scrollPos < 5500) {
+			if (scrollPos >= 1200 && scrollPos < 4800) {
 				nav.addClass('color-alt');
 				nav.addClass('logo-alt');
-			} else if (scrollPos > 5599) {
+			} else if (scrollPos >= 4800) {
 				nav.addClass('logo-alt');
 				nav.removeClass('color-alt');
-			} else if (scrollPos < 1201) {
+			} else if (scrollPos < 1200) {
 				nav.removeClass('color-alt');
 				nav.removeClass('logo-alt');
 			}
