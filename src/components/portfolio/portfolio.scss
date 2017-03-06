@@ -1,4 +1,5 @@
 .portfolio {
+
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
@@ -99,7 +100,13 @@
         }
       }
 
+      &.text {
+        line-height: 1.5em;
+      }
+
       &.gallery {
+        width: 100%;
+        max-width: none;
         text-align: center;
 
         img {
@@ -108,7 +115,7 @@
           max-width: 100%;
           vertical-align: middle;
           margin: 1em 0;
-          padding: 0 5%;
+          padding: 0 1em;
           box-sizing: border-box;
         }
       }
@@ -154,6 +161,22 @@
     .nav {
       .navi {
         font-size: 8.33vw;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .portfolio {
+    .content {
+      .section {
+        &.gallery {
+          img {
+            width: 100%;
+            margin: 0;
+            padding: 0 1em 1em;
+          }
+        }
       }
     }
   }
