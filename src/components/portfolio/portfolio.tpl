@@ -9,7 +9,7 @@
       </svg>
     </span><span class="navi slug">
       <svg xmlns="http://www.w3.org/2000/svg"
-           width="auto" height="80" viewBox="0 0 80 80">
+           width="80" height="80" viewBox="0 0 80 80">
         <g><text x="-108" y="65" font-family="druk-wide" fill="rgba(255,255,255,1)" font-size="80">
           {{ current.slug }}
         </text></g>
@@ -26,7 +26,7 @@
 
   <div class="content relative">
     <div ng-repeat="b in content" class="section {{b.acf_fc_layout}}">
-      <img ng-if="b.acf_fc_layout === 'banner'" src="{{b.image}}" />
+      <img ng-if="b.acf_fc_layout === 'banner'" ng-src="{{b.image}}" />
 
       <h1 ng-if="b.acf_fc_layout === 'subheader'" class="subheader">
         {{b.text}}
@@ -34,7 +34,7 @@
 
       <p ng-if="b.acf_fc_layout === 'text'" class="text" ng-bind-html="b.text"></p>
 
-      <img ng-if="b.acf_fc_layout === 'gallery'" ng-repeat="i in b.images" src="{{i.image}}" />
+      <img ng-if="b.acf_fc_layout === 'gallery'" ng-repeat="i in b.images" ng-src="{{i.image}}" />
 
       <span ng-if="b.acf_fc_layout === 'embed'"
             ng-bind-html="trustBlob(b.string)"
@@ -44,7 +44,7 @@
          ng-repeat="s in b.socials"
          href="{{s.url}}" target="_blank"
          class="icon inline-block">
-        <img src="{{s.icon}}" />
+        <img ng-src="{{s.icon}}" />
       </a>
     </div>
   </div>
