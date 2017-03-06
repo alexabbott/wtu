@@ -5,10 +5,23 @@
   min-height: 100vh;
   color: white;
 
+  &:before {
+    content: '';
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.33s ease;
+  }
+
   .nav {
     text-transform: uppercase;
     text-align: center;
     padding: 0 0 1em;
+    position: relative;
+    z-index: 2;
 
     .navi {
       display: inline-block;
@@ -33,10 +46,11 @@
 
       &.slug {
         transform: translateX(0.66vw);
+        transition: opacity 0.33s ease;
         width: 34vw;
         svg {
           g {
-            animation: slide-slug 10s -5s infinite linear;
+            animation: slide-slug 10s -12s infinite linear;
           }
           text {
             fill: $color-white;
@@ -53,10 +67,12 @@
 
     .section {
       width: 90%;
+      max-width: 800px;
       margin: 0 auto 40px;
 
       &.banner {
         width: 100%;
+        max-width: none;
         max-height: 500px;
         overflow: hidden;
         position: relative;
@@ -90,6 +106,9 @@
           width: auto;
           height: auto;
           max-width: 100%;
+          vertical-align: middle;
+          padding: 5%;
+          box-sizing: border-box;
         }
       }
 
@@ -99,6 +118,21 @@
           height: 50.625vw;
           max-width: 800px;
           max-height: 450px;
+          border: none;
+        }
+      }
+    }
+  }
+
+  &.trans {
+    &:before {
+      z-index: 1;
+      opacity: 1;
+    }
+    .nav {
+      .navi {
+        &.slug {
+          opacity: 0
         }
       }
     }

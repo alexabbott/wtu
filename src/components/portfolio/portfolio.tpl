@@ -1,27 +1,27 @@
-<div class="portfolio" ng-style="bgStyle">
-  <div class="nav">
-    <a href="{{current.prev ? current.prev : last}}" class="navi">
+<div class="portfolio" ng-style="bgStyle" ng-class="{'trans': transitioning}">
+  <div class="nav relative">
+    <span ng-click="current.prev ? transition(current.prev) : transition(last)" class="navi pointer">
       <svg xmlns="http://www.w3.org/2000/svg"
            width="80" height="80" viewBox="0 0 80 80">
         <text x="-125" y="65" font-family="druk-wide" fill="none" stroke-width="1" stroke="white"  font-size="80">
           back
         </text>
       </svg>
-    </a><span class="navi slug">
+    </span><span class="navi slug">
       <svg xmlns="http://www.w3.org/2000/svg"
            width="auto" height="80" viewBox="0 0 80 80">
         <g><text x="-108" y="65" font-family="druk-wide" fill="rgba(255,255,255,1)" font-size="80">
           {{ current.slug }}
         </text></g>
       </svg>
-    </span><a href="{{current.next ? current.next : first}}" class="navi">
+    </span><span ng-click="current.next ? transition(current.next) : transition(first)" class="navi pointer">
       <svg xmlns="http://www.w3.org/2000/svg"
            width="80" height="80" viewBox="0 0 80 80">
         <text x="-110" y="65" font-family="druk-wide" fill="none" stroke-width="1" stroke="white"  font-size="80">
           next
         </text>
       </svg>
-    </a>
+    </span>
   </div>
 
   <div class="content relative">
