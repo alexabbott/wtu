@@ -17,7 +17,6 @@ let Portfolio = {
         }
 
         const bindPortfolio = (data) => {
-            console.log(data)
             let keys = Object.keys(data);
             $scope.portfolio = data;
             $scope.current = $scope.portfolio[$routeParams.slug];
