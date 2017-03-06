@@ -25,19 +25,27 @@
   </div>
 
   <div class="content relative">
-    <div ng-if="bannerImg" class="banner">
-      <img src="{{bannerImgSrc}}" />
-    </div>
+    <div ng-repeat="b in content" class="section {{b.acf_fc_layout}}">
+      <img ng-if="b.acf_fc_layout === 'banner'" src="{{b.image}}" />
 
-    <div ng-if="socials" class="social-row text-center">
-      <a ng-repeat="s in socials" href="{{s.url}}" target="_blank" class="icon inline-block">
+      <h1 ng-if="b.acf_fc_layout === 'subheader'" class="subheader">
+        {{b.text}}
+      </h1>
+
+      <p ng-if="b.acf_fc_layout === 'text'" class="text" ng-bind-html="b.text"></p>
+
+      <img ng-if="b.acf_fc_layout === 'gallery'" ng-repeat="i in b.images" src="{{i.image}}" />
+
+      <span ng-if="b.acf_fc_layout === 'embed'"
+            ng-bind-html="trustBlob(b.string)"
+            class="embed block text-center"></span>
+
+      <a ng-if="b.acf_fc_layout === 'socials'"
+         ng-repeat="s in b.socials"
+         href="{{s.url}}" target="_blank"
+         class="icon inline-block">
         <img src="{{s.icon}}" />
       </a>
-    </div>
-
-    <div class="wp-data">
-      <h1 ng-if="subtitle" class="subtitle">{{ subtitle }}</h1>
-      <span ng-bind-html="content"></span>
     </div>
   </div>
 </div>
