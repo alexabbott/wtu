@@ -59,34 +59,34 @@ $druk-wide: 'druk-wide', 'Futura', Arial, sans-serif;
   100% { transform: translate3d(0,0,0); }
 }
 
-@-webkit-keyframes fadeIn { 
-  from { 
-    opacity: 0; 
-  } 
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
 
-  to { 
-    opacity: 1; 
-  } 
+  to {
+    opacity: 1;
+  }
 }
 
-@-moz-keyframes fadeIn { 
-  from { 
-    opacity: 0; 
-  } 
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
 
-  to { 
-    opacity: 1; 
-  } 
+  to {
+    opacity: 1;
+  }
 }
 
-@keyframes fadeIn { 
-  from { 
-    opacity: 0; 
-  } 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
 
-  to { 
-    opacity: 1; 
-  } 
+  to {
+    opacity: 1;
+  }
 }
 
 .fade-in {
@@ -598,6 +598,10 @@ template {
   display: block;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 .no-opacity {
   opacity: 0;
   pointer-events: none;
@@ -623,10 +627,18 @@ template {
   text-align: center;
 }
 
-.druk {
+.druk-condensed {
   font-family: "druk-condensed", "Futura", Arial, sans-serif;
+}
+
+.druk-wide {
+  font-family: "druk-wide", "Futura", Arial, sans-serif;
 }
 
 .sans-serif {
   font-family: sans-serif;
+}
+
+.pointer {
+  cursor: pointer;
 }

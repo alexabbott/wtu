@@ -1,6 +1,20 @@
 let Portfolio = {
     templateUrl: '/components/portfolio/portfolio.tpl',
-    controller: ['$scope', 'WordpressData', '$routeParams', '$sce', ($scope, WordpressData, $routeParams, $sce) => {
+    controller: ['$scope', 'WordpressData', '$routeParams', '$sce', '$location', '$timeout', ($scope, WordpressData, $routeParams, $sce, $location, $timeout) => {
+
+        $scope.transitioning = true;
+        $timeout(() => {
+            $scope.transitioning = false;
+        }, 666)
+
+        $scope.trustBlob = (blob) => $sce.trustAsHtml(blob)
+        $scope.transition = (to) => {
+            $scope.transitioning = true;
+            $timeout(() => {
+                $location.path(to);
+                $scope.transitioning = false;
+            }, 666);
+        }
 
         const bindPortfolio = (data) => {
             let keys = Object.keys(data);
@@ -11,7 +25,8 @@ let Portfolio = {
             $scope.bgStyle = {
                 backgroundImage: `url(${$scope.current.acf.bg_img})`
             }
-            $scope.content = $sce.trustAsHtml($scope.current.acf.content)
+
+            $scope.content = $scope.current.acf.content;
         }
 
         if (!WordpressData.portfolio) {
