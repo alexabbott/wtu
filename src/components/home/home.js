@@ -18,6 +18,8 @@ let Home = {
 	        bindPortfolio(WordpressData.portfolio);
 	    }
 
+		let window_ = $window;
+
         const intro = angular.element(document.querySelector('.intro'));
         const introText = angular.element(document.querySelector('.intro__text'));
         const introScrollDown = angular.element(document.querySelector('.intro__scroll-down'));
@@ -41,7 +43,7 @@ let Home = {
 
         let changeIntroTextSize = (scrollPos) => {
 		    if (scrollPos < 400) {
-	            introText.css('transform', 'translate(-50%, -50%) scale(' + (5 - (scrollY / 100)) + ')');
+	            introText.css({'transform': 'translate(-50%, -50%) scale(' + (5 - (scrollY / 50)) + ')', '-webkit-transform': 'translate(-50%, -50%) scale(' + (5 - (scrollY / 100)) + ')', });
 	            intro.removeClass('no-opacity');
             } else if (scrollPos > 600) {
             	intro.addClass('no-opacity');
@@ -69,81 +71,75 @@ let Home = {
             }
 		};
 
+		let imageWidth = 0;
+		let imagePosition = 0;
 		let changeIntroImagePosition = (scrollPos) => {
 			if (scrollPos < 601) {
-		    	introImage.removeClass('absolute');
-		    	introImage.css('top', 0);
-		    	introImage.css('width', '100vw');
+				introImage.css({'transform': 'scale(1) translate3d(0px,0px,0px)', '-webkit-transform': 'scale(1) translate3d(0px,0px,0px)'});
 		    }
 		    if (scrollPos > 600 && scrollPos < 800) {
-		    	introImage.addClass('absolute');
-		    	introImage.css('top', (600 - scrollPos));
-		    	introImage.css('width', (100 - ((scrollPos - 601)/5)) + 'vw');
+				imageWidth = ((100 - ((scrollPos - 601)/5))*.01);
+				imagePosition = (600*1.4) - (scrollPos*1.4);
+				introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)'});
 		    }
 		    if (scrollPos > 799 && scrollPos < 1301) {
-		    	introImage.css('top', (600 - scrollPos));
-		    	introImage.addClass('absolute');
+				imagePosition = (600*1.4) - (scrollPos*1.4);
+		    	introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)'});
 		    }
 		    if (scrollPos > 1300 && scrollPos < 2300) {
-		    	introImage.removeClass('absolute');
-		    	introImage.css('top', '-700px');
+		    	introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)'});
 		    }
 		    if (scrollPos > 2299) {
-		    	introImage.addClass('absolute');
-		    	introImage.css('top', (1600 - scrollPos));
+				imagePosition = (1599*1.4) - (scrollPos*1.4);
+		    	introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)'});
 		    }
 		};
 
-
+		let gradientWidth = 0;
+		let gradientPosition = 0;
 		let changeIntroGradientPosition = (scrollPos) => {
 		    if (scrollPos < 601) {
-		    	introGradient.css('top', 0);
-		    	introGradient.css('width', '100vw');
+		    	introGradient.css({'transform': 'scale(1) translate3d(0px,0px,0px)', '-webkit-transform': 'scale(1) translate3d(0px,0px,0px)'});
 		    }
 		    if (scrollPos > 600 && scrollPos < 800) {
-		    	introGradient.addClass('absolute');
-		    	introGradient.css('top', (600 - scrollPos));
-		    	introGradient.css('width', (100 - ((scrollPos - 600)/15)) + 'vw');
+				gradientWidth = ((100 - ((scrollPos - 601)/16))*.01);
+				introGradient.css({'transform': 'scale(' + gradientWidth + ')', '-webkit-transform': 'scale(' + gradientWidth + ')'});
 		    }
 		    if (scrollPos > 799 && scrollPos < 1301) {
-		    	introGradient.css('top', (600 - scrollPos));
-		    	introGradient.addClass('absolute');
+				gradientPosition = (799*1.3) - (scrollPos*1.3);
+		    	introGradient.css({'transform': 'scale(' + gradientWidth + ') translate3d(0,' + gradientPosition + 'px,0)', '-webkit-transform': 'scale(' + gradientWidth + ') translate3d(0,' + gradientPosition + 'px,0)'});
+		    }
+		    if (scrollPos > 1300 && scrollPos < 2300) {
+		    	introGradient.css({'transform': 'scale(' + gradientWidth + ') translate3d(0,' + gradientPosition + 'px,0)', '-webkit-transform': 'scale(' + gradientWidth + ') translate3d(0,' + gradientPosition + 'px,0)'});
 		    }
 		    if (scrollPos > 2299) {
-		    	introGradient.addClass('absolute');
-		    	introGradient.css('top', (1600 - scrollPos));
+				gradientPosition = (1799*1.3) - (scrollPos*1.3);
+		    	introGradient.css({'transform': 'scale(' + gradientWidth + ') translate3d(0,' + gradientPosition + 'px,0)', '-webkit-transform': 'scale(' + gradientWidth + ') translate3d(0,' + gradientPosition + 'px,0)'});
 		    }
 		};
 
-
 		let changeAboutIntroPosition = (scrollPos) => {
-			let ogScrollPos = 0;
-		    if (scrollPos < 1399) {
-		    	aboutIntroImage.css('top', '100vh');
-		    	aboutIntroImage.css('bottom', 'auto');
-		    	aboutIntroText.css('top', '100vh');
-		    	aboutIntroText.css('bottom', 'auto');
+		    if (scrollPos <= 1399) {
+				aboutIntroImage.css({'transform': 'translate3d(8vw,' + window_.innerHeight + ', 0)', '-webkit-transform': 'translate3d(8vw,' + window_.innerHeight + ',0)'});
+				aboutIntroText.css({'transform': 'translate3d(60vw,' + window_.innerHeight + ', 0)', '-webkit-transform': 'translate3d(60vw,' + window_.innerHeight + ',0)'});
 		    }
-		    if (scrollPos > 1398 && scrollPos < 2100) {
-		    	let aboutPos = scrollPos - (1399 + window_.innerHeight);
-		    	aboutIntroText.css('top', 'auto');
-		    	aboutIntroText.css('bottom', aboutPos + 'px');
+		    if (scrollPos > 1398 && scrollPos < 1900) {
+				let aboutPos1 = window_.innerHeight - ((scrollPos * 1.2) - (1399*1.2));
+				aboutIntroText.css({'transform': 'translate3d(60vw,' + aboutPos1 + 'px,0)', '-webkit-transform': 'translate3d(60vw,' + aboutPos1 + ',0)'});
 		    }
-		    if (scrollPos > 1398 && scrollPos < 4500) {
-		    	let aboutPos = scrollPos - (1399 + window_.innerHeight);
-		    	aboutIntroImage.css('top', 'auto');
-		    	aboutIntroImage.css('bottom', ((0.5 * aboutPos)  - 300) + 'px');
+		    if (scrollPos > 1898 && scrollPos < 4500) {
+				let aboutPos2 = window_.innerHeight - ((scrollPos*0.8) - (1899*0.8));
+				aboutIntroImage.css({'transform': 'translate3d(8vw,' + aboutPos2 + 'px,0)', '-webkit-transform': 'translate3d(0,' + aboutPos2 + ',0)'});
 		    }
 		    if (scrollPos > 2900) {
-		    	let aboutPos = scrollPos - (2199 + window_.innerHeight);
-		    	aboutIntroText.css('top', 'auto');
-		    	aboutIntroText.css('bottom', aboutPos + 'px');
+				let aboutPos1 = window_.innerHeight - ((scrollPos * 1.2) - (2399*1.2));
+				aboutIntroText.css({'transform': 'translate3d(60vw,' + aboutPos1 + 'px,0)', '-webkit-transform': 'translate3d(60vw,' + aboutPos1 + ',0)'});
 		    }
 		};
 
 
 		let changeAboutOpacity = (scrollPos) => {
-			if (scrollPos > 4500 && scrollPos < 5400) {
+			if (scrollPos > 3600 && scrollPos < 4400) {
 				about.removeClass('no-opacity');
 			} else {
 				about.addClass('no-opacity');
@@ -151,28 +147,23 @@ let Home = {
 		};
 
 		let changeProjectsPosition = (scrollPos) => {
-			let ogScrollPos = 0;
-			console.log('scrollY', scrollPos);
-		    if (scrollPos < 5400) {
-		    	projects.css('top', '100vh');
-		    	projects.css('bottom', 'auto');
+		    if (scrollPos < 4400) {
+		    	projects.css({'transform': 'translate3d(0,' + window_.innerHeight + ', 0)', '-webkit-transform': 'translate3d(0,' + window_.innerHeight + ',0)'});
 		    	projects.removeClass('no-opacity');
 		    }
-		    if (scrollPos > 5399 && scrollPos < (5399 + window_.innerHeight)) {
-		    	let aboutPos = scrollPos - (5399 + window_.innerHeight);
-		    	projects.css('top', 'auto');
-		    	projects.css('bottom', aboutPos + 'px');
+		    if (scrollPos > 4399 && scrollPos < (4399 + window_.innerHeight)) {
+		    	let aboutPos1 = window_.innerHeight - (scrollPos - 4399);
+				projects.css({'transform': 'translate3d(0,' + aboutPos1 + 'px,0)', '-webkit-transform': 'translate3d(0,' + aboutPos1 + ',0)'});
 		    	projects.removeClass('no-opacity');
 		    }
-		    if (scrollPos > (5399 + window_.innerHeight)) {
+		    if (scrollPos > (4399 + window_.innerHeight)) {
 		    	projectsContainer.removeClass('no-opacity');
 		    } else {
 		    	projectsContainer.addClass('no-opacity');
 		    }
-		    if (scrollPos > 6800) {
+		    if (scrollPos > 6000) {
 		    	projects.addClass('no-opacity');
 		    }
-		    
 		};
 
 		$scope.removeImageBlur = (index) => {
@@ -195,10 +186,125 @@ let Home = {
 			angular.element(document.querySelectorAll('.projects__bg')[index]).removeClass('low-opacity');
 		};
 
-		let jq = $.noConflict();
+		let changeContactOpacity = (scrollPos) => {
+			if (scrollPos > 5950 && scrollPos < 6400) {
+				contact.removeClass('no-opacity');
+				contact1.addClass('fade-in one');
+				contact2.addClass('fade-in two');
+				contact3.addClass('fade-in three');
+				contact4.addClass('fade-in four');
+				contact5.addClass('fade-in five');
+				contactEmail.addClass('fade-in six');
+			} else {
+				contact.addClass('no-opacity');
+				contact1.removeClass('fade-in one');
+				contact2.removeClass('fade-in two');
+				contact3.removeClass('fade-in three');
+				contact4.removeClass('fade-in four');
+				contact5.removeClass('fade-in five');
+				contactEmail.removeClass('fade-in six');
+			}
+		};
 
-		jq(window).on('scroll', () => {
-			if (jq(window).scrollTop() > 5400 && !jq('.projects__marquee').hasClass('scrolling')) {
+		let changeWhiteRabbitOpacity = (scrollPos) => {
+			if (scrollPos > 6401) {
+				whiteRabbit.removeClass('no-opacity');
+			} else if (scrollPos < 7500) {
+				whiteRabbit.addClass('no-opacity');
+			}
+		};
+
+		let loop = () => {
+		    let scrollTop = window_.scrollY;
+		    if (lastScrollTop === scrollTop) {
+		        raf(loop);
+		        return;
+		    } else {
+		        lastScrollTop = scrollTop;
+
+		        // fire scroll function if scrolls vertically
+				console.log(scrollTop);
+		        if (scrollTop < 1000) {
+			        changeIntroTextSize(scrollTop);
+			        changeScrollOpacity(scrollTop);
+			        changeIntroLogoPosition(scrollTop);
+		        }
+		        if (scrollTop < 3000) {
+			        changeIntroImagePosition(scrollTop);
+			        changeIntroGradientPosition(scrollTop);
+		    	}
+		    	if (scrollTop > 700 && scrollTop < 4000) {
+			        changeAboutIntroPosition(scrollTop);
+		    	}
+		    	if (scrollTop > 3000 && scrollTop < 6500) {
+		    		changeAboutOpacity(scrollTop);
+		    	}
+		    	if (scrollTop > 3500 && scrollTop < 7500) {
+			        changeProjectsPosition(scrollTop);
+		    	}
+		    	if (scrollTop > 5000) {
+		    		changeContactOpacity(scrollTop);
+		    	}
+		    	if (scrollTop > 6000) {
+		    		changeWhiteRabbitOpacity(scrollTop);
+		    	}
+		        raf(loop);
+		    }
+		};
+
+		let resetAll = () => {
+			setTimeout(() => {
+				changeIntroTextSize(window_.scrollY);
+				changeScrollOpacity(window_.scrollY);
+				changeIntroLogoPosition(window_.scrollY);
+				changeIntroImagePosition(window_.scrollY);
+				changeIntroGradientPosition(window_.scrollY);
+				changeAboutIntroPosition(window_.scrollY);
+				changeAboutOpacity(window_.scrollY);
+				changeProjectsPosition(window_.scrollY);
+				changeContactOpacity(window_.scrollY);
+				changeWhiteRabbitOpacity(window_.scrollY);
+			}, 4000)
+		};
+
+		angular.element(document.getElementById('nav__home')).on('click', resetAll);
+
+		let raf = window.requestAnimationFrame ||
+		    window.webkitRequestAnimationFrame ||
+		    window.mozRequestAnimationFrame ||
+		    window.msRequestAnimationFrame ||
+		    window.oRequestAnimationFrame;
+
+		let lastScrollTop = window_.scrollY;
+
+		if (raf) {
+		    loop();
+		}
+
+		$timeout(() => {
+			let rolloverWords = document.querySelectorAll('.about__text-main em');
+			rolloverWords[0].addEventListener('mouseover', () => {
+				angular.element(document.querySelector('.about__gif-1')).removeClass('hidden');
+			});
+
+			rolloverWords[0].addEventListener('mouseout', () => {
+				angular.element(document.querySelector('.about__gif-1')).addClass('hidden');
+			});
+			rolloverWords[1].addEventListener('mouseover', () => {
+				angular.element(document.querySelector('.about__gif-2')).removeClass('hidden');
+				angular.element(document.querySelector('.about__gif-3')).removeClass('hidden');
+				angular.element(document.querySelector('.about__gif-4')).removeClass('hidden');
+			});
+
+			rolloverWords[1].addEventListener('mouseout', () => {
+				angular.element(document.querySelector('.about__gif-2')).addClass('hidden');
+				angular.element(document.querySelector('.about__gif-3')).addClass('hidden');
+				angular.element(document.querySelector('.about__gif-4')).addClass('hidden');
+			});
+
+			let jq = $.noConflict();
+
+			if (!jq('.projects__marquee').hasClass('scrolling')) {
 				let portfolioLength = jq('.projects__marquee-box').length;
 				for (let i = 0; i < portfolioLength; i++) {
 					if (i % 2 != 0) {
@@ -227,107 +333,8 @@ let Home = {
 				jq('.projects__marquee').addClass('scrolling');
 
 			}
-		});
-
-		let changeContactOpacity = (scrollPos) => {
-			if (scrollPos > 6750 && scrollPos < 7400) {
-				contact.removeClass('no-opacity');
-				contact1.addClass('fade-in one');
-				contact2.addClass('fade-in two');
-				contact3.addClass('fade-in three');
-				contact4.addClass('fade-in four');
-				contact5.addClass('fade-in five');
-				contactEmail.addClass('fade-in six');
-			} else {
-				contact.addClass('no-opacity');
-				contact1.removeClass('fade-in one');
-				contact2.removeClass('fade-in two');
-				contact3.removeClass('fade-in three');
-				contact4.removeClass('fade-in four');
-				contact5.removeClass('fade-in five');
-				contactEmail.removeClass('fade-in six');
-			}
-		};
-
-		let changeWhiteRabbitOpacity = (scrollPos) => {
-			if (scrollPos > 7401) {
-				whiteRabbit.removeClass('no-opacity');
-			} else if (scrollPos < 7500) {
-				whiteRabbit.addClass('no-opacity');
-			}
-		};
-
-		let loop = () => {
-		    let scrollTop = window_.scrollY;
-		    if (lastScrollTop === scrollTop) {
-		        raf(loop);
-		        return;
-		    } else {
-		        lastScrollTop = scrollTop;
-
-		        // fire scroll function if scrolls vertically
-		        if (scrollTop < 1000) {
-			        changeIntroTextSize(scrollTop);
-			        changeScrollOpacity(scrollTop);
-			        changeIntroLogoPosition(scrollTop);
-		        }
-		        if (scrollTop < 2799) {
-			        changeIntroImagePosition(scrollTop);
-			        changeIntroGradientPosition(scrollTop);
-		    	}
-		    	if (scrollTop > 1100 && scrollTop < 5500) {
-			        changeAboutIntroPosition(scrollTop);
-		    	}
-		    	if (scrollTop > 3000 && scrollTop < 6500) {
-		    		changeAboutOpacity(scrollTop);
-		    	}
-		    	if (scrollTop > 3500 && scrollTop < 7500) {
-			        changeProjectsPosition(scrollTop);
-		    	}
-		    	if (scrollTop > 5000) {
-		    		changeContactOpacity(scrollTop);
-		    	}
-		    	if (scrollTop > 6000) {
-		    		changeWhiteRabbitOpacity(scrollTop);
-		    	}
-		        raf(loop);
-		    }
-		};
-
-		let raf = window.requestAnimationFrame ||
-		    window.webkitRequestAnimationFrame ||
-		    window.mozRequestAnimationFrame ||
-		    window.msRequestAnimationFrame ||
-		    window.oRequestAnimationFrame;
-
-		let window_ = $window;
-		let lastScrollTop = window_.scrollY;
-
-		if (raf) {
-		    loop();
-		}
-
-		$timeout(() => {
-			let rolloverWords = document.querySelectorAll('.about__text-main em');
-			rolloverWords[0].addEventListener('mouseover', () => {
-				angular.element(document.querySelector('.about__gif-1')).removeClass('hidden');
-			});
-
-			rolloverWords[0].addEventListener('mouseout', () => {
-				angular.element(document.querySelector('.about__gif-1')).addClass('hidden');
-			});
-			rolloverWords[1].addEventListener('mouseover', () => {
-				angular.element(document.querySelector('.about__gif-2')).removeClass('hidden');
-				angular.element(document.querySelector('.about__gif-3')).removeClass('hidden');
-				angular.element(document.querySelector('.about__gif-4')).removeClass('hidden');
-			});
-
-			rolloverWords[1].addEventListener('mouseout', () => {
-				angular.element(document.querySelector('.about__gif-2')).addClass('hidden');
-				angular.element(document.querySelector('.about__gif-3')).addClass('hidden');
-				angular.element(document.querySelector('.about__gif-4')).addClass('hidden');
-			});
 		}, 2000);
+
     }]
 };
 

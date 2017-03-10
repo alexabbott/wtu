@@ -1,6 +1,6 @@
 <nav class="no-opacity">
 	<div class="nav__main">
-		<a href="#" scroll-to="intro-indicator" duration="3000">
+		<a href="#" scroll-to="intro-indicator" duration="3000" id="nav__home">
 			<img ng-src="{{ data.nav_logo.url }}" class="nav__logo nav__logo-main">
 			<img ng-src="{{ data.nav_logo_alt.url }}" class="nav__logo nav__logo-alt">
 		</a>
