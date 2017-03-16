@@ -1,5 +1,5 @@
 <div class="home">
-  <h1 class="hidden">WeThem.Us</h1>
+  <h1 class="hidden" smooth-scroll duration="3000" easing="easeInQuint">WeThem.Us</h1>
 
   <section class="intro__bg">
 		<img ng-src="{{ data.intro_image.url }}" class="intro__image">

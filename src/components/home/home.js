@@ -80,18 +80,18 @@ let Home = {
 		    }
 		    if (scrollPos > 1200 && scrollPos < 1400) {
 				imageWidth = ((100 - ((scrollPos - 1201)/5))*.01);
-				imagePosition = (1200*1.4) - (scrollPos*1.4);
+				imagePosition = (1200*1.45) - (scrollPos*1.45);
 				introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)'});
 		    }
 		    if (scrollPos > 1399 && scrollPos < 1901) {
-				imagePosition = (1200*1.4) - (scrollPos*1.4);
+				imagePosition = (1200*1.45) - (scrollPos*1.45);
 		    	introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)'});
 		    }
 		    if (scrollPos > 1900 && scrollPos < 2900) {
 		    	introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)'});
 		    }
 		    if (scrollPos > 2899) {
-				imagePosition = (2199*1.4) - (scrollPos*1.4);
+				imagePosition = (2199*1.45) - (scrollPos*1.45);
 		    	introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)'});
 		    }
 		};
@@ -155,19 +155,21 @@ let Home = {
 		    if (scrollPos < 4000) {
 		    	projects.css({'transform': 'translate3d(0,' + window_.innerHeight + ', 0)', '-webkit-transform': 'translate3d(0,' + window_.innerHeight + ',0)'});
 		    	projects.addClass('no-opacity');
+		    	projectsContainer.addClass('no-opacity');
 		    }
 		    if (scrollPos > 3999 && scrollPos < (3999 + window_.innerHeight)) {
 		    	let aboutPos1 = window_.innerHeight - (scrollPos - 3999);
 				projects.css({'transform': 'translate3d(0,' + aboutPos1 + 'px,0)', '-webkit-transform': 'translate3d(0,' + aboutPos1 + ',0)'});
 		    	projects.removeClass('no-opacity');
+		    	projectsContainer.removeClass('no-opacity');
 		    }
 		    if (scrollPos > (3999 + window_.innerHeight)) {
+		    	projects.removeClass('no-opacity');
 		    	projectsContainer.removeClass('no-opacity');
-		    } else if (scrollPos < 4000) {
-		    	projectsContainer.addClass('no-opacity');
 		    }
 		    if (scrollPos > 5600) {
 		    	projects.addClass('no-opacity');
+		    	projectsContainer.addClass('no-opacity');
 		    }
 		};
 
