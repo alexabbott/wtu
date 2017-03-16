@@ -161,7 +161,7 @@ let Home = {
 		    	let aboutPos1 = window_.innerHeight - (scrollPos - 3999);
 				projects.css({'transform': 'translate3d(0,' + aboutPos1 + 'px,0)', '-webkit-transform': 'translate3d(0,' + aboutPos1 + ',0)'});
 		    	projects.removeClass('no-opacity');
-		    	projectsContainer.removeClass('no-opacity');
+		    	projectsContainer.addClass('no-opacity');
 		    }
 		    if (scrollPos > (3999 + window_.innerHeight)) {
 		    	projects.removeClass('no-opacity');
