@@ -21,7 +21,7 @@
 
     <img ng-src="{{ data.pink_blotch.url }}" class="pink-blotch">
 
-    <section id="about-intro" class="about-intro">
+    <section id="about-intro" class="about-intro no-opacity">
     	<div class="about-intro__container">
 	    	<div class="about-intro__image-container">
 	    		<div class="about-intro__image-box">
@@ -109,7 +109,7 @@
     <section id="white-rabbit" class="white-rabbit no-opacity">
     	<div class="white-rabbit__container">
 		    <h2 class="white-rabbit__text">{{ data.white_rabbit_text }}</h2>
-		    <iframe ng-src="{{ data.white_rabbit_video | youtubeEmbedUrl }}" class="white-rabbit__video" frameborder="0" allowfullscreen></iframe>
+		    <iframe data-src="{{ data.white_rabbit_video | youtubeEmbedUrl }}" class="white-rabbit__video" frameborder="0" allowfullscreen></iframe>
 		</div>
     </section>
 </div>

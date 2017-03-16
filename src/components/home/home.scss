@@ -1,5 +1,5 @@
 .home {
-	height: 950vh;
+	height: 900vh;
 
 	#intro-indicator {
 		position: absolute;
@@ -125,10 +125,12 @@
 	}
 
 	.about-intro {
+		@extend %transition-long;
 		height: 100vh;
 		pointer-events: none;
 		position: fixed;
 		top: 0vh;
+		transition-property: opacity;
 		width: 100vw;
 		z-index: 7;
 
@@ -267,7 +269,7 @@
 
 	#projects-indicator {
 		position: absolute;
-		top: 5600px;
+		top: 4900px;
 	}
 
 	.projects {
@@ -338,7 +340,7 @@
 
 	#contact-indicator {
 		position: absolute;
-		top: 6110px;
+		top: 5700px;
 	}
 
 	.contact {
