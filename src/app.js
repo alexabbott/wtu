@@ -2,8 +2,9 @@ import Sidenav from './components/sidenav/sidenav';
 import Home from './components/home/home';
 import Portfolio from './components/portfolio/portfolio';
 import smoothScroll from './jspm_packages/github/d-oliveros/ngSmoothScroll@2.0.0';
+import wuMasonry from './jspm_packages/npm/angular-masonry@0.17.0';
 
-const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll'])
+const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll', wuMasonry])
 
 .config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
 	$routeProvider
@@ -52,7 +53,7 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll']
 .filter('youtubeEmbedUrl', ($sce) => {
 	return function(videoId) {
   		return $sce.trustAsResourceUrl('//www.youtube.com/embed/' + videoId + '?controls=0&rel=0&modestbranding=1&showinfo=0');
-	};	
+	};
 })
 
 .component('sidenav', Sidenav)

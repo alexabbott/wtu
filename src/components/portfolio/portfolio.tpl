@@ -34,7 +34,11 @@
 
       <p ng-if="b.acf_fc_layout === 'text'" class="text" ng-bind-html="b.text"></p>
 
-      <img ng-if="b.acf_fc_layout === 'gallery'" ng-repeat="i in b.images" ng-src="{{i.image}}" />
+      <div masonry ng-if="b.acf_fc_layout === 'gallery'" loadImages="true">
+        <span masonry-brick ng-repeat="i in b.images">
+          <img ng-src="{{i.image}}" />
+        </span>
+      </div>
 
       <span ng-if="b.acf_fc_layout === 'embed'"
             ng-bind-html="trustBlob(b.string)"
