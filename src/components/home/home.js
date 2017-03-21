@@ -216,8 +216,7 @@ let Home = {
 		let loop = () => {
 		    let scrollTop = window_.scrollY;
 		    if (lastScrollTop === scrollTop) {
-		        raf(loop);
-		        return;
+		        return raf(loop);
 		    } else {
 		        lastScrollTop = scrollTop;
 
@@ -310,7 +309,7 @@ let Home = {
 						    duplicated: true,
 						    pauseOnHover: true,
 						    startVisible: true
-							}); 
+							});
 						} else {
 							jq('.projects__marquee-box:nth-of-type(' + (i + 1) + ') .projects__marquee').marquee({
 						    duration: 25000,
