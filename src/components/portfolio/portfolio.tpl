@@ -11,7 +11,7 @@
       <svg xmlns="http://www.w3.org/2000/svg"
            width="80" height="80" viewBox="0 0 80 80">
         <g><text x="-108" y="65" font-family="druk-wide" fill="rgba(255,255,255,1)" font-size="80">
-          {{ current.slug }}
+          {{ current.title.rendered }}
         </text></g>
       </svg>
     </span><span ng-click="current.next ? transition(current.next) : transition(first)" class="navi pointer">

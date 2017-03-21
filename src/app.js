@@ -52,7 +52,7 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll',
 
 .filter('youtubeEmbedUrl', ($sce) => {
 	return function(videoId) {
-  		return $sce.trustAsResourceUrl('//www.youtube.com/embed/' + videoId + '?controls=0&rel=0&modestbranding=1&showinfo=0');
+  		return $sce.trustAsResourceUrl('//www.youtube.com/embed/' + videoId + '?controls=0&rel=0&modestbranding=1&showinfo=0&autoplay=1');
 	};
 })
 

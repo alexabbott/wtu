@@ -1,5 +1,5 @@
 .home {
-	height: 950vh;
+	height: 900vh;
 
 	#intro-indicator {
 		position: absolute;
@@ -125,10 +125,12 @@
 	}
 
 	.about-intro {
+		@extend %transition-long;
 		height: 100vh;
 		pointer-events: none;
 		position: fixed;
 		top: 0vh;
+		transition-property: opacity;
 		width: 100vw;
 		z-index: 7;
 
@@ -234,6 +236,7 @@
 		.about__gif {
 			position: absolute;
 			pointer-events: none;
+			width: 300px;
 		}
 
 		.about__gif-1 {
@@ -244,22 +247,22 @@
 		}
 
 		.about__gif-2 {
-	    left: 18vw;
+	    	left: 18vw;
 			top: -20vh;
 			transform: translateX(-50%);
 			z-index: 12;
 		}
 
 		.about__gif-3 {
-			bottom: -20vh;
-			right: -45vw;
+			bottom: -15vh;
+			right: -25vw;
 			transform: translateX(-50%);
 			z-index: 12;
 		}
 
 		.about__gif-4 {
 			right: 50%;
-			bottom: -20vh;
+			bottom: -15vh;
 			transform: translateX(-50%);
 			z-index: 12;
 		}
@@ -267,7 +270,7 @@
 
 	#projects-indicator {
 		position: absolute;
-		top: 5600px;
+		top: 4900px;
 	}
 
 	.projects {
@@ -303,21 +306,16 @@
 			    -1px 1px 0 $color-white,
 			     1px 1px 0 $color-white;
 
-			  &:hover {
-			  	span {
-			  		color: $color-white;
-			  	}
-			  }
-
 				a {
+					@extend %transition-long;
+					transition-property: color;
 					color: $color-black;
 					cursor: pointer;
 					text-decoration: none;
-				}
 
-				span {
-					@extend %transition-long;
-					transition-property: color;
+					&:hover {
+						color: $color-white;
+					}
 				}
 			}
 		}
@@ -338,7 +336,7 @@
 
 	#contact-indicator {
 		position: absolute;
-		top: 6110px;
+		top: 5700px;
 	}
 
 	.contact {

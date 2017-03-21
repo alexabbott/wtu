@@ -39,19 +39,20 @@ let Home = {
         const contact4 = angular.element(document.querySelector('.contact__text-4'));
         const contact5 = angular.element(document.querySelector('.contact__text-5'));
         const contactEmail = angular.element(document.querySelector('.contact__email'));
-        const whiteRabbit = angular.element(document.querySelector('.white-rabbit'));
 
         let changeIntroTextSize = (scrollPos) => {
 		    if (scrollPos < 400) {
 	            introText.css({'transform': 'translate(-50%, -50%) scale(' + (5 - (scrollY / 50)) + ')', '-webkit-transform': 'translate(-50%, -50%) scale(' + (5 - (scrollY / 100)) + ')', });
 	            intro.removeClass('no-opacity');
-            } else if (scrollPos > 600) {
+            } else if (scrollPos > 1200) {
             	intro.addClass('no-opacity');
-            }
+            } else if (scrollPos < 1201 && scrollPos > 400) {
+				intro.removeClass('no-opacity');
+			}
 		};
 
 		let changeScrollOpacity = (scrollPos) => {
-			if (scrollPos > 400 && scrollPos < 600) {
+			if (scrollPos > 400 && scrollPos < 1200) {
 	            introScrollDown.removeClass('no-opacity');
             } else {
             	introScrollDown.addClass('no-opacity');
@@ -59,10 +60,10 @@ let Home = {
 		};
 
 		let changeIntroLogoPosition = (scrollPos) => {
-		    if (scrollPos > 400 && scrollPos < 600) {
+		    if (scrollPos > 400 && scrollPos < 1200) {
 	            introLogo.addClass('mid-position');
 	            introLogo.removeClass('high-position low-position no-opacity');
-            } else if (scrollPos > 600) {
+            } else if (scrollPos > 1200) {
 	            introLogo.addClass('high-position');
 	            introLogo.removeClass('mid-position low-position no-opacity');
             } else if (scrollPos < 400) {
@@ -74,23 +75,23 @@ let Home = {
 		let imageWidth = 0;
 		let imagePosition = 0;
 		let changeIntroImagePosition = (scrollPos) => {
-			if (scrollPos < 601) {
+			if (scrollPos < 1201) {
 				introImage.css({'transform': 'scale(1) translate3d(0px,0px,0px)', '-webkit-transform': 'scale(1) translate3d(0px,0px,0px)'});
 		    }
-		    if (scrollPos > 600 && scrollPos < 800) {
-				imageWidth = ((100 - ((scrollPos - 601)/5))*.01);
-				imagePosition = (600*1.4) - (scrollPos*1.4);
+		    if (scrollPos > 1200 && scrollPos < 1400) {
+				imageWidth = ((100 - ((scrollPos - 1201)/5))*.01);
+				imagePosition = (1200*1.45) - (scrollPos*1.45);
 				introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)'});
 		    }
-		    if (scrollPos > 799 && scrollPos < 1301) {
-				imagePosition = (600*1.4) - (scrollPos*1.4);
+		    if (scrollPos > 1399 && scrollPos < 1901) {
+				imagePosition = (1200*1.45) - (scrollPos*1.45);
 		    	introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)'});
 		    }
-		    if (scrollPos > 1300 && scrollPos < 2300) {
+		    if (scrollPos > 1900 && scrollPos < 2900) {
 		    	introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)'});
 		    }
-		    if (scrollPos > 2299) {
-				imagePosition = (1599*1.4) - (scrollPos*1.4);
+		    if (scrollPos > 2899) {
+				imagePosition = (2199*1.45) - (scrollPos*1.45);
 		    	introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)'});
 		    }
 		};
@@ -98,48 +99,52 @@ let Home = {
 		let gradientWidth = 0;
 		let gradientPosition = 0;
 		let changeIntroGradientPosition = (scrollPos) => {
-		    if (scrollPos < 601) {
+		    if (scrollPos < 1201) {
 		    	introGradient.css({'transform': 'scale(1) translate3d(0px,0px,0px)', '-webkit-transform': 'scale(1) translate3d(0px,0px,0px)'});
 		    }
-		    if (scrollPos > 600 && scrollPos < 800) {
-				gradientWidth = ((100 - ((scrollPos - 601)/16))*.01);
+		    if (scrollPos > 1200 && scrollPos < 1400) {
+				gradientWidth = ((100 - ((scrollPos - 1201)/16))*.01);
 				introGradient.css({'transform': 'scale(' + gradientWidth + ')', '-webkit-transform': 'scale(' + gradientWidth + ')'});
 		    }
-		    if (scrollPos > 799 && scrollPos < 1301) {
-				gradientPosition = (799*1.3) - (scrollPos*1.3);
+		    if (scrollPos > 1399 && scrollPos < 1901) {
+				gradientPosition = (1399*1.3) - (scrollPos*1.3);
 		    	introGradient.css({'transform': 'scale(' + gradientWidth + ') translate3d(0,' + gradientPosition + 'px,0)', '-webkit-transform': 'scale(' + gradientWidth + ') translate3d(0,' + gradientPosition + 'px,0)'});
 		    }
-		    if (scrollPos > 1300 && scrollPos < 2300) {
+		    if (scrollPos > 1900 && scrollPos < 2900) {
 		    	introGradient.css({'transform': 'scale(' + gradientWidth + ') translate3d(0,' + gradientPosition + 'px,0)', '-webkit-transform': 'scale(' + gradientWidth + ') translate3d(0,' + gradientPosition + 'px,0)'});
 		    }
-		    if (scrollPos > 2299) {
-				gradientPosition = (1799*1.3) - (scrollPos*1.3);
+		    if (scrollPos > 2899) {
+				gradientPosition = (2399*1.3) - (scrollPos*1.3);
 		    	introGradient.css({'transform': 'scale(' + gradientWidth + ') translate3d(0,' + gradientPosition + 'px,0)', '-webkit-transform': 'scale(' + gradientWidth + ') translate3d(0,' + gradientPosition + 'px,0)'});
 		    }
 		};
 
 		let changeAboutIntroPosition = (scrollPos) => {
-		    if (scrollPos <= 1399) {
+		    if (scrollPos <= 1499) {
 				aboutIntroImage.css({'transform': 'translate3d(8vw,' + window_.innerHeight + ', 0)', '-webkit-transform': 'translate3d(8vw,' + window_.innerHeight + ',0)'});
 				aboutIntroText.css({'transform': 'translate3d(60vw,' + window_.innerHeight + ', 0)', '-webkit-transform': 'translate3d(60vw,' + window_.innerHeight + ',0)'});
-		    }
-		    if (scrollPos > 1398 && scrollPos < 1900) {
-				let aboutPos1 = window_.innerHeight - ((scrollPos * 1.2) - (1399*1.2));
+				aboutIntro.addClass('no-opacity');
+			}
+		    if (scrollPos > 1498 && scrollPos < 2000) {
+				let aboutPos1 = window_.innerHeight - ((scrollPos * 1.2) - (1499*1.2));
 				aboutIntroText.css({'transform': 'translate3d(60vw,' + aboutPos1 + 'px,0)', '-webkit-transform': 'translate3d(60vw,' + aboutPos1 + ',0)'});
-		    }
-		    if (scrollPos > 1898 && scrollPos < 4500) {
-				let aboutPos2 = window_.innerHeight - ((scrollPos*0.8) - (1899*0.8));
+				aboutIntro.removeClass('no-opacity');
+			}
+		    if (scrollPos > 1998 && scrollPos < 4600) {
+				let aboutPos2 = window_.innerHeight - ((scrollPos*0.8) - (1999*0.8));
 				aboutIntroImage.css({'transform': 'translate3d(8vw,' + aboutPos2 + 'px,0)', '-webkit-transform': 'translate3d(0,' + aboutPos2 + ',0)'});
-		    }
-		    if (scrollPos > 2900) {
-				let aboutPos1 = window_.innerHeight - ((scrollPos * 1.2) - (2399*1.2));
+				aboutIntro.removeClass('no-opacity');
+			}
+		    if (scrollPos > 3000) {
+				let aboutPos1 = window_.innerHeight - ((scrollPos * 1.2) - (2499*1.2));
 				aboutIntroText.css({'transform': 'translate3d(60vw,' + aboutPos1 + 'px,0)', '-webkit-transform': 'translate3d(60vw,' + aboutPos1 + ',0)'});
-		    }
+				aboutIntro.removeClass('no-opacity');
+			}
 		};
 
 
 		let changeAboutOpacity = (scrollPos) => {
-			if (scrollPos > 3600 && scrollPos < 4400) {
+			if (scrollPos > 3400 && scrollPos < 4200) {
 				about.removeClass('no-opacity');
 			} else {
 				about.addClass('no-opacity');
@@ -147,22 +152,24 @@ let Home = {
 		};
 
 		let changeProjectsPosition = (scrollPos) => {
-		    if (scrollPos < 4400) {
+		    if (scrollPos < 4000) {
 		    	projects.css({'transform': 'translate3d(0,' + window_.innerHeight + ', 0)', '-webkit-transform': 'translate3d(0,' + window_.innerHeight + ',0)'});
-		    	projects.removeClass('no-opacity');
-		    }
-		    if (scrollPos > 4399 && scrollPos < (4399 + window_.innerHeight)) {
-		    	let aboutPos1 = window_.innerHeight - (scrollPos - 4399);
-				projects.css({'transform': 'translate3d(0,' + aboutPos1 + 'px,0)', '-webkit-transform': 'translate3d(0,' + aboutPos1 + ',0)'});
-		    	projects.removeClass('no-opacity');
-		    }
-		    if (scrollPos > (4399 + window_.innerHeight)) {
-		    	projectsContainer.removeClass('no-opacity');
-		    } else {
+		    	projects.addClass('no-opacity');
 		    	projectsContainer.addClass('no-opacity');
 		    }
-		    if (scrollPos > 6000) {
+		    if (scrollPos > 3999 && scrollPos < (3999 + window_.innerHeight)) {
+		    	let aboutPos1 = window_.innerHeight - (scrollPos - 3999);
+				projects.css({'transform': 'translate3d(0,' + aboutPos1 + 'px,0)', '-webkit-transform': 'translate3d(0,' + aboutPos1 + ',0)'});
+		    	projects.removeClass('no-opacity');
+		    	projectsContainer.addClass('no-opacity');
+		    }
+		    if (scrollPos > (3999 + window_.innerHeight)) {
+		    	projects.removeClass('no-opacity');
+		    	projectsContainer.removeClass('no-opacity');
+		    }
+		    if (scrollPos > 5600) {
 		    	projects.addClass('no-opacity');
+		    	projectsContainer.addClass('no-opacity');
 		    }
 		};
 
@@ -187,7 +194,7 @@ let Home = {
 		};
 
 		let changeContactOpacity = (scrollPos) => {
-			if (scrollPos > 5950 && scrollPos < 6400) {
+			if (scrollPos > 5550) {
 				contact.removeClass('no-opacity');
 				contact1.addClass('fade-in one');
 				contact2.addClass('fade-in two');
@@ -206,47 +213,34 @@ let Home = {
 			}
 		};
 
-		let changeWhiteRabbitOpacity = (scrollPos) => {
-			if (scrollPos > 6401) {
-				whiteRabbit.removeClass('no-opacity');
-			} else if (scrollPos < 7500) {
-				whiteRabbit.addClass('no-opacity');
-			}
-		};
-
 		let loop = () => {
 		    let scrollTop = window_.scrollY;
 		    if (lastScrollTop === scrollTop) {
-		        raf(loop);
-		        return;
+		        return raf(loop);
 		    } else {
 		        lastScrollTop = scrollTop;
 
 		        // fire scroll function if scrolls vertically
-				console.log(scrollTop);
-		        if (scrollTop < 1000) {
+		        if (scrollTop < 1300) {
 			        changeIntroTextSize(scrollTop);
 			        changeScrollOpacity(scrollTop);
 			        changeIntroLogoPosition(scrollTop);
 		        }
-		        if (scrollTop < 3000) {
+		        if (scrollTop < 3500) {
 			        changeIntroImagePosition(scrollTop);
 			        changeIntroGradientPosition(scrollTop);
 		    	}
-		    	if (scrollTop > 700 && scrollTop < 4000) {
+		    	if (scrollTop > 700 && scrollTop < 5000) {
 			        changeAboutIntroPosition(scrollTop);
 		    	}
-		    	if (scrollTop > 3000 && scrollTop < 6500) {
+		    	if (scrollTop > 3000 && scrollTop < 7000) {
 		    		changeAboutOpacity(scrollTop);
 		    	}
-		    	if (scrollTop > 3500 && scrollTop < 7500) {
+		    	if (scrollTop > 3500 && scrollTop < 8000) {
 			        changeProjectsPosition(scrollTop);
 		    	}
 		    	if (scrollTop > 5000) {
 		    		changeContactOpacity(scrollTop);
-		    	}
-		    	if (scrollTop > 6000) {
-		    		changeWhiteRabbitOpacity(scrollTop);
 		    	}
 		        raf(loop);
 		    }
@@ -263,7 +257,6 @@ let Home = {
 				changeAboutOpacity(window_.scrollY);
 				changeProjectsPosition(window_.scrollY);
 				changeContactOpacity(window_.scrollY);
-				changeWhiteRabbitOpacity(window_.scrollY);
 			}, 4000)
 		};
 
@@ -316,7 +309,7 @@ let Home = {
 						    duplicated: true,
 						    pauseOnHover: true,
 						    startVisible: true
-							}); 
+							});
 						} else {
 							jq('.projects__marquee-box:nth-of-type(' + (i + 1) + ') .projects__marquee').marquee({
 						    duration: 25000,

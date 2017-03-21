@@ -1,5 +1,5 @@
 <div class="home">
-  <h1 class="hidden">WeThem.Us</h1>
+  <h1 class="hidden" smooth-scroll duration="3000" easing="easeInQuint">WeThem.Us</h1>
 
   <section class="intro__bg">
 		<img ng-src="{{ data.intro_image.url }}" class="intro__image">
@@ -21,7 +21,7 @@
 
     <img ng-src="{{ data.pink_blotch.url }}" class="pink-blotch">
 
-    <section id="about-intro" class="about-intro">
+    <section id="about-intro" class="about-intro no-opacity">
     	<div class="about-intro__container">
 	    	<div class="about-intro__image-container">
 	    		<div class="about-intro__image-box">
@@ -78,8 +78,14 @@
     <section id="projects" class="projects">
     	<div class="projects__container no-opacity">
     		<div ng-repeat="project in portfolio" class="projects__marquee-box">
-	    		<div class="projects__marquee" ng-mouseenter="showBg($index)" ng-mouseleave="hideBg($index)">
-	    			<a href="/{{ project.slug }}">{{ project.acf.marquee_pre_context }}<span>{{ project.acf.short_title }}</span>{{ project.acf.marquee_post_context }}</a>
+	    		<div class="projects__marquee">
+	    			<a href="/{{ project.slug }}"
+               class="projects__link uppercase"
+               ng-repeat="project in portfolio"
+               ng-mouseenter="showBg($index)"
+               ng-mouseleave="hideBg($index)">
+               {{ project.acf.short_title }}
+            </a>
 	    		</div>
 	    		<div class="projects__bg no-opacity" style="background-image: url({{ project.acf.bg_img }});">
 	    		</div>
@@ -109,7 +115,7 @@
     <section id="white-rabbit" class="white-rabbit no-opacity">
     	<div class="white-rabbit__container">
 		    <h2 class="white-rabbit__text">{{ data.white_rabbit_text }}</h2>
-		    <iframe ng-src="{{ data.white_rabbit_video | youtubeEmbedUrl }}" class="white-rabbit__video" frameborder="0" allowfullscreen></iframe>
+		    <iframe data-src="{{ data.white_rabbit_video | youtubeEmbedUrl }}" class="white-rabbit__video" frameborder="0" allowfullscreen></iframe>
 		</div>
     </section>
 </div>
