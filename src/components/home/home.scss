@@ -236,6 +236,7 @@
 		.about__gif {
 			position: absolute;
 			pointer-events: none;
+			width: 300px;
 		}
 
 		.about__gif-1 {
@@ -246,22 +247,22 @@
 		}
 
 		.about__gif-2 {
-	    left: 18vw;
+	    	left: 18vw;
 			top: -20vh;
 			transform: translateX(-50%);
 			z-index: 12;
 		}
 
 		.about__gif-3 {
-			bottom: -20vh;
-			right: -45vw;
+			bottom: -15vh;
+			right: -25vw;
 			transform: translateX(-50%);
 			z-index: 12;
 		}
 
 		.about__gif-4 {
 			right: 50%;
-			bottom: -20vh;
+			bottom: -15vh;
 			transform: translateX(-50%);
 			z-index: 12;
 		}
