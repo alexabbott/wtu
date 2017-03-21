@@ -50,9 +50,9 @@
         transition: opacity 0.33s ease;
         width: 34vw;
         svg {
-          // g {
-          //   animation: slide-slug 10s -12s infinite linear;
-          // }
+          g {
+            background: pink;
+          }
           text {
             fill: $color-white;
             transform-origin: center;
@@ -149,7 +149,7 @@
 
 @keyframes slide-slug {
   from {
-    transform: translateX(110%);
+    transform: translateX(33vw);
   }
   to {
     transform: translateX(-110%);
