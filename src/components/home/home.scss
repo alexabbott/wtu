@@ -306,21 +306,16 @@
 			    -1px 1px 0 $color-white,
 			     1px 1px 0 $color-white;
 
-			  &:hover {
-			  	span {
-			  		color: $color-white;
-			  	}
-			  }
-
 				a {
+					@extend %transition-long;
+					transition-property: color;
 					color: $color-black;
 					cursor: pointer;
 					text-decoration: none;
-				}
 
-				span {
-					@extend %transition-long;
-					transition-property: color;
+					&:hover {
+						color: $color-white;
+					}
 				}
 			}
 		}
