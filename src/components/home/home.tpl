@@ -78,8 +78,14 @@
     <section id="projects" class="projects">
     	<div class="projects__container no-opacity">
     		<div ng-repeat="project in portfolio" class="projects__marquee-box">
-	    		<div class="projects__marquee" ng-mouseenter="showBg($index)" ng-mouseleave="hideBg($index)">
-	    			<a href="/{{ project.slug }}">{{ project.acf.marquee_pre_context }}<span>{{ project.acf.short_title }}</span>{{ project.acf.marquee_post_context }}</a>
+	    		<div class="projects__marquee">
+	    			<a href="/{{ project.slug }}"
+               class="projects__link uppercase"
+               ng-repeat="project in portfolio"
+               ng-mouseenter="showBg($index)"
+               ng-mouseleave="hideBg($index)">
+               {{ project.acf.short_title }}
+            </a>
 	    		</div>
 	    		<div class="projects__bg no-opacity" style="background-image: url({{ project.acf.bg_img }});">
 	    		</div>
