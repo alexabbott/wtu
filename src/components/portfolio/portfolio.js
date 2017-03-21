@@ -26,6 +26,11 @@ let Portfolio = {
                 backgroundImage: `url(${$scope.current.acf.bg_img})`
             }
 
+            let scrollLen = $scope.current.title.rendered.length * 1.5
+            $scope.titleAnim = {
+                animation: `slide-slug ${scrollLen}s -${scrollLen*1.2}s infinite linear`
+            }
+
             $scope.content = $scope.current.acf.content;
         }
 
