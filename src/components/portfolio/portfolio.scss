@@ -22,6 +22,7 @@
     text-align: center;
     padding: 0 0 1em;
     position: relative;
+    white-space: nowrap;
     z-index: 2;
 
     .navi {
@@ -51,7 +52,7 @@
         width: 34vw;
         svg {
           g {
-            animation: slide-slug 10s -12s infinite linear;
+            background: pink;
           }
           text {
             fill: $color-white;
@@ -149,7 +150,7 @@
 
 @keyframes slide-slug {
   from {
-    transform: translateX(110%);
+    transform: translateX(33vw);
   }
   to {
     transform: translateX(-110%);

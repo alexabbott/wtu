@@ -10,7 +10,7 @@
     </span><span class="navi slug">
       <svg xmlns="http://www.w3.org/2000/svg"
            width="80" height="80" viewBox="0 0 80 80">
-        <g><text x="-108" y="65" font-family="druk-wide" fill="rgba(255,255,255,1)" font-size="80">
+        <g ng-style="titleAnim"><text x="-108" y="65" font-family="druk-wide" fill="rgba(255,255,255,1)" font-size="80">
           {{ current.title.rendered }}
         </text></g>
       </svg>
@@ -34,7 +34,11 @@
 
       <p ng-if="b.acf_fc_layout === 'text'" class="text" ng-bind-html="b.text"></p>
 
-      <img ng-if="b.acf_fc_layout === 'gallery'" ng-repeat="i in b.images" ng-src="{{i.image}}" />
+      <div masonry ng-if="b.acf_fc_layout === 'gallery'" loadImages="true">
+        <span masonry-brick ng-repeat="i in b.images">
+          <img ng-src="{{i.image}}" />
+        </span>
+      </div>
 
       <span ng-if="b.acf_fc_layout === 'embed'"
             ng-bind-html="trustBlob(b.string)"
