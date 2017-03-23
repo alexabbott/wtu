@@ -14,9 +14,11 @@ System.config({
   },
 
   map: {
+    "angular-masonry": "npm:angular-masonry@0.17.0",
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "core-js": "npm:core-js@1.2.7",
+    "ng-masonry": "npm:ng-masonry@1.0.3",
     "smoothscroll": "github:d-oliveros/ngSmoothScroll@2.0.0",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
@@ -35,6 +37,16 @@ System.config({
     },
     "github:jspm/nodelibs-vm@0.1.0": {
       "vm-browserify": "npm:vm-browserify@0.0.4"
+    },
+    "npm:angular-masonry@0.17.0": {
+      "angular": "npm:angular@1.6.3",
+      "imagesloaded": "npm:imagesloaded@4.1.1",
+      "jquery-bridget": "npm:jquery-bridget@2.0.1",
+      "masonry-layout": "npm:masonry-layout@4.1.1",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:angular@1.4.8": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:assert@1.4.1": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
@@ -59,8 +71,34 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
+    "npm:fizzy-ui-utils@2.0.4": {
+      "desandro-matches-selector": "npm:desandro-matches-selector@2.0.2"
+    },
+    "npm:imagesloaded@4.1.1": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "ev-emitter": "npm:ev-emitter@1.0.3",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:jquery-bridget@2.0.1": {
+      "jquery": "npm:jquery@3.2.1"
+    },
+    "npm:masonry-layout@4.1.1": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "get-size": "npm:get-size@2.0.2",
+      "outlayer": "npm:outlayer@2.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:ng-masonry@1.0.3": {
+      "angular": "npm:angular@1.4.8"
+    },
+    "npm:outlayer@2.1.0": {
+      "ev-emitter": "npm:ev-emitter@1.0.3",
+      "fizzy-ui-utils": "npm:fizzy-ui-utils@2.0.4",
+      "get-size": "npm:get-size@2.0.2"
     },
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"

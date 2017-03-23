@@ -30,19 +30,26 @@
 
 @font-face {
   font-family: 'druk-condensed';
-  src: url('./fonts/DrukCond-Super.woff2') format('woff2'), /* Super Modern Browsers */
-       url('./fonts/DrukCond-Super.ttf')  format('truetype'), /* Safari, Android, iOS */
+  src: url('./fonts/DrukCond-Super.woff2') format('woff2'),
+       url('./fonts/DrukCond-Super.ttf')  format('truetype')
+}
+
+@font-face {
+  font-family: 'druk-thin-condensed';
+  src: url('./fonts/DrukXXCond-Super-Web.woff2') format('woff2'),
+       url('./fonts/DrukXXCond-Super-Web.ttf')  format('truetype')
 }
 
 @font-face {
   font-family: 'druk-wide';
-  src: url('./fonts/DrukWide-Medium.woff2') format('woff2'), /* Super Modern Browsers */
-       url('./fonts/DrukWide-Medium.ttf')  format('truetype'), /* Safari, Android, iOS */
+  src: url('./fonts/DrukWide-Medium.woff2') format('woff2'),
+       url('./fonts/DrukWide-Medium.ttf')  format('truetype')
 }
 
 $color-black: #000;
 $color-primary: #3F51B5;
 $color-white: #FFF;
+$druk-thin-condensed: 'druk-thin-condensed', 'Futura', Arial, sans-serif;
 $druk-condensed: 'druk-condensed', 'Futura', Arial, sans-serif;
 $druk-wide: 'druk-wide', 'Futura', Arial, sans-serif;
 

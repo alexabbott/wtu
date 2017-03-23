@@ -2,9 +2,9 @@ import Sidenav from './components/sidenav/sidenav';
 import Home from './components/home/home';
 import Portfolio from './components/portfolio/portfolio';
 import smoothScroll from './jspm_packages/github/d-oliveros/ngSmoothScroll@2.0.0';
-import wuMasonry from './jspm_packages/npm/angular-masonry@0.17.0';
+import './jspm_packages/npm/angular-masonry@0.17.0';
 
-const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll', wuMasonry])
+const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll', 'wu.masonry'])
 
 .config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
 	$routeProvider
