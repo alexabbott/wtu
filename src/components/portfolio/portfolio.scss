@@ -166,13 +166,27 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .portfolio {
     .content {
       .section {
         &.gallery {
           .brick {
             width: 50%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .portfolio {
+    .content {
+      .section {
+        &.gallery {
+          .brick {
+            width: 100%;
           }
         }
       }
