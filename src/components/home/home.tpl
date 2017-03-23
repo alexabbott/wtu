@@ -81,7 +81,7 @@
 	    		<div class="projects__marquee">
 	    			<a href="/{{ project.slug }}"
                class="projects__link uppercase"
-               ng-repeat="project in portfolio"
+               ng-repeat="i in [1,2,3,4,5]"
                ng-mouseenter="showBg($index)"
                ng-mouseleave="hideBg($index)">
                {{ project.acf.short_title }}
