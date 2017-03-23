@@ -34,10 +34,13 @@
 
       <p ng-if="b.acf_fc_layout === 'text'" class="text" ng-bind-html="b.text"></p>
 
-      <div masonry ng-if="b.acf_fc_layout === 'gallery'" loadImages="true">
-        <span masonry-brick ng-repeat="i in b.images">
+      <div masonry ng-if="b.acf_fc_layout === 'gallery'"
+           item-selector=".brick"
+           reload-on-resize
+           load-images="true" preserve-order>
+        <div masonry-brick class="brick" ng-repeat="i in b.images">
           <img ng-src="{{i.image}}" />
-        </span>
+        </div>
       </div>
 
       <span ng-if="b.acf_fc_layout === 'embed'"
