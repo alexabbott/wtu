@@ -106,18 +106,17 @@
       }
 
       &.gallery {
-        width: 100%;
+        width: 90%;
         max-width: none;
         text-align: center;
 
-        img {
-          width: auto;
-          height: auto;
-          max-width: 100%;
-          vertical-align: middle;
-          margin: 1em 0;
-          padding: 0 1em;
-          box-sizing: border-box;
+        .brick {
+          width: 33.33%;
+          img {
+            width: 100%;
+            height: auto;
+            // max-width: 400px;
+          }
         }
       }
 
@@ -172,10 +171,8 @@
     .content {
       .section {
         &.gallery {
-          img {
-            width: 100%;
-            margin: 0;
-            padding: 0 1em 1em;
+          .brick {
+            width: 50%;
           }
         }
       }
