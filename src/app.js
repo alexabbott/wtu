@@ -21,7 +21,7 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll',
 	$locationProvider.html5Mode(true);
 }])
 
-.factory('WordpressData', ($http) => {
+.factory('WordpressData', ['$http', function($http) {
 
   const WPFactory = {
 	  	listNav: (callback) => {
@@ -48,13 +48,13 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll',
   }
 
   return WPFactory
-})
+}])
 
-.filter('youtubeEmbedUrl', ($sce) => {
+.filter('youtubeEmbedUrl', ['$sce', function($sce) {
 	return function(videoId) {
   		return $sce.trustAsResourceUrl('//www.youtube.com/embed/' + videoId + '?controls=0&rel=0&modestbranding=1&showinfo=0&autoplay=1');
 	};
-})
+}])
 
 .component('sidenav', Sidenav)
 .component('home', Home)
