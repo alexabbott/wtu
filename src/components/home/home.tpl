@@ -21,36 +21,36 @@
 
     <img ng-src="{{ data.pink_blotch.url }}" class="pink-blotch">
 
-    <section id="about-intro" class="about-intro no-opacity">
+    <section id="about-intro" class="about-intro no-opacity" ng-init="showImage = '1blur'">
     	<div class="about-intro__container">
 	    	<div class="about-intro__image-container">
 	    		<div class="about-intro__image-box">
-			    	<img ng-src="{{ data.about_image_1.url }}" class="about-intro__image-1 clear hidden" alt="{{ data.about_text_1 }}">
-			    	<img ng-src="{{ data.about_image_blur_1.url }}" class="about-intro__image-blur-1 blur" alt="{{ data.about_text_1 }}">
+			    	<img ng-src="{{ data.about_image_1.url }}" ng-show="showImage == '1clear'" class="about-intro__image-1 clear" alt="{{ data.about_text_1 }}">
+			    	<img ng-src="{{ data.about_image_blur_1.url }}" ng-show="showImage == '1blur'" class="about-intro__image-blur-1 blur" alt="{{ data.about_text_1 }}">
 			    	<h3 class="about-intro__image-text">
 			    		{{ data.about_text_1 }}
 			    	</h3>
 			    </div>
-			    <!-- <div class="about-intro__image-box">
-			    	<img ng-src="{{ data.about_image_2.url }}" class="about-intro__image-2 hidden" alt="{{ data.about_text_2 }}">
-			    	<img ng-src="{{ data.about_image_blur_2.url }}" class="about-intro__image-blur-2 hidden" alt="{{ data.about_text_2 }}">
+			    <div class="about-intro__image-box">
+			    	<img ng-src="{{ data.about_image_2.url }}" ng-show="showImage == '2clear'" class="about-intro__image-2" alt="{{ data.about_text_2 }}">
+			    	<img ng-src="{{ data.about_image_blur_2.url }}" ng-show="showImage == '2blur'" class="about-intro__image-blur-2" alt="{{ data.about_text_2 }}">
 			    	<h3 class="about-intro__image-text">
 			    		{{ data.about_text_2 }}
 			    	</h3>
 			    </div>
 		    	<div class="about-intro__image-box">
-			    	<img ng-src="{{ data.about_image_3.url }}" class="about-intro__image-3 hidden" alt="{{ data.about_text_3 }}">
-			    	<img ng-src="{{ data.about_image_blur_3.url }}" class="about-intro__image-blur-3 hidden" alt="{{ data.about_text_3 }}">
+			    	<img ng-src="{{ data.about_image_3.url }}" ng-show="showImage == '3clear'" class="about-intro__image-3" alt="{{ data.about_text_3 }}">
+			    	<img ng-src="{{ data.about_image_blur_3.url }}" ng-show="showImage == '3blur'" class="about-intro__image-blur-3" alt="{{ data.about_text_3 }}">
 			    	<h3 class="about-intro__image-text">
 			    		{{ data.about_text_3 }}
 			    	</h3>
-			    </div> -->
+			    </div> 
 		    </div>
 
 		    <div class="about-intro__text">
-	    		<h2 class="about-intro__text-1" ng-mouseenter="removeImageBlur(1)" ng-mouseleave="addImageBlur(1)">{{ data.about_text_1 }}</h2>
-	    		<h2 class="about-intro__text-2">{{ data.about_text_2 }}</h2>
-	    		<h2 class="about-intro__text-3">{{ data.about_text_3 }}</h2>
+	    		<h2 class="about-intro__text-1" ng-mouseenter="changeImageBlur('1clear')" ng-mouseleave="changeImageBlur('1blur')">{{ data.about_text_1 }}</h2>
+	    		<h2 class="about-intro__text-2" ng-mouseenter="changeImageBlur('2clear')" ng-mouseleave="changeImageBlur('2blur')">{{ data.about_text_2 }}</h2>
+	    		<h2 class="about-intro__text-3" ng-mouseenter="changeImageBlur('3clear')" ng-mouseleave="changeImageBlur('3blur')">{{ data.about_text_3 }}</h2>
 	    	</div>
 	    </div>
     </section>

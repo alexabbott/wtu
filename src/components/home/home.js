@@ -125,7 +125,7 @@ let Home = {
 				aboutIntroText.css({'transform': 'translate3d(60vw,' + window_.innerHeight + ', 0)', '-webkit-transform': 'translate3d(60vw,' + window_.innerHeight + ',0)'});
 				aboutIntro.addClass('no-opacity');
 			}
-		    if (scrollPos > 1498 && scrollPos < 2000) {
+		    if (scrollPos > 1498 && scrollPos < 2200) {
 				let aboutPos1 = window_.innerHeight - ((scrollPos * 1.2) - (1499*1.2));
 				aboutIntroText.css({'transform': 'translate3d(60vw,' + aboutPos1 + 'px,0)', '-webkit-transform': 'translate3d(60vw,' + aboutPos1 + ',0)'});
 				aboutIntro.removeClass('no-opacity');
@@ -136,7 +136,7 @@ let Home = {
 				aboutIntro.removeClass('no-opacity');
 			}
 		    if (scrollPos > 3000) {
-				let aboutPos1 = window_.innerHeight - ((scrollPos * 1.2) - (2499*1.2));
+				let aboutPos1 = window_.innerHeight - ((scrollPos * 1.2) - (2299*1.2));
 				aboutIntroText.css({'transform': 'translate3d(60vw,' + aboutPos1 + 'px,0)', '-webkit-transform': 'translate3d(60vw,' + aboutPos1 + ',0)'});
 				aboutIntro.removeClass('no-opacity');
 			}
@@ -173,14 +173,8 @@ let Home = {
 		    }
 		};
 
-		$scope.removeImageBlur = (index) => {
-			angular.element(document.querySelector('.about-intro__image-box .clear')).removeClass('hidden');
-			angular.element(document.querySelector('.about-intro__image-box .blur')).addClass('hidden');
-		};
-
-		$scope.addImageBlur = (index) => {
-			angular.element(document.querySelector('.about-intro__image-box .clear')).addClass('hidden');
-			angular.element(document.querySelector('.about-intro__image-box .blur')).removeClass('hidden');
+		$scope.changeImageBlur = (index) => {
+			$scope.showImage = index;
 		};
 
 		$scope.showBg = (index) => {
