@@ -3,9 +3,13 @@ api_version: 1
 threadsafe: true
 
 handlers:
+- url: /
+  static_files: src/index.html
+  upload: src/index.html
 
-- url: /.*
-  script: main.app
+- url: /(.*)
+  static_files: src/\1
+  upload: src/(.*)
 
 skip_files:
 - ^node_modules/(?!node\.js$).*node_modules
