@@ -25,14 +25,17 @@
   </div>
 
   <div class="content relative">
-    <div ng-repeat="b in content" class="section {{b.acf_fc_layout}}">
+    <div ng-repeat="b in content"
+         class="section {{b.acf_fc_layout}}"
+         ng-style="b.acfStyle">
       <img ng-if="b.acf_fc_layout === 'banner'" ng-src="{{b.image}}" />
 
       <h1 ng-if="b.acf_fc_layout === 'subheader'" class="subheader">
         {{b.text}}
       </h1>
 
-      <p ng-if="b.acf_fc_layout === 'text'" class="text" ng-bind-html="b.text"></p>
+      <p ng-if="b.acf_fc_layout === 'text'"
+         class="text" ng-bind-html="trustBlob(b.text)"></p>
 
       <div masonry ng-if="b.acf_fc_layout === 'gallery'"
            item-selector=".brick"
