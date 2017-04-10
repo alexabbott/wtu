@@ -7,7 +7,10 @@ let Portfolio = {
             $scope.transitioning = false;
         }, 666)
 
-        $scope.trustBlob = (blob) => $sce.trustAsHtml(blob)
+        $scope.trustBlob = (blob) => {
+            blob = blob.replace(/<script>.*(<\/?script>?)?/, '')
+            return $sce.trustAsHtml(blob)
+        }
         $scope.transition = (to) => {
             $scope.transitioning = true;
             $timeout(() => {
@@ -32,6 +35,16 @@ let Portfolio = {
             }
 
             $scope.content = $scope.current.acf.content;
+            $scope.content.forEach(b => {
+                if (b.styles.length) {
+                    var style = {}
+                    b.styles.forEach(s => {
+                        style[s.property] = s.value
+                    })
+                    b.acfStyle = style
+                }
+            })
+            console.log($scope.current)
         }
 
         if (!WordpressData.portfolio) {

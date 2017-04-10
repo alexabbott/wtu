@@ -4,7 +4,6 @@
   background-position: center center;
   background-attachment: fixed;
   min-height: 100vh;
-  color: white;
 
   &:before {
     content: '';
@@ -68,9 +67,15 @@
     padding-bottom: 80px;
 
     .section {
-      width: 90%;
-      max-width: 800px;
-      margin: 0 auto 40px;
+      // width: 90%;
+      // max-width: 800px;
+      margin: 0 auto;
+
+      > p, > h1 {
+        width: 90%;
+        max-width: 800px;
+        margin: 0 auto;
+      }
 
       &.banner {
         width: 100%;
@@ -103,6 +108,11 @@
 
       &.text {
         line-height: 1.5em;
+
+        p {
+          margin: 0 auto;
+          padding: 0.5em 0;
+        }
       }
 
       &.gallery {
