@@ -3,7 +3,7 @@ let Home = {
     controller: ['WordpressData', '$scope', '$window', '$timeout', (WordpressData, $scope, $window, $timeout) => {
 
         WordpressData.listHome((response) => {
-            $scope.data = response.data.acf;
+            $scope.data = response.data[0].acf;
             console.log('home data', $scope.data);
         });
 

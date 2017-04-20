@@ -25,10 +25,10 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll',
 
   const WPFactory = {
 	  	listNav: (callback) => {
-	      	$http.get('//alex-abbott.com/wtu/wp-json/acf/v2/nav/42').then(callback);
+	      	$http.get('//alex-abbott.com/wtu/wp-json/wp/v2/nav').then(callback);
 	    },
 	    listHome: (callback) => {
-	     		$http.get('//alex-abbott.com/wtu/wp-json/acf/v2/home/12').then(callback);
+	     		$http.get('//alex-abbott.com/wtu/wp-json/wp/v2/home').then(callback);
 	    },
 	    fetchPortfolio: (callback) => {
 	  			console.log('getting polio...');
