@@ -610,8 +610,10 @@ template {
 }
 
 .no-opacity {
+  @extend %transition-long;
   opacity: 0;
   pointer-events: none;
+  transition-property: opacity;
 }
 
 .low-opacity {

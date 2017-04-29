@@ -39,6 +39,7 @@ let Home = {
         const contact4 = angular.element(document.querySelector('.contact__text-4'));
         const contact5 = angular.element(document.querySelector('.contact__text-5'));
         const contactEmail = angular.element(document.querySelector('.contact__email'));
+        const contactSignup = angular.element(document.querySelector('.sign-up-cta'));
 
         let changeIntroTextSize = (scrollPos) => {
 		    if (scrollPos < 400) {
@@ -269,55 +270,57 @@ let Home = {
 		}
 
 		$timeout(() => {
-			let rolloverWords = document.querySelectorAll('.about__text-main em');
-			rolloverWords[0].addEventListener('mouseover', () => {
-				angular.element(document.querySelector('.about__gif-1')).removeClass('hidden');
-			});
+			if (document.querySelectorAll('.about__text-main em')) {
+				let rolloverWords = document.querySelectorAll('.about__text-main em');
+				rolloverWords[0].addEventListener('mouseover', () => {
+					angular.element(document.querySelector('.about__gif-1')).removeClass('hidden');
+				});
 
-			rolloverWords[0].addEventListener('mouseout', () => {
-				angular.element(document.querySelector('.about__gif-1')).addClass('hidden');
-			});
-			rolloverWords[1].addEventListener('mouseover', () => {
-				angular.element(document.querySelector('.about__gif-2')).removeClass('hidden');
-				angular.element(document.querySelector('.about__gif-3')).removeClass('hidden');
-				angular.element(document.querySelector('.about__gif-4')).removeClass('hidden');
-			});
+				rolloverWords[0].addEventListener('mouseout', () => {
+					angular.element(document.querySelector('.about__gif-1')).addClass('hidden');
+				});
+				rolloverWords[1].addEventListener('mouseover', () => {
+					angular.element(document.querySelector('.about__gif-2')).removeClass('hidden');
+					angular.element(document.querySelector('.about__gif-3')).removeClass('hidden');
+					angular.element(document.querySelector('.about__gif-4')).removeClass('hidden');
+				});
 
-			rolloverWords[1].addEventListener('mouseout', () => {
-				angular.element(document.querySelector('.about__gif-2')).addClass('hidden');
-				angular.element(document.querySelector('.about__gif-3')).addClass('hidden');
-				angular.element(document.querySelector('.about__gif-4')).addClass('hidden');
-			});
+				rolloverWords[1].addEventListener('mouseout', () => {
+					angular.element(document.querySelector('.about__gif-2')).addClass('hidden');
+					angular.element(document.querySelector('.about__gif-3')).addClass('hidden');
+					angular.element(document.querySelector('.about__gif-4')).addClass('hidden');
+				});
 
-			let jq = $.noConflict();
+				let jq = $.noConflict();
 
-			if (!jq('.projects__marquee').hasClass('scrolling')) {
-				let portfolioLength = jq('.projects__marquee-box').length;
-				for (let i = 0; i < portfolioLength; i++) {
-					if (i % 2 != 0) {
-						jq('.projects__marquee-box:nth-of-type(' + (i + 1) + ') .projects__marquee').marquee({
-						    duration: 25000,
-						    gap: 10,
-						    delayBeforeStart: 0,
-						    direction: 'left',
-						    duplicated: true,
-						    pauseOnHover: true,
-						    startVisible: true
-							});
-						} else {
+				if (!jq('.projects__marquee').hasClass('scrolling')) {
+					let portfolioLength = jq('.projects__marquee-box').length;
+					for (let i = 0; i < portfolioLength; i++) {
+						if (i % 2 != 0) {
 							jq('.projects__marquee-box:nth-of-type(' + (i + 1) + ') .projects__marquee').marquee({
-						    duration: 25000,
-						    gap: 10,
-						    delayBeforeStart: 0,
-						    direction: 'right',
-						    duplicated: true,
-						    pauseOnHover: true,
-						    startVisible: true
-							});
-						}
-				}
+								duration: 25000,
+								gap: 10,
+								delayBeforeStart: 0,
+								direction: 'left',
+								duplicated: true,
+								pauseOnHover: true,
+								startVisible: true
+								});
+							} else {
+								jq('.projects__marquee-box:nth-of-type(' + (i + 1) + ') .projects__marquee').marquee({
+								duration: 25000,
+								gap: 10,
+								delayBeforeStart: 0,
+								direction: 'right',
+								duplicated: true,
+								pauseOnHover: true,
+								startVisible: true
+								});
+							}
+					}
 
-				jq('.projects__marquee').addClass('scrolling');
+					jq('.projects__marquee').addClass('scrolling');
+			}
 
 			}
 		}, 2000);
