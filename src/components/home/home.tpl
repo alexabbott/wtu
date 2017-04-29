@@ -85,6 +85,12 @@
                ng-mouseenter="showBg($index)"
                ng-mouseleave="hideBg($index)">
                {{ project.acf.short_title }}
+            </a> <a href="/{{ project.slug }}"
+               class="projects__link uppercase"
+               ng-repeat="i in [1,2,3,4,5]"
+               ng-mouseenter="showBg($index)"
+               ng-mouseleave="hideBg($index)">
+               {{ project.acf.short_title }}
             </a>
 	    		</div>
 	    		<div class="projects__bg no-opacity" style="background-image: url({{ project.acf.bg_img }});">

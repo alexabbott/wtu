@@ -1,3 +1,13 @@
+@keyframes marquee {
+  0% { left: 0; }
+  100% { left: -100%; }
+}
+
+@keyframes marqueeRight {
+  0% { right: 0; }
+  100% { right: -100%; }
+}
+
 .home {
 	height: 900vh;
 
@@ -294,17 +304,138 @@
 			width: 100vw;
 			z-index: 1;
 
+			.projects__marquee-box {
+				height: 10vh;
+				overflow: hidden;
+
+				&:nth-of-type(1) {
+					.projects__marquee {
+						top: 0;
+						animation: marquee 20s linear infinite;
+
+						a {
+							float: left;
+						}
+					}
+				 }
+
+				 &:nth-of-type(2) {
+					 .projects__marquee {
+						top: 10vh;
+						 animation: marqueeRight 20s linear infinite;
+
+						a {
+							float: right;
+						}
+					 }
+				 }
+
+				 &:nth-of-type(3) {
+					 .projects__marquee {
+						top: 20vh;
+
+						animation: marquee 20s linear infinite;
+
+						a {
+							float: left;
+						}
+					 }
+				 }
+
+				 &:nth-of-type(4) {
+					 .projects__marquee {
+						top: 30vh;
+						animation: marqueeRight 20s linear infinite;
+
+						a {
+							float: right;
+						}
+					 }
+				 }
+
+				 &:nth-of-type(5) {
+					 .projects__marquee {
+						top: 40vh;
+						animation: marquee 20s linear infinite;
+
+						a {
+							float: left;
+						}
+					 }
+				 }
+
+				 &:nth-of-type(6) {
+					 .projects__marquee {
+						top: 50vh;
+						animation: marqueeRight 20s linear infinite;
+
+						a {
+							float: right;
+						}
+					 }
+				 }
+
+				 &:nth-of-type(7) {
+					 .projects__marquee {
+						top: 60vh;
+						animation: marquee 20s linear infinite;
+
+						a {
+							float: left;
+						}
+					 }
+				 }
+
+				 &:nth-of-type(8) {
+					 .projects__marquee {
+						top: 70vh;
+						animation: marqueeRight 20s linear infinite;
+
+						a {
+							float: right;
+						}
+					 }
+				 }
+
+				 &:nth-of-type(9) {
+					 .projects__marquee {
+						top: 80vh;
+						animation: marquee 20s linear infinite;
+
+						a {
+							float: left;
+						}
+					 }
+				 }
+
+				 &:nth-of-type(10) {
+					 .projects__marquee {
+						top: 90vh;
+						animation: marqueeRight 20s linear infinite;
+
+						a {
+							float: right;
+						}
+					 }
+				 }
+			}
+
 			.projects__marquee {
 				color: $color-black;
 				display: block;
 				font-family: $druk-wide;
 				font-size: 10vh;
 				overflow: hidden;
+				position: absolute;
 				text-shadow:
 			   -1px -1px 0 $color-white,
 			    1px -1px 0 $color-white,
 			    -1px 1px 0 $color-white,
 			     1px 1px 0 $color-white;
+				 height: 10vh;
+				overflow: hidden;
+				  width: 200vw;
+
 
 				a {
 					@extend %transition-long;
@@ -312,6 +443,7 @@
 					color: $color-black;
 					cursor: pointer;
 					text-decoration: none;
+					width: 100vw;
 
 					&:hover {
 						color: $color-white;
