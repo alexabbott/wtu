@@ -64,82 +64,58 @@
   }
 
   .content {
-    padding-bottom: 80px;
+    top: 100vh;
+    padding: 0 5% 80px;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row wrap;
+
+    .title {
+      padding: 1em 0 0.33em;
+      width: 100%;
+    }
 
     .section {
-      // width: 90%;
-      // max-width: 800px;
-      margin: 0 auto;
+      margin: 0 auto 40px;
+      max-width: 1200px;
 
-      > p, > h1 {
-        width: 90%;
-        max-width: 800px;
-        margin: 0 auto;
+      &.text_block {
+        max-width: 80%;
       }
 
-      &.banner {
-        width: 100%;
-        max-width: none;
-        max-height: 500px;
-        overflow: hidden;
-        position: relative;
-        background-size: cover;
-        background-position: center center;
+      &.image_block {
+        max-width: 90%;
 
         img {
           width: 100%;
         }
       }
 
-      &.socials {
-        text-align: center;
-
-        .icon {
-          margin: 0 8px;
-
-          img {
-            width: auto;
-            height: auto;
-            max-width: 25px;
-            max-height: 25px;
-          }
-        }
-      }
-
-      &.text {
-        line-height: 1.5em;
-
-        p {
-          margin: 0 auto;
-          padding: 0.5em 0;
-        }
-      }
-
-      &.gallery {
+      &.embed_block {
         width: 90%;
-        max-width: none;
-        text-align: center;
 
-        .brick {
-          width: 33.33%;
-          img {
+        .embed {
+          padding-bottom: 56.25%;
+          position: relative;
+
+          iframe {
+            position: absolute;
+            top: 0; left: 0;
             width: 100%;
-            height: auto;
-            // max-width: 400px;
+            height: 100%;
           }
         }
+
       }
 
-      &.embed {
-        iframe {
-          width: 90vw;
-          height: 50.625vw;
-          max-width: 800px;
-          max-height: 450px;
-          border: none;
-        }
+      &.half {
+        display: inline-block;
+        max-width: 45%;
+        vertical-align: top;
       }
     }
+
   }
 
   &.trans {
