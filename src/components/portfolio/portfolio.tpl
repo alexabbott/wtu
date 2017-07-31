@@ -1,5 +1,5 @@
-<div class="portfolio" ng-style="bgStyle" ng-class="{'trans': transitioning}">
-  <div class="nav relative">
+<div class="portfolio" ng-style="marqueeStyle" ng-class="{'trans': transitioning}">
+    <!--   <div class="nav relative">
     <span ng-click="current.prev ? transition(current.prev) : transition(last)" class="navi pointer">
       <svg xmlns="http://www.w3.org/2000/svg"
            width="80" height="80" viewBox="0 0 80 80">
@@ -22,40 +22,22 @@
         </text>
       </svg>
     </span>
-  </div>
+    </div> -->
 
-  <div class="content relative">
-    <div ng-repeat="b in content"
-         class="section {{b.acf_fc_layout}}"
-         ng-style="b.acfStyle">
-      <img ng-if="b.acf_fc_layout === 'banner'" ng-src="{{b.image}}" />
+    <div class="content relative" ng-style="contentStyle">
+        <h1>{{ current.title.rendered }}</h1>
 
-      <h1 ng-if="b.acf_fc_layout === 'subheader'" class="subheader">
-        {{b.text}}
-      </h1>
+        <div ng-repeat="b in content"
+             class="section {{b.acf_fc_layout}} {{b.layout}}">
 
-      <p ng-if="b.acf_fc_layout === 'text'"
-         class="text" ng-bind-html="trustBlob(b.text)"></p>
+            <span ng-if="b.acf_fc_layout === 'text_block'"
+                  ng-bind-html="trustBlob(b.text)" />
 
-      <div masonry ng-if="b.acf_fc_layout === 'gallery'"
-           item-selector=".brick"
-           reload-on-resize
-           load-images="true" preserve-order>
-        <div masonry-brick class="brick" ng-repeat="i in b.images">
-          <img ng-src="{{i.image}}" />
+            <img  ng-if="b.acf_fc_layout === 'image_block'" src="{{b.image.url}}" />
+
+            <span ng-if="b.acf_fc_layout === 'embed_block'"
+                  ng-bind-html="trustBlob(b.embed)" />
+
         </div>
-      </div>
-
-      <span ng-if="b.acf_fc_layout === 'embed'"
-            ng-bind-html="trustBlob(b.string)"
-            class="embed block text-center"></span>
-
-      <a ng-if="b.acf_fc_layout === 'socials'"
-         ng-repeat="s in b.socials"
-         href="{{s.url}}" target="_blank"
-         class="icon inline-block">
-        <img ng-src="{{s.icon}}" />
-      </a>
     </div>
-  </div>
 </div>

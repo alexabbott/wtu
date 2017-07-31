@@ -64,7 +64,9 @@
   }
 
   .content {
+    top: 100vh;
     padding-bottom: 80px;
+    position: relative;
 
     .section {
       // width: 90%;

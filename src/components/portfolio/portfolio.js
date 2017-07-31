@@ -25,8 +25,12 @@ let Portfolio = {
             $scope.current = $scope.portfolio[$routeParams.slug];
             $scope.first = keys[0];
             $scope.last = keys[keys.length - 1];
-            $scope.bgStyle = {
+            $scope.marqueeStyle = {
                 backgroundImage: `url(${$scope.current.acf.bg_img})`
+            }
+            $scope.contentStyle = {
+                backgroundColor: $scope.current.acf.background,
+                color: $scope.current.acf.text_color
             }
 
             let scrollLen = $scope.current.title.rendered.length * 1.5
@@ -35,15 +39,6 @@ let Portfolio = {
             }
 
             $scope.content = $scope.current.acf.content;
-            $scope.content.forEach(b => {
-                if (b.styles.length) {
-                    var style = {}
-                    b.styles.forEach(s => {
-                        style[s.property] = s.value
-                    })
-                    b.acfStyle = style
-                }
-            })
             console.log($scope.current)
         }
 
