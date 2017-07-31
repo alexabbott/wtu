@@ -21,17 +21,17 @@
     }
   }
 
-
-  &:before {
-    content: '';
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background: black;
-    z-index: 0;
-    opacity: 0;
-    transition: opacity 0.33s ease;
-  }
+  // // not sure if ax'd or not...
+  // &:before {
+  //   content: '';
+  //   position: fixed;
+  //   width: 100vw;
+  //   height: 100vh;
+  //   background: black;
+  //   z-index: 0;
+  //   opacity: 0;
+  //   transition: opacity 0.33s ease;
+  // }
 
   .nav {
     text-transform: uppercase;
@@ -146,5 +146,22 @@
   }
   to {
     transform: translateX(-110%);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .portfolio {
+    .content {
+      p {
+        font-size: 0.9em;
+      }
+      .section {
+        &.half {
+          display: block;
+          width: 100%;
+          max-width: none;
+        }
+      }
+    }
   }
 }
