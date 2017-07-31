@@ -39,7 +39,12 @@
 
     <main ng-style="contentStyle" ng-style="contentStyle">
         <div class="content relative">
-            <h1 class="title">{{ current.title.rendered }}</h1>
+            <header>
+                <h1 class="title">{{ current.title.rendered }}</h1>
+                <h2 class="cats">
+                    <span class="cat" ng-repeat="c in current.cats">{{c.name}}</span>
+                </h2>
+            </header>
 
             <div ng-repeat="b in content"
                  class="section {{b.acf_fc_layout}} {{b.layout}}">

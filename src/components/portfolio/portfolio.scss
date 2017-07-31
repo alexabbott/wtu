@@ -71,6 +71,23 @@
     flex-flow: row wrap;
     justify-content: space-between;
 
+    header {
+      width: 100%;
+      .cats {
+        .cat {
+          &:after {
+            content: '-';
+            margin: 0 0.5em;
+          }
+          &:last-of-type {
+            &:after {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
     p {
       margin: 0;
       line-height: 1.5em;

@@ -40,12 +40,37 @@ let Portfolio = {
 
             $scope.content = $scope.current.acf.content;
             console.log($scope.current)
+
+            if (!$scope.current.cats) {
+                $scope.current.cats = $scope.categories ?
+                                      mapCatsFromIdx(
+                                          $scope.current.categories,
+                                          $scope.categories
+                                      ) :
+                                      []
+            }
         }
 
         const bindCats = (data) => {
             $scope.categories = data
-            console.log("scope cats", $scope.categories)
-            return
+            return(
+                $scope.current ?
+                $scope.current.cats = mapCatsFromIdx(
+                    $scope.current.categories,
+                    $scope.categories
+                ) :
+                null
+            )
+        }
+
+        const mapCatsFromIdx = (idxArr, categories) => {
+            let cats = idxArr.map((i) => {
+                return categories.find((cat) => {
+                    return i === cat.id
+                })
+            })
+
+            return cats
         }
 
         if (!WordpressData.categories) {
