@@ -1,19 +1,15 @@
 nav {
 	@extend %transition-long;
 	color: $color-white;
-	height: 100vh;
-	left: 2%;
-	position: fixed;
-	top: 0;
 	transition-property: opacity;
-	width: 40px;
-	z-index: 99;
 
 	.nav__main {
 		box-sizing: border-box;
-		height: 100vh;
-		padding: 40px 0;
-		position: relative;
+		left: 0;
+		padding: 40px;
+		position: fixed;
+		width: 100vw;
+		z-index: 99;
 
 		.nav__logo {
 			@extend %transition-long;
@@ -25,32 +21,31 @@ nav {
 
 		.nav__items {
 			position: absolute;
-			top: 50%;
-			transform: translate(-15px, -50%);
+			right: 5%;
+			top: 40px;
 
 			.nav__item {
 				@extend %transition-long;
-				display: block;
+				display: inline-block;
 				color: $color-white;
 				cursor: pointer;
-				font-family: $druk-condensed;
-				font-size: 1.2em;
-				font-style: italic;
-				letter-spacing: 0.2em;
-				margin: 90px 0;
+				font-family: $druk-wide;
+				font-size: .7em;
+				letter-spacing: 0.1em;
+				margin-left: 30px;
 				text-decoration: none;
-				transform: rotate(90deg);
 				transition-property: color;
 			}
 		}
 
-		.nav__white-rabbit__image {
-			bottom: 50px;
-			cursor: pointer;
-			left: 2%;
-			position: absolute;
-			width: 30px;
-		}
+	}
+
+	.nav__white-rabbit__image {
+		bottom: 50px;
+		cursor: pointer;
+		left: 2%;
+		position: fixed;
+		width: 30px;
 	}
 
 	.nav__logo-alt {
