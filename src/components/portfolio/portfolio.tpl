@@ -25,7 +25,7 @@
     </div> -->
 
     <div class="content relative" ng-style="contentStyle">
-        <h1>{{ current.title.rendered }}</h1>
+        <h1 class="title">{{ current.title.rendered }}</h1>
 
         <div ng-repeat="b in content"
              class="section {{b.acf_fc_layout}} {{b.layout}}">
@@ -35,8 +35,9 @@
 
             <img  ng-if="b.acf_fc_layout === 'image_block'" src="{{b.image.url}}" />
 
-            <span ng-if="b.acf_fc_layout === 'embed_block'"
-                  ng-bind-html="trustBlob(b.embed)" />
+            <div ng-if="b.acf_fc_layout === 'embed_block'"
+                 class="embed"
+                 ng-bind-html="trustBlob(b.embed)" />
 
         </div>
     </div>
