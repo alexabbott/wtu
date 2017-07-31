@@ -47,11 +47,26 @@ let Portfolio = {
             console.log($scope.current)
         }
 
-        if (!WordpressData.portfolio) {
-            WordpressData.fetchPortfolio(bindPortfolio);
+        const bindCats = (data) => {
+            $scope.categories = data
+            console.log("scope cats", $scope.categories)
+            return
         }
-        else {
-            bindPortfolio(WordpressData.portfolio);
+
+        if (!WordpressData.categories) {
+            WordpressData.fetchCats().then(() => {
+                return bindCats(WordpressData.categories)
+            })
+        } else {
+            bindCats(WordpressData.categories)
+        }
+
+        if (!WordpressData.portfolio) {
+            WordpressData.fetchPortfolio().then(() => {
+                return bindPortfolio(WordpressData.portfolio)
+            })
+        } else {
+            bindPortfolio(WordpressData.portfolio)
         }
 
     }]
