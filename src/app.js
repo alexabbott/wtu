@@ -1,5 +1,7 @@
 import Sidenav from './components/sidenav/sidenav';
 import Home from './components/home/home';
+import About from './components/about/about';
+import Contact from './components/contact/contact';
 import Portfolio from './components/portfolio/portfolio';
 import smoothScroll from './jspm_packages/github/d-oliveros/ngSmoothScroll@2.0.0';
 import './jspm_packages/npm/angular-masonry@0.17.0';
@@ -10,6 +12,14 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll',
 	$routeProvider
 	    .when('/', {
 	        templateUrl: '/components/pages/home.tpl',
+	        reloadOnSearch: false
+		})
+		.when('/about', {
+	        templateUrl: '/components/pages/about.tpl',
+	        reloadOnSearch: false
+		})
+		.when('/contact', {
+	        templateUrl: '/components/pages/contact.tpl',
 	        reloadOnSearch: false
 	    })
 	    .when('/:slug', {
@@ -58,4 +68,6 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll',
 
 .component('sidenav', Sidenav)
 .component('home', Home)
+.component('about', About)
+.component('contact', Contact)
 .component('portfolio', Portfolio);

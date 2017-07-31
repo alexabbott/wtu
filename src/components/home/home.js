@@ -26,20 +26,9 @@ let Home = {
         const introLogo = angular.element(document.querySelector('.intro__big-logo'));
         const introImage = angular.element(document.querySelector('.intro__image'));
         const introGradient = angular.element(document.querySelector('.intro__gradient'));
-        const aboutIntro = angular.element(document.querySelector('.about-intro'));
-        const aboutIntroImage = angular.element(document.querySelector('.about-intro__image-container'));
-        const aboutIntroText = angular.element(document.querySelector('.about-intro__text'));
         const about = angular.element(document.querySelector('.about'));
         const projects = angular.element(document.querySelector('.projects'));
         const projectsContainer = angular.element(document.querySelector('.projects__container'));
-        const contact = angular.element(document.querySelector('.contact'));
-        const contact1 = angular.element(document.querySelector('.contact__text-1'));
-        const contact2 = angular.element(document.querySelector('.contact__text-2'));
-        const contact3 = angular.element(document.querySelector('.contact__text-3'));
-        const contact4 = angular.element(document.querySelector('.contact__text-4'));
-        const contact5 = angular.element(document.querySelector('.contact__text-5'));
-        const contactEmail = angular.element(document.querySelector('.contact__email'));
-        const contactSignup = angular.element(document.querySelector('.sign-up-cta'));
 
         let changeIntroTextSize = (scrollPos) => {
 		    if (scrollPos < 400) {
@@ -120,30 +109,6 @@ let Home = {
 		    }
 		};
 
-		let changeAboutIntroPosition = (scrollPos) => {
-		    if (scrollPos <= 1499) {
-				aboutIntroImage.css({'transform': 'translate3d(8vw,' + window_.innerHeight + ', 0)', '-webkit-transform': 'translate3d(8vw,' + window_.innerHeight + ',0)'});
-				aboutIntroText.css({'transform': 'translate3d(60vw,' + window_.innerHeight + ', 0)', '-webkit-transform': 'translate3d(60vw,' + window_.innerHeight + ',0)'});
-				aboutIntro.addClass('no-opacity');
-			}
-		    if (scrollPos > 1498 && scrollPos < 2200) {
-				let aboutPos1 = window_.innerHeight - ((scrollPos * 1.2) - (1499*1.2));
-				aboutIntroText.css({'transform': 'translate3d(60vw,' + aboutPos1 + 'px,0)', '-webkit-transform': 'translate3d(60vw,' + aboutPos1 + ',0)'});
-				aboutIntro.removeClass('no-opacity');
-			}
-		    if (scrollPos > 1998 && scrollPos < 4600) {
-				let aboutPos2 = window_.innerHeight - ((scrollPos*0.8) - (1999*0.8));
-				aboutIntroImage.css({'transform': 'translate3d(8vw,' + aboutPos2 + 'px,0)', '-webkit-transform': 'translate3d(0,' + aboutPos2 + ',0)'});
-				aboutIntro.removeClass('no-opacity');
-			}
-		    if (scrollPos > 3000) {
-				let aboutPos1 = window_.innerHeight - ((scrollPos * 1.2) - (2299*1.2));
-				aboutIntroText.css({'transform': 'translate3d(60vw,' + aboutPos1 + 'px,0)', '-webkit-transform': 'translate3d(60vw,' + aboutPos1 + ',0)'});
-				aboutIntro.removeClass('no-opacity');
-			}
-		};
-
-
 		let changeAboutOpacity = (scrollPos) => {
 			if (scrollPos > 3400 && scrollPos < 4200) {
 				about.removeClass('no-opacity');
@@ -188,26 +153,6 @@ let Home = {
 			angular.element(document.querySelectorAll('.projects__bg')[index]).removeClass('low-opacity');
 		};
 
-		let changeContactOpacity = (scrollPos) => {
-			if (scrollPos > 5550) {
-				contact.removeClass('no-opacity');
-				contact1.addClass('fade-in one');
-				contact2.addClass('fade-in two');
-				contact3.addClass('fade-in three');
-				contact4.addClass('fade-in four');
-				contact5.addClass('fade-in five');
-				contactEmail.addClass('fade-in six');
-			} else {
-				contact.addClass('no-opacity');
-				contact1.removeClass('fade-in one');
-				contact2.removeClass('fade-in two');
-				contact3.removeClass('fade-in three');
-				contact4.removeClass('fade-in four');
-				contact5.removeClass('fade-in five');
-				contactEmail.removeClass('fade-in six');
-			}
-		};
-
 		let loop = () => {
 		    let scrollTop = window_.scrollY;
 		    if (lastScrollTop === scrollTop) {
@@ -225,17 +170,11 @@ let Home = {
 			        changeIntroImagePosition(scrollTop);
 			        changeIntroGradientPosition(scrollTop);
 		    	}
-		    	if (scrollTop > 700 && scrollTop < 5000) {
-			        changeAboutIntroPosition(scrollTop);
-		    	}
 		    	if (scrollTop > 3000 && scrollTop < 7000) {
 		    		changeAboutOpacity(scrollTop);
 		    	}
 		    	if (scrollTop > 3500 && scrollTop < 8000) {
 			        changeProjectsPosition(scrollTop);
-		    	}
-		    	if (scrollTop > 5000) {
-		    		changeContactOpacity(scrollTop);
 		    	}
 		        raf(loop);
 		    }
@@ -248,10 +187,8 @@ let Home = {
 				changeIntroLogoPosition(window_.scrollY);
 				changeIntroImagePosition(window_.scrollY);
 				changeIntroGradientPosition(window_.scrollY);
-				changeAboutIntroPosition(window_.scrollY);
 				changeAboutOpacity(window_.scrollY);
 				changeProjectsPosition(window_.scrollY);
-				changeContactOpacity(window_.scrollY);
 			}, 4000)
 		};
 
@@ -271,25 +208,6 @@ let Home = {
 
 		$timeout(() => {
 			if (document.querySelectorAll('.about__text-main em')) {
-				let rolloverWords = document.querySelectorAll('.about__text-main em');
-				rolloverWords[0].addEventListener('mouseover', () => {
-					angular.element(document.querySelector('.about__gif-1')).removeClass('hidden');
-				});
-
-				rolloverWords[0].addEventListener('mouseout', () => {
-					angular.element(document.querySelector('.about__gif-1')).addClass('hidden');
-				});
-				rolloverWords[1].addEventListener('mouseover', () => {
-					angular.element(document.querySelector('.about__gif-2')).removeClass('hidden');
-					angular.element(document.querySelector('.about__gif-3')).removeClass('hidden');
-					angular.element(document.querySelector('.about__gif-4')).removeClass('hidden');
-				});
-
-				rolloverWords[1].addEventListener('mouseout', () => {
-					angular.element(document.querySelector('.about__gif-2')).addClass('hidden');
-					angular.element(document.querySelector('.about__gif-3')).addClass('hidden');
-					angular.element(document.querySelector('.about__gif-4')).addClass('hidden');
-				});
 
 				let jq = $.noConflict();
 
