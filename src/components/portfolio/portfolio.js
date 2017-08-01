@@ -33,9 +33,10 @@ let Portfolio = {
                 color: $scope.current.acf.text_color
             }
 
-            let scrollLen = $scope.current.title.rendered.length * 1.5
-            $scope.titleAnim = {
-                animation: `slide-slug ${scrollLen}s -${scrollLen*1.2}s infinite linear`
+            let titleLen = $scope.current.title.rendered.length
+            $scope.titleStyle = {
+                left: titleLen * 27,
+                fontSize: `${Math.min(titleLen * 3.75, 15)}vw`,
             }
 
             $scope.content = $scope.current.acf.content;
