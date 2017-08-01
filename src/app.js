@@ -35,14 +35,14 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll',
 
   const WPFactory = {
 	  	listNav: (callback) => {
-	      	$http.get('//alex-abbott.com/wtu/wp-json/wp/v2/nav').then(callback);
+	      	$http.get('//wethem.us/cms/wp-json/wp/v2/nav').then(callback);
 	    },
 	    listHome: (callback) => {
-	     		$http.get('//alex-abbott.com/wtu/wp-json/wp/v2/home').then(callback);
+	     		$http.get('//wethem.us/cms/wp-json/wp/v2/home').then(callback);
 	    },
 	    fetchPortfolio: (callback) => {
 	  			console.log('getting polio...');
-					$http.get('//alex-abbott.com/wtu/wp-json/wp/v2/portfolio')
+					$http.get('//wethem.us/cms/wp-json/wp/v2/portfolio')
 					.then((data) => {
 							WPFactory.portfolio = {};
 							data.data.forEach((c,i,a) => {
