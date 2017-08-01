@@ -22,16 +22,16 @@
   }
 
   // // not sure if ax'd or not...
-  // &:before {
-  //   content: '';
-  //   position: fixed;
-  //   width: 100vw;
-  //   height: 100vh;
-  //   background: black;
-  //   z-index: 0;
-  //   opacity: 0;
-  //   transition: opacity 0.33s ease;
-  // }
+  &:before {
+    content: '';
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.33s ease;
+  }
 
   .nav {
     text-transform: uppercase;
