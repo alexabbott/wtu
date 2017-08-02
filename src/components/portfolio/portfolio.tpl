@@ -1,4 +1,8 @@
-<div class="portfolio" ng-style="contentStyle" ng-class="{'trans': transitioning}">
+<div class="portfolio" ng-style="contentStyle"
+     ng-class="{
+        'trans': transitioning,
+        'initTrans': initTransition
+     }">
     <div class="marquee" ng-style="marqueeStyle">
         <svg class="title"
              xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +23,9 @@
             <header>
                 <h1 class="title">{{ current.title.rendered }}</h1>
                 <h2 class="cats">
-                    <span class="cat" ng-repeat="c in current.cats">{{c.name}}</span>
+                    <span class="cat" ng-repeat="c in current.cats track by $index">
+                    {{c.name}}
+                    </span>
                 </h2>
             </header>
 

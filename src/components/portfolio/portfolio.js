@@ -3,20 +3,41 @@ let Portfolio = {
     controller: ['$scope', 'WordpressData', '$routeParams', '$sce', '$location', '$timeout', ($scope, WordpressData, $routeParams, $sce, $location, $timeout) => {
 
         $scope.transitioning = true;
-        $timeout(() => {
-            $scope.transitioning = false;
-        }, 666)
 
         $scope.trustBlob = (blob) => {
             blob = blob.replace(/<script>.*(<\/?script>?)?/, '')
             return $sce.trustAsHtml(blob)
         }
         $scope.transition = (to) => {
-            $scope.transitioning = true;
+            $scope.initTransition = true
             $timeout(() => {
-                $location.path(to);
-                $scope.transitioning = false;
-            }, 666);
+                $scope.transitioning = true
+                $scope.initTransition = false
+                $location.path(to)
+            }, 333)
+        }
+
+        const loadMarquee = (url) => {
+            return new Promise((resolve, reject) => {
+                let img = document.createElement('img')
+                img.addEventListener('load', () => {
+                    resolve(url)
+                })
+                img.addEventListener('error', (e) => {
+                    reject(e)
+                })
+                img.src = url
+            })
+        }
+
+        const renderCurrent = () => {
+            return loadMarquee($scope.current.acf.bg_img).then((url) => {
+                $scope.transitioning = false
+                $scope.$apply()
+                return
+            }).catch((err) => {
+                return console.error('RENDERING ERROR:', err)
+            })
         }
 
         const bindPortfolio = (data) => {
@@ -40,7 +61,6 @@ let Portfolio = {
             }
 
             $scope.content = $scope.current.acf.content;
-            console.log($scope.current)
 
             if (!$scope.current.cats) {
                 $scope.current.cats = $scope.categories ?
@@ -50,6 +70,8 @@ let Portfolio = {
                                       ) :
                                       []
             }
+
+            return renderCurrent()
         }
 
         const bindCats = (data) => {

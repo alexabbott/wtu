@@ -1,5 +1,8 @@
 .portfolio {
-  position: relative;
+   position: relative;
+   background: black;
+   padding-top: 100vh;
+   box-sizing: border-box;
 
   .marquee {
     background-size: cover;
@@ -24,11 +27,12 @@
   // // not sure if ax'd or not...
   &:before {
     content: '';
-    position: fixed;
+    position: absolute;
+    top: 0;
     width: 100vw;
     height: 100vh;
     background: black;
-    z-index: 0;
+    z-index: 10;
     opacity: 0;
     transition: opacity 0.33s ease;
   }
@@ -39,7 +43,7 @@
     padding: 0 1em 1em;
     position: relative;
     white-space: nowrap;
-    z-index: 2;
+    z-index: 0;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
@@ -57,7 +61,7 @@
 
   main {
     position: relative;
-    top: 100vh;
+    // top: 100vh;
     padding: 0 5% 80px;
     box-sizing: border-box;
   }
@@ -143,16 +147,23 @@
   }
 
   &.trans {
+
+    height: 100vh;
+    overflow: hidden;
+
+    .marquee {
+      display: none;
+    }
+
     &:before {
-      z-index: 1;
       opacity: 1;
     }
-    .nav {
-      .navi {
-        &.slug {
-          opacity: 0
-        }
-      }
+  }
+
+  &.initTrans {
+    &:before {
+      position: fixed;
+      opacity: 1;
     }
   }
 }
