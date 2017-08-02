@@ -43,6 +43,7 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll',
 	    },
 	    fetchCats: () => {
     		return $http.get('//wethem.us/cms/wp-json/wp/v2/categories').then((data) => {
+				console.log('thecategories', data.data);
     			return WPFactory.categories = data.data
     		})
 	    },

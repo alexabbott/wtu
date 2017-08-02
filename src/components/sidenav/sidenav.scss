@@ -1,7 +1,6 @@
 nav {
-	@extend %transition-long;
 	color: $color-white;
-	transition-property: opacity;
+	transition: opacity 1s ease-in;
 
 	.nav__main {
 		box-sizing: border-box;
@@ -40,31 +39,25 @@ nav {
 
 	}
 
+	.nav__socials {
+		bottom: 40px;
+		cursor: pointer;
+		position: fixed;
+		right: -2%;
+		width: 200px;
+
+		a {
+			color: $color-white;
+			margin-left: 10px;
+			text-decoration: none;
+		}
+	}
+
 	.nav__white-rabbit__image {
 		bottom: 50px;
 		cursor: pointer;
 		left: 2%;
 		position: fixed;
 		width: 30px;
-	}
-
-	.nav__logo-alt {
-		opacity: 0;
-	}
-
-	&.color-alt {
-		.nav__main .nav__items .nav__item  {
-			color: $color-black;
-		}
-	}
-
-	&.logo-alt {
-		.nav__logo-main {
-			opacity: 0;
-		}
-
-		.nav__logo-alt {
-			opacity: 1;
-		}
 	}
 }

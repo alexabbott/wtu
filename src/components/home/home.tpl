@@ -10,25 +10,24 @@
 
     <section id="intro" class="intro">
     	<div class="intro__container">
-	    	<img ng-src="{{ data.intro_big_logo.url }}" class="intro__big-logo no-opacity low-position" alt="WeThem.Us">
 	    	<div class="intro__text" ng-bind-html="data.intro_text"></div>
 	    	<div class="intro__scroll-down no-opacity" scroll-to="about-indicator">
 	    		{{ data.intro_scroll_down_text }}
-	    		<img ng-src="{{ data.intro_scroll_down_arrow.url }}" class="intro__scroll-down-arrow" alt="{{ data.intro_scroll_down_text }}">
 	    	</div>
 	    </div>
     </section>
 
-    <img ng-src="{{ data.pink_blotch.url }}" class="pink-blotch">
+    <div class="blotch"></div>
 
     <div id="about-indicator"></div>
 
     <section id="about" class="about no-opacity">
-    	<div class="about__container">
-	    	<div class="about__text">
-			    <div ng-bind-html="data.about_paragraph" class="about__text-main"></div>
-			    <div class="about__bottom-headline fade-in-out">{{ data.about_bottom_headline }}</div>
-			</div>
+		<div class="about-container">
+			<span ng-repeat="category in data.categories">
+				<a ng-href="{{ category.link }}" class="about__text" >
+					{{ category.name }}
+				</a><br>
+			</span>
 		</div>
     </section>
 
@@ -36,7 +35,7 @@
 
     <section id="projects" class="projects">
     	<div class="projects__container no-opacity">
-    		<div ng-repeat="project in portfolio" class="projects__marquee-box">
+    		<div ng-repeat="project in data.portfolio" class="projects__marquee-box">
 	    		<div class="projects__marquee">
 	    			<a href="/{{ project.slug }}"
                class="projects__link uppercase"

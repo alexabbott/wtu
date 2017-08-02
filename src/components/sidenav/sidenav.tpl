@@ -18,5 +18,19 @@
 		<div class="nav__white-rabbit" ng-click="showWhiteRabbit()">
 			<img ng-src="{{ data.white_rabbit_image.url }}" class="nav__white-rabbit__image" alt="white rabbit">
 		</div>
+		<div class="nav__socials">
+			<a href="">
+				<i class="fa fa-facebook" aria-hidden="true"></i>
+			</a>
+			<a href="">
+				<i class="fa fa-twitter" aria-hidden="true"></i>
+			</a>
+			<a href="">
+				<i class="fa fa-instagram" aria-hidden="true"></i>
+			</a>
+			<a href="">
+				<i class="fa fa-snapchat-ghost" aria-hidden="true"></i>
+			</a>
+		</div>
 	</div>
 </nav>

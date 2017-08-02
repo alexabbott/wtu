@@ -96,9 +96,49 @@ $druk-wide: 'druk-wide', 'Futura', Arial, sans-serif;
   }
 }
 
+@-webkit-keyframes fadeInRight {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeInRight {
+  from {
+    opacity: 0;
+    margin-right: -100px;
+  }
+
+  to {
+    opacity: 1;
+    margin-right: 0;
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in-right {
+    opacity: 0;
+    animation: fadeInRight ease-in 1;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+}
+
 .fade-in {
     opacity: 0;
     animation: fadeIn ease-in 1;
+    -webkit-animation: fadeIn ease-in 1;
     animation-fill-mode: forwards;
     animation-duration: 1s;
 }

@@ -2,28 +2,28 @@ let Home = {
     templateUrl: '/components/home/home.tpl',
     controller: ['WordpressData', '$scope', '$window', '$timeout', (WordpressData, $scope, $window, $timeout) => {
 
+		if (!$scope.data) {
+			$scope.data = {};
+		}
+
         WordpressData.listHome((response) => {
             $scope.data = response.data[0].acf;
-            console.log('home data', $scope.data);
-        });
+			WordpressData.fetchCats().then(() => {
+				console.log('dat', $scope.data);
+                $scope.data.categories = WordpressData.categories;
+            })
+		});
 
-        const bindPortfolio = (data) => {
-	        $scope.portfolio = data;
-	        console.log('folio', $scope.portfolio);
-	    }
-	    if (!WordpressData.portfolio) {
-	        WordpressData.fetchPortfolio(bindPortfolio);
-	    }
-	    else {
-	        bindPortfolio(WordpressData.portfolio);
-	    }
+		WordpressData.fetchPortfolio().then(() => {
+			$scope.data.portfolio = WordpressData.portfolio;
+		})
 
 		let window_ = $window;
 
         const intro = angular.element(document.querySelector('.intro'));
         const introText = angular.element(document.querySelector('.intro__text'));
+        const introBg = angular.element(document.querySelector('.intro__bg'));
         const introScrollDown = angular.element(document.querySelector('.intro__scroll-down'));
-        const introLogo = angular.element(document.querySelector('.intro__big-logo'));
         const introImage = angular.element(document.querySelector('.intro__image'));
         const introGradient = angular.element(document.querySelector('.intro__gradient'));
         const about = angular.element(document.querySelector('.about'));
@@ -32,7 +32,7 @@ let Home = {
 
         let changeIntroTextSize = (scrollPos) => {
 		    if (scrollPos < 400) {
-	            introText.css({'transform': 'translate(-50%, -50%) scale(' + (5 - (scrollY / 50)) + ')', '-webkit-transform': 'translate(-50%, -50%) scale(' + (5 - (scrollY / 100)) + ')', });
+	            introText.css({'transform': 'translate3d(-50%, -50%, 0) scale(' + (30 - (scrollY / 30)) + ')', '-webkit-transform': 'translate3d(-50%, -50%, 0) scale(' + (30 - (scrollY / 30)) + ')', });
 	            intro.removeClass('no-opacity');
             } else if (scrollPos > 1200) {
             	intro.addClass('no-opacity');
@@ -49,16 +49,11 @@ let Home = {
             }
 		};
 
-		let changeIntroLogoPosition = (scrollPos) => {
-		    if (scrollPos > 400 && scrollPos < 1200) {
-	            introLogo.addClass('mid-position');
-	            introLogo.removeClass('high-position low-position no-opacity');
-            } else if (scrollPos > 1200) {
-	            introLogo.addClass('high-position');
-	            introLogo.removeClass('mid-position low-position no-opacity');
-            } else if (scrollPos < 400) {
-	            introLogo.addClass('no-opacity low-position');
-	            introLogo.removeClass('high-position mid-position');
+		let changeIntroImageOpacity = (scrollPos) => {
+			if (scrollPos > 3000) {
+	            introBg.addClass('no-opacity');
+            } else {
+            	introBg.removeClass('no-opacity');
             }
 		};
 
@@ -69,7 +64,7 @@ let Home = {
 				introImage.css({'transform': 'scale(1) translate3d(0px,0px,0px)', '-webkit-transform': 'scale(1) translate3d(0px,0px,0px)'});
 		    }
 		    if (scrollPos > 1200 && scrollPos < 1400) {
-				imageWidth = ((100 - ((scrollPos - 1201)/5))*.01);
+				imageWidth = ((100 - ((scrollPos - 1201)/15))*.01);
 				imagePosition = (1200*1.45) - (scrollPos*1.45);
 				introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)'});
 		    }
@@ -93,7 +88,7 @@ let Home = {
 		    	introGradient.css({'transform': 'scale(1) translate3d(0px,0px,0px)', '-webkit-transform': 'scale(1) translate3d(0px,0px,0px)'});
 		    }
 		    if (scrollPos > 1200 && scrollPos < 1400) {
-				gradientWidth = ((100 - ((scrollPos - 1201)/16))*.01);
+				gradientWidth = ((100 - ((scrollPos - 1201)/20))*.01);
 				introGradient.css({'transform': 'scale(' + gradientWidth + ')', '-webkit-transform': 'scale(' + gradientWidth + ')'});
 		    }
 		    if (scrollPos > 1399 && scrollPos < 1901) {
@@ -110,32 +105,22 @@ let Home = {
 		};
 
 		let changeAboutOpacity = (scrollPos) => {
-			if (scrollPos > 3400 && scrollPos < 4200) {
+			if (scrollPos > 1600 && scrollPos < 3200) {
 				about.removeClass('no-opacity');
 			} else {
+				console.log('remove', scrollPos);
 				about.addClass('no-opacity');
 			}
 		};
 
 		let changeProjectsPosition = (scrollPos) => {
-		    if (scrollPos < 4000) {
-		    	projects.css({'transform': 'translate3d(0,' + window_.innerHeight + ', 0)', '-webkit-transform': 'translate3d(0,' + window_.innerHeight + ',0)'});
+		    if (scrollPos < 3200) {
 		    	projects.addClass('no-opacity');
 		    	projectsContainer.addClass('no-opacity');
 		    }
-		    if (scrollPos > 3999 && scrollPos < (3999 + window_.innerHeight)) {
-		    	let aboutPos1 = window_.innerHeight - (scrollPos - 3999);
-				projects.css({'transform': 'translate3d(0,' + aboutPos1 + 'px,0)', '-webkit-transform': 'translate3d(0,' + aboutPos1 + ',0)'});
-		    	projects.removeClass('no-opacity');
-		    	projectsContainer.addClass('no-opacity');
-		    }
-		    if (scrollPos > (3999 + window_.innerHeight)) {
+		    if (scrollPos > 3199) {
 		    	projects.removeClass('no-opacity');
 		    	projectsContainer.removeClass('no-opacity');
-		    }
-		    if (scrollPos > 5600) {
-		    	projects.addClass('no-opacity');
-		    	projectsContainer.addClass('no-opacity');
 		    }
 		};
 
@@ -164,16 +149,16 @@ let Home = {
 		        if (scrollTop < 1300) {
 			        changeIntroTextSize(scrollTop);
 			        changeScrollOpacity(scrollTop);
-			        changeIntroLogoPosition(scrollTop);
 		        }
 		        if (scrollTop < 3500) {
 			        changeIntroImagePosition(scrollTop);
-			        changeIntroGradientPosition(scrollTop);
+					changeIntroGradientPosition(scrollTop);
+					changeIntroImageOpacity(scrollTop);
 		    	}
-		    	if (scrollTop > 3000 && scrollTop < 7000) {
+		    	if (scrollTop > 1400 && scrollTop < 4000) {
 		    		changeAboutOpacity(scrollTop);
 		    	}
-		    	if (scrollTop > 3500 && scrollTop < 8000) {
+		    	if (scrollTop > 2500 && scrollTop < 6000) {
 			        changeProjectsPosition(scrollTop);
 		    	}
 		        raf(loop);
@@ -184,7 +169,7 @@ let Home = {
 			setTimeout(() => {
 				changeIntroTextSize(window_.scrollY);
 				changeScrollOpacity(window_.scrollY);
-				changeIntroLogoPosition(window_.scrollY);
+				changeIntroImageOpacity(window_.scrollY);
 				changeIntroImagePosition(window_.scrollY);
 				changeIntroGradientPosition(window_.scrollY);
 				changeAboutOpacity(window_.scrollY);
