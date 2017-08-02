@@ -51,7 +51,7 @@
     z-index: 0;
     box-sizing: border-box;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 
     a {
       text-decoration: none;
@@ -157,7 +157,6 @@
         display: inline-block;
         max-width: 45%;
         vertical-align: top;
-        margin: 0 0 60px;
       }
     }
 
