@@ -19,16 +19,16 @@
 			<img ng-src="{{ data.white_rabbit_image.url }}" class="nav__white-rabbit__image" alt="white rabbit">
 		</div>
 		<div class="nav__socials">
-			<a href="">
+			<a target="_blank" ng-href="{{ data.facebook_link }}">
 				<i class="fa fa-facebook" aria-hidden="true"></i>
 			</a>
-			<a href="">
+			<a target="_blank" ng-href="{{ data.twitter_link }}">
 				<i class="fa fa-twitter" aria-hidden="true"></i>
 			</a>
-			<a href="">
+			<a target="_blank" ng-href="{{ data.instagram_link }}">
 				<i class="fa fa-instagram" aria-hidden="true"></i>
 			</a>
-			<a href="">
+			<a target="_blank" ng-href="{{ data.snapchat_link }}">
 				<i class="fa fa-snapchat-ghost" aria-hidden="true"></i>
 			</a>
 		</div>
