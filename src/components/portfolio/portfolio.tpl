@@ -9,7 +9,6 @@
              width="100%" viewBox="0 0 80 80">
           <text x="40" y="65"
                 text-anchor="middle"
-                font-family="druk-wide"
                 fill="rgba(255,255,255,0)"
                 stroke="{{contentStyle.color || '#fff'}}"
                 font-size="80">
@@ -58,5 +57,12 @@
                 NEXT
             </span>
         </div>
+
+        <div class="wtu-social">
+            <a ng-repeat="s in socials" href="{{s.link}}">
+                <img src="{{s.icon.url}}" />
+            </a>
+        </div>
     </main>
+
 </div>

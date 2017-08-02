@@ -71,6 +71,8 @@ let Portfolio = {
                                       []
             }
 
+            console.log($scope.current)
+
             return renderCurrent()
         }
 
@@ -91,9 +93,16 @@ let Portfolio = {
                 return categories.find((cat) => {
                     return i === cat.id
                 })
+            }).filter((it) => {
+                // TEMP: some cats not returning from WP REST API
+                if (it) return it
             })
 
             return cats
+        }
+
+        const bindSocials = (array) => {
+            $scope.socials = array || []
         }
 
         if (!WordpressData.categories) {
@@ -110,6 +119,14 @@ let Portfolio = {
             })
         } else {
             bindPortfolio(WordpressData.portfolio)
+        }
+
+        if (!WordpressData.socials) {
+            WordpressData.fetchSocials().then(() => {
+                return bindSocials(WordpressData.socials)
+            })
+        } else {
+            bindSocials(WordpressData.socials)
         }
 
     }]

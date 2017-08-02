@@ -58,6 +58,11 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll',
 				})
 				return WPFactory.portfolio
 			})
+	  	},
+	  	fetchSocials: () => {
+	  		return $http.get('//wethem.us/cms/wp-json/wp/v2/social_bar/381').then((res) => {
+	  			return WPFactory.socials = res.data.acf.links
+	  		})
 	  	}
   }
 
