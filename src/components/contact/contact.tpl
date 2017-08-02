@@ -1,5 +1,5 @@
 <div class="contact">
-    <section id="contact" class="contact no-opacity">
+    <section id="contact" class="contact">
   		<div class="contact__container">
 	    	<div class="contact__text-container">
 			    <h2 class="contact__text contact__text-1">{{ data.contact_text_1 }}</h2>
@@ -16,7 +16,7 @@
 		<!-- Begin MailChimp Signup Form -->
 		<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
 		<style type="text/css">
-			#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+			#mc_embed_signup{clear:left; font:14px Helvetica,Arial,sans-serif; }
 			/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
 			We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
 		</style>

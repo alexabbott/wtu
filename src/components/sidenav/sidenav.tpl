@@ -5,9 +5,9 @@
 			<img ng-src="{{ data.nav_logo_alt.url }}" class="nav__logo nav__logo-alt">
 		</a>
 		<div class="nav__items">
-			<div scroll-to="work-indicator" duration="2000" class="nav__item" ng-click="hideWhiteRabbit()">
+			<a href="/#projects-indicator" class="nav__item">
 				{{ data.nav_item_1 }}
-			</div>
+			</a>
 			<a href="/about" class="nav__item">
 				{{ data.nav_item_2 }}
 			</a>
