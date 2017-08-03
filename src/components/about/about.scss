@@ -2,5 +2,58 @@
 	background: black;
 	display: block;
 	height: 100vh;
+	overflow: hidden;
 	width: 100vw;
+
+	.about__main {
+		left: 50%;
+		height: 100vh;
+		overflow: hidden;
+		position: relative;
+		text-align: center;
+		transform: translateX(-50%);
+		width: 70%;
+
+		.about__container {
+			top: 100%;
+			color: $color-white;
+			height: 100%;
+			position: absolute;
+			width: 100%;
+			transition: opacity 1s ease-out;
+			animation: marqueeTop 120s linear infinite;
+
+			.about__text {
+				h2 {
+					font-family: $druk-wide;
+					font-size: 3.5em;
+					margin: 50px 0 10px 0;
+				}
+
+				h3 {
+					font-family: $druk-wide;
+					font-size: 1.5em;
+				}
+
+				p {
+					font-family: $anonymous;
+				}
+			}
+		}
+
+		.about__clients-header {
+			font-family: $druk-wide;
+			font-size: 1.5em;
+			margin: 60px 0 10px 0;
+		}
+
+		.about__clients {
+			margin: 0 0 100px 0;
+
+			.about__client img {
+				margin: 40px 60px;
+				max-height: 70px;
+			}
+		}
+	}
 }

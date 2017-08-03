@@ -46,12 +46,19 @@
        url('./fonts/DrukWide-Medium.ttf')  format('truetype')
 }
 
+@font-face {
+  font-family: 'anonymous';
+  src: url('./fonts/anonymous.woff2') format('woff2'),
+       url('./fonts/anonymous.ttf')  format('truetype')
+}
+
 $color-black: #000;
 $color-primary: #3F51B5;
 $color-white: #FFF;
 $druk-thin-condensed: 'druk-thin-condensed', 'Futura', Arial, sans-serif;
 $druk-condensed: 'druk-condensed', 'Futura', Arial, sans-serif;
 $druk-wide: 'druk-wide', 'Futura', Arial, sans-serif;
+$anonymous: 'anonymous', Arial, sans-serif;
 
 %transition {
   transition: 0.2s ease-out;
@@ -69,63 +76,97 @@ $druk-wide: 'druk-wide', 'Futura', Arial, sans-serif;
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
+    pointer-events: none;
   }
 
   to {
     opacity: 1;
+    pointer-events: default;
   }
 }
 
 @-moz-keyframes fadeIn {
   from {
     opacity: 0;
+    pointer-events: none;
   }
 
   to {
     opacity: 1;
+    pointer-events: default;
   }
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
+    pointer-events: none;
   }
 
   to {
     opacity: 1;
+    pointer-events: default;
   }
 }
 
 @-webkit-keyframes fadeInRight {
   from {
     opacity: 0;
+    pointer-events: none;
   }
 
   to {
     opacity: 1;
+    pointer-events: default;
   }
 }
 
 @-moz-keyframes fadeInRight {
   from {
     opacity: 0;
+    pointer-events: none;
     margin-right: -100px;
   }
 
   to {
     opacity: 1;
     margin-right: 0;
+    pointer-events: default;
   }
 }
 
 @keyframes fadeInRight {
   from {
     opacity: 0;
+    pointer-events: none;
+    transform: translate3d(400px, 0, 0);
   }
 
   to {
     opacity: 1;
+    pointer-events: default;
+    transform: translate3d(0, 0, 0);
   }
+}
+
+@keyframes marquee {
+  0% { left: 0; }
+  100% { left: -100%; }
+}
+
+@keyframes marqueeRight {
+  0% { right: 0; }
+  100% { right: -100%; }
+}
+
+@keyframes marqueeBottom {
+  0% { bottom: 0; }
+  100% { bottom: 100%; }
+}
+
+@keyframes marqueeTop {
+  0% { top: 50%; }
+  100% { top: -1000%; }
 }
 
 .fade-in-right {
@@ -173,6 +214,10 @@ $druk-wide: 'druk-wide', 'Futura', Arial, sans-serif;
 
 .fade-in.six {
   animation-delay: 1.8s;
+}
+
+.active {
+  border-bottom: 2px solid $color-white;
 }
 
 //////////////////////// Normalize CSS ////////////////////////////
@@ -686,6 +731,10 @@ template {
 
 .druk-wide {
   font-family: "druk-wide", "Futura", Arial, sans-serif;
+}
+
+.anonymous {
+  font-family: "anonymous", Arial, sans-serif;
 }
 
 .sans-serif {

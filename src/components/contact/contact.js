@@ -9,6 +9,9 @@ let Contact = {
 
 		let window_ = $window;
 
+        const firstNav = angular.element(document.querySelector('.nav__items .nav__item:first-of-type'));
+        const secondNav = angular.element(document.querySelector('.nav__items .nav__item:nth-of-type(2)'));
+        const thirdNav = angular.element(document.querySelector('.nav__items .nav__item:last-of-type'));
         const contact = angular.element(document.querySelector('.contact'));
         const contact1 = angular.element(document.querySelector('.contact__text-1'));
         const contact2 = angular.element(document.querySelector('.contact__text-2'));
@@ -18,7 +21,11 @@ let Contact = {
         const contactEmail = angular.element(document.querySelector('.contact__email'));
         const contactSignup = angular.element(document.querySelector('.sign-up-cta'));
 
-		let changeContactOpacity = (scrollPos) => {
+        firstNav.removeClass('active');
+        secondNav.removeClass('active');
+        thirdNav.addClass('active');
+
+		let changeContactOpacity = () => {
 			contact.removeClass('no-opacity');
 			contact1.addClass('fade-in one');
 			contact2.addClass('fade-in two');
@@ -26,7 +33,9 @@ let Contact = {
 			contact4.addClass('fade-in four');
 			contact5.addClass('fade-in five');
 			contactEmail.addClass('fade-in six');
-		};
+        };
+        
+        changeContactOpacity();
     }]
 };
 

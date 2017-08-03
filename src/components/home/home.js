@@ -2,24 +2,11 @@ let Home = {
     templateUrl: '/components/home/home.tpl',
     controller: ['WordpressData', '$scope', '$window', '$timeout', (WordpressData, $scope, $window, $timeout) => {
 
-		if (!$scope.data) {
-			$scope.data = {};
-		}
-
-        WordpressData.listHome((response) => {
-            $scope.data = response.data[0].acf;
-			WordpressData.fetchCats().then(() => {
-				console.log('dat', $scope.data);
-                $scope.data.categories = WordpressData.categories;
-            })
-		});
-
-		WordpressData.fetchPortfolio().then(() => {
-			$scope.data.portfolio = WordpressData.portfolio;
-		})
-
 		let window_ = $window;
 
+        const firstNav = angular.element(document.querySelector('.nav__items .nav__item:first-of-type'));
+        const secondNav = angular.element(document.querySelector('.nav__items .nav__item:nth-of-type(2)'));
+        const thirdNav = angular.element(document.querySelector('.nav__items .nav__item:last-of-type'));
         const intro = angular.element(document.querySelector('.intro'));
         const introText = angular.element(document.querySelector('.intro__text'));
         const introBg = angular.element(document.querySelector('.intro__bg'));
@@ -30,19 +17,75 @@ let Home = {
         const projects = angular.element(document.querySelector('.projects'));
         const projectsContainer = angular.element(document.querySelector('.projects__container'));
 
-        let changeIntroTextSize = (scrollPos) => {
-		    if (scrollPos < 400) {
-	            introText.css({'transform': 'translate3d(-50%, -50%, 0) scale(' + (30 - (scrollY / 30)) + ')', '-webkit-transform': 'translate3d(-50%, -50%, 0) scale(' + (30 - (scrollY / 30)) + ')', });
-	            intro.removeClass('no-opacity');
-            } else if (scrollPos > 1200) {
-            	intro.addClass('no-opacity');
-            } else if (scrollPos < 1201 && scrollPos > 400) {
-				intro.removeClass('no-opacity');
+		secondNav.removeClass('active');
+		thirdNav.removeClass('active');
+		if (!$scope.data) {
+			$scope.data = {};
+		}
+
+        WordpressData.listHome((response) => {
+            $scope.data = response.data[0].acf;
+			WordpressData.fetchCats().then(() => {
+                $scope.data.categories = WordpressData.categories;
+				$timeout(() => {
+					introScrollDown.removeClass('no-opacity');
+					introText.removeClass('no-opacity');
+				}, 1000);
+            });
+		});
+
+		WordpressData.fetchPortfolio().then(() => {
+			$scope.data.portfolio = WordpressData.portfolio;
+
+			if (document.querySelectorAll('.about__text')) {
+
+				let jq = $.noConflict();
+
+				if (!jq('.projects__marquee').hasClass('scrolling')) {
+					let portfolioLength = jq('.projects__marquee-box').length;
+					for (let i = 0; i < portfolioLength; i++) {
+						if (i % 2 != 0) {
+							jq('.projects__marquee-box:nth-of-type(' + (i + 1) + ') .projects__marquee').marquee({
+								duration: 25000,
+								gap: 10,
+								delayBeforeStart: 0,
+								direction: 'left',
+								duplicated: true,
+								pauseOnHover: true,
+								startVisible: true
+								});
+							} else {
+								jq('.projects__marquee-box:nth-of-type(' + (i + 1) + ') .projects__marquee').marquee({
+								duration: 25000,
+								gap: 10,
+								delayBeforeStart: 0,
+								direction: 'right',
+								duplicated: true,
+								pauseOnHover: true,
+								startVisible: true
+								});
+							}
+					}
+
+					jq('.projects__marquee').addClass('scrolling');
+				}
+
 			}
+		})
+
+        let changeIntroTextSize = (scrollPos) => {
+		    if (scrollPos < 1201) {
+	            introText.css({'transform': 'translate3d(-50%, -50%, 0) scale(' + (30 - (scrollY / 50)) + ')', '-webkit-transform': 'translate3d(-50%, -50%, 0) scale(' + (30 - (scrollY / 50)) + ')', });
+	            introText.removeClass('no-opacity');
+	            intro.removeClass('no-opacity');
+            } else {
+            	introText.addClass('no-opacity');
+            	intro.addClass('no-opacity');
+            }
 		};
 
 		let changeScrollOpacity = (scrollPos) => {
-			if (scrollPos > 400 && scrollPos < 1200) {
+			if (scrollPos < 3100) {
 	            introScrollDown.removeClass('no-opacity');
             } else {
             	introScrollDown.addClass('no-opacity');
@@ -108,7 +151,6 @@ let Home = {
 			if (scrollPos > 1600 && scrollPos < 3200) {
 				about.removeClass('no-opacity');
 			} else {
-				console.log('remove', scrollPos);
 				about.addClass('no-opacity');
 			}
 		};
@@ -116,9 +158,13 @@ let Home = {
 		let changeProjectsPosition = (scrollPos) => {
 		    if (scrollPos < 3200) {
 		    	projects.addClass('no-opacity');
-		    	projectsContainer.addClass('no-opacity');
+				projectsContainer.addClass('no-opacity');
+				firstNav.removeClass('active');
+				secondNav.removeClass('active');
+				thirdNav.removeClass('active');
 		    }
 		    if (scrollPos > 3199) {
+				firstNav.addClass('active');
 		    	projects.removeClass('no-opacity');
 		    	projectsContainer.removeClass('no-opacity');
 		    }
@@ -146,7 +192,7 @@ let Home = {
 		        lastScrollTop = scrollTop;
 
 		        // fire scroll function if scrolls vertically
-		        if (scrollTop < 1300) {
+		        if (scrollTop < 3500) {
 			        changeIntroTextSize(scrollTop);
 			        changeScrollOpacity(scrollTop);
 		        }
@@ -190,43 +236,6 @@ let Home = {
 		if (raf) {
 		    loop();
 		}
-
-		$timeout(() => {
-			if (document.querySelectorAll('.about__text-main em')) {
-
-				let jq = $.noConflict();
-
-				if (!jq('.projects__marquee').hasClass('scrolling')) {
-					let portfolioLength = jq('.projects__marquee-box').length;
-					for (let i = 0; i < portfolioLength; i++) {
-						if (i % 2 != 0) {
-							jq('.projects__marquee-box:nth-of-type(' + (i + 1) + ') .projects__marquee').marquee({
-								duration: 25000,
-								gap: 10,
-								delayBeforeStart: 0,
-								direction: 'left',
-								duplicated: true,
-								pauseOnHover: true,
-								startVisible: true
-								});
-							} else {
-								jq('.projects__marquee-box:nth-of-type(' + (i + 1) + ') .projects__marquee').marquee({
-								duration: 25000,
-								gap: 10,
-								delayBeforeStart: 0,
-								direction: 'right',
-								duplicated: true,
-								pauseOnHover: true,
-								startVisible: true
-								});
-							}
-					}
-
-					jq('.projects__marquee').addClass('scrolling');
-			}
-
-			}
-		}, 2000);
 
     }]
 };

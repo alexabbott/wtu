@@ -1,4 +1,4 @@
-import Sidenav from './components/sidenav/sidenav';
+import Navigation from './components/navigation/navigation';
 import Home from './components/home/home';
 import About from './components/about/about';
 import Contact from './components/contact/contact';
@@ -38,8 +38,10 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll',
 	      	$http.get('//wethem.us/cms/wp-json/wp/v2/nav').then(callback);
 	    },
 	    listHome: (callback) => {
-
      		$http.get('//wethem.us/cms/wp-json/wp/v2/home').then(callback);
+		},
+		listAbout: (callback) => {
+     		$http.get('//wethem.us/cms/wp-json/wp/v2/about').then(callback);
 	    },
 	    fetchCats: () => {
     		return $http.get('//wethem.us/cms/wp-json/wp/v2/categories').then((data) => {
@@ -71,7 +73,7 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll',
 	};
 }])
 
-.component('sidenav', Sidenav)
+.component('navigation', Navigation)
 .component('home', Home)
 .component('about', About)
 .component('contact', Contact)

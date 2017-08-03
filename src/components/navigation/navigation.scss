@@ -7,6 +7,7 @@ nav {
 		left: 0;
 		padding: 40px;
 		position: fixed;
+		transition: opacity 1s ease-in;
 		width: 100vw;
 		z-index: 99;
 
@@ -34,6 +35,11 @@ nav {
 				margin-left: 30px;
 				text-decoration: none;
 				transition-property: color;
+
+				.active,
+				&:hover {
+					border-bottom: 2px solid $color-white;
+				}
 			}
 		}
 
@@ -58,6 +64,11 @@ nav {
 		cursor: pointer;
 		left: 2%;
 		position: fixed;
+		transition: transform .5s ease-out;
 		width: 30px;
+
+		&.rotate {
+			transform: rotate(180deg);
+		}
 	}
 }

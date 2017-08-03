@@ -1,28 +1,22 @@
-let Sidenav = {
-    templateUrl: '/components/sidenav/sidenav.tpl',
-    controller: ['WordpressData', '$scope', '$window', '$timeout', (WordpressData, $scope, $window, $timeout) => {
+let Navigation = {
+    templateUrl: '/components/navigation/navigation.tpl',
+    controller: ['WordpressData', '$scope', '$window', '$timeout', '$location', (WordpressData, $scope, $window, $timeout, $location) => {
 
         WordpressData.listNav((response) => {
             $scope.data = response.data[0].acf;
             console.log('nav data', $scope.data);
 
-			const nav = angular.element(document.querySelector('nav'));
+			const nav = angular.element(document.querySelector('.nav__main'));
 			const whiteRabbit = angular.element(document.querySelector('.white-rabbit'));
 			const rabbitVideo = angular.element(document.querySelector('.white-rabbit__video'));
 			const navRabbit = angular.element(document.querySelector('.nav__white-rabbit__image'));
 
-
 			$timeout(() => {
-				console.log('change nav');
 				nav.removeClass('no-opacity');
+				if ($location.path() && $location.path().indexOf('internal') > -1) {
+					navRabbit.addClass('rotate');
+				}
 			}, 100);
-
-			$scope.hideWhiteRabbit = () => {
-				whiteRabbit.addClass('no-opacity');
-				whiteRabbit.css('z-index', 4);
-				rabbitVideo.attr('src', '');
-				navRabbit.attr('src', $scope.data.white_rabbit_image.url);
-			};
 
 			$scope.showWhiteRabbit = () => {
 				if (whiteRabbit.hasClass('no-opacity')) {
@@ -41,4 +35,4 @@ let Sidenav = {
     }]
 };
 
-export default Sidenav;
+export default Navigation;

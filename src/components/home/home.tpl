@@ -10,7 +10,7 @@
 
     <section id="intro" class="intro">
     	<div class="intro__container">
-	    	<div class="intro__text" ng-bind-html="data.intro_text"></div>
+	    	<div class="intro__text no-opacity" ng-bind-html="data.intro_text"></div>
 	    	<div class="intro__scroll-down no-opacity" scroll-to="about-indicator">
 	    		{{ data.intro_scroll_down_text }}
 	    	</div>
@@ -54,6 +54,7 @@
 	    		<div class="projects__bg no-opacity" style="background-image: url({{ project.acf.bg_img }});">
 	    		</div>
     		</div>
+			<div class="filter-trigger">SEARCH / FILTER</div>
     	</div>
     </section>
 </div>
