@@ -1,6 +1,6 @@
 let Home = {
     templateUrl: '/components/home/home.tpl',
-    controller: ['WordpressData', '$scope', '$window', '$timeout', (WordpressData, $scope, $window, $timeout) => {
+    controller: ['WordpressData', '$scope', '$window', '$timeout', '$location', 'smoothScroll', (WordpressData, $scope, $window, $timeout, $location, smoothScroll) => {
 
 		let window_ = $window;
 
@@ -19,59 +19,37 @@ let Home = {
 
 		secondNav.removeClass('active');
 		thirdNav.removeClass('active');
+
 		if (!$scope.data) {
 			$scope.data = {};
 		}
 
-        WordpressData.listHome((response) => {
-            $scope.data = response.data[0].acf;
+		if (!window.localStorage.getItem('home')) {
+			WordpressData.listHome((response) => {
+				$scope.data.home = response.data[0].acf;
+				window.localStorage.setItem('home', JSON.stringify($scope.data.home));
+			});
+		} else {
+			$scope.data.home = JSON.parse(window.localStorage.getItem('home'));
+			$timeout(() => {
+				introImage.removeClass('no-opacity');
+				introScrollDown.removeClass('no-opacity');
+				introText.removeClass('no-opacity');
+			}, 1000);
+		}
+
+		if (!window.localStorage.getItem('cat')) {
 			WordpressData.fetchCats().then(() => {
-                $scope.data.categories = WordpressData.categories;
-				$timeout(() => {
-					introScrollDown.removeClass('no-opacity');
-					introText.removeClass('no-opacity');
-				}, 1000);
-            });
-		});
+				$scope.data.categories = WordpressData.categories;
+				window.localStorage.setItem('cat', JSON.stringify($scope.data.categories));
+			});
+		} else {
+			$scope.data.categories = JSON.parse(window.localStorage.getItem('cat'));
+		}
 
 		WordpressData.fetchPortfolio().then(() => {
 			$scope.data.portfolio = WordpressData.portfolio;
-
-			if (document.querySelectorAll('.about__text')) {
-
-				let jq = $.noConflict();
-
-				if (!jq('.projects__marquee').hasClass('scrolling')) {
-					let portfolioLength = jq('.projects__marquee-box').length;
-					for (let i = 0; i < portfolioLength; i++) {
-						if (i % 2 != 0) {
-							jq('.projects__marquee-box:nth-of-type(' + (i + 1) + ') .projects__marquee').marquee({
-								duration: 25000,
-								gap: 10,
-								delayBeforeStart: 0,
-								direction: 'left',
-								duplicated: true,
-								pauseOnHover: true,
-								startVisible: true
-								});
-							} else {
-								jq('.projects__marquee-box:nth-of-type(' + (i + 1) + ') .projects__marquee').marquee({
-								duration: 25000,
-								gap: 10,
-								delayBeforeStart: 0,
-								direction: 'right',
-								duplicated: true,
-								pauseOnHover: true,
-								startVisible: true
-								});
-							}
-					}
-
-					jq('.projects__marquee').addClass('scrolling');
-				}
-
-			}
-		})
+		});
 
         let changeIntroTextSize = (scrollPos) => {
 		    if (scrollPos < 1201) {
@@ -85,7 +63,7 @@ let Home = {
 		};
 
 		let changeScrollOpacity = (scrollPos) => {
-			if (scrollPos < 3100) {
+			if (scrollPos < 3000) {
 	            introScrollDown.removeClass('no-opacity');
             } else {
             	introScrollDown.addClass('no-opacity');
@@ -236,6 +214,30 @@ let Home = {
 		if (raf) {
 		    loop();
 		}
+
+		if ($location.search().q === 'work') {
+			smoothScroll(document.getElementById('projects-indicator'));
+		}
+
+		// $scope.$watch(function(){
+		// 	return $location.path();
+		// }, function(value){
+		// 	console.log('value');
+		// 	if ($location.search().q === 'work') {
+		// 		smoothScroll(document.getElementById('projects-indicator'));
+		// 	} else {
+		// 		smoothScroll(document.getElementById('top'));
+		// 	}
+		// });
+
+		$scope.$on('$locationChangeStart', function(next, current) { 
+		console.log('value');
+			if ($location.search().q === 'work') {
+				smoothScroll(document.getElementById('projects-indicator'));
+			} else {
+				smoothScroll(document.getElementById('top'));
+			}
+		});
 
     }]
 };

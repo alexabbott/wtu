@@ -5,7 +5,7 @@
 			<img ng-src="{{ data.nav_logo_alt.url }}" class="nav__logo nav__logo-alt">
 		</a>
 		<div class="nav__items">
-			<a href="/" class="nav__item">
+			<a href="/?q=work" class="nav__item">
 				{{ data.nav_item_1 }}
 			</a>
 			<a href="/about" class="nav__item">

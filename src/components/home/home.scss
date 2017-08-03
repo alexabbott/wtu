@@ -1,6 +1,6 @@
 .home {
 	background: $color-black;
-	height: 700vh;
+	height: 600vh;
 
 	#intro-indicator {
 		position: absolute;
@@ -19,6 +19,7 @@
 			right: 0;
 			top: 0;
 			transform-origin: 50% 0;
+			transition: opacity .5s ease-out;
 			width: 100vw;
 			z-index: 0;
 		}
@@ -80,25 +81,21 @@
 			}
 		}
 
-		.intro__scroll-down {
-			bottom: 50px;
-			color: $color-white;
-			cursor: pointer;
-			font-family: $druk-wide;
-			font-size: 0.8em;
-			left: 50%;
-			letter-spacing: 0.1em;
-			position: absolute;
-			text-align: center;
-			transform: translateX(-50%);
-			transition: opacity 1s ease-out;
+	}
 
-			.intro__scroll-down-arrow {
-				display: block;
-				margin: 10px auto 0 auto;
-				width: 20px;
-			}
-		}
+	.intro__scroll-down {
+		bottom: 50px;
+		color: $color-white;
+		cursor: pointer;
+		font-family: $druk-wide;
+		font-size: 0.8em;
+		left: 50%;
+		letter-spacing: 0.1em;
+		position: fixed;
+		text-align: center;
+		transform: translateX(-50%);
+		transition: opacity 1s ease-out;
+		z-index: 99;
 	}
 
 	.blotch {
@@ -170,7 +167,7 @@
 
 	#projects-indicator {
 		position: absolute;
-		top: 3300px;
+		top: 3600px;
 	}
 
 	.projects {
@@ -201,7 +198,7 @@
 				&:nth-of-type(1) {
 					.projects__marquee {
 						top: 10vh;
-						animation: marquee 20s linear infinite;
+						animation: marquee 25s linear infinite;
 
 						a {
 							float: left;
@@ -212,7 +209,7 @@
 				 &:nth-of-type(2) {
 					 .projects__marquee {
 						top: 18vh;
-						 animation: marqueeRight 20s linear infinite;
+						 animation: marqueeRight 19s linear infinite;
 
 						a {
 							float: right;
@@ -224,7 +221,7 @@
 					 .projects__marquee {
 						top: 26vh;
 
-						animation: marquee 20s linear infinite;
+						animation: marquee 18s linear infinite;
 
 						a {
 							float: left;
@@ -235,7 +232,7 @@
 				 &:nth-of-type(4) {
 					 .projects__marquee {
 						top: 34vh;
-						animation: marqueeRight 20s linear infinite;
+						animation: marqueeRight 22s linear infinite;
 
 						a {
 							float: right;
@@ -246,7 +243,7 @@
 				 &:nth-of-type(5) {
 					 .projects__marquee {
 						top: 42vh;
-						animation: marquee 20s linear infinite;
+						animation: marquee 28s linear infinite;
 
 						a {
 							float: left;
@@ -268,7 +265,7 @@
 				 &:nth-of-type(7) {
 					 .projects__marquee {
 						top: 58vh;
-						animation: marquee 20s linear infinite;
+						animation: marquee 15s linear infinite;
 
 						a {
 							float: left;
@@ -279,7 +276,7 @@
 				 &:nth-of-type(8) {
 					 .projects__marquee {
 						top: 66vh;
-						animation: marqueeRight 20s linear infinite;
+						animation: marqueeRight 27s linear infinite;
 
 						a {
 							float: right;
@@ -290,7 +287,7 @@
 				 &:nth-of-type(9) {
 					 .projects__marquee {
 						top: 74vh;
-						animation: marquee 20s linear infinite;
+						animation: marquee 16s linear infinite;
 
 						a {
 							float: left;
@@ -301,7 +298,7 @@
 				 &:nth-of-type(10) {
 					 .projects__marquee {
 						top: 82vh;
-						animation: marqueeRight 20s linear infinite;
+						animation: marqueeRight 30s linear infinite;
 
 						a {
 							float: right;

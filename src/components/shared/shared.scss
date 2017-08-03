@@ -60,6 +60,10 @@ $druk-condensed: 'druk-condensed', 'Futura', Arial, sans-serif;
 $druk-wide: 'druk-wide', 'Futura', Arial, sans-serif;
 $anonymous: 'anonymous', Arial, sans-serif;
 
+body {
+  background: $color-black;
+}
+
 %transition {
   transition: 0.2s ease-out;
 }
@@ -214,6 +218,10 @@ $anonymous: 'anonymous', Arial, sans-serif;
 
 .fade-in.six {
   animation-delay: 1.8s;
+}
+
+.fade-in.seven {
+  animation-delay: 2s;
 }
 
 .active {

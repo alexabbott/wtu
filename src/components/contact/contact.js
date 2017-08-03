@@ -19,7 +19,7 @@ let Contact = {
         const contact4 = angular.element(document.querySelector('.contact__text-4'));
         const contact5 = angular.element(document.querySelector('.contact__text-5'));
         const contactEmail = angular.element(document.querySelector('.contact__email'));
-        const contactSignup = angular.element(document.querySelector('.sign-up-cta'));
+        const contactSignup = angular.element(document.querySelector('.mc_embed'));
 
         firstNav.removeClass('active');
         secondNav.removeClass('active');
@@ -33,6 +33,7 @@ let Contact = {
 			contact4.addClass('fade-in four');
 			contact5.addClass('fade-in five');
 			contactEmail.addClass('fade-in six');
+			contactSignup.addClass('fade-in seven');
         };
         
         changeContactOpacity();

@@ -20,7 +20,7 @@
 			/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
 			We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
 		</style>
-		<div id="mc_embed_signup" ng-init="showSignup = false">
+		<div id="mc_embed_signup" ng-init="showSignup = false" class="mc_embed">
 			<div class="sign-up-cta" ng-class="{ 'no-opacity': showSignup }">
 				subscribe to our newsletter by <span ng-click="showSignup = true">clicking here</span>.
 			</div>

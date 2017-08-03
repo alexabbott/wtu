@@ -1,8 +1,8 @@
 <div class="home">
-  <h1 class="hidden" smooth-scroll duration="3000" easing="easeInQuint">WeThem.Us</h1>
+  <h1 class="hidden" id="top">WeThem.Us</h1>
 
   <section class="intro__bg">
-		<img ng-src="{{ data.intro_image.url }}" class="intro__image">
+		<img ng-src="{{ data.home.intro_image.url }}" class="intro__image no-opacity">
 		<div class="intro__gradient"></div>
 	</section>
 
@@ -10,12 +10,13 @@
 
     <section id="intro" class="intro">
     	<div class="intro__container">
-	    	<div class="intro__text no-opacity" ng-bind-html="data.intro_text"></div>
-	    	<div class="intro__scroll-down no-opacity" scroll-to="about-indicator">
-	    		{{ data.intro_scroll_down_text }}
-	    	</div>
+	    	<div class="intro__text no-opacity" ng-bind-html="data.home.intro_text"></div>
 	    </div>
     </section>
+
+	<div class="intro__scroll-down no-opacity" scroll-to="about-indicator">
+		{{ data.home.intro_scroll_down_text }}
+	</div>
 
     <div class="blotch"></div>
 

@@ -51,6 +51,11 @@
 	}
 }
 
+.mc_embed {
+	transition: opacity .5s ease-out;
+	transition-delay: 1s;
+}
+
 #mc_embed_signup {
 	@extend %transition-long;
 	background: transparent;
