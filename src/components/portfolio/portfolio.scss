@@ -1,5 +1,8 @@
 .portfolio {
-  position: relative;
+   position: relative;
+   background: black;
+   padding-top: 100vh;
+   box-sizing: border-box;
 
   .marquee {
     background-size: cover;
@@ -10,25 +13,31 @@
     position: fixed;
     top: 0; left: 0;
 
-    .title {
+    svg.title {
       position: absolute;
       top: 50%;
       left: 0;
       overflow: visible;
       text-transform: uppercase;
       transform: translate(0, -50%);
-      max-height: 10vw;
+      max-height: 25vw;
+      font-family: $druk-condensed;
+
+      text {
+        stroke-width: 0.66;
+      }
     }
   }
 
   // // not sure if ax'd or not...
   &:before {
     content: '';
-    position: fixed;
+    position: absolute;
+    top: 0;
     width: 100vw;
     height: 100vh;
     background: black;
-    z-index: 0;
+    z-index: 10;
     opacity: 0;
     transition: opacity 0.33s ease;
   }
@@ -39,10 +48,10 @@
     padding: 0 1em 1em;
     position: relative;
     white-space: nowrap;
-    z-index: 2;
+    z-index: 0;
     box-sizing: border-box;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 
     a {
       text-decoration: none;
@@ -50,6 +59,7 @@
     }
 
     .navi {
+      font-family: $druk-wide;
       cursor: pointer;
     }
 
@@ -57,14 +67,13 @@
 
   main {
     position: relative;
-    top: 100vh;
     padding: 0 5% 80px;
     box-sizing: border-box;
   }
 
   .content {
     width: 100%;
-    max-width: 1400px;
+    max-width: 1000px;
     margin: 0 auto;
     position: relative;
     display: flex;
@@ -73,7 +82,22 @@
 
     header {
       width: 100%;
+      padding-bottom: 80px;
+      text-transform: uppercase;
+      padding: 40px 0 80px;
+
+      .title {
+        font-family: $druk-wide;
+        letter-spacing: 0.1em;
+        margin: 0 0 0.33em;
+      }
+
       .cats {
+        margin: 0;
+        font-family: $druk-wide;
+        letter-spacing: 0.1em;
+        font-size: 0.9em;
+
         .cat {
           &:after {
             content: '-';
@@ -94,17 +118,14 @@
       font-family: courier;
     }
 
-    .title {
-      padding: 1em 0 0.33em;
-      width: 100%;
-    }
-
     .section {
       margin: 0 auto 60px;
       max-width: 1200px;
 
       &.text_block {
         max-width: 80%;
+        font-weight: 200;
+        font-size: 0.9em;
       }
 
       &.image_block {
@@ -136,23 +157,58 @@
         display: inline-block;
         max-width: 45%;
         vertical-align: top;
-        margin: 0 0 60px;
       }
     }
 
   }
 
+  .wtu-social {
+    display: block;
+    text-align: center;
+    padding-top: 40px;
+
+    a {
+      display: inline-block;
+      vertical-align: middle;
+      padding: 5px;
+      margin: 0 5px;
+
+      img {
+        width: auto;
+        height: auto;
+        max-width: 25px;
+        max-height: 25px;
+      }
+    }
+  }
+
   &.trans {
+
+    height: 100vh;
+    overflow: hidden;
+
+    .marquee {
+      display: none;
+    }
+
     &:before {
-      z-index: 1;
       opacity: 1;
     }
-    .nav {
-      .navi {
-        &.slug {
-          opacity: 0
-        }
-      }
+  }
+
+  &.initTrans {
+    &:before {
+      position: fixed;
+      opacity: 1;
+    }
+  }
+
+  .fade {
+    opacity: 0;
+    transition: opacity 0.33s ease;
+
+    &.active {
+      opacity: 1
     }
   }
 }

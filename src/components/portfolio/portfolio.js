@@ -1,23 +1,64 @@
 let Portfolio = {
     templateUrl: '/components/portfolio/portfolio.tpl',
-    controller: ['$scope', 'WordpressData', '$routeParams', '$sce', '$location', '$timeout', ($scope, WordpressData, $routeParams, $sce, $location, $timeout) => {
+    controller: ['$scope', 'WordpressData', '$routeParams', '$sce', '$window', '$location', '$timeout', ($scope, WordpressData, $routeParams, $sce, $window, $location, $timeout) => {
 
         $scope.transitioning = true;
-        $timeout(() => {
-            $scope.transitioning = false;
-        }, 666)
+        $scope.inactiveFaders = []
 
         $scope.trustBlob = (blob) => {
             blob = blob.replace(/<script>.*(<\/?script>?)?/, '')
             return $sce.trustAsHtml(blob)
         }
         $scope.transition = (to) => {
-            $scope.transitioning = true;
+            $scope.initTransition = true
             $timeout(() => {
-                $location.path(to);
-                $scope.transitioning = false;
-            }, 666);
+                $scope.transitioning = true
+                $scope.initTransition = false
+                $location.path(to)
+            }, 333)
         }
+
+        const loadMarquee = (url) => {
+            return new Promise((resolve, reject) => {
+                let img = document.createElement('img')
+                img.addEventListener('load', () => {
+                    resolve(url)
+                })
+                img.addEventListener('error', (e) => {
+                    reject(e)
+                })
+                img.src = url
+            })
+        }
+
+        const renderCurrent = () => {
+            return loadMarquee($scope.current.acf.bg_img).then((url) => {
+                $scope.transitioning = false
+                $scope.$apply()
+                return
+            }).then(() => {
+                $scope.inactiveFaders = Array.from(document.querySelectorAll('.fade:not(.active)'))
+                return $scope.$apply()
+            }).catch((err) => {
+                return console.error('RENDERING ERROR:', err)
+            })
+        }
+
+        const classifyActive = (node) => {
+            node.className += ' active'
+            $scope.inactiveFaders = Array.from(document.querySelectorAll('.fade:not(.active)'))
+            return $scope.$apply()
+        }
+
+        const checkFades = () => {
+            $scope.inactiveFaders.forEach((n) => {
+                if (n.getBoundingClientRect().top < ($window.outerHeight-($window.outerHeight*0.2))) {
+                    classifyActive(n)
+                }
+            })
+        }
+
+        $window.addEventListener('scroll', checkFades)
 
         const bindPortfolio = (data) => {
             let keys = Object.keys(data);
@@ -40,7 +81,6 @@ let Portfolio = {
             }
 
             $scope.content = $scope.current.acf.content;
-            console.log($scope.current)
 
             if (!$scope.current.cats) {
                 $scope.current.cats = $scope.categories ?
@@ -50,6 +90,8 @@ let Portfolio = {
                                       ) :
                                       []
             }
+
+            return renderCurrent()
         }
 
         const bindCats = (data) => {
@@ -69,9 +111,16 @@ let Portfolio = {
                 return categories.find((cat) => {
                     return i === cat.id
                 })
+            }).filter((it) => {
+                // TEMP: some cats not returning from WP REST API
+                if (it) return it
             })
 
             return cats
+        }
+
+        const bindSocials = (array) => {
+            $scope.socials = array || []
         }
 
         if (!WordpressData.categories) {
@@ -88,6 +137,14 @@ let Portfolio = {
             })
         } else {
             bindPortfolio(WordpressData.portfolio)
+        }
+
+        if (!WordpressData.socials) {
+            WordpressData.fetchSocials().then(() => {
+                return bindSocials(WordpressData.socials)
+            })
+        } else {
+            bindSocials(WordpressData.socials)
         }
 
     }]
