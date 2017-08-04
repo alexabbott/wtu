@@ -19,7 +19,7 @@
 
     <main ng-style="contentStyle" ng-style="contentStyle">
         <div class="content relative">
-            <header>
+            <header class="fade">
                 <h1 class="title">{{ current.title.rendered }}</h1>
                 <h2 class="cats">
                     <span class="cat" ng-repeat="c in current.cats track by $index">
@@ -29,7 +29,7 @@
             </header>
 
             <div ng-repeat="b in content"
-                 class="section {{b.acf_fc_layout}} {{b.layout}}">
+                 class="section fade {{b.acf_fc_layout}} {{b.layout}}">
 
                 <span ng-if="b.acf_fc_layout === 'text_block'"
                       ng-bind-html="trustBlob(b.text)" />

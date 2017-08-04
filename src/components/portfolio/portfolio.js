@@ -1,8 +1,9 @@
 let Portfolio = {
     templateUrl: '/components/portfolio/portfolio.tpl',
-    controller: ['$scope', 'WordpressData', '$routeParams', '$sce', '$location', '$timeout', ($scope, WordpressData, $routeParams, $sce, $location, $timeout) => {
+    controller: ['$scope', 'WordpressData', '$routeParams', '$sce', '$window', '$location', '$timeout', ($scope, WordpressData, $routeParams, $sce, $window, $location, $timeout) => {
 
         $scope.transitioning = true;
+        $scope.inactiveFaders = []
 
         $scope.trustBlob = (blob) => {
             blob = blob.replace(/<script>.*(<\/?script>?)?/, '')
@@ -35,10 +36,29 @@ let Portfolio = {
                 $scope.transitioning = false
                 $scope.$apply()
                 return
+            }).then(() => {
+                $scope.inactiveFaders = Array.from(document.querySelectorAll('.fade:not(.active)'))
+                return $scope.$apply()
             }).catch((err) => {
                 return console.error('RENDERING ERROR:', err)
             })
         }
+
+        const classifyActive = (node) => {
+            node.className += ' active'
+            $scope.inactiveFaders = Array.from(document.querySelectorAll('.fade:not(.active)'))
+            return $scope.$apply()
+        }
+
+        const checkFades = () => {
+            $scope.inactiveFaders.forEach((n) => {
+                if (n.getBoundingClientRect().top < ($window.outerHeight-($window.outerHeight*0.2))) {
+                    classifyActive(n)
+                }
+            })
+        }
+
+        $window.addEventListener('scroll', checkFades)
 
         const bindPortfolio = (data) => {
             let keys = Object.keys(data);
@@ -70,8 +90,6 @@ let Portfolio = {
                                       ) :
                                       []
             }
-
-            console.log($scope.current)
 
             return renderCurrent()
         }

@@ -202,6 +202,15 @@
       opacity: 1;
     }
   }
+
+  .fade {
+    opacity: 0;
+    transition: opacity 0.33s ease;
+
+    &.active {
+      opacity: 1
+    }
+  }
 }
 
 @keyframes slide-slug {
