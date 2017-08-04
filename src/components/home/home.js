@@ -219,16 +219,14 @@ let Home = {
 			smoothScroll(document.getElementById('projects-indicator'));
 		}
 
-		// $scope.$watch(function(){
-		// 	return $location.path();
-		// }, function(value){
-		// 	console.log('value');
-		// 	if ($location.search().q === 'work') {
-		// 		smoothScroll(document.getElementById('projects-indicator'));
-		// 	} else {
-		// 		smoothScroll(document.getElementById('top'));
-		// 	}
-		// });
+		$scope.showModal = false;
+		$scope.showFilter = function() {
+			$scope.showModal = true;
+		};
+
+		$scope.hideFilter = function() {
+			$scope.showModal = false;
+		};
 
 		$scope.$on('$locationChangeStart', function(next, current) { 
 		console.log('value');

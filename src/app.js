@@ -3,6 +3,7 @@ import Home from './components/home/home';
 import About from './components/about/about';
 import Contact from './components/contact/contact';
 import Portfolio from './components/portfolio/portfolio';
+import Category from './components/category/category';
 import smoothScroll from './jspm_packages/github/d-oliveros/ngSmoothScroll@2.0.0';
 import './jspm_packages/npm/angular-masonry@0.17.0';
 
@@ -20,6 +21,10 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll',
 		})
 		.when('/contact', {
 	        templateUrl: '/components/pages/contact.tpl',
+	        reloadOnSearch: false
+		})
+		.when('/category/:slug', {
+	        templateUrl: '/components/pages/category.tpl',
 	        reloadOnSearch: false
 	    })
 	    .when('/:slug', {
@@ -73,8 +78,20 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll',
 	};
 }])
 
+.filter('slugify', function(){
+	return function (input) {
+		if (!input)
+			return;
+		var slug = input.toLowerCase().trim();
+		slug = slug.replace(/[^a-z0-9\s-]/g, ' ');
+		slug = slug.replace(/[\s-]+/g, '-');
+		return slug;
+	};
+})
+
 .component('navigation', Navigation)
 .component('home', Home)
 .component('about', About)
+.component('category', Category)
 .component('contact', Contact)
 .component('portfolio', Portfolio);

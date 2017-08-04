@@ -364,4 +364,44 @@
 			width: 100vw;
 		}
 	}
+
+	.filter.modal {
+		box-sizing: border-box;
+		color: $color-white;
+		left: 50%;
+		position: fixed;
+		max-width: 600px;
+		padding: 30px;
+		top: 50%;
+		text-align: center;
+		transform: translate(-50%, -50%);
+		transition: opacity 1s ease-out;
+		width: 90%;
+		z-index: 200;
+
+		h4 {
+			font-family: $druk-wide;
+			font-size: 1.5em;
+		}
+
+		a,
+		span {
+			box-sizing: border-box;
+			color: $color-white;
+			display: inline-block;
+			font-family: $druk-wide;
+			font-size: 1em;
+			margin: 3px 7px;
+			text-decoration: none;
+		}
+	}
+
+	.modal-mask {
+		background: rgba(0,0,0,.8);
+		height: 100vh;
+		position: fixed;
+		transition: opacity 1s ease-out;
+		width: 100vw;
+		z-index: 199;
+	}
 }

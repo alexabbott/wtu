@@ -1,0 +1,47 @@
+.category {
+	color: $color-white;
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+	width: 80%;
+
+	h3 {
+		font-family: $druk-wide;
+		padding: 15vh 0 20px 0;
+		text-transform: uppercase;
+	}
+
+	.project {
+		background-size: cover;
+		display: inline-block;
+		font-family: $druk-wide;
+		font-size: .9em;
+		margin: 30px;
+		position: relative;
+		width: 40%;
+
+		span,
+		img {
+			max-width: 200px;
+		}
+
+		span {
+			left: 50%;
+			position: absolute;
+			top: 50%;
+			transform: translate(-50%,-50%);
+		}
+
+		a {
+			color: $color-white;
+			cursor: pointer;
+			height: 100%;
+			text-decoration: none;
+			width: 100%;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+}

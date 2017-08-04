@@ -25,9 +25,9 @@
     <section id="about" class="about no-opacity">
 		<div class="about-container">
 			<span ng-repeat="category in data.categories">
-				<a ng-href="{{ category.link }}" class="about__text" >
+				<span class="about__text" >
 					{{ category.name }}
-				</a><br>
+				</span><br>
 			</span>
 		</div>
     </section>
@@ -55,7 +55,16 @@
 	    		<div class="projects__bg no-opacity" style="background-image: url({{ project.acf.bg_img }});">
 	    		</div>
     		</div>
-			<div class="filter-trigger">SEARCH / FILTER</div>
+			<div class="filter-trigger" ng-click="showFilter()">SEARCH / FILTER</div>
     	</div>
     </section>
+	<section class="filter modal no-opacity" ng-class="{'no-opacity': !showModal}">
+		<h4>SEARCH / FILTER:</h4>
+		<span ng-repeat="category in data.categories">
+			<a ng-href="/category/{{ category.name | slugify }}" >
+				{{ category.name }}
+			</a><br>
+		</span>
+	</section>
+	<div class="modal-mask no-opacity" ng-click="hideFilter()" ng-class="{'no-opacity': !showModal}"></div>
 </div>
