@@ -36,7 +36,7 @@ nav {
 				text-decoration: none;
 				transition-property: color;
 
-				.active,
+				&.active,
 				&:hover {
 					border-bottom: 2px solid $color-white;
 				}

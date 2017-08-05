@@ -39,6 +39,11 @@ let Portfolio = {
             }).then(() => {
                 $scope.inactiveFaders = Array.from(document.querySelectorAll('.fade:not(.active)'))
                 return $scope.$apply()
+            }).then(() => {
+                if (window.instgrm) {
+                    window.instgrm.Embeds.process()
+                }
+                return
             }).catch((err) => {
                 return console.error('RENDERING ERROR:', err)
             })
