@@ -1,6 +1,6 @@
 let Navigation = {
   templateUrl: '/components/navigation/navigation.tpl',
-  controller: ['WordpressData', '$scope', '$window', '$timeout', '$location', '$rootScope', (WordpressData, $scope, $window, $timeout, $location, $rootScope) => {
+  controller: ['WordpressData', '$scope', '$window', '$timeout', '$location', (WordpressData, $scope, $window, $timeout, $location) => {
 
     WordpressData.listNav((response) => {
       $scope.data = response.data[0].acf;
