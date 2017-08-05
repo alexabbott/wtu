@@ -1,15 +1,15 @@
 let Navigation = {
-    templateUrl: '/components/navigation/navigation.tpl',
-    controller: ['WordpressData', '$scope', '$window', '$timeout', '$location', (WordpressData, $scope, $window, $timeout, $location) => {
+  templateUrl: '/components/navigation/navigation.tpl',
+  controller: ['WordpressData', '$scope', '$window', '$timeout', '$location', (WordpressData, $scope, $window, $timeout, $location) => {
 
-        WordpressData.listNav((response) => {
-            $scope.data = response.data[0].acf;
-            console.log('nav data', $scope.data);
+    WordpressData.listNav((response) => {
+      $scope.data = response.data[0].acf;
 
-			const nav = angular.element(document.querySelector('.nav__main'));
-			const whiteRabbit = angular.element(document.querySelector('.white-rabbit'));
-			const rabbitVideo = angular.element(document.querySelector('.white-rabbit__video'));
-			const navRabbit = angular.element(document.querySelector('.nav__white-rabbit__image'));
+      const nav = angular.element(document.querySelector('.nav__main'));
+      const whiteRabbit = angular.element(document.querySelector('.white-rabbit'));
+      const rabbitVideo = angular.element(document.querySelector('.white-rabbit__video'));
+      const navRabbit = angular.element(document.querySelector('.nav__white-rabbit__image'));
+
 
 			$timeout(() => {
 				nav.removeClass('no-opacity');
@@ -30,9 +30,9 @@ let Navigation = {
 					$scope.hideWhiteRabbit();
 				}
 			};
-        });
+    });
 
-    }]
+  }]
 };
 
 export default Navigation;

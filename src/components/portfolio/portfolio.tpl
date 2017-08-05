@@ -38,6 +38,7 @@
 
                 <div ng-if="b.acf_fc_layout === 'embed_block'"
                      class="embed"
+                     ng-class="{'fixed-aspect': b.fixed_aspect}"
                      ng-bind-html="trustBlob(b.embed)" />
 
             </div>

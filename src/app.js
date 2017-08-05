@@ -5,9 +5,8 @@ import Contact from './components/contact/contact';
 import Portfolio from './components/portfolio/portfolio';
 import Category from './components/category/category';
 import smoothScroll from './jspm_packages/github/d-oliveros/ngSmoothScroll@2.0.0';
-import './jspm_packages/npm/angular-masonry@0.17.0';
 
-const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll', 'wu.masonry'])
+const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll'])
 
 .config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
 	$routeProvider
@@ -29,7 +28,11 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll',
 	    })
 	    .when('/:slug', {
 	        templateUrl: '/components/pages/portfolio.tpl',
-	        reloadOnSearch: false
+	        reloadOnSearch: false,
+	        onEnter: ($rootScope) => {
+	        	console.log("balls")
+	        	$rootScope.portfolio = $routeParams.slug
+	        }
 	    })
 	    .otherwise('/');
 
