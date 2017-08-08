@@ -8,9 +8,9 @@ let Navigation = {
 
       const nav = angular.element(document.querySelector('.nav__main'));
       const navIcon = angular.element(document.querySelector('.nav-icon'));
-      const whiteRabbit = angular.element(document.querySelector('.white-rabbit'));
       const rabbitVideo = angular.element(document.querySelector('.white-rabbit__video'));
 			const navRabbit = angular.element(document.querySelector('.nav__white-rabbit__image'));
+			const whiteRabbit = angular.element(document.querySelector('.nav__white-rabbit'));
 
 			$scope.openCloseNav = () => {
 				let modal = angular.element(document.querySelector('.modal'));
@@ -21,6 +21,9 @@ let Navigation = {
 					navIcon.removeClass('open');
 				} else {
 					$scope.navOpen = !$scope.navOpen;
+				}
+				if (!$scope.navOpen) {
+					whiteRabbit.addClass('no-opacity');
 				}
 			}
 

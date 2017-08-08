@@ -36,8 +36,10 @@ nav {
 			transition: opacity .4s ease-out;
 
 			@include tablet {
+				background: transparent;
 				padding: 0;
 				right: 5%;
+				text-align: right;
 				top: 40px;
 			}
 
