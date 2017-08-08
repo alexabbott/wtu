@@ -4,6 +4,7 @@ let Home = {
 
 		let window_ = $window;
 
+        const navIcon = angular.element(document.querySelector('.nav-icon'));
         const firstNav = angular.element(document.querySelector('.nav__items .nav__item:first-of-type'));
         const secondNav = angular.element(document.querySelector('.nav__items .nav__item:nth-of-type(2)'));
         const thirdNav = angular.element(document.querySelector('.nav__items .nav__item:last-of-type'));
@@ -15,7 +16,8 @@ let Home = {
         const introGradient = angular.element(document.querySelector('.intro__gradient'));
         const about = angular.element(document.querySelector('.about'));
         const projects = angular.element(document.querySelector('.projects'));
-        const projectsContainer = angular.element(document.querySelector('.projects__container'));
+		const projectsContainer = angular.element(document.querySelector('.projects__container'));
+		const whiteRabbit = angular.element(document.querySelector('.nav__white-rabbit'));
 
 		secondNav.removeClass('active');
 		thirdNav.removeClass('active');
@@ -64,9 +66,12 @@ let Home = {
 
 		let changeScrollOpacity = (scrollPos) => {
 			if (scrollPos < 3000) {
-	            introScrollDown.removeClass('no-opacity');
+				introScrollDown.removeClass('no-opacity');
+				whiteRabbit.addClass('mobile-hide');
+				
             } else {
-            	introScrollDown.addClass('no-opacity');
+				introScrollDown.addClass('no-opacity');
+				whiteRabbit.removeClass('mobile-hide');
             }
 		};
 
@@ -221,10 +226,13 @@ let Home = {
 
 		$scope.showModal = false;
 		$scope.showFilter = function() {
+			navIcon.addClass('open');
+			whiteRabbit.addClass('mobile-hide');
 			$scope.showModal = true;
 		};
 
 		$scope.hideFilter = function() {
+			navIcon.removeClass('open');
 			$scope.showModal = false;
 		};
 

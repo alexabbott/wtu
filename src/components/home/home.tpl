@@ -59,7 +59,7 @@
     	</div>
     </section>
 	<section class="filter modal no-opacity" ng-class="{'no-opacity': !showModal}">
-		<h4>SEARCH / FILTER:</h4>
+		<h4>SEARCH/FILTER</h4>
 		<span ng-repeat="category in data.categories">
 			<a ng-href="/category/{{ category.name | slugify }}" >
 				{{ category.name }}

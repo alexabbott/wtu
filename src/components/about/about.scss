@@ -26,13 +26,21 @@
 			.about__text {
 				h2 {
 					font-family: $druk-wide;
-					font-size: 3.5em;
+					font-size: 1.5em;
 					margin: 50px 0 10px 0;
+
+					@include tablet {
+						font-size: 3.5em;
+					}
 				}
 
 				h3 {
 					font-family: $druk-wide;
-					font-size: 1.5em;
+					font-size: 1.2em;
+
+					@include tablet {
+						font-size: 1.5em;
+					}
 				}
 
 				p {

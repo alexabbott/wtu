@@ -1,6 +1,10 @@
 .home {
 	background: $color-black;
-	height: 600vh;
+	height: 800vh;
+
+	@include tablet {
+		height: 600vh;
+	}
 
 	#intro-indicator {
 		position: absolute;
@@ -15,13 +19,19 @@
 		z-index: 8;
 
 		.intro__image {
+			height: 110vh;
 			position: fixed;
-			right: 0;
+			right: -25%;
 			top: 0;
 			transform-origin: 50% 0;
 			transition: opacity .5s ease-out;
-			width: 100vw;
 			z-index: 0;
+
+			@include tablet {
+				height: auto;
+				right: 0;
+				width: 100vw;
+			}
 		}
 
 		.intro__gradient {
@@ -84,32 +94,43 @@
 	}
 
 	.intro__scroll-down {
-		bottom: 50px;
+		bottom: 5vh;
 		color: $color-white;
 		cursor: pointer;
 		font-family: $druk-wide;
-		font-size: 0.8em;
+		font-size: .7em;
 		left: 50%;
 		letter-spacing: 0.1em;
 		position: fixed;
 		text-align: center;
 		transform: translateX(-50%);
 		transition: opacity 1s ease-out;
+		width: 100%;
 		z-index: 99;
+
+		@include tablet {
+			bottom: 50px;
+			font-size: 0.8em;
+		}
 	}
 
 	.blotch {
 		background: blue;
 		border-radius: 50%;
-		box-shadow: 0px 0px 34vw 13vw blue;
+		box-shadow: 0px 0px 18vw 13vw blue;
+		width: 20vw;
 		display: block;
 		height: 30vh;
 		left: 0;
 		opacity: .8;
 		position: absolute;
 		top: 370vh;
-		width: 10vw;
 		z-index: 8;
+
+		@include tablet {
+			box-shadow: 0px 0px 34vw 13vw blue;
+			width: 10vw;
+		}
 	}
 
 	#about-indicator {
@@ -129,17 +150,22 @@
 
 		.about-container {
 			height: 100vh;
-			font-size: 80px;
+			font-size: 10vw;
 			left: 50%;
 			line-height: .9;
 			position: absolute;
 			top: 50%;
 			overflow: hidden;
-			padding-left: 20vw;
+			padding: 30vh 0 0 20vw;
 			text-align: left;
 			transform: translate(-50%, -50%);
 			width: 100vw;
 			z-index: 1;
+
+			@include tablet {
+				font-size: 80px;
+				padding: 0 0 0 20vw;
+			}
 
 			span {
 				position: relative;
@@ -192,14 +218,21 @@
 			z-index: 1;
 
 			.projects__marquee-box {
-				height: 8vh;
+				height: 4vh;
 				overflow: hidden;
+
+				@include tablet {
+					height: 8vh;
+				}
 
 				&:nth-of-type(1) {
 					.projects__marquee {
-						top: 10vh;
+						top: 20vh;
 						animation: marquee 25s linear infinite;
 
+						@include tablet {
+							top: 10vh;
+						}
 						a {
 							float: left;
 						}
@@ -208,9 +241,12 @@
 
 				 &:nth-of-type(2) {
 					 .projects__marquee {
-						top: 18vh;
+						top: 24vh;
 						 animation: marqueeRight 19s linear infinite;
 
+						  @include tablet {
+							top: 18vh;
+						}
 						a {
 							float: right;
 						}
@@ -219,10 +255,13 @@
 
 				 &:nth-of-type(3) {
 					 .projects__marquee {
-						top: 26vh;
+						top: 28vh;
 
 						animation: marquee 18s linear infinite;
 
+						@include tablet {
+							top: 26vh;
+						}
 						a {
 							float: left;
 						}
@@ -231,9 +270,12 @@
 
 				 &:nth-of-type(4) {
 					 .projects__marquee {
-						top: 34vh;
+						top: 32vh;
 						animation: marqueeRight 22s linear infinite;
 
+						@include tablet {
+							top: 34vh;
+						}
 						a {
 							float: right;
 						}
@@ -242,9 +284,12 @@
 
 				 &:nth-of-type(5) {
 					 .projects__marquee {
-						top: 42vh;
+						top: 36vh;
 						animation: marquee 28s linear infinite;
 
+						@include tablet {
+							top: 42vh;
+						}
 						a {
 							float: left;
 						}
@@ -253,9 +298,12 @@
 
 				 &:nth-of-type(6) {
 					 .projects__marquee {
-						top: 50vh;
+						top: 40vh;
 						animation: marqueeRight 20s linear infinite;
 
+						@include tablet {
+							top: 50vh;
+						}
 						a {
 							float: right;
 						}
@@ -264,9 +312,12 @@
 
 				 &:nth-of-type(7) {
 					 .projects__marquee {
-						top: 58vh;
+						top: 44vh;
 						animation: marquee 15s linear infinite;
 
+						@include tablet {
+							top: 58vh;
+						}
 						a {
 							float: left;
 						}
@@ -275,9 +326,12 @@
 
 				 &:nth-of-type(8) {
 					 .projects__marquee {
-						top: 66vh;
+						top: 48vh;
 						animation: marqueeRight 27s linear infinite;
 
+						@include tablet {
+							top: 66vh;
+						}
 						a {
 							float: right;
 						}
@@ -286,9 +340,12 @@
 
 				 &:nth-of-type(9) {
 					 .projects__marquee {
-						top: 74vh;
+						top: 52vh;
 						animation: marquee 16s linear infinite;
 
+						@include tablet {
+							top: 74vh;
+						}
 						a {
 							float: left;
 						}
@@ -297,8 +354,12 @@
 
 				 &:nth-of-type(10) {
 					 .projects__marquee {
-						top: 82vh;
+						top: 56vh;
 						animation: marqueeRight 30s linear infinite;
+
+						@include tablet {
+							top: 82vh;
+						}
 
 						a {
 							float: right;
@@ -311,7 +372,7 @@
 				color: $color-black;
 				display: block;
 				font-family: $druk-wide;
-				font-size: 8vh;
+				font-size: 4vh;
 				overflow: hidden;
 				position: absolute;
 				text-shadow:
@@ -319,9 +380,14 @@
 			    1px -1px 0 $color-white,
 			    -1px 1px 0 $color-white,
 			     1px 1px 0 $color-white;
-				 height: 8vh;
+				 height: 4vh;
 				overflow: hidden;
 				  width: 200vw;
+
+				  @include tablet {
+					  font-size: 8vh;
+					height: 8vh;
+				  }
 
 
 				a {
@@ -340,7 +406,7 @@
 		}
 
 		.filter-trigger {
-			bottom: 30px;
+			bottom: 15vh;
 			color: $color-white;
 			cursor: pointer;
 			font-family: $druk-wide;
@@ -348,7 +414,13 @@
 			left: 50%;
 			position: fixed;
 			transform: translateX(-50%);
+			width: 100%;
 			z-index: 100;
+
+			@include tablet {
+				bottom: 30px;
+
+			}
 		}
 
 		.projects__bg {
@@ -379,20 +451,33 @@
 		width: 90%;
 		z-index: 200;
 
+
 		h4 {
 			font-family: $druk-wide;
-			font-size: 1.5em;
+			font-size: 1em;
+
+			@include tablet {
+				font-size: 1.5em;
+			}
 		}
 
-		a,
-		span {
+		a {
 			box-sizing: border-box;
 			color: $color-white;
 			display: inline-block;
 			font-family: $druk-wide;
-			font-size: 1em;
+			font-size: .8em;
+			line-height: 1.8;
 			margin: 3px 7px;
 			text-decoration: none;
+			width: 100%;
+
+			@include tablet {
+				font-size: 1em;
+				line-height: 1.2;
+				margin: 8px 7px;
+				width: auto;
+			}
 		}
 	}
 

@@ -709,6 +709,27 @@ template {
   opacity: 0.3;
 }
 
+.mobile-only {
+  opacity: 1;
+  pointer-events: initial;
+
+  @include tablet {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.mobile-hide {
+  opacity: 0;
+  pointer-events: none;
+
+  @include tablet {
+    display: inherit;
+    opacity: 1;
+    pointer-events: initial;
+  }
+}
+
 .absolute {
   position: absolute !important;
 }

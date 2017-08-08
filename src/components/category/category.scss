@@ -3,7 +3,11 @@
 	display: block;
 	margin: 0 auto;
 	text-align: center;
-	width: 80%;
+	width: 95%;
+
+	@include tablet {
+		width: 90%;
+	}
 
 	h3 {
 		font-family: $druk-wide;
@@ -15,14 +19,20 @@
 		background-size: cover;
 		display: inline-block;
 		font-family: $druk-wide;
-		font-size: .9em;
-		margin: 30px;
+		font-size: 1.1em;
+		margin: 10px 4%;
 		position: relative;
-		width: 40%;
+		text-transform: uppercase;
+		width: 90%;
+
+		@include tablet {
+			font-size: .9em;
+			width: 40%;
+		}
 
 		span,
 		img {
-			max-width: 200px;
+			max-width: 100%;
 		}
 
 		span {

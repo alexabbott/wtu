@@ -23,18 +23,26 @@ let Category = {
             $scope.category = $scope.data.categories.filter((c) => {
                 return c.slug === $location.path().split('/category/')[1];
             })[0];
+            checkStatus();
+            console.log('categories', $scope.data.categories);
+        });
 
-            WordpressData.fetchPortfolio().then(() => {
-                $scope.data.projects = WordpressData.portfolio;
-                $scope.data.projects = $.map($scope.data.projects, function(value) {
-                    return [value];
-                });
+        WordpressData.fetchPortfolio().then(() => {
+            $scope.data.projects = WordpressData.portfolio;
+            $scope.data.projects = $.map($scope.data.projects, function(value) {
+                return [value];
+            });
+            checkStatus();
+            console.log('projects', $scope.data.projects);
+        });
+
+        let checkStatus = () => {
+            if ($scope.category.id && $scope.data.projects.length > 0) {
                 $scope.data.projects = $scope.data.projects.filter((p) => {
                     return p.categories.indexOf($scope.category.id) > -1;
                 });
-                console.log('projects', $scope.data.projects);
-            });
-        });
+            }
+        };
 
     }]
 };

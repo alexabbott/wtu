@@ -2,9 +2,9 @@ let Contact = {
     templateUrl: '/components/contact/contact.tpl',
     controller: ['WordpressData', '$scope', '$window', (WordpressData, $scope, $window) => {
 
-        WordpressData.listHome((response) => {
+        WordpressData.listContact((response) => {
             $scope.data = response.data[0].acf;
-            console.log('home data', $scope.data);
+            console.log('contact data', $scope.data);
         });
 
 		let window_ = $window;

@@ -50,6 +50,9 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll']
 		},
 		listAbout: (callback) => {
      		$http.get('//wethem.us/cms/wp-json/wp/v2/about').then(callback);
+		},
+		listContact: (callback) => {
+     		$http.get('//wethem.us/cms/wp-json/wp/v2/contact').then(callback);
 	    },
 	    fetchCats: () => {
     		return $http.get('//wethem.us/cms/wp-json/wp/v2/categories').then((data) => {

@@ -20,7 +20,7 @@
 	.contact__text-container {
 		color: $color-black;
 		font-family: $druk-wide;
-		font-size: 3em;
+		font-size: 7vw;
 		left: 50%;
 		line-height: 0em;
 		position: absolute;
@@ -29,25 +29,35 @@
 			1px -1px 0 $color-white,
 			-1px 1px 0 $color-white,
 				1px 1px 0 $color-white;
-		top: 50%;
+		top: 45%;
 		transform: translate(-50%, -50%);
 		width: 100%;
+
+		@include tablet {
+			font-size: 3em;
+			top: 50%;
+		}
 	}
 
 	.contact__email {
 		color: $color-white;
 		cursor: pointer;
 		font-family: $druk-wide;
-		font-size: 3.8em;
+		font-size: 10vw;
 		left: 50%;
 		line-height: 1.1em;
 		max-width: 200px;
 		position: absolute;
 		text-align: center;
 		text-decoration: none;
-		top: 50%;
+		top: 45%;
 		transform: translate(-50%, -50%);
 		z-index: 2;
+
+		@include tablet {
+			font-size: 3.8em;
+			top: 50%;
+		}
 	}
 }
 
@@ -64,21 +74,30 @@
 	position: absolute;
 	transform: translateX(-50%);
 	transition-property: opacity;
-	width: 60%;
+	width: 90%;
 	z-index: 1;
+
+	@include tablet {
+		width: 60%;
+	}
 
 	.sign-up-cta {
 		@extend %transition-long;
 		bottom: 20%;
 		color: $color-white;
 		font-family: $druk-wide;
-		font-size: 1.4em;
+		font-size: .8em;
 		left: 50%;
 		position: absolute;
 		text-align: center;
 		transform: translateX(-50%);
 		transition-property: opacity;
-		width: 80%;
+		width: 100%;
+
+		@include tablet {
+			font-size: 1.4em;
+			width: 80%;
+		}
 
 		span {
 			border-bottom: 1px solid $color-white;
@@ -103,6 +122,7 @@
 			color: $color-white;
 			font-family: $druk-wide;
 			font-size: 1.4em;
+			text-align: center;
 
 			&:focus {
 				outline: 0;
@@ -125,17 +145,23 @@
 
 	.button {
 		@extend %transition-long;
-		background: $color-black;
-		border: 1px solid $color-white;
+		background-color: $color-black !important;
+		border: 1px solid $color-white !important;
 		border-radius: 0;
-		color: $color-white;
-		float: right;
+		color: $color-white !important;
+		display: block !important;
 		font-family: $druk-wide;
+		margin: 0 auto !important;
 		transition-property: background, color;
 
+		@include tablet {
+			display: inline-block !important;
+			float: right;
+		}
+
 		&:hover {
-			background: $color-white;
-			color: $color-black;
+			background-color: $color-white !important;
+			color: $color-black !important;
 		}
 	}
 }
