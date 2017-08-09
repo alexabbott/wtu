@@ -58,7 +58,7 @@
 			<div class="filter-trigger" ng-click="showFilter()">SEARCH / FILTER</div>
     	</div>
     </section>
-	<section class="filter modal no-opacity" ng-class="{'no-opacity': !showModal}">
+	<section class="filter modal no-opacity">
 		<h4>SEARCH/FILTER</h4>
 		<span ng-repeat="category in data.categories">
 			<a ng-href="/category/{{ category.name | slugify }}" >
@@ -66,5 +66,5 @@
 			</a><br>
 		</span>
 	</section>
-	<div class="modal-mask no-opacity" ng-click="hideFilter()" ng-class="{'no-opacity': !showModal}"></div>
+	<div class="modal-mask no-opacity" ng-click="hideFilter()"></div>
 </div>

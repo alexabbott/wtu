@@ -10,7 +10,9 @@ let Navigation = {
       const navIcon = angular.element(document.querySelector('.nav-icon'));
       const rabbitVideo = angular.element(document.querySelector('.white-rabbit__video'));
 			const navRabbit = angular.element(document.querySelector('.nav__white-rabbit__image'));
-			const whiteRabbit = angular.element(document.querySelector('.nav__white-rabbit'));
+			const whiteRabbitMobile = angular.element(document.querySelector('.nav__white-rabbit.mobile-only'));
+			const whiteRabbitDesktop = angular.element(document.querySelector('.nav__white-rabbit.mobile-hide'));
+			const navMobileSocial = angular.element(document.querySelector('.nav__socials.mobile-only'));
 
 			$scope.openCloseNav = () => {
 				let modal = angular.element(document.querySelector('.modal'));
@@ -23,9 +25,12 @@ let Navigation = {
 					$scope.navOpen = !$scope.navOpen;
 				}
 				if (!$scope.navOpen) {
-					whiteRabbit.addClass('no-opacity');
+					whiteRabbitMobile.addClass('no-opacity');
+				} else {
+					whiteRabbitMobile.removeClass('no-opacity');
 				}
 			}
+
 
 			$timeout(() => {
 				nav.removeClass('no-opacity');
@@ -33,6 +38,37 @@ let Navigation = {
 					navRabbit.addClass('rotate');
 				}
 			}, 100);
+
+			let loop = () => {
+					let scrollTop = $window.scrollY;
+					if (lastScrollTop === scrollTop) {
+							return raf(loop);
+					} else {
+							lastScrollTop = scrollTop;
+
+							// fire scroll function if scrolls vertically
+							if (($window.innerHeight + scrollTop + 300) >= document.body.offsetHeight) {
+									// you're at the bottom of the page
+									navMobileSocial.removeClass('no-opacity');
+							} else {
+									navMobileSocial.addClass('no-opacity')
+							}
+
+							raf(loop);
+					}
+			};
+
+			let raf = window.requestAnimationFrame ||
+					window.webkitRequestAnimationFrame ||
+					window.mozRequestAnimationFrame ||
+					window.msRequestAnimationFrame ||
+					window.oRequestAnimationFrame;
+
+			let lastScrollTop = $window.scrollY;
+
+			if (raf) {
+					loop();
+			}
 
     });
 

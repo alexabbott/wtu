@@ -83,7 +83,7 @@
 
 	.sign-up-cta {
 		@extend %transition-long;
-		bottom: 20%;
+		bottom: 25vh;
 		color: $color-white;
 		font-family: $druk-wide;
 		font-size: .8em;
@@ -95,6 +95,7 @@
 		width: 100%;
 
 		@include tablet {
+			bottom: 20%;
 			font-size: 1.4em;
 			width: 80%;
 		}

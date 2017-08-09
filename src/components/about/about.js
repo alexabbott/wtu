@@ -1,12 +1,14 @@
 let About = {
     templateUrl: '/components/about/about.tpl',
-    controller: ['WordpressData', '$scope', '$window', (WordpressData, $scope, $window) => {
+    controller: ['WordpressData', '$scope', '$window', '$location', (WordpressData, $scope, $window, $location) => {
 
         const firstNav = angular.element(document.querySelector('.nav__items .nav__item:first-of-type'));
         const secondNav = angular.element(document.querySelector('.nav__items .nav__item:nth-of-type(2)'));
         const thirdNav = angular.element(document.querySelector('.nav__items .nav__item:last-of-type'));
         const aboutContainer = angular.element(document.querySelector('.about__container'));
-        const whiteRabbit = angular.element(document.querySelector('.nav__white-rabbit'));
+        const whiteRabbitDesktop = angular.element(document.querySelector('.nav__white-rabbit.mobile-hide'));
+        const whiteRabbitMobile = angular.element(document.querySelector('.nav__white-rabbit.mobile-only'));
+        const navMobileSocial = angular.element(document.querySelector('.nav__socials.mobile-only'));
 
         firstNav.removeClass('active');
         secondNav.addClass('active');
@@ -17,12 +19,10 @@ let About = {
         WordpressData.listAbout((response) => {
             $scope.data = response.data[0].acf;
             aboutContainer.removeClass('no-opacity');
-            console.log('data', $scope.data);
         });
-        console.log('widt', $window.innerWidth);
-        if ($window.innerWidth < 768) {
-            whiteRabbit.addClass('mobile-hide');
-        }
+
+        navMobileSocial.addClass('mobile-hide').addClass('no-opacity');
+        whiteRabbitMobile.addClass('mobile-hide');
 
     }]
 };

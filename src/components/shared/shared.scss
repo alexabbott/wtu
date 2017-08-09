@@ -724,7 +724,6 @@ template {
   pointer-events: none;
 
   @include tablet {
-    display: inherit;
     opacity: 1;
     pointer-events: initial;
   }

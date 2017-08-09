@@ -37,6 +37,7 @@ nav {
 
 			@include tablet {
 				background: transparent;
+				height: auto;
 				padding: 0;
 				right: 5%;
 				text-align: right;
@@ -89,8 +90,7 @@ nav {
 
 	}
 
-	.nav__socials,
-	.nav__socials--alt {
+	.nav__socials {
 		bottom: 40px;
 		cursor: pointer;
 		position: fixed;
@@ -98,6 +98,7 @@ nav {
 		right: auto;
 		text-align: center;
 		transform: translateX(-50%);
+		transition: opacity .5s ease-out;
 		width: 200px;
 
 		@include tablet {
@@ -112,10 +113,26 @@ nav {
 			margin-left: 10px;
 			text-decoration: none;
 		}
+
+		&.no-opacity {
+			opacity: 0;
+			pointer-events: none;
+		}
 	}
 
 	.nav__white-rabbit {
 		transition: opacity .4s ease-out;
+
+		&.mobile-only {
+			.nav__white-rabbit__image {
+				bottom: 17vh;
+				display: block;
+
+				@include tablet {
+					display: none;
+				}
+			}
+		}
 	}
 
 	.nav__white-rabbit__image {

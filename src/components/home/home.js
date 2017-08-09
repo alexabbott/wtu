@@ -1,6 +1,7 @@
 let Home = {
     templateUrl: '/components/home/home.tpl',
-    controller: ['WordpressData', '$scope', '$window', '$timeout', '$location', 'smoothScroll', (WordpressData, $scope, $window, $timeout, $location, smoothScroll) => {
+	controller: ['WordpressData', '$scope', '$window', '$timeout', '$location', 'smoothScroll', '$interval',
+	(WordpressData, $scope, $window, $timeout, $location, smoothScroll, $interval) => {
 
 		let window_ = $window;
 
@@ -17,10 +18,12 @@ let Home = {
         const about = angular.element(document.querySelector('.about'));
         const projects = angular.element(document.querySelector('.projects'));
 		const projectsContainer = angular.element(document.querySelector('.projects__container'));
-		const whiteRabbit = angular.element(document.querySelector('.nav__white-rabbit'));
+		const whiteRabbit = angular.element(document.querySelector('.nav__white-rabbit.mobile-hide'));
+		const whiteRabbitMobile = angular.element(document.querySelector('.nav__white-rabbit.mobile-only'));
 
 		secondNav.removeClass('active');
 		thirdNav.removeClass('active');
+		whiteRabbitMobile.addClass('mobile-hide');
 
 		if (!$scope.data) {
 			$scope.data = {};
@@ -175,21 +178,13 @@ let Home = {
 		        lastScrollTop = scrollTop;
 
 		        // fire scroll function if scrolls vertically
-		        if (scrollTop < 3500) {
-			        changeIntroTextSize(scrollTop);
-			        changeScrollOpacity(scrollTop);
-		        }
-		        if (scrollTop < 3500) {
-			        changeIntroImagePosition(scrollTop);
-					changeIntroGradientPosition(scrollTop);
-					changeIntroImageOpacity(scrollTop);
-		    	}
-		    	if (scrollTop > 1400 && scrollTop < 4000) {
-		    		changeAboutOpacity(scrollTop);
-		    	}
-		    	if (scrollTop > 2500 && scrollTop < 6000) {
-			        changeProjectsPosition(scrollTop);
-		    	}
+				changeIntroTextSize(scrollTop);
+				changeScrollOpacity(scrollTop);
+				changeIntroImagePosition(scrollTop);
+				changeIntroGradientPosition(scrollTop);
+				changeIntroImageOpacity(scrollTop);
+				changeAboutOpacity(scrollTop);
+				changeProjectsPosition(scrollTop);
 		        raf(loop);
 		    }
 		};
@@ -224,20 +219,20 @@ let Home = {
 			smoothScroll(document.getElementById('projects-indicator'));
 		}
 
-		$scope.showModal = false;
 		$scope.showFilter = function() {
 			navIcon.addClass('open');
 			whiteRabbit.addClass('mobile-hide');
-			$scope.showModal = true;
+			modal.addClass('no-opacity');
+			modalMask.addClass('no-opacity');
 		};
 
 		$scope.hideFilter = function() {
 			navIcon.removeClass('open');
-			$scope.showModal = false;
+			modal.addClass('no-opacity');
+			modalMask.addClass('no-opacity');
 		};
 
 		$scope.$on('$locationChangeStart', function(next, current) { 
-		console.log('value');
 			if ($location.search().q === 'work') {
 				smoothScroll(document.getElementById('projects-indicator'));
 			} else {
