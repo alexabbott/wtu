@@ -229,6 +229,10 @@
 					height: 8vh;
 				}
 
+				.projects__marquee {
+					z-index: 1;
+				}
+
 				&:nth-of-type(1) {
 					.projects__marquee {
 						top: 20vh;

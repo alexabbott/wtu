@@ -150,18 +150,13 @@ let Home = {
 		    }
 		};
 
-		$scope.changeImageBlur = (index) => {
-			$scope.showImage = index;
+		$scope.showBg = (slug) => {
+			angular.element(document.querySelectorAll('.projects__bg')).addClass('no-opacity');
+			angular.element(document.querySelector('.projects__bg.' + '_' + slug)).removeClass('no-opacity');
 		};
 
-		$scope.showBg = (index) => {
-			angular.element(document.querySelectorAll('.projects__bg')[index]).removeClass('no-opacity');
-			angular.element(document.querySelectorAll('.projects__bg')[index]).addClass('low-opacity');
-		};
-
-		$scope.hideBg = (index) => {
-			angular.element(document.querySelectorAll('.projects__bg')[index]).addClass('no-opacity');
-			angular.element(document.querySelectorAll('.projects__bg')[index]).removeClass('low-opacity');
+		$scope.hideBg = (slug) => {
+			angular.element(document.querySelectorAll('.projects__bg')).addClass('no-opacity');
 		};
 
 		let loop = () => {
