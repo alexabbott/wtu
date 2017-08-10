@@ -19,7 +19,7 @@ let Contact = {
         const contact4 = angular.element(document.querySelector('.contact__text-4'));
         const contact5 = angular.element(document.querySelector('.contact__text-5'));
         const contactEmail = angular.element(document.querySelector('.contact__email'));
-        const contactSignup = angular.element(document.querySelector('.mc_embed'));
+        const contactSignup = angular.element(document.querySelector('.contact .mc_embed'));
 
         firstNav.removeClass('active');
         secondNav.removeClass('active');
