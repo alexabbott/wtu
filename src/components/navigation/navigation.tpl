@@ -1,7 +1,7 @@
 <nav>
 	<div class="nav__main no-opacity">
 		<a href="/" id="nav__home" ng-click="openCloseNav()">
-			<img ng-src="{{ data.nav_logo.url }}" class="nav__logo nav__logo-main">
+			<img ng-src="{{ data.nav_logo.url }}" class="nav__logo nav__logo-main animated">
 		</a>
 		<div class="hamburger" ng-click="openCloseNav()">
 			<div class="nav-icon mobile-only" ng-class="{ 'open': navOpen }">
@@ -11,7 +11,7 @@
 				<span></span>
 			</div>
 		</div>
-		<div class="nav__items" ng-class="{'mobile-hide': !navOpen}" ng-click="openCloseNav()">
+		<div class="nav__items animated" ng-class="{'mobile-hide': !navOpen}" ng-click="openCloseNav()">
 			<a href="/?q=work" class="nav__item">
 				{{ data.nav_item_1 }}
 			</a>
@@ -23,9 +23,9 @@
 			</a>
 		</div>
 		<a ng-href="/internal" class="nav__white-rabbit mobile-hide">
-			<img ng-src="{{ data.white_rabbit_image.url }}" class="nav__white-rabbit__image" alt="white rabbit">
+			<img ng-src="{{ data.white_rabbit_image.url }}" class="nav__white-rabbit__image animated" alt="white rabbit">
 		</a>
-		<div class="nav__socials mobile-hide" ng-class="{'mobile-hide': !navOpen}">
+		<div class="nav__socials mobile-hide animated" ng-class="{'mobile-hide': !navOpen}">
 			<a target="_blank" ng-href="{{ data.facebook_link }}">
 				<i class="fa fa-facebook" aria-hidden="true"></i>
 			</a>

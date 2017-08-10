@@ -7,8 +7,12 @@ let Navigation = {
 			$scope.data = response.data[0].acf;
 
       const nav = angular.element(document.querySelector('.nav__main'));
+      const navItems = angular.element(document.querySelector('.nav__items'));
+      const navLogo = angular.element(document.querySelector('.nav__logo'));
+      const whiteRabbit = angular.element(document.querySelector('.nav__white-rabbit'));
       const navIcon = angular.element(document.querySelector('.nav-icon'));
-			const navRabbit = angular.element(document.querySelector('.nav__white-rabbit__image'));
+      const navSocials = angular.element(document.querySelector('.nav__socials'));
+			const navRabbitImage = angular.element(document.querySelector('.nav__white-rabbit__image'));
 
 			$scope.openCloseNav = () => {
 				let modal = angular.element(document.querySelector('.modal'));
@@ -24,6 +28,10 @@ let Navigation = {
 
 			$timeout(() => {
 				nav.removeClass('no-opacity');
+				navItems.addClass('fadeInRight');
+				navLogo.addClass('fadeInLeft');
+				navSocials.addClass('fadeInRight');
+				navRabbitImage.addClass('fadeInLeft');
 				if ($location.path() && $location.path().indexOf('internal') > -1) {
 					navRabbit.addClass('rotate');
 				}

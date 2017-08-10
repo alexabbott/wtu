@@ -14,7 +14,7 @@
 	    </div>
     </section>
 
-	<div class="intro__scroll-down no-opacity" scroll-to="about-indicator">
+	<div class="intro__scroll-down no-opacity animated" scroll-to="about-indicator">
 		{{ data.home.intro_scroll_down_text }}
 	</div>
 

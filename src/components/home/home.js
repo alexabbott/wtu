@@ -34,7 +34,7 @@ let Home = {
 		let showStuff = () => {
 			$timeout(() => {
 				introImage.removeClass('no-opacity');
-				introScrollDown.removeClass('no-opacity');
+				introScrollDown.removeClass('no-opacity').addClass('fadeInUp');
 				introText.removeClass('no-opacity');
 			}, 1000);
 		};
