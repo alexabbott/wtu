@@ -67,8 +67,10 @@ let Home = {
 		let changeScrollOpacity = (scrollPos) => {
 			if (scrollPos < 3000) {
 				introScrollDown.removeClass('no-opacity');				
+				introScrollDown.removeClass('hidden');				
             } else {
 				introScrollDown.addClass('no-opacity');
+				introScrollDown.addClass('hidden');
             }
 		};
 
