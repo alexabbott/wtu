@@ -99,7 +99,7 @@
 		cursor: pointer;
 		font-family: $druk-wide;
 		font-size: .7em;
-		left: 0;
+		left: 50%;
 		letter-spacing: 0.1em;
 		position: fixed;
 		text-align: center;
@@ -110,6 +110,7 @@
 
 		@include tablet {
 			bottom: 50px;
+			left: 0;
 			font-size: 0.8em;
 		}
 	}

@@ -17,13 +17,18 @@ let Navigation = {
 			$scope.openCloseNav = () => {
 				let modal = angular.element(document.querySelector('.modal'));
 				let modalMask = angular.element(document.querySelector('.modal-mask'));
-				if (modal.hasClass('modal') && !modal.hasClass('no-opacity')) {
+				if (modal && modal.hasClass('modal') && !modal.hasClass('no-opacity')) {
 					modal.addClass('no-opacity');
 					modalMask.addClass('no-opacity');
 					navIcon.removeClass('open');
 				} else {
 					$scope.navOpen = !$scope.navOpen;
 				}
+			}
+
+			$scope.closeNav = () => {
+					navIcon.removeClass('open');
+					$scope.navOpen = false;
 			}
 
 			$timeout(() => {
