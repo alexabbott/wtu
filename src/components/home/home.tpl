@@ -24,10 +24,9 @@
 
     <section id="about" class="about no-opacity">
 		<div class="about-container">
-			<span ng-repeat="category in data.categories">
-				<span class="about__text" >
-					{{ category.name }}
-				</span><br>
+			<span>
+				<span class="about__text" ng-bind-html="data.home.services">
+				</span>
 			</span>
 		</div>
     </section>
@@ -56,6 +55,23 @@
 	    		</div>
     		</div>
 			<div class="filter-trigger" ng-click="showFilter()">SEARCH / FILTER</div>
+			<a ng-href="/internal" class="nav__white-rabbit mobile-only">
+				<img ng-src="{{ data.nav.white_rabbit_image.url }}" class="nav__white-rabbit__image" alt="white rabbit">
+			</a>
+			<div class="nav__socials mobile-only">
+				<a target="_blank" ng-href="{{ data.nav.facebook_link }}">
+					<i class="fa fa-facebook" aria-hidden="true"></i>
+				</a>
+				<a target="_blank" ng-href="{{ data.nav.twitter_link }}">
+					<i class="fa fa-twitter" aria-hidden="true"></i>
+				</a>
+				<a target="_blank" ng-href="{{ data.nav.instagram_link }}">
+					<i class="fa fa-instagram" aria-hidden="true"></i>
+				</a>
+				<a target="_blank" ng-href="{{ data.nav.snapchat_link }}">
+					<i class="fa fa-snapchat-ghost" aria-hidden="true"></i>
+				</a>
+			</div>
     	</div>
     </section>
 	<section class="filter modal no-opacity">

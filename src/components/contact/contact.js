@@ -20,8 +20,6 @@ let Contact = {
         const contact5 = angular.element(document.querySelector('.contact__text-5'));
         const contactEmail = angular.element(document.querySelector('.contact__email'));
         const contactSignup = angular.element(document.querySelector('.mc_embed'));
-        const navMobileSocial = angular.element(document.querySelector('.nav__socials.mobile-only'));
-        const whiteRabbitMobile = angular.element(document.querySelector('.nav__white-rabbit.mobile-only'));
 
         firstNav.removeClass('active');
         secondNav.removeClass('active');
@@ -38,10 +36,11 @@ let Contact = {
 			contactSignup.addClass('fade-in seven');
         };
 
-        whiteRabbitMobile.removeClass('mobile-hide');
-        navMobileSocial.removeClass('mobile-hide').removeClass('no-opacity');
-        
         changeContactOpacity();
+
+        WordpressData.listNav((response) => {
+			$scope.data.nav = response.data[0].acf;
+		});
     }]
 };
 

@@ -181,6 +181,10 @@
 			text-decoration: none;
 			text-transform: uppercase;
 
+			p {
+				margin: 0;
+			}
+
 			.about__text-main {
 				em {
 					cursor: default;
@@ -488,5 +492,30 @@
 		transition: opacity 1s ease-out;
 		width: 100vw;
 		z-index: 199;
+	}
+
+	.nav__white-rabbit.mobile-only {
+		bottom: 23vh;
+		left: 50%;
+		position: absolute;
+		transform: translateX(-50%);
+
+		img {
+			width: 40px;
+		}
+	}
+
+	.nav__socials.mobile-only {
+		bottom: 7vh;
+		left: 50%;
+		position: absolute;
+		transform: translateX(-50%);
+		width: 100%;
+
+		a {
+			color: $color-white;
+			margin: 0 5px;
+			text-decoration: none;
+		}
 	}
 }

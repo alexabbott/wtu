@@ -15,17 +15,21 @@ let Category = {
 
         $scope.category = {};
 
-        WordpressData.fetchCats().then(() => {
-            $scope.data.categories = WordpressData.categories;
-            $scope.data.categories = $.map($scope.data.categories, function(value) {
-                return [value];
+        if ($location.path().indexOf('internal') === -1) {
+            WordpressData.fetchCats().then(() => {
+                $scope.data.categories = WordpressData.categories;
+                $scope.data.categories = $.map($scope.data.categories, function(value) {
+                    return [value];
+                });
+                $scope.category = $scope.data.categories.filter((c) => {
+                    return c.slug === $location.path().split('/category/')[1];
+                })[0];
+                checkStatus();
+                console.log('categories', $scope.data.categories);
             });
-            $scope.category = $scope.data.categories.filter((c) => {
-                return c.slug === $location.path().split('/category/')[1];
-            })[0];
-            checkStatus();
-            console.log('categories', $scope.data.categories);
-        });
+        } else {
+            $scope.category.name = '.US PROJECTS';
+        }
 
         WordpressData.fetchPortfolio().then(() => {
             $scope.data.projects = WordpressData.portfolio;
@@ -37,10 +41,16 @@ let Category = {
         });
 
         let checkStatus = () => {
-            if ($scope.category.id && $scope.data.projects.length > 0) {
+            if ($location.path().indexOf('internal') > -1) {
                 $scope.data.projects = $scope.data.projects.filter((p) => {
-                    return p.categories.indexOf($scope.category.id) > -1;
+                    return p.internal_project;
                 });
+            } else {
+                if ($scope.category.id && $scope.data.projects.length > 0) {
+                    $scope.data.projects = $scope.data.projects.filter((p) => {
+                        return p.categories.indexOf($scope.category.id) > -1;
+                    });
+                }
             }
         };
 

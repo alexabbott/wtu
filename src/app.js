@@ -25,6 +25,10 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll']
 		.when('/category/:slug', {
 	        templateUrl: '/components/pages/category.tpl',
 	        reloadOnSearch: false
+		})
+		.when('/internal', {
+	        templateUrl: '/components/pages/category.tpl',
+	        reloadOnSearch: false
 	    })
 	    .when('/:slug', {
 	        templateUrl: '/components/pages/portfolio.tpl',

@@ -44,5 +44,22 @@
 		</div>
 		<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
 		<!--End mc_embed_signup-->
+		<a ng-href="/internal" class="nav__white-rabbit mobile-only">
+			<img ng-src="{{ data.nav.white_rabbit_image.url }}" class="nav__white-rabbit__image" alt="white rabbit">
+		</a>
+		<div class="nav__socials mobile-only">
+			<a target="_blank" ng-href="{{ data.nav.facebook_link }}">
+				<i class="fa fa-facebook" aria-hidden="true"></i>
+			</a>
+			<a target="_blank" ng-href="{{ data.nav.twitter_link }}">
+				<i class="fa fa-twitter" aria-hidden="true"></i>
+			</a>
+			<a target="_blank" ng-href="{{ data.nav.instagram_link }}">
+				<i class="fa fa-instagram" aria-hidden="true"></i>
+			</a>
+			<a target="_blank" ng-href="{{ data.nav.snapchat_link }}">
+				<i class="fa fa-snapchat-ghost" aria-hidden="true"></i>
+			</a>
+		</div>
     </section>
 </div>

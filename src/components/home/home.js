@@ -19,38 +19,35 @@ let Home = {
         const projects = angular.element(document.querySelector('.projects'));
 		const projectsContainer = angular.element(document.querySelector('.projects__container'));
 		const whiteRabbit = angular.element(document.querySelector('.nav__white-rabbit.mobile-hide'));
-		const whiteRabbitMobile = angular.element(document.querySelector('.nav__white-rabbit.mobile-only'));
 
 		secondNav.removeClass('active');
 		thirdNav.removeClass('active');
-		whiteRabbitMobile.addClass('mobile-hide');
 
 		if (!$scope.data) {
 			$scope.data = {};
 		}
 
-		if (!window.localStorage.getItem('home')) {
-			WordpressData.listHome((response) => {
-				$scope.data.home = response.data[0].acf;
-				window.localStorage.setItem('home', JSON.stringify($scope.data.home));
-			});
-		} else {
-			$scope.data.home = JSON.parse(window.localStorage.getItem('home'));
+		WordpressData.listNav((response) => {
+			$scope.data.nav = response.data[0].acf;
+		});
+
+		let showStuff = () => {
 			$timeout(() => {
 				introImage.removeClass('no-opacity');
 				introScrollDown.removeClass('no-opacity');
 				introText.removeClass('no-opacity');
 			}, 1000);
-		}
+		};
 
-		if (!window.localStorage.getItem('cat')) {
-			WordpressData.fetchCats().then(() => {
-				$scope.data.categories = WordpressData.categories;
-				window.localStorage.setItem('cat', JSON.stringify($scope.data.categories));
-			});
-		} else {
-			$scope.data.categories = JSON.parse(window.localStorage.getItem('cat'));
-		}
+		WordpressData.listHome((response) => {
+			$scope.data.home = response.data[0].acf;
+			console.log('home,', $scope.data.home);
+			showStuff();
+		});
+
+		WordpressData.fetchCats().then(() => {
+			$scope.data.categories = WordpressData.categories;
+		});
 
 		WordpressData.fetchPortfolio().then(() => {
 			$scope.data.portfolio = WordpressData.portfolio;
@@ -69,12 +66,9 @@ let Home = {
 
 		let changeScrollOpacity = (scrollPos) => {
 			if (scrollPos < 3000) {
-				introScrollDown.removeClass('no-opacity');
-				whiteRabbit.addClass('mobile-hide');
-				
+				introScrollDown.removeClass('no-opacity');				
             } else {
 				introScrollDown.addClass('no-opacity');
-				whiteRabbit.removeClass('mobile-hide');
             }
 		};
 
@@ -221,7 +215,6 @@ let Home = {
 
 		$scope.showFilter = function() {
 			navIcon.addClass('open');
-			whiteRabbit.addClass('mobile-hide');
 			modal.addClass('no-opacity');
 			modalMask.addClass('no-opacity');
 		};
