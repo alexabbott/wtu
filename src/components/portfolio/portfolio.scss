@@ -249,3 +249,20 @@
     }
   }
 }
+
+@media screen and (max-width: 480px) {
+  .portfolio {
+    .content {
+      header {
+        padding: 40px 0 60px;
+
+        .title {
+          font-size: 1.33em
+        }
+        .cats {
+          font-size: 0.66em
+        }
+      }
+    }
+  }
+}
