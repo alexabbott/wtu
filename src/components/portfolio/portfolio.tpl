@@ -32,7 +32,7 @@
                  class="section fade {{b.acf_fc_layout}} {{b.layout}}">
 
                 <span ng-if="b.acf_fc_layout === 'text_block'"
-                      ng-bind-html="trustBlob(b.text)" />
+                      ng-bind-html="trustBlob(b.text)" ></span>
 
                 <img  ng-if="b.acf_fc_layout === 'image_block'" src="{{b.image.url}}" />
 
