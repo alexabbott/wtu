@@ -1,9 +1,9 @@
 .home {
 	background: $color-black;
-	height: 800vh;
+	height: 700vh;
 
 	@include tablet {
-		height: 600vh;
+		height: 500vh;
 	}
 
 	#intro-indicator {
@@ -35,20 +35,13 @@
 		}
 
 		.intro__gradient {
-			background: rgba(222,53,16,1);
-			background: -moz-linear-gradient(top, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
-			background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(222,53,16,1)), color-stop(20%, rgba(222,53,16,1)), color-stop(100%, rgba(231,203,174,1)));
-			background: -webkit-linear-gradient(top, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
-			background: -o-linear-gradient(top, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
-			background: -ms-linear-gradient(top, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
-			background: linear-gradient(to bottom, rgba(222,53,16,1) 0%, rgba(222,53,16,1) 20%, rgba(231,203,174,1) 100%);
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de3510', endColorstr='#e7cbae', GradientType=0 );
 			height: 150vh;
 		    mix-blend-mode: multiply;
 			position: fixed;
 			top: 0;
 			transform-origin: 50% 0;
 			width: 100vw;
+			z-index: 1;
 		}
 	}
 
@@ -116,6 +109,7 @@
 	}
 
 	.blotch {
+		@extend %transition-long;
 		background: blue;
 		border-radius: 50%;
 		box-shadow: 0px 0px 18vw 13vw blue;
@@ -125,11 +119,16 @@
 		left: 0;
 		opacity: .8;
 		position: absolute;
-		top: 370vh;
+		top: 300vh;
+		transition-property: opacity;
 		z-index: 8;
 
+		&.no-opacity {
+			opacity: 0;
+		}
+
 		@include tablet {
-			box-shadow: 0px 0px 34vw 13vw blue;
+			box-shadow: 0px 0px 340px 230px blue;
 			width: 10vw;
 		}
 	}
@@ -196,9 +195,9 @@
 
 	}
 
-	#projects-indicator {
+	#work {
 		position: absolute;
-		top: 3600px;
+		top: 3200px;
 	}
 
 	.projects {
@@ -209,6 +208,22 @@
 		transition-property: opacity;
 		width: 100vw;
 		z-index: 5;
+
+		.selected-works {
+			color: $color-white;
+			font-family: $druk-wide;
+			font-size: 1em;
+			left: 50%;
+			position: fixed;
+			text-transform: uppercase;
+			top: 15vh;
+			transform: translateX(-50%);
+			z-index: 100;
+
+			@include tablet {
+				top: 60px;
+			}
+		}
 
 		.projects__container {
 			@extend %transition-long;
@@ -223,11 +238,12 @@
 			z-index: 1;
 
 			.projects__marquee-box {
-				height: 4vh;
+				display: none;
+				height: 8vh;
 				overflow: hidden;
 
 				@include tablet {
-					height: 8vh;
+					height: 14vh;
 				}
 
 				.projects__marquee {
@@ -235,12 +251,14 @@
 				}
 
 				&:nth-of-type(1) {
+					display: block;
+
 					.projects__marquee {
 						top: 20vh;
 						animation: marquee 25s linear infinite;
 
 						@include tablet {
-							top: 10vh;
+							top: 12vh;
 						}
 						a {
 							float: left;
@@ -249,12 +267,14 @@
 				 }
 
 				 &:nth-of-type(2) {
+					 display: block;
+
 					 .projects__marquee {
 						top: 24vh;
 						 animation: marqueeRight 19s linear infinite;
 
 						  @include tablet {
-							top: 18vh;
+							top: 24vh;
 						}
 						a {
 							float: right;
@@ -263,13 +283,15 @@
 				 }
 
 				 &:nth-of-type(3) {
+					 display: block;
+
 					 .projects__marquee {
 						top: 28vh;
 
 						animation: marquee 18s linear infinite;
 
 						@include tablet {
-							top: 26vh;
+							top: 36vh;
 						}
 						a {
 							float: left;
@@ -278,12 +300,14 @@
 				 }
 
 				 &:nth-of-type(4) {
+					 display: block;
+
 					 .projects__marquee {
 						top: 32vh;
 						animation: marqueeRight 22s linear infinite;
 
 						@include tablet {
-							top: 34vh;
+							top: 48vh;
 						}
 						a {
 							float: right;
@@ -292,12 +316,14 @@
 				 }
 
 				 &:nth-of-type(5) {
+					 display: block;
+
 					 .projects__marquee {
 						top: 36vh;
 						animation: marquee 28s linear infinite;
 
 						@include tablet {
-							top: 42vh;
+							top: 60vh;
 						}
 						a {
 							float: left;
@@ -306,70 +332,15 @@
 				 }
 
 				 &:nth-of-type(6) {
+					 display: block;
+
 					 .projects__marquee {
 						top: 40vh;
-						animation: marqueeRight 20s linear infinite;
+						animation: marqueeRight 32s linear infinite;
 
 						@include tablet {
-							top: 50vh;
+							top: 72vh;
 						}
-						a {
-							float: right;
-						}
-					 }
-				 }
-
-				 &:nth-of-type(7) {
-					 .projects__marquee {
-						top: 44vh;
-						animation: marquee 15s linear infinite;
-
-						@include tablet {
-							top: 58vh;
-						}
-						a {
-							float: left;
-						}
-					 }
-				 }
-
-				 &:nth-of-type(8) {
-					 .projects__marquee {
-						top: 48vh;
-						animation: marqueeRight 27s linear infinite;
-
-						@include tablet {
-							top: 66vh;
-						}
-						a {
-							float: right;
-						}
-					 }
-				 }
-
-				 &:nth-of-type(9) {
-					 .projects__marquee {
-						top: 52vh;
-						animation: marquee 16s linear infinite;
-
-						@include tablet {
-							top: 74vh;
-						}
-						a {
-							float: left;
-						}
-					 }
-				 }
-
-				 &:nth-of-type(10) {
-					 .projects__marquee {
-						top: 56vh;
-						animation: marqueeRight 30s linear infinite;
-
-						@include tablet {
-							top: 82vh;
-						}
-
 						a {
 							float: right;
 						}
@@ -381,7 +352,7 @@
 				color: $color-black;
 				display: block;
 				font-family: $druk-wide;
-				font-size: 4vh;
+				font-size: 8vh;
 				overflow: hidden;
 				position: absolute;
 				text-shadow:
@@ -389,26 +360,33 @@
 			    1px -1px 0 $color-white,
 			    -1px 1px 0 $color-white,
 			     1px 1px 0 $color-white;
-				 height: 4vh;
+				 height: 8vh;
 				overflow: hidden;
 				  width: 200vw;
 
 				  @include tablet {
-					  font-size: 8vh;
-					height: 8vh;
+					  font-size: 14vh;
+					height: 14vh;
 				  }
 
 
 				a {
-					@extend %transition-long;
 					transition-property: color;
 					color: $color-black;
 					cursor: pointer;
+					overflow: hidden;
 					text-decoration: none;
 					width: 100vw;
 
-					&:hover {
-						color: $color-white;
+					span {
+						@extend %transition-long;
+						overflow: hidden;
+						transition-property: color;
+						white-space: nowrap;
+
+						&:hover {
+							color: $color-white;
+						}
 					}
 				}
 			}
@@ -427,7 +405,7 @@
 			z-index: 100;
 
 			@include tablet {
-				bottom: 30px;
+				bottom: 50px;
 
 			}
 		}
@@ -479,6 +457,7 @@
 			line-height: 1.8;
 			margin: 3px 7px;
 			text-decoration: none;
+			text-transform: uppercase;
 			width: 100%;
 
 			@include tablet {
@@ -488,6 +467,19 @@
 				width: auto;
 			}
 		}
+
+	}
+
+	.modal-close {
+		@extend %transition-long;
+		color: $color-white;
+		cursor: pointer;
+		font-size: 3em;
+		position: fixed;
+		right: 32px;
+		top: 20px;
+		transition-property: opacity;
+		z-index: 201;
 	}
 
 	.modal-mask {

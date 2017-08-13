@@ -1,12 +1,19 @@
-<div class="home">
+<div>{{ data.home.intro_gradient_color_2 }}</div>
+
+<div class="home" ng-init="init()">
   <h1 class="hidden" id="top">WeThem.Us</h1>
 
   <section class="intro__bg">
 		<img ng-src="{{ data.home.intro_image.url }}" class="intro__image no-opacity">
-		<div class="intro__gradient"></div>
+		<div class="intro__gradient" style="background: {{ data.home.intro_gradient_color_1 }};
+			background: -moz-linear-gradient(top, {{ data.home.intro_gradient_color_1 }} 0%, {{ data.home.intro_gradient_color_1 }} 20%, {{ data.home.intro_gradient_color_2 }} 100%);
+			background: -webkit-gradient(left top, left bottom, color-stop(0%, {{ data.home.intro_gradient_color_1 }}), color-stop(20%, {{ data.home.intro_gradient_color_1 }}), color-stop(100%, {{ data.home.intro_gradient_color_2 }}));
+			background: -webkit-linear-gradient(top, {{ data.home.intro_gradient_color_1 }} 0%, {{ data.home.intro_gradient_color_1 }} 20%, {{ data.home.intro_gradient_color_2 }} 100%);
+			background: -o-linear-gradient(top, {{ data.home.intro_gradient_color_1 }} 0%, {{ data.home.intro_gradient_color_1 }} 20%, {{ data.home.intro_gradient_color_2 }} 100%);
+			background: -ms-linear-gradient(top, {{ data.home.intro_gradient_color_1 }} 0%, {{ data.home.intro_gradient_color_1 }} 20%, {{ data.home.intro_gradient_color_2 }} 100%);
+			background: linear-gradient(to bottom, {{ data.home.intro_gradient_color_1 }} 0%, {{ data.home.intro_gradient_color_1 }} 20%, {{ data.home.intro_gradient_color_2 }} 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ data.home.intro_gradient_color_1 }}', endColorstr='{{ data.home.intro_gradient_color_2 }}', GradientType=0 );"></div>
 	</section>
-
-	<div id="intro-indicator"></div>
 
     <section id="intro" class="intro">
     	<div class="intro__container">
@@ -20,8 +27,6 @@
 
     <div class="blotch"></div>
 
-    <div id="about-indicator"></div>
-
     <section id="about" class="about no-opacity">
 		<div class="about-container">
 			<span>
@@ -31,22 +36,31 @@
 		</div>
     </section>
 
-    <div id="projects-indicator"></div>
+    <div id="work"></div>
 
     <section id="projects" class="projects">
+		<div class="selected-works">Selected Works</div>
     	<div class="projects__container no-opacity">
-    		<div ng-repeat="project in data.portfolio" class="projects__marquee-box">
+    		<div ng-repeat="project in data.portfolio | limitTo : 6" class="projects__marquee-box">
 	    		<div class="projects__marquee">
 	    			<a href="/{{ project.slug }}"
                class="projects__link uppercase"
                ng-mouseenter="showBg(project.slug)"
                ng-mouseleave="hideBg(project.slug)">
-               {{ project.acf.short_title }}
+               <span>{{ project.acf.short_title }}</span>
+			   <span>{{ project.acf.short_title }}</span>
+			   <span>{{ project.acf.short_title }}</span>
+			   <span>{{ project.acf.short_title }}</span>
+			   <span>{{ project.acf.short_title }}</span>
             </a> <a href="/{{ project.slug }}"
                class="projects__link uppercase"
                ng-mouseenter="showBg(project.slug)"
                ng-mouseleave="hideBg(project.slug)">
-               {{ project.acf.short_title }}
+               <span>{{ project.acf.short_title }}</span>
+			   <span>{{ project.acf.short_title }}</span>
+			   <span>{{ project.acf.short_title }}</span>
+			   <span>{{ project.acf.short_title }}</span>
+			   <span>{{ project.acf.short_title }}</span>
             </a>
 	    		</div>
 	    		<div class="projects__bg no-opacity _{{project.slug}}" style="background-image: url({{ project.acf.bg_img }});">
@@ -80,5 +94,6 @@
 			</a><br>
 		</span>
 	</section>
+	<div class="modal-close no-opacity" ng-click="hideFilter()">&times;</div>
 	<div class="modal-mask no-opacity" ng-click="hideFilter()"></div>
 </div>

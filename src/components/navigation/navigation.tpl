@@ -12,7 +12,7 @@
 			</div>
 		</div>
 		<div class="nav__items animated" ng-class="{'mobile-hide': !navOpen}" ng-click="openCloseNav()">
-			<a href="/?q=work" class="nav__item">
+			<a href="/#work" class="nav__item">
 				{{ data.nav_item_1 }}
 			</a>
 			<a href="/about" class="nav__item">
