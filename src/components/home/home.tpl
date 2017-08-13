@@ -1,6 +1,6 @@
 <div>{{ data.home.intro_gradient_color_2 }}</div>
 
-<div class="home" ng-init="init()">
+<div class="home" id="top" ng-init="init()">
   <h1 class="hidden" id="top">WeThem.Us</h1>
 
   <section class="intro__bg">

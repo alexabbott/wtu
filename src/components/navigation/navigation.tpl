@@ -1,6 +1,6 @@
 <nav>
 	<div class="nav__main no-opacity">
-		<a href="/" id="nav__home" ng-click="closeNav()">
+		<a href="/#top" id="nav__home" ng-click="closeNav()">
 			<img ng-src="{{ data.nav_logo.url }}" class="nav__logo nav__logo-main animated">
 		</a>
 		<div class="hamburger" ng-click="openCloseNav()">
