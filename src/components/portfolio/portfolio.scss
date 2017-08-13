@@ -4,13 +4,22 @@
    // padding-top: 100vh;
    box-sizing: border-box;
 
+   .fade {
+     opacity: 0;
+     transition: opacity 0.33s ease;
+
+     &.active {
+       opacity: 1
+     }
+   }
+
   .marquee {
     background-size: cover;
     background-position: center center;
     min-height: 85vh;
     width: 100%;
     position: relative;
-    display: flex;
+    display: block;
     top: 0; left: 0;
 
     svg.title {
@@ -35,7 +44,7 @@
     position: absolute;
     top: 0;
     width: 100vw;
-    height: 85vh;
+    height: 100vh;
     background: black;
     z-index: 10;
     opacity: 0;
@@ -215,15 +224,6 @@
     &:before {
       position: fixed;
       opacity: 1;
-    }
-  }
-
-  .fade {
-    opacity: 0;
-    transition: opacity 0.33s ease;
-
-    &.active {
-      opacity: 1
     }
   }
 }

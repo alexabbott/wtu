@@ -38,9 +38,9 @@ let Portfolio = {
                 return
             }).then(() => {
                 $scope.inactiveFaders = Array.from(document.querySelectorAll('.fade:not(.active)'))
-                checkFades()
                 return $scope.$apply()
             }).then(() => {
+                checkFades()
                 console.log("ZZZ!")
                 if (window.instgrm) {
                     console.log("balls")
