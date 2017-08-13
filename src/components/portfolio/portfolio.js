@@ -40,7 +40,10 @@ let Portfolio = {
                 $scope.inactiveFaders = Array.from(document.querySelectorAll('.fade:not(.active)'))
                 return $scope.$apply()
             }).then(() => {
+                checkFades()
+                console.log("ZZZ!")
                 if (window.instgrm) {
+                    console.log("balls")
                     window.instgrm.Embeds.process()
                 }
                 return
@@ -57,7 +60,7 @@ let Portfolio = {
 
         const checkFades = () => {
             $scope.inactiveFaders.forEach((n) => {
-                if (n.getBoundingClientRect().top < ($window.outerHeight-($window.outerHeight*0.2))) {
+                if (n.getBoundingClientRect().top < ($window.outerHeight-($window.outerHeight*0))) {
                     classifyActive(n)
                 }
             })

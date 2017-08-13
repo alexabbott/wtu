@@ -7,7 +7,7 @@
         <svg class="title"
              xmlns="http://www.w3.org/2000/svg"
              width="100%" viewBox="0 0 80 80">
-          <text x="40" y="65"
+          <text x="40" y="70"
                 text-anchor="middle"
                 fill="rgba(255,255,255,0)"
                 stroke="{{contentStyle.color || '#fff'}}"
