@@ -20,6 +20,7 @@ let Home = {
         const modalMask = angular.element(document.querySelector('.modal-mask'));
         const modalClose = angular.element(document.querySelector('.modal-close'));
         const projects = angular.element(document.querySelector('.projects'));
+        const selectedWorks = angular.element(document.querySelector('.selected-works'));
 		const projectsContainer = angular.element(document.querySelector('.projects__container'));
 		const whiteRabbit = angular.element(document.querySelector('.nav__white-rabbit.mobile-hide'));
 
@@ -35,9 +36,9 @@ let Home = {
 		});
 
 		let showStuff = () => {
+			introScrollDown.removeClass('no-opacity').addClass('animated fadeInUp');
 			$timeout(() => {
 				introImage.removeClass('no-opacity');
-				introScrollDown.removeClass('no-opacity').addClass('fadeInUp');
 				introText.removeClass('no-opacity');
 			}, 1000);
 		};
@@ -153,6 +154,7 @@ let Home = {
 		let changeProjectsPosition = (scrollPos) => {
 		    if (scrollPos < 2400) {
 		    	projects.addClass('no-opacity');
+		    	selectedWorks.addClass('no-opacity');
 				projectsContainer.addClass('no-opacity');
 				firstNav.removeClass('active');
 				secondNav.removeClass('active');
@@ -160,6 +162,7 @@ let Home = {
 		    }
 		    if (scrollPos > 2399) {
 				firstNav.addClass('active');
+		    	selectedWorks.removeClass('no-opacity');
 		    	projects.removeClass('no-opacity');
 		    	projectsContainer.removeClass('no-opacity');
 		    }
@@ -235,14 +238,16 @@ let Home = {
 		};
 
 		$scope.init = () => {
-			changeIntroTextSize(window_.scrollY);
-			changeScrollOpacity(window_.scrollY);
-			changeIntroImageOpacity(window_.scrollY);
-			changeIntroImagePosition(window_.scrollY);
-			changeIntroGradientPosition(window_.scrollY);
-			changeAboutOpacity(window_.scrollY);
-			changeBlotchOpacity(window_.scrollY);
-			changeProjectsPosition(window_.scrollY);
+			if (window_.scrollY > 401) {
+				changeIntroTextSize(window_.scrollY);
+				changeScrollOpacity(window_.scrollY);
+				changeIntroImageOpacity(window_.scrollY);
+				changeIntroImagePosition(window_.scrollY);
+				changeIntroGradientPosition(window_.scrollY);
+				changeAboutOpacity(window_.scrollY);
+				changeBlotchOpacity(window_.scrollY);
+				changeProjectsPosition(window_.scrollY);
+			}
 		};
 
     }]

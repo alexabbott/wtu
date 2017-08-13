@@ -21,7 +21,7 @@
 	    </div>
     </section>
 
-	<div class="intro__scroll-down no-opacity animated" scroll-to="about-indicator">
+	<div class="intro__scroll-down no-opacity" scroll-to="about-indicator">
 		{{ data.home.intro_scroll_down_text }}
 	</div>
 
@@ -39,7 +39,7 @@
     <div id="work"></div>
 
     <section id="projects" class="projects">
-		<div class="selected-works">Selected Works</div>
+		<div class="selected-works no-opacity">Selected Works</div>
     	<div class="projects__container no-opacity">
     		<div ng-repeat="project in data.portfolio | limitTo : 6" class="projects__marquee-box">
 	    		<div class="projects__marquee">

@@ -77,6 +77,10 @@
 			transition: opacity 0.7s ease-out, transform 0.3s ease-out;
 			-webkit-font-smoothing: antialiased;
 
+			&.no-opacity {
+				opacity: 0;
+			}
+
 			p {
 				color: transparent;
 				-webkit-text-stroke-width: .01em;
@@ -210,14 +214,19 @@
 		z-index: 5;
 
 		.selected-works {
+			@extend %transition-long;
 			color: $color-white;
 			font-family: $druk-wide;
 			font-size: 1em;
 			left: 50%;
+			pointer-events: none;
 			position: fixed;
 			text-transform: uppercase;
 			top: 15vh;
+			text-align: center;
 			transform: translateX(-50%);
+			transition-property: opacity;
+			width: 100%;
 			z-index: 100;
 
 			@include tablet {
@@ -239,7 +248,7 @@
 
 			.projects__marquee-box {
 				display: none;
-				height: 8vh;
+				height: 6vh;
 				overflow: hidden;
 
 				@include tablet {
@@ -270,7 +279,7 @@
 					 display: block;
 
 					 .projects__marquee {
-						top: 24vh;
+						top: 26vh;
 						 animation: marqueeRight 19s linear infinite;
 
 						  @include tablet {
@@ -286,7 +295,7 @@
 					 display: block;
 
 					 .projects__marquee {
-						top: 28vh;
+						top: 32vh;
 
 						animation: marquee 18s linear infinite;
 
@@ -303,7 +312,7 @@
 					 display: block;
 
 					 .projects__marquee {
-						top: 32vh;
+						top: 38vh;
 						animation: marqueeRight 22s linear infinite;
 
 						@include tablet {
@@ -319,7 +328,7 @@
 					 display: block;
 
 					 .projects__marquee {
-						top: 36vh;
+						top: 44vh;
 						animation: marquee 28s linear infinite;
 
 						@include tablet {
@@ -335,7 +344,7 @@
 					 display: block;
 
 					 .projects__marquee {
-						top: 40vh;
+						top: 50vh;
 						animation: marqueeRight 32s linear infinite;
 
 						@include tablet {
@@ -352,7 +361,7 @@
 				color: $color-black;
 				display: block;
 				font-family: $druk-wide;
-				font-size: 8vh;
+				font-size: 6vh;
 				overflow: hidden;
 				position: absolute;
 				text-shadow:
@@ -374,9 +383,14 @@
 					transition-property: color;
 					color: $color-black;
 					cursor: pointer;
+					height: 6vh;
 					overflow: hidden;
 					text-decoration: none;
 					width: 100vw;
+
+					@include tablet {
+						height: 14vh;
+					}
 
 					span {
 						@extend %transition-long;
@@ -436,7 +450,7 @@
 		transform: translate(-50%, -50%);
 		transition: opacity 1s ease-out;
 		width: 90%;
-		z-index: 200;
+		z-index: 202;
 
 
 		h4 {
@@ -476,19 +490,24 @@
 		cursor: pointer;
 		font-size: 3em;
 		position: fixed;
-		right: 32px;
-		top: 20px;
+		right: 24px;
+		top: 10px;
 		transition-property: opacity;
-		z-index: 201;
+		z-index: 203;
+
+		@include tablet {
+			right: 32px;
+			top: 20px;
+		}
 	}
 
 	.modal-mask {
-		background: rgba(0,0,0,.8);
+		background: rgba(0,0,0,.85);
 		height: 100vh;
 		position: fixed;
 		transition: opacity 1s ease-out;
 		width: 100vw;
-		z-index: 199;
+		z-index: 201;
 	}
 
 	.nav__white-rabbit.mobile-only {
