@@ -7,7 +7,7 @@
         <svg class="title"
              xmlns="http://www.w3.org/2000/svg"
              width="100%" viewBox="0 0 80 80">
-          <text x="40" y="65"
+          <text x="40" y="70"
                 text-anchor="middle"
                 fill="rgba(255,255,255,0)"
                 stroke="{{contentStyle.color || '#fff'}}"
@@ -31,15 +31,15 @@
             <div ng-repeat="b in content"
                  class="section fade {{b.acf_fc_layout}} {{b.layout}}">
 
-                <span ng-if="b.acf_fc_layout === 'text_block'" ng-bind-html="trustBlob(b.text)" ></span>
+                <span ng-if="b.acf_fc_layout === 'text_block'"
+                      ng-bind-html="trustBlob(b.text)" ></span>
 
                 <img  ng-if="b.acf_fc_layout === 'image_block'" src="{{b.image.url}}" />
 
                 <div ng-if="b.acf_fc_layout === 'embed_block'"
                      class="embed"
                      ng-class="{'fixed-aspect': b.fixed_aspect}"
-                     ng-bind-html="trustBlob(b.embed)" >
-                </div>
+                     ng-bind-html="trustBlob(b.embed)" ></div>
 
             </div>
         </div>

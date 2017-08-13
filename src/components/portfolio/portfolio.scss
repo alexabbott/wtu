@@ -1,16 +1,25 @@
 .portfolio {
    position: relative;
    background: black;
-   padding-top: 100vh;
+   // padding-top: 100vh;
    box-sizing: border-box;
+
+   .fade {
+     opacity: 0;
+     transition: opacity 0.33s ease;
+
+     &.active {
+       opacity: 1
+     }
+   }
 
   .marquee {
     background-size: cover;
     background-position: center center;
-    background-attachment: fixed;
-    min-height: 100vh;
+    min-height: 85vh;
     width: 100%;
-    position: fixed;
+    position: relative;
+    display: block;
     top: 0; left: 0;
 
     svg.title {
@@ -45,7 +54,7 @@
   .nav {
     text-transform: uppercase;
     text-align: center;
-    padding: 0 1em 1em;
+    padding: 1em 1em;
     position: relative;
     white-space: nowrap;
     z-index: 0;
@@ -84,7 +93,7 @@
       width: 100%;
       padding-bottom: 80px;
       text-transform: uppercase;
-      padding: 40px 0 80px;
+      padding: 25px 0 80px;
 
       .title {
         font-family: $druk-wide;
@@ -147,6 +156,10 @@
             position: relative;
             width: 100%;
             margin: 0 auto!important;
+          }
+
+          blockquote {
+            margin: 0 auto!important
           }
 
           &.fixed-aspect {
@@ -213,15 +226,6 @@
       opacity: 1;
     }
   }
-
-  .fade {
-    opacity: 0;
-    transition: opacity 0.33s ease;
-
-    &.active {
-      opacity: 1
-    }
-  }
 }
 
 @keyframes slide-slug {
@@ -232,20 +236,56 @@
     transform: translateX(-110%);
   }
 }
-
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .portfolio {
     .content {
-      p {
-        font-size: 0.9em;
+      header {
+        padding: 30px 0 60px;
+
+        .title {
+          font-size: 1.33em;
+        }
+
+        .cats {
+          font-size: 0.66em
+        }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .portfolio {
+    .marquee {
+      min-height: 56.25vw;
+      svg.title {
+        transform: translate(0, -30%);
+      }
+    }
+    .content {
       .section {
+        margin: 2.5vw auto;
+        p {
+          font-size: 0.9em;
+        }
         &.half {
           display: block;
           width: 100%;
           max-width: none;
         }
+        &.text_block {
+          margin: 10vw auto;
+          &:first-of-type {
+            margin: 0 auto 10vw;
+          }
+        }
+        &.embed_block {
+          width: 100%;
+        }
       }
+    }
+    .nav {
+      padding: 1em 1em;
     }
   }
 }
