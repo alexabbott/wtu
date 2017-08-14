@@ -6,14 +6,26 @@
   	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<script src="https://use.fontawesome.com/7178a5ef52.js"></script>
 	<link rel="stylesheet" href="all.css">
-	<link rel="stylesheet" href="./jspm_packages/github/kenwheeler/slick@1.7.1/slick/slick.css">
-    <link rel="stylesheet" href="./jspm_packages/github/kenwheeler/slick@1.7.1/slick/slick-theme.css">
+	<style>
+		ng-view {
+			display: block;
+			transition: transform 1s ease-out;
+		}
+
+		ng-view.ng-leave-active {
+			transform: translateX(-100vw);
+		}
+
+		ng-view.ng-enter {
+			transform: translateX(-100vw);
+		}
+	</style>
 </head>
 <body ng-app="weThemUs" ng-cloak>
 
 	<navigation></navigation>
 
-	<ng-view></ng-view>
+	<ng-view class="mainview-animation"></ng-view>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.1.2/masonry.pkgd.min.js"></script>
 	<script src="https://desandro.github.io/imagesloaded/imagesloaded.pkgd.min.js"></script> 

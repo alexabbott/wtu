@@ -30,9 +30,7 @@
 
     <section id="about" class="about no-opacity">
 		<div class="about-container">
-			<span>
-				<span class="about__text" ng-bind-html="data.home.services">
-				</span>
+			<span class="about__text" ng-bind-html="data.home.services">
 			</span>
 		</div>
     </section>
