@@ -18,11 +18,8 @@ System.config({
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "car": "github:devmark/angular-slick-carousel@3.1.7",
-    "carousel": "github:mihnsen/ui-carousel@0.1.10",
     "core-js": "npm:core-js@1.2.7",
     "ng-masonry": "npm:ng-masonry@1.0.3",
-    "rn": "github:revolunet/angular-carousel@1.1.0",
-    "slider": "github:kenwheeler/slick@1.7.1",
     "smoothscroll": "github:d-oliveros/ngSmoothScroll@2.0.0",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
