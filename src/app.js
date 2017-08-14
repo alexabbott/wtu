@@ -6,7 +6,7 @@ import Portfolio from './components/portfolio/portfolio';
 import Category from './components/category/category';
 import smoothScroll from './jspm_packages/github/d-oliveros/ngSmoothScroll@2.0.0';
 
-const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll'])
+const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'ngTouch', 'smoothScroll', 'slickCarousel'])
 
 .config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
 	$routeProvider

@@ -25,7 +25,8 @@
 		{{ data.home.intro_scroll_down_text }}
 	</div>
 
-    <div class="blotch"></div>
+    <div class="blotch" style="background: {{ data.home.blotch_color }};
+		box-shadow: 0px 0px 340px 230px {{ data.home.blotch_color }};"></div>
 
     <section id="about" class="about no-opacity">
 		<div class="about-container">
@@ -91,7 +92,7 @@
 		<span ng-repeat="category in data.categories">
 			<a ng-href="/category/{{ category.name | slugify }}" >
 				{{ category.name }}
-			</a><br>
+			</a>
 		</span>
 	</section>
 	<div class="modal-close no-opacity" ng-click="hideFilter()">&times;</div>

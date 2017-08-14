@@ -69,13 +69,17 @@ let Home = {
 		};
 
 		let changeScrollOpacity = (scrollPos) => {
-			if (scrollPos < 2200) {
-				introScrollDown.removeClass('no-opacity');				
+			if (scrollPos < 50) {
+				introScrollDown.removeClass('transparent');				
+            } else {
+				introScrollDown.addClass('transparent');
+			}
+			
+			if (scrollPos < 250) {
 				introScrollDown.removeClass('hidden');				
             } else {
-				introScrollDown.addClass('no-opacity');
 				introScrollDown.addClass('hidden');
-            }
+			} 
 		};
 
 		let changeIntroImageOpacity = (scrollPos) => {

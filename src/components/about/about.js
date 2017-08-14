@@ -1,6 +1,6 @@
 let About = {
     templateUrl: '/components/about/about.tpl',
-    controller: ['WordpressData', '$scope', '$window', '$location', (WordpressData, $scope, $window, $location) => {
+    controller: ['WordpressData', '$scope', '$window', '$location', '$compile', (WordpressData, $scope, $window, $location, $compile) => {
 
         const firstNav = angular.element(document.querySelector('.nav__items .nav__item:first-of-type'));
         const secondNav = angular.element(document.querySelector('.nav__items .nav__item:nth-of-type(2)'));

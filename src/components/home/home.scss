@@ -91,6 +91,7 @@
 	}
 
 	.intro__scroll-down {
+		@extend %transition-long;
 		bottom: 5vh;
 		color: $color-white;
 		cursor: pointer;
@@ -101,9 +102,13 @@
 		position: fixed;
 		text-align: center;
 		transform: translateX(-50%);
-		transition: opacity 1s ease-out;
+		transition-property: opacity, color;
 		width: 100%;
 		z-index: 99;
+
+		&.transparent {
+			color: transparent;
+		}
 
 		@include tablet {
 			bottom: 50px;
@@ -114,9 +119,7 @@
 
 	.blotch {
 		@extend %transition-long;
-		background: blue;
 		border-radius: 50%;
-		box-shadow: 0px 0px 18vw 13vw blue;
 		width: 20vw;
 		display: block;
 		height: 30vh;
@@ -132,7 +135,6 @@
 		}
 
 		@include tablet {
-			box-shadow: 0px 0px 340px 230px blue;
 			width: 10vw;
 		}
 	}
@@ -444,7 +446,7 @@
 		color: $color-white;
 		left: 50%;
 		position: fixed;
-		max-width: 600px;
+		max-width: 1000px;
 		padding: 30px;
 		top: 50%;
 		text-align: center;
@@ -480,6 +482,14 @@
 				line-height: 1.2;
 				margin: 8px 7px;
 				width: auto;
+			}
+
+			span {
+				display: block;
+
+				@include tablet {
+					display: inline-block;
+				}
 			}
 		}
 

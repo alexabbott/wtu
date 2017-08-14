@@ -2,26 +2,29 @@
 	background: black;
 	display: block;
 	height: 100vh;
-	overflow: hidden;
+	overflow: scroll;
 	width: 100vw;
 
 	.about__main {
-		left: 50%;
+		display: block;
 		height: 100vh;
-		overflow: hidden;
-		position: relative;
+		overflow: scroll;
 		text-align: center;
-		transform: translateX(-50%);
-		width: 70%;
+		width: 100%;
 
 		.about__container {
-			top: 100%;
 			color: $color-white;
-			height: 100%;
-			position: absolute;
-			width: 100%;
+			display: block;
+			height: 100vh;
+			margin: 0 auto;
+			text-align: center;
 			transition: opacity 1s ease-out;
-			animation: marqueeTop 120s linear infinite;
+			width: 70%;
+			animation: scroll 120s linear infinite;
+
+			&:hover {
+				animation-play-state: paused;
+			}
 
 			.about__text {
 				h2 {
@@ -64,4 +67,9 @@
 			}
 		}
 	}
+}
+
+@-webkit-keyframes scroll {
+ 0%   { -webkit-transform: translateY(100%); }
+ 100% { -webkit-transform: translateY(-1910%); }
 }

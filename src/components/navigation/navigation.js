@@ -38,11 +38,45 @@ let Navigation = {
 				navSocials.addClass('fadeInRight');
 				navRabbitImage.addClass('fadeInLeft');
 				if ($location.path() && $location.path().indexOf('internal') > -1) {
-					navRabbit.addClass('rotate');
+					navRabbitImage.addClass('rotate');
 				}
 			}, 100);
 
-    });
+		});
+
+		let window_ = $window;
+		
+		let loop = () => {
+		    let scrollTop = window_.scrollY;
+		    if (lastScrollTop === scrollTop) {
+		        return raf(loop);
+		    } else {
+						lastScrollTop = scrollTop;
+						let navSocials = angular.element(document.querySelector('.nav__socials'));
+						let navRabbitImage = angular.element(document.querySelector('.nav__white-rabbit__image'));
+						
+						if (scrollTop > 50) {
+							navSocials.addClass('fadeOutRight');
+							navRabbitImage.addClass('fadeOutLeft');
+						} else {
+							navSocials.removeClass('fadeOutRight');
+							navRabbitImage.removeClass('fadeOutLeft');
+						}
+		        raf(loop);
+		    }
+		};
+
+		let raf = window.requestAnimationFrame ||
+		    window.webkitRequestAnimationFrame ||
+		    window.mozRequestAnimationFrame ||
+		    window.msRequestAnimationFrame ||
+		    window.oRequestAnimationFrame;
+
+		let lastScrollTop = window_.scrollY;
+
+		if (raf) {
+		    loop();
+		}
 
   }]
 };
