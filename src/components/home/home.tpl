@@ -40,7 +40,7 @@
     <section id="projects" class="projects">
 		<div class="selected-works no-opacity">Selected Works</div>
     	<div class="projects__container no-opacity">
-    		<div ng-repeat="project in data.portfolio | limitTo : 6" class="projects__marquee-box">
+    		<div ng-repeat="project in data.portfolio | limitTo : 6" class="projects__marquee-box" ng-if="project.acf.featured">
 	    		<div class="projects__marquee">
 	    			<a href="/{{ project.slug }}"
                class="projects__link uppercase"
