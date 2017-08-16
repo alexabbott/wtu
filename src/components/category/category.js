@@ -1,6 +1,6 @@
 let Category = {
     templateUrl: '/components/category/category.tpl',
-    controller: ['WordpressData', '$scope', '$location', (WordpressData, $scope, $location) => {
+    controller: ['WordpressData', '$scope', '$location', '$rootScope', (WordpressData, $scope, $location, $rootScope) => {
 
         const firstNav = angular.element(document.querySelector('.nav__items .nav__item:first-of-type'));
         const secondNav = angular.element(document.querySelector('.nav__items .nav__item:nth-of-type(2)'));
@@ -16,35 +16,70 @@ let Category = {
         $scope.category = {};
 
         if ($location.path().indexOf('internal') === -1) {
-            WordpressData.fetchCats().then(() => {
-                $scope.data.categories = WordpressData.categories;
-                $scope.data.categories = $.map($scope.data.categories, function(value) {
-                    return [value];
+            if (!$rootScope.categories) {
+                WordpressData.fetchCats().then(() => {
+                    $scope.data.categories = WordpressData.categories;
+                    let arr = [];
+                    angular.forEach($scope.data.categories, function(value, key){
+                        arr.push(value);
+                    });
+                    $scope.category = arr.filter((c) => {
+                        return c.slug === $location.path().split('/category/')[1];
+                    })[0];
+                    checkStatus();
                 });
-                $scope.category = $scope.data.categories.filter((c) => {
+            } else {
+                $scope.data.categories = $rootScope.categories;
+                let arr = [];
+                angular.forEach($scope.data.categories, function(value, key){
+                    arr.push(value);
+                });
+                $scope.category = arr.filter((c) => {
                     return c.slug === $location.path().split('/category/')[1];
                 })[0];
                 checkStatus();
-                console.log('categories', $scope.data.categories);
-            });
+            }
         } else {
             $scope.category.name = '.US PROJECTS';
         }
 
-        WordpressData.fetchPortfolio().then(() => {
-            $scope.data.projects = WordpressData.portfolio;
-            $scope.data.projects = $.map($scope.data.projects, function(value) {
-                return [value];
+        if (!$rootScope.portfolio) {
+            WordpressData.fetchPortfolio().then(() => {
+                $scope.data.projects = WordpressData.portfolio;
+                console.log('proj1', $scope.data.projects);
+                let arr = [];
+                angular.forEach($scope.data.projects, function(value, key){
+                    arr.push(value);
+                });
+                $scope.data.projects = arr;
+                console.log('proj2', $scope.data.projects);
+                if ($location.path().indexOf('internal') > -1) {
+                    $scope.data.projects = $scope.data.projects.filter((p) => {
+                        return p.acf.internal_project == true;
+                    });
+                    console.log('proj3', $scope.data.projects);
+                } else {
+                    if ($scope.category.id && $scope.data.projects.length > 0) {
+                        $scope.data.projects = $scope.data.projects.filter((p) => {
+                            return p.categories.indexOf($scope.category.id) > -1;
+                        });
+                    }
+                }
             });
-            checkStatus();
-            console.log('projects', $scope.data.projects);
-        });
-
-        let checkStatus = () => {
+        } else {
+            $scope.data.projects = $rootScope.portfolio;
+            console.log('proj1', $scope.data.projects);
+            let arr = [];
+            angular.forEach($scope.data.projects, function(value, key){
+                arr.push(value);
+            });
+            $scope.data.projects = arr;
+            console.log('proj2', $scope.data.projects);
             if ($location.path().indexOf('internal') > -1) {
                 $scope.data.projects = $scope.data.projects.filter((p) => {
-                    return p.internal_project;
+                    return p.acf.internal_project == true;
                 });
+                console.log('proj3', $scope.data.projects);
             } else {
                 if ($scope.category.id && $scope.data.projects.length > 0) {
                     $scope.data.projects = $scope.data.projects.filter((p) => {
@@ -52,8 +87,7 @@ let Category = {
                     });
                 }
             }
-        };
-
+        }
     }]
 };
 

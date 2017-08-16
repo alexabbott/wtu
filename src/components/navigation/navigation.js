@@ -3,6 +3,20 @@ let Navigation = {
   controller: ['WordpressData', '$scope', '$window', '$timeout', '$location', '$rootScope',
 	(WordpressData, $scope, $window, $timeout, $location, $rootScope) => {
 
+		const nav = angular.element(document.querySelector('.nav__main'));
+		const navItems = angular.element(document.querySelector('.nav__items'));
+		const navLogo = angular.element(document.querySelector('.nav__logo'));
+		const whiteRabbit = angular.element(document.querySelector('.nav__white-rabbit'));
+		const navIcon = angular.element(document.querySelector('.nav-icon'));
+		const navSocials = angular.element(document.querySelector('.nav__socials'));
+		const navRabbitImage = angular.element(document.querySelector('.nav__white-rabbit__image'));
+
+		if ($location.path() && $location.path().indexOf('internal') > -1) {
+			navRabbitImage.addClass('rotate');
+		} else {
+			navRabbitImage.removeClass('rotate');
+		}
+
 		WordpressData.listNav((response) => {
 			$scope.navOpen = false;
 			$scope.data = response.data[0].acf;
@@ -15,15 +29,15 @@ let Navigation = {
 				navLogo.addClass('fadeInLeft');
 				navSocials.addClass('fadeInRight');
 				navRabbitImage.addClass('fadeInLeft');
-				if ($location.path() && $location.path().indexOf('internal') > -1) {
-					navRabbitImage.addClass('rotate');
-				}
 			}, 100);
+
+			$timeout(() => {
+				navRabbitImage.removeClass('fadeInLeft');
+			}, 500);
 		});
 
 		WordpressData.listHome((response) => {
 			$rootScope.home = response.data[0].acf;
-			console.log('home,', $rootScope.home);
 		});
 
 		WordpressData.fetchCats().then(() => {
@@ -33,14 +47,6 @@ let Navigation = {
 		WordpressData.fetchPortfolio().then(() => {
 			$rootScope.portfolio = WordpressData.portfolio;
 		});
-
-		const nav = angular.element(document.querySelector('.nav__main'));
-		const navItems = angular.element(document.querySelector('.nav__items'));
-		const navLogo = angular.element(document.querySelector('.nav__logo'));
-		const whiteRabbit = angular.element(document.querySelector('.nav__white-rabbit'));
-		const navIcon = angular.element(document.querySelector('.nav-icon'));
-		const navSocials = angular.element(document.querySelector('.nav__socials'));
-		const navRabbitImage = angular.element(document.querySelector('.nav__white-rabbit__image'));
 
 		$scope.openCloseNav = () => {
 			let modal = angular.element(document.querySelector('.modal'));
@@ -58,6 +64,14 @@ let Navigation = {
 				navIcon.removeClass('open');
 				$scope.navOpen = false;
 		}
+
+		$scope.$on('$routeChangeSuccess', function(next, current) { 
+            if ($location.path() && $location.path().indexOf('internal') > -1) {
+				navRabbitImage.addClass('rotate');
+			} else {
+				navRabbitImage.removeClass('rotate');
+			}
+        });
 
 		let window_ = $window;
 		

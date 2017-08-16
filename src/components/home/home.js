@@ -47,11 +47,21 @@ let Home = {
 		if (!$rootScope.home) {
 			WordpressData.listHome((response) => {
 				$scope.data.home = response.data[0].acf;
-				showStuff();
+				introScrollDown.removeClass('no-opacity').addClass('animated fadeInUp');
+				$timeout(() => {
+					introImage.removeClass('no-opacity');
+					introVideo.removeClass('no-opacity');
+					introText.removeClass('no-opacity');
+				}, 1000);
 			});
 		} else {
 			$scope.data.home = $rootScope.home;
-			showStuff();
+			introScrollDown.removeClass('no-opacity').addClass('animated fadeInUp');
+			$timeout(() => {
+				introImage.removeClass('no-opacity');
+				introVideo.removeClass('no-opacity');
+				introText.removeClass('no-opacity');
+			}, 1000);
 		}
 
 		if (!$rootScope.categories) {
@@ -69,15 +79,6 @@ let Home = {
 		} else {
 			$scope.data.portfolio = $rootScope.portfolio;
 		}
-
-		let showStuff = () => {
-			introScrollDown.removeClass('no-opacity').addClass('animated fadeInUp');
-			$timeout(() => {
-				introImage.removeClass('no-opacity');
-				introVideo.removeClass('no-opacity');
-				introText.removeClass('no-opacity');
-			}, 1000);
-		};
 
         let changeIntroTextSize = (scrollPos) => {
 		    if (scrollPos < 401) {

@@ -11,6 +11,7 @@
 
 	h3 {
 		font-family: $druk-wide;
+		margin-top: 0;
 		padding: 15vh 0 20px 0;
 		text-transform: uppercase;
 	}
@@ -23,10 +24,12 @@
 		margin: 10px 4%;
 		position: relative;
 		text-transform: uppercase;
+		vertical-align: middle;
 		width: 90%;
 
 		@include tablet {
 			font-size: .9em;
+			margin: 10px 4% 50px 4%;
 			width: 40%;
 		}
 

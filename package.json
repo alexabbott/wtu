@@ -43,8 +43,6 @@
       "baseURL": "src"
     },
     "dependencies": {
-      "angular-masonry": "npm:angular-masonry@^0.17.0",
-      "ng-masonry": "npm:ng-masonry@^1.0.3",
       "smoothscroll": "github:d-oliveros/ngSmoothScroll@^2.0.0"
     },
     "devDependencies": {
