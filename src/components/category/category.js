@@ -26,7 +26,18 @@ let Category = {
                     $scope.category = arr.filter((c) => {
                         return c.slug === $location.path().split('/category/')[1];
                     })[0];
-                    checkStatus();
+                    if ($location.path().indexOf('internal') > -1) {
+                        $scope.data.projects = $scope.data.projects.filter((p) => {
+                            return p.acf.internal_project == true;
+                        });
+                        console.log('proj3', $scope.data.projects);
+                    } else {
+                        if ($scope.category.id && $scope.data.projects.length > 0) {
+                            $scope.data.projects = $scope.data.projects.filter((p) => {
+                                return p.categories.indexOf($scope.category.id) > -1;
+                            });
+                        }
+                    }
                 });
             } else {
                 $scope.data.categories = $rootScope.categories;
@@ -37,7 +48,18 @@ let Category = {
                 $scope.category = arr.filter((c) => {
                     return c.slug === $location.path().split('/category/')[1];
                 })[0];
-                checkStatus();
+                if ($location.path().indexOf('internal') > -1) {
+                    $scope.data.projects = $scope.data.projects.filter((p) => {
+                        return p.acf.internal_project == true;
+                    });
+                    console.log('proj3', $scope.data.projects);
+                } else {
+                    if ($scope.category.id && $scope.data.projects.length > 0) {
+                        $scope.data.projects = $scope.data.projects.filter((p) => {
+                            return p.categories.indexOf($scope.category.id) > -1;
+                        });
+                    }
+                }
             }
         } else {
             $scope.category.name = '.US PROJECTS';
