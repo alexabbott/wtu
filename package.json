@@ -44,11 +44,7 @@
     },
     "dependencies": {
       "angular-masonry": "npm:angular-masonry@^0.17.0",
-      "car": "github:devmark/angular-slick-carousel@^3.1.7",
-      "carousel": "github:mihnsen/ui-carousel@^0.1.10",
       "ng-masonry": "npm:ng-masonry@^1.0.3",
-      "rn": "github:revolunet/angular-carousel@^1.1.0",
-      "slider": "github:kenwheeler/slick@^1.7.1",
       "smoothscroll": "github:d-oliveros/ngSmoothScroll@^2.0.0"
     },
     "devDependencies": {

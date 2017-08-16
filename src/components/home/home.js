@@ -1,7 +1,7 @@
 let Home = {
     templateUrl: '/components/home/home.tpl',
-	controller: ['WordpressData', '$scope', '$window', '$timeout', '$location', 'smoothScroll', '$interval', '$anchorScroll',
-	(WordpressData, $scope, $window, $timeout, $location, smoothScroll, $interval, $anchorScroll) => {
+	controller: ['WordpressData', '$scope', '$window', '$timeout', '$location', 'smoothScroll', '$interval', '$anchorScroll', '$rootScope',
+	(WordpressData, $scope, $window, $timeout, $location, smoothScroll, $interval, $anchorScroll, $rootScope) => {
 
 		let window_ = $window;
 
@@ -13,6 +13,7 @@ let Home = {
         const introBg = angular.element(document.querySelector('.intro__bg'));
         const introScrollDown = angular.element(document.querySelector('.intro__scroll-down'));
         const introImage = angular.element(document.querySelector('.intro__image'));
+        const introVideo = angular.element(document.querySelector('.intro__video'));
         const introGradient = angular.element(document.querySelector('.intro__gradient'));
         const blotch = angular.element(document.querySelector('.blotch'));
         const about = angular.element(document.querySelector('.about'));
@@ -27,35 +28,56 @@ let Home = {
 		secondNav.removeClass('active');
 		thirdNav.removeClass('active');
 
+		if ($location.hash() === 'top') {
+			smoothScroll(document.getElementById('top'), { offset: 5000});
+		}
+
 		if (!$scope.data) {
 			$scope.data = {};
 		}
 
-		WordpressData.listNav((response) => {
-			$scope.data.nav = response.data[0].acf;
-		});
+		if (!$rootScope.nav) {
+			WordpressData.listNav((response) => {
+				$scope.data.nav = response.data[0].acf;
+			});
+		} else {
+			$scope.data.nav = $rootScope.nav;
+		}
+
+		if (!$rootScope.home) {
+			WordpressData.listHome((response) => {
+				$scope.data.home = response.data[0].acf;
+				showStuff();
+			});
+		} else {
+			$scope.data.home = $rootScope.home;
+			showStuff();
+		}
+
+		if (!$rootScope.categories) {
+			WordpressData.fetchCats().then(() => {
+				$scope.data.categories = WordpressData.categories;
+			});
+		} else {
+			$scope.data.categories = $rootScope.categories;
+		}
+
+		if (!$rootScope.portfolio) {
+			WordpressData.fetchPortfolio().then(() => {
+				$scope.data.portfolio = WordpressData.portfolio;
+			});
+		} else {
+			$scope.data.portfolio = $rootScope.portfolio;
+		}
 
 		let showStuff = () => {
 			introScrollDown.removeClass('no-opacity').addClass('animated fadeInUp');
 			$timeout(() => {
 				introImage.removeClass('no-opacity');
+				introVideo.removeClass('no-opacity');
 				introText.removeClass('no-opacity');
 			}, 1000);
 		};
-
-		WordpressData.listHome((response) => {
-			$scope.data.home = response.data[0].acf;
-			console.log('home,', $scope.data.home);
-			showStuff();
-		});
-
-		WordpressData.fetchCats().then(() => {
-			$scope.data.categories = WordpressData.categories;
-		});
-
-		WordpressData.fetchPortfolio().then(() => {
-			$scope.data.portfolio = WordpressData.portfolio;
-		});
 
         let changeIntroTextSize = (scrollPos) => {
 		    if (scrollPos < 401) {
@@ -94,21 +116,25 @@ let Home = {
 		let imagePosition = 0;
 		let changeIntroImagePosition = (scrollPos) => {
 			if (scrollPos < 401) {
-				introImage.css({'transform': 'scale(1) translate3d(0px,0px,0px)', '-webkit-transform': 'scale(1) translate3d(0px,0px,0px)'});
+				introImage.css({'transform': 'scale(1) translate3d(-50%,0px,0px)', '-webkit-transform': 'scale(1) translate3d(-50%,0px,0px)'});
+				introVideo.css({'transform': 'scale(1) translate3d(-50%,0px,0px)', '-webkit-transform': 'scale(1) translate3d(-50%,0px,0px)'});
 		    }
 		    if (scrollPos > 400 && scrollPos < 600) {
 				imageWidth = ((100 - ((scrollPos - 401)/25))*.01);
 				imagePosition = (400*1.45) - (scrollPos*1.45);
-				introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)'});
+				introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+				introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
 			}
 			if (scrollPos > 599 && scrollPos < 700) {
 				imageWidth = ((100 - ((scrollPos - 401)/25))*.01);
 				imagePosition = (400*1.45) - (scrollPos*1.45);
-				introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)'});
+				introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+				introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
 		    }
 		    if (scrollPos > 599 && scrollPos < 2100) {
 				imagePosition = (400*1.45) - (scrollPos*1.45);
-		    	introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(0,' + imagePosition + 'px,0)'});
+		    	introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+		    	introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
 		    }
 		};
 
@@ -172,15 +198,6 @@ let Home = {
 		    }
 		};
 
-		$scope.showBg = (slug) => {
-			angular.element(document.querySelectorAll('.projects__bg')).addClass('no-opacity');
-			angular.element(document.querySelector('.projects__bg.' + '_' + slug)).removeClass('no-opacity');
-		};
-
-		$scope.hideBg = (slug) => {
-			angular.element(document.querySelectorAll('.projects__bg')).addClass('no-opacity');
-		};
-
 		let loop = () => {
 		    let scrollTop = window_.scrollY;
 		    if (lastScrollTop === scrollTop) {
@@ -189,7 +206,6 @@ let Home = {
 		        lastScrollTop = scrollTop;
 
 				// fire scroll function if scrolls vertically
-				console.log('scrolltop', scrollTop);
 				changeIntroTextSize(scrollTop);
 				changeScrollOpacity(scrollTop);
 				changeIntroImagePosition(scrollTop);
@@ -229,6 +245,15 @@ let Home = {
 		    loop();
 		}
 
+		$scope.showBg = (slug) => {
+			angular.element(document.querySelectorAll('.projects__bg')).addClass('no-opacity');
+			angular.element(document.querySelector('.projects__bg.' + '_' + slug)).removeClass('no-opacity');
+		};
+
+		$scope.hideBg = (slug) => {
+			angular.element(document.querySelectorAll('.projects__bg')).addClass('no-opacity');
+		};
+
 		$scope.showFilter = () => {
 			modal.removeClass('no-opacity');
 			modalMask.removeClass('no-opacity');
@@ -242,16 +267,14 @@ let Home = {
 		};
 
 		$scope.init = () => {
-			if (window_.scrollY > 401) {
-				changeIntroTextSize(window_.scrollY);
-				changeScrollOpacity(window_.scrollY);
-				changeIntroImageOpacity(window_.scrollY);
-				changeIntroImagePosition(window_.scrollY);
-				changeIntroGradientPosition(window_.scrollY);
-				changeAboutOpacity(window_.scrollY);
-				changeBlotchOpacity(window_.scrollY);
-				changeProjectsPosition(window_.scrollY);
-			}
+			changeIntroTextSize(window_.scrollY);
+			changeScrollOpacity(window_.scrollY);
+			changeIntroImageOpacity(window_.scrollY);
+			changeIntroImagePosition(window_.scrollY);
+			changeIntroGradientPosition(window_.scrollY);
+			changeAboutOpacity(window_.scrollY);
+			changeBlotchOpacity(window_.scrollY);
+			changeProjectsPosition(window_.scrollY);
 		};
 
     }]
