@@ -73,3 +73,8 @@
  0%   { -webkit-transform: translateY(100%); }
  100% { -webkit-transform: translateY(-1910%); }
 }
+
+@-moz-keyframes scroll {
+ 0%   { -moz-transform: translateY(100%); }
+ 100% { -moz-transform: translateY(-1910%); }
+}
