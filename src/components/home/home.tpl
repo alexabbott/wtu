@@ -6,7 +6,7 @@
 
   <section class="intro__bg">
 		<img ng-src="{{ data.home.intro_image.url }}" class="intro__image no-opacity" ng-show="!data.home.intro_video">
-		<video ng-src="{{ data.home.intro_video.url }}" poster="{{data.home.intro_image.url}}" class="intro__video no-opacity" ng-show="data.home.intro_video" autoplay loop></video>
+		<video ng-src="{{ data.home.intro_video.url }}" muted poster="{{data.home.intro_image.url}}" class="intro__video no-opacity" ng-show="data.home.intro_video" autoplay loop></video>
 		<div class="intro__gradient" style="background: {{ data.home.intro_gradient_color_1 }};
 			background: -moz-linear-gradient(top, {{ data.home.intro_gradient_color_1 }} 0%, {{ data.home.intro_gradient_color_1 }} 20%, {{ data.home.intro_gradient_color_2 }} 100%);
 			background: -webkit-gradient(left top, left bottom, color-stop(0%, {{ data.home.intro_gradient_color_1 }}), color-stop(20%, {{ data.home.intro_gradient_color_1 }}), color-stop(100%, {{ data.home.intro_gradient_color_2 }}));

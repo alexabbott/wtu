@@ -81,8 +81,8 @@ let Home = {
 		}
 
         let changeIntroTextSize = (scrollPos) => {
-		    if (scrollPos < 401) {
-	            introText.css({'transform': 'translate3d(-50%, -50%, 0) scale(' + (30 - (scrollY / 20)) + ')', '-webkit-transform': 'translate3d(-50%, -50%, 0) scale(' + (30 - (scrollY / 20)) + ')', });
+		    if (scrollPos < 201) {
+	            introText.css({'transform': 'translate3d(-50%, -50%, 0) scale(' + (30 - (scrollY / 10)) + ')', '-webkit-transform': 'translate3d(-50%, -50%, 0) scale(' + (30 - (scrollY / 10)) + ')', });
 	            introText.removeClass('no-opacity');
 	            intro.removeClass('no-opacity');
             } else {
@@ -106,7 +106,7 @@ let Home = {
 		};
 
 		let changeIntroImageOpacity = (scrollPos) => {
-			if (scrollPos > 2200) {
+			if (scrollPos > 1600) {
 	            introBg.addClass('no-opacity');
             } else {
             	introBg.removeClass('no-opacity');
@@ -116,24 +116,24 @@ let Home = {
 		let imageWidth = 0;
 		let imagePosition = 0;
 		let changeIntroImagePosition = (scrollPos) => {
-			if (scrollPos < 401) {
+			if (scrollPos < 201) {
 				introImage.css({'transform': 'scale(1) translate3d(-50%,0px,0px)', '-webkit-transform': 'scale(1) translate3d(-50%,0px,0px)'});
 				introVideo.css({'transform': 'scale(1) translate3d(-50%,0px,0px)', '-webkit-transform': 'scale(1) translate3d(-50%,0px,0px)'});
 		    }
-		    if (scrollPos > 400 && scrollPos < 600) {
-				imageWidth = ((100 - ((scrollPos - 401)/25))*.01);
-				imagePosition = (400*1.45) - (scrollPos*1.45);
+		    if (scrollPos > 200 && scrollPos < 400) {
+				imageWidth = ((100 - ((scrollPos - 201)/25))*.01);
+				imagePosition = (200*1.45) - (scrollPos*1.45);
 				introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
 				introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
 			}
-			if (scrollPos > 599 && scrollPos < 700) {
-				imageWidth = ((100 - ((scrollPos - 401)/25))*.01);
-				imagePosition = (400*1.45) - (scrollPos*1.45);
+			if (scrollPos > 399 && scrollPos < 500) {
+				imageWidth = ((100 - ((scrollPos - 201)/25))*.01);
+				imagePosition = (200*1.45) - (scrollPos*1.45);
 				introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
 				introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
 		    }
-		    if (scrollPos > 599 && scrollPos < 2100) {
-				imagePosition = (400*1.45) - (scrollPos*1.45);
+		    if (scrollPos > 399 && scrollPos < 1900) {
+				imagePosition = (200*1.45) - (scrollPos*1.45);
 		    	introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
 		    	introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
 		    }
@@ -142,40 +142,40 @@ let Home = {
 		let gradientWidth = 0;
 		let gradientPosition = 0;
 		let changeIntroGradientPosition = (scrollPos) => {
-		    if (scrollPos < 401) {
+		    if (scrollPos < 201) {
 		    	introGradient.css({'transform': 'scale(1) translate3d(0px,0px,0px)', '-webkit-transform': 'scale(1) translate3d(0px,0px,0px)'});
 		    }
-		    if (scrollPos > 400 && scrollPos < 600) {
-				gradientWidth = ((100 - ((scrollPos - 401)/29))*.01);
+		    if (scrollPos > 200 && scrollPos < 400) {
+				gradientWidth = ((100 - ((scrollPos - 201)/29))*.01);
 				introGradient.css({'transform': 'scale(' + gradientWidth + ')', '-webkit-transform': 'scale(' + gradientWidth + ')'});
 		    }
-		    if (scrollPos > 599 && scrollPos < 1101) {
-				gradientPosition = (599*1.3) - (scrollPos*1.3);
+		    if (scrollPos > 399 && scrollPos < 901) {
+				gradientPosition = (399*1.3) - (scrollPos*1.3);
 		    	introGradient.css({'transform': 'scale(' + gradientWidth + ') translate3d(0,' + gradientPosition + 'px,0)', '-webkit-transform': 'scale(' + gradientWidth + ') translate3d(0,' + gradientPosition + 'px,0)'});
 		    }
-		    if (scrollPos > 1100 && scrollPos < 2800) {
+		    if (scrollPos > 900 && scrollPos < 2200) {
 		    	introGradient.css({'transform': 'scale(' + gradientWidth + ') translate3d(0,' + gradientPosition + 'px,0)', '-webkit-transform': 'scale(' + gradientWidth + ') translate3d(0,' + gradientPosition + 'px,0)'});
 		    }
 		};
 
 		let aboutPosition = 0;
 		let changeAboutOpacity = (scrollPos) => {
-			if (scrollPos > 800 && scrollPos < 3400) {
-				aboutPosition = (1200*1.3) - (scrollPos*.8);
+			if (scrollPos > 200 && scrollPos < 2800) {
+				aboutPosition = (800*1.3) - (scrollPos*.8);
 		    	about.css({'transform': 'translate3d(0,' + aboutPosition + 'px,0)', '-webkit-transform': 'translate3d(0,' + aboutPosition + 'px,0)'});
 			} 
 
-			if (scrollPos > 800 && scrollPos < 2100) {
+			if (scrollPos > 200 && scrollPos < 1500) {
 				about.removeClass('no-opacity');
 			}
 			
-			if (scrollPos < 801 || scrollPos > 2101) {
+			if (scrollPos < 201 || scrollPos > 1501) {
 				about.addClass('no-opacity');
 			}
 		};
 
 		let changeBlotchOpacity = (scrollPos) => {
-			if (scrollPos > 2200) {
+			if (scrollPos > 1600) {
 				blotch.addClass('no-opacity');
 			} else {
 				blotch.removeClass('no-opacity');
@@ -183,7 +183,7 @@ let Home = {
 		};
 
 		let changeProjectsPosition = (scrollPos) => {
-		    if (scrollPos < 2400) {
+		    if (scrollPos < 1600) {
 		    	projects.addClass('no-opacity');
 		    	selectedWorks.addClass('no-opacity');
 				projectsContainer.addClass('no-opacity');
@@ -191,7 +191,7 @@ let Home = {
 				secondNav.removeClass('active');
 				thirdNav.removeClass('active');
 		    }
-		    if (scrollPos > 2399) {
+		    if (scrollPos > 1599) {
 				firstNav.addClass('active');
 		    	selectedWorks.removeClass('no-opacity');
 		    	projects.removeClass('no-opacity');

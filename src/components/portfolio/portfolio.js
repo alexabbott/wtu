@@ -4,6 +4,11 @@ let Portfolio = {
 
         $scope.transitioning = true;
         $scope.inactiveFaders = []
+        const navSocials = angular.element(document.querySelectorAll('.nav__socials i'));
+        const navRabbitImage = angular.element(document.querySelector('.nav__white-rabbit__image'));
+        
+        navSocials.addClass('no-opacity');
+        navRabbitImage.addClass('no-opacity');
 
         $scope.trustBlob = (blob) => {
             blob = blob.replace(/<script>.*(<\/?script>?)?/, '')

@@ -1,6 +1,6 @@
 .home {
 	background: $color-black;
-	height: 700vh;
+	height: 300vh;
 
 	@include tablet {
 		height: 500vh;
@@ -140,7 +140,7 @@
 		left: 0;
 		opacity: .8;
 		position: absolute;
-		top: 300vh;
+		top: 250vh;
 		transition-property: opacity;
 		z-index: 8;
 
@@ -197,6 +197,7 @@
 			color: $color-white;
 			display: inline-block;
 			font-family: $druk-condensed;
+			padding-top: 30px;
 			text-align: left;
 			text-decoration: none;
 			text-transform: uppercase;
@@ -234,7 +235,7 @@
 			@extend %transition-long;
 			color: $color-white;
 			font-family: $druk-wide;
-			font-size: 1em;
+			font-size: .8em;
 			left: 50%;
 			pointer-events: none;
 			position: fixed;
@@ -428,7 +429,7 @@
 			color: $color-white;
 			cursor: pointer;
 			font-family: $druk-wide;
-			font-size: 1em;
+			font-size: .8em;
 			left: 50%;
 			position: fixed;
 			transform: translateX(-50%);
@@ -437,7 +438,6 @@
 
 			@include tablet {
 				bottom: 50px;
-
 			}
 		}
 
@@ -447,6 +447,7 @@
 			background-position: 50% 50%;
 			height: 100vh;
 			left: 0;
+			opacity: .75;
 			pointer-events: none;
 			position: absolute;
 			top: 0;

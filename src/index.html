@@ -9,15 +9,15 @@
 	<style>
 		ng-view {
 			display: block;
-			transition: transform 1s ease-out;
+			transition: opacity .5s ease-out;
 		}
 
 		ng-view.ng-leave-active {
-			transform: translateX(100vw);
+			opacity: 0;
 		}
 
 		ng-view.ng-enter {
-			transform: translateX(-100vw);
+			opacity: 0;
 		}
 	</style>
 </head>

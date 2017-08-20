@@ -84,12 +84,14 @@ let Navigation = {
 				let navSocials = angular.element(document.querySelector('.nav__socials'));
 				let navRabbitImage = angular.element(document.querySelector('.nav__white-rabbit__image'));
 				
-				if (scrollTop > 50) {
-					navSocials.addClass('fadeOutRight');
-					navRabbitImage.addClass('fadeOutLeft');
-				} else {
-					navSocials.removeClass('fadeOutRight');
-					navRabbitImage.removeClass('fadeOutLeft');
+				if (!$location.path() || $location.path() === '/') {
+					if (scrollTop > 50) {
+						navSocials.addClass('fadeOutRight');
+						navRabbitImage.addClass('fadeOutLeft');
+					} else {
+						navSocials.removeClass('fadeOutRight');
+						navRabbitImage.removeClass('fadeOutLeft');
+					}
 				}
 				raf(loop);
 			}

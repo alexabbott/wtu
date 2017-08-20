@@ -60,6 +60,16 @@ $druk-condensed: 'druk-condensed', 'Futura', Arial, sans-serif;
 $druk-wide: 'druk-wide', 'Futura', Arial, sans-serif;
 $anonymous: 'anonymous', Arial, sans-serif;
 
+html,
+body {
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
 body {
   background: $color-black;
 }
@@ -700,7 +710,7 @@ template {
 
 .no-opacity {
   @extend %transition-long;
-  opacity: 0;
+  opacity: 0 !important;
   pointer-events: none;
   transition-property: opacity;
 }
