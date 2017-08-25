@@ -13,6 +13,17 @@
      }
    }
 
+   svg.loader {
+     position: absolute;
+     z-index: 10;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     width: 80%;
+     max-width: 300px;
+     animation: fadeIn 0.33s ease;
+   }
+
   .marquee {
     background-size: cover;
     background-position: center center;
@@ -38,7 +49,6 @@
     }
   }
 
-  // // not sure if ax'd or not...
   &:before {
     content: '';
     position: absolute;

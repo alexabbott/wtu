@@ -6,7 +6,7 @@ let Portfolio = {
         $scope.inactiveFaders = []
         const navSocials = angular.element(document.querySelectorAll('.nav__socials i'));
         const navRabbitImage = angular.element(document.querySelector('.nav__white-rabbit__image'));
-        
+
         navSocials.addClass('no-opacity');
         navRabbitImage.addClass('no-opacity');
 

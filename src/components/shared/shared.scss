@@ -780,6 +780,18 @@ template {
   cursor: pointer;
 }
 
+svg.loader {
+  path.square {
+   animation: loaderLoading 1.2s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes loaderLoading {
+  to {
+    transform: translateY(-480%);
+  }
+}
+
 @charset "UTF-8";
 
 /*!
