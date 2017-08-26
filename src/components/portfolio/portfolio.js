@@ -47,7 +47,6 @@ let Portfolio = {
             }).then(() => {
                 checkFades()
                 if (window.instgrm) {
-                    console.log("balls")
                     window.instgrm.Embeds.process()
                 }
                 return
