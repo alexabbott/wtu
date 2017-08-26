@@ -46,7 +46,6 @@ let Portfolio = {
                 return $scope.$apply()
             }).then(() => {
                 checkFades()
-                console.log("ZZZ!")
                 if (window.instgrm) {
                     console.log("balls")
                     window.instgrm.Embeds.process()
