@@ -3,7 +3,7 @@
         'trans': transitioning,
         'initTrans': initTransition
      }">
-    <svg class="loader" ng-class="{'trans': none}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 253.49 75.9">
+    <svg class="loader" ng-class="{'hidden': !transitioning}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 253.49 75.9">
       <title>Loading...</title>
       <path d="M6.1,75.1,0,.7H13.1l1.5,48.6L16.7.7H28.5l2.2,48.9L32.2.7H44.37L38.3,75.1H24L22.37,32.7,20.7,75.1Z" fill="#fff"/>
       <path d="M66.7.7V12.1h-9V30.2h7.6V42H57.7V63.5H67V75.1H45.29V.7Z" fill="#fff"/>
