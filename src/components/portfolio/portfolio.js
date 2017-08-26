@@ -37,6 +37,7 @@ let Portfolio = {
         }
 
         const renderCurrent = () => {
+            $window.scroll(0,0)
             return loadMarquee($scope.current.acf.bg_img).then((url) => {
                 $scope.transitioning = false
                 $scope.$apply()
