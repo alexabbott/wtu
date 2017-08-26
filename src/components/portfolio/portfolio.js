@@ -37,7 +37,6 @@ let Portfolio = {
         }
 
         const renderCurrent = () => {
-            $window.scroll(0,0)
             return loadMarquee($scope.current.acf.bg_img).then((url) => {
                 $scope.transitioning = false
                 $scope.$apply()
@@ -47,6 +46,7 @@ let Portfolio = {
                 return $scope.$apply()
             }).then(() => {
                 checkFades()
+                $window.scroll(0,0) // TMP BUGFIX
                 if (window.instgrm) {
                     window.instgrm.Embeds.process()
                 }
