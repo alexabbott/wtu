@@ -1,5 +1,3 @@
-<script async="" defer="defer" src="//platform.instagram.com/en_US/embeds.js"></script>
-
 <div class="portfolio" ng-style="contentStyle"
      ng-class="{
         'trans': transitioning,
