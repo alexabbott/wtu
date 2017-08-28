@@ -1,7 +1,6 @@
 .portfolio {
    position: relative;
    background: black;
-   // padding-top: 100vh;
    box-sizing: border-box;
 
    .fade {
@@ -14,14 +13,14 @@
    }
 
    svg.loader {
-     position: absolute;
-     z-index: 10;
+     position: fixed;
+     z-index: 100;
      top: 50%;
      left: 50%;
      transform: translate(-50%, -50%);
      width: 80%;
      max-width: 300px;
-     animation: fadeIn 0.33s ease;
+     animation: fadeIn 0.33s ease forwards;
    }
 
   .marquee {
@@ -226,6 +225,7 @@
     }
 
     &:before {
+      display: block;
       opacity: 1;
     }
   }

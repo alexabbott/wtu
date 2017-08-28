@@ -27,18 +27,17 @@ const app = angular.module('weThemUs', ['ngRoute', 'ngSanitize', 'smoothScroll',
 	        reloadOnSearch: false
 		})
 		.when('/internal', {
-	        templateUrl: '/components/pages/category.tpl',
-	        reloadOnSearch: false
-	    })
-	    .when('/:slug', {
-	        templateUrl: '/components/pages/portfolio.tpl',
-	        reloadOnSearch: false,
-	        onEnter: ($rootScope) => {
-	        	console.log("balls")
-	        	$rootScope.portfolio = $routeParams.slug
-	        }
-	    })
-	    .otherwise('/');
+        templateUrl: '/components/pages/category.tpl',
+        reloadOnSearch: false
+    })
+    .when('/:slug', {
+        templateUrl: '/components/pages/portfolio.tpl',
+        reloadOnSearch: false,
+        onEnter: ($rootScope) => {
+        	$rootScope.portfolio = $routeParams.slug
+        }
+    })
+    .otherwise('/');
 
 	$locationProvider.html5Mode(true);
 }])
