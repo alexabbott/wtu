@@ -65,8 +65,10 @@ let Category = {
             $scope.category.name = '.US PROJECTS';
         }
 
+        $scope.projectsLoaded = false;
         if (!$rootScope.portfolio) {
             WordpressData.fetchPortfolio().then(() => {
+                $scope.projectsLoaded = true;
                 $scope.data.projects = WordpressData.portfolio;
                 console.log('proj1', $scope.data.projects);
                 let arr = [];
@@ -89,6 +91,7 @@ let Category = {
                 }
             });
         } else {
+            $scope.projectsLoaded = true;
             $scope.data.projects = $rootScope.portfolio;
             console.log('proj1', $scope.data.projects);
             let arr = [];

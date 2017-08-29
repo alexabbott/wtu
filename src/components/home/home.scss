@@ -44,6 +44,10 @@
 
 		.intro__video {
 			width: 150vw;
+
+			@include tablet {
+				width: 100vw;
+			}
 		}
 
 		.intro__gradient {
@@ -466,16 +470,6 @@
 		}
 	}
 
-	.projects__loader {
-		left: 50%;
-		position: fixed;
-		top: 50%;
-		transform: translate(-50%, -50%);
-		transition: .5s opacity ease-out;
-		width: 300px;
-		z-index: 102;
-	}
-
 	.filter.modal {
 		box-sizing: border-box;
 		color: $color-white;
@@ -585,4 +579,14 @@
 #top {
 	position: absolute;
 	top: 0;
+}
+
+.projects__loader {
+	left: 50%;
+	position: fixed;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	transition: .5s opacity ease-out;
+	width: 300px;
+	z-index: 102;
 }
