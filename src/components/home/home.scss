@@ -1,6 +1,6 @@
 .home {
 	background: $color-black;
-	height: 300vh;
+	height: 500vh;
 
 	@include tablet {
 		height: 500vh;
@@ -15,8 +15,14 @@
 		background-color: transparent;
 		height: 100vh;
 		position: fixed;
-		width: 100vw;
+		width: auto;
 		z-index: 8;
+
+		@include tablet {
+			height: auto;
+			right: 0;
+			width: 100vw;
+		}
 
 		.intro__image,
 		.intro__video {
@@ -37,8 +43,7 @@
 		}
 
 		.intro__video {
-			height: 103vh;
-			width: auto;
+			width: 150vw;
 		}
 
 		.intro__gradient {
@@ -140,7 +145,7 @@
 		left: 0;
 		opacity: .8;
 		position: absolute;
-		top: 250vh;
+		top: 200vh;
 		transition-property: opacity;
 		z-index: 8;
 
@@ -169,14 +174,15 @@
 		z-index: 98; 
 
 		.about-container {
+			box-sizing: border-box;
 			height: 100vh;
 			font-size: 10vw;
 			left: 50%;
 			line-height: .9;
 			position: absolute;
 			top: 50%;
-			overflow: hidden;
-			padding: 30vh 0 0 20vw;
+			overflow: visible;
+			padding: 30vh 0 0 10vw;
 			text-align: left;
 			transform: translate(-50%, -50%);
 			width: 100vw;
@@ -184,7 +190,7 @@
 
 			@include tablet {
 				font-size: 80px;
-				padding: 0 0 0 20vw;
+				padding: 0 0 0 10vw;
 			}
 
 			span {
@@ -197,7 +203,7 @@
 			color: $color-white;
 			display: inline-block;
 			font-family: $druk-condensed;
-			padding-top: 30px;
+			padding-top: 20px;
 			text-align: left;
 			text-decoration: none;
 			text-transform: uppercase;
@@ -288,6 +294,7 @@
 							top: 12vh;
 						}
 						a {
+							animation-delay: .1s;
 							float: left;
 						}
 					}
@@ -304,6 +311,7 @@
 							top: 24vh;
 						}
 						a {
+							animation-delay: .2s;
 							float: right;
 						}
 					 }
@@ -315,12 +323,13 @@
 					 .projects__marquee {
 						top: 32vh;
 
-						animation: marquee 18s linear infinite;
+						animation: marquee 28s linear infinite;
 
 						@include tablet {
 							top: 36vh;
 						}
 						a {
+							animation-delay: .3s;
 							float: left;
 						}
 					 }
@@ -331,12 +340,13 @@
 
 					 .projects__marquee {
 						top: 38vh;
-						animation: marqueeRight 22s linear infinite;
+						animation: marqueeRight 32s linear infinite;
 
 						@include tablet {
 							top: 48vh;
 						}
 						a {
+							animation-delay: .4s;
 							float: right;
 						}
 					 }
@@ -353,6 +363,7 @@
 							top: 60vh;
 						}
 						a {
+							animation-delay: .5s;
 							float: left;
 						}
 					 }
@@ -369,6 +380,7 @@
 							top: 72vh;
 						}
 						a {
+							animation-delay: .6s;
 							float: right;
 						}
 					 }
@@ -376,35 +388,28 @@
 			}
 
 			.projects__marquee {
-				color: $color-black;
 				display: block;
 				font-family: $druk-wide;
 				font-size: 6vh;
 				overflow: hidden;
 				position: absolute;
-				text-shadow:
-			   -1px -1px 0 $color-white,
-			    1px -1px 0 $color-white,
-			    -1px 1px 0 $color-white,
-			     1px 1px 0 $color-white;
-				 height: 8vh;
+				height: 8vh;
 				overflow: hidden;
-				  width: 200vw;
+				width: 1600vw;
 
-				  @include tablet {
-					  font-size: 14vh;
+				@include tablet {
+					font-size: 14vh;
 					height: 14vh;
-				  }
+				}
 
 
 				a {
 					transition-property: color;
-					color: $color-black;
 					cursor: pointer;
 					height: 6vh;
 					overflow: hidden;
 					text-decoration: none;
-					width: 100vw;
+					width: 800vw;
 
 					@include tablet {
 						height: 14vh;
@@ -415,6 +420,11 @@
 						overflow: hidden;
 						transition-property: color;
 						white-space: nowrap;
+						color: transparent;
+						-webkit-text-stroke-width: .01em;
+						-moz-text-stroke-width: .01em;
+						-webkit-text-stroke-color: white;
+						-moz-text-stroke-color: white;
 
 						&:hover {
 							color: $color-white;
@@ -447,13 +457,23 @@
 			background-position: 50% 50%;
 			height: 100vh;
 			left: 0;
-			opacity: .75;
+			opacity: .4;
 			pointer-events: none;
 			position: absolute;
 			top: 0;
 			transition-property: opacity;
 			width: 100vw;
 		}
+	}
+
+	.projects__loader {
+		left: 50%;
+		position: fixed;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		transition: .5s opacity ease-out;
+		width: 300px;
+		z-index: 102;
 	}
 
 	.filter.modal {
@@ -476,7 +496,7 @@
 			font-size: 1em;
 
 			@include tablet {
-				font-size: 1.5em;
+				font-size: 1em;
 			}
 		}
 
@@ -493,7 +513,7 @@
 			width: 100%;
 
 			@include tablet {
-				font-size: 1em;
+				font-size: .8em;
 				line-height: 1.2;
 				margin: 8px 7px;
 				width: auto;

@@ -22,6 +22,7 @@ let Home = {
         const modalClose = angular.element(document.querySelector('.modal-close'));
         const projects = angular.element(document.querySelector('.projects'));
         const selectedWorks = angular.element(document.querySelector('.selected-works'));
+		const projectsLoader = angular.element(document.querySelector('.projects__loade'));
 		const projectsContainer = angular.element(document.querySelector('.projects__container'));
 		const whiteRabbit = angular.element(document.querySelector('.nav__white-rabbit.mobile-hide'));
 
@@ -72,12 +73,15 @@ let Home = {
 			$scope.data.categories = $rootScope.categories;
 		}
 
+		$scope.projectsLoaded = false;
 		if (!$rootScope.portfolio) {
 			WordpressData.fetchPortfolio().then(() => {
 				$scope.data.portfolio = WordpressData.portfolio;
+				$scope.projectsLoaded = true;
 			});
 		} else {
 			$scope.data.portfolio = $rootScope.portfolio;
+			$scope.projectsLoaded = true;
 		}
 
         let changeIntroTextSize = (scrollPos) => {
@@ -116,27 +120,51 @@ let Home = {
 		let imageWidth = 0;
 		let imagePosition = 0;
 		let changeIntroImagePosition = (scrollPos) => {
-			if (scrollPos < 201) {
-				introImage.css({'transform': 'scale(1) translate3d(-50%,0px,0px)', '-webkit-transform': 'scale(1) translate3d(-50%,0px,0px)'});
-				introVideo.css({'transform': 'scale(1) translate3d(-50%,0px,0px)', '-webkit-transform': 'scale(1) translate3d(-50%,0px,0px)'});
-		    }
-		    if (scrollPos > 200 && scrollPos < 400) {
-				imageWidth = ((100 - ((scrollPos - 201)/25))*.01);
-				imagePosition = (200*1.45) - (scrollPos*1.45);
-				introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
-				introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+			if (window.innerWidth < 600 || screen.width < 600) {
+				if (scrollPos < 201) {
+					introImage.css({'transform': 'scale(1) translate3d(-50%,0px,0px)', '-webkit-transform': 'scale(1) translate3d(-50%,0px,0px)'});
+					introVideo.css({'transform': 'scale(1) translate3d(-50%,0px,0px)', '-webkit-transform': 'scale(1) translate3d(-50%,0px,0px)'});
+				}
+				if (scrollPos > 200 && scrollPos < 400) {
+					imageWidth = ((100 - ((scrollPos - 201)/25))*.01);
+					imagePosition = (200*.4) - (scrollPos*.4);
+					introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+					introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+				}
+				if (scrollPos > 399 && scrollPos < 500) {
+					imageWidth = ((100 - ((scrollPos - 201)/25))*.01);
+					imagePosition = (200*.4) - (scrollPos*.4);
+					introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+					introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+				}
+				if (scrollPos > 399 && scrollPos < 1900) {
+					imagePosition = (200*.4) - (scrollPos*.4);
+					introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+					introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+				}
+			} else {
+				if (scrollPos < 201) {
+					introImage.css({'transform': 'scale(1) translate3d(-50%,0px,0px)', '-webkit-transform': 'scale(1) translate3d(-50%,0px,0px)'});
+					introVideo.css({'transform': 'scale(1) translate3d(-50%,0px,0px)', '-webkit-transform': 'scale(1) translate3d(-50%,0px,0px)'});
+				}
+				if (scrollPos > 200 && scrollPos < 400) {
+					imageWidth = ((100 - ((scrollPos - 201)/25))*.01);
+					imagePosition = (200*2.7) - (scrollPos*2.7);
+					introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+					introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+				}
+				if (scrollPos > 399 && scrollPos < 500) {
+					imageWidth = ((100 - ((scrollPos - 201)/25))*.01);
+					imagePosition = (200*2.7) - (scrollPos*2.7);
+					introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+					introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+				}
+				if (scrollPos > 399 && scrollPos < 1900) {
+					imagePosition = (200*2.7) - (scrollPos*2.7);
+					introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+					introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+				}
 			}
-			if (scrollPos > 399 && scrollPos < 500) {
-				imageWidth = ((100 - ((scrollPos - 201)/25))*.01);
-				imagePosition = (200*1.45) - (scrollPos*1.45);
-				introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
-				introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
-		    }
-		    if (scrollPos > 399 && scrollPos < 1900) {
-				imagePosition = (200*1.45) - (scrollPos*1.45);
-		    	introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
-		    	introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
-		    }
 		};
 
 		let gradientWidth = 0;
@@ -161,7 +189,7 @@ let Home = {
 		let aboutPosition = 0;
 		let changeAboutOpacity = (scrollPos) => {
 			if (scrollPos > 200 && scrollPos < 2800) {
-				aboutPosition = (800*1.3) - (scrollPos*.8);
+				aboutPosition = (800*1.3) - (scrollPos);
 		    	about.css({'transform': 'translate3d(0,' + aboutPosition + 'px,0)', '-webkit-transform': 'translate3d(0,' + aboutPosition + 'px,0)'});
 			} 
 
@@ -187,17 +215,29 @@ let Home = {
 		    	projects.addClass('no-opacity');
 		    	selectedWorks.addClass('no-opacity');
 				projectsContainer.addClass('no-opacity');
+				projectsLoader.addClass('no-opacity');
 				firstNav.removeClass('active');
 				secondNav.removeClass('active');
 				thirdNav.removeClass('active');
 		    }
 		    if (scrollPos > 1599) {
 				firstNav.addClass('active');
-		    	selectedWorks.removeClass('no-opacity');
+				selectedWorks.removeClass('no-opacity');
+				projectsLoader.removeClass('no-opacity');
 		    	projects.removeClass('no-opacity');
 		    	projectsContainer.removeClass('no-opacity');
 		    }
 		};
+
+		$scope.transitioning = true;
+		$scope.transition = (to) => {
+            $scope.initTransition = true
+            $timeout(() => {
+                $scope.transitioning = true
+                $scope.initTransition = false
+                $location.path(to)
+            }, 333)
+        }
 
 		let loop = () => {
 		    let scrollTop = window_.scrollY;

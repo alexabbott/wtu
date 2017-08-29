@@ -19,8 +19,12 @@
 			margin: 0 auto;
 			text-align: center;
 			transition: opacity 1s ease-out;
-			width: 60%;
+			width: 70%;
 			animation: scroll 120s linear infinite;
+
+			@include tablet {
+				width: 50%;
+			}
 
 			&:hover {
 				animation-play-state: paused;
@@ -29,8 +33,10 @@
 			.about__text {
 				h2 {
 					font-family: $druk-wide;
-					font-size: 1.5em;
+					font-size: 1.3em;
+					hyphens: auto;
 					margin: 0;
+					word-wrap: break-word;
 
 					@include tablet {
 						font-size: 3.5em;
@@ -40,6 +46,8 @@
 				h3 {
 					font-family: $druk-wide;
 					font-size: 1.2em;
+					hyphens: auto;
+					word-wrap: break-word;
 
 					@include tablet {
 						font-size: 1.5em;
@@ -59,11 +67,19 @@
 		}
 
 		.about__clients {
-			margin: 0 0 500px 0;
+			margin: 0 0 100px 0;
 
 			.about__client img {
-				margin: 40px 60px;
+				display: block;
+				margin: 40px auto;
 				max-height: 70px;
+				max-width: calc(70vw - 120px);
+
+				@include tablet {
+					display: inline-block;
+					margin: 40px 60px;
+					max-width: 100%;
+				}
 			}
 		}
 	}

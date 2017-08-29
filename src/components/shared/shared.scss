@@ -715,6 +715,13 @@ template {
   transition-property: opacity;
 }
 
+.no-opacity-on {
+  @extend %transition-long;
+  opacity: 0 !important;
+  pointer-events: none;
+  transition-property: opacity;
+}
+
 .low-opacity {
   opacity: 0.3;
 }
@@ -790,6 +797,10 @@ svg.loader {
   to {
     transform: translateY(-480%);
   }
+}
+
+.paused-add {
+  animation-play-state: paused !important;
 }
 
 @charset "UTF-8";
