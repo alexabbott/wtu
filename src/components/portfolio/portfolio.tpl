@@ -33,7 +33,7 @@
 
     <main ng-style="contentStyle" ng-style="contentStyle">
         <div class="content relative">
-            <header class="fade">
+            <header>
                 <h1 class="title">{{ current.title.rendered }}</h1>
                 <h2 class="cats">
                     <span class="cat" ng-repeat="c in current.cats track by $index">
