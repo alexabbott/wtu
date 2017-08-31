@@ -63,8 +63,16 @@ let Portfolio = {
         }
 
         const checkFades = () => {
-            $scope.inactiveFaders.forEach((n) => {
-                if (n.getBoundingClientRect().top < ($window.outerHeight-($window.outerHeight*0.2))) {
+            $scope.inactiveFaders.forEach((n,i) => {
+                // if (i===0) {
+                    // console.log(
+                    //     $window,
+                    //     n.getBoundingClientRect().top,
+                    //     $window.outerHeight,
+                    //     $window.outerHeight-($window.outerHeight*0.2)
+                    // )
+                // }
+                if (n.getBoundingClientRect().top < ($window.innerHeight-($window.innerHeight*0.2))) {
                     classifyActive(n)
                 }
             })
