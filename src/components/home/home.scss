@@ -162,12 +162,12 @@
 		}
 	}
 
-	#about-indicator {
+	#services-indicator {
 		position: absolute;
 		top: 3700px;
 	}
 
-	.about {
+	.services {
 		@extend %transition-long;
 		background: transparent;
 		height: 100vh;
@@ -177,7 +177,7 @@
 		width: 100vw;
 		z-index: 98; 
 
-		.about-container {
+		.services-container {
 			box-sizing: border-box;
 			height: 100vh;
 			font-size: 10vw;
@@ -203,7 +203,7 @@
 			}
 		}
 
-		.about__text {
+		.services__text {
 			color: $color-white;
 			display: inline-block;
 			font-family: $druk-condensed;
@@ -216,7 +216,7 @@
 				margin: 0;
 			}
 
-			.about__text-main {
+			.services__text-main {
 				em {
 					cursor: default;
 					font-style: normal;
@@ -229,6 +229,13 @@
 	#work {
 		position: absolute;
 		top: 3200px;
+	}
+
+	.projects__hidden-bg {
+		height: 100vh;
+		left: -99999%;
+		position: fixed;
+		width: 100vw;
 	}
 
 	.projects {
@@ -298,7 +305,7 @@
 							top: 12vh;
 						}
 						a {
-							animation-delay: .1s;
+							animation-delay: 0s;
 							float: left;
 						}
 					}
@@ -333,7 +340,7 @@
 							top: 36vh;
 						}
 						a {
-							animation-delay: .3s;
+							animation-delay: .4s;
 							float: left;
 						}
 					 }
@@ -350,7 +357,7 @@
 							top: 48vh;
 						}
 						a {
-							animation-delay: .4s;
+							animation-delay: .6s;
 							float: right;
 						}
 					 }
@@ -367,7 +374,7 @@
 							top: 60vh;
 						}
 						a {
-							animation-delay: .5s;
+							animation-delay: .8s;
 							float: left;
 						}
 					 }
@@ -384,7 +391,7 @@
 							top: 72vh;
 						}
 						a {
-							animation-delay: .6s;
+							animation-delay: 1s;
 							float: right;
 						}
 					 }
@@ -475,15 +482,14 @@
 		color: $color-white;
 		left: 50%;
 		position: fixed;
-		max-width: 1000px;
+		max-width: 1200px;
 		padding: 30px;
 		top: 50%;
 		text-align: center;
 		transform: translate(-50%, -50%);
 		transition: opacity 1s ease-out;
-		width: 90%;
+		width: 100%;
 		z-index: 202;
-
 
 		h4 {
 			font-family: $druk-wide;
@@ -509,7 +515,7 @@
 			@include tablet {
 				font-size: .8em;
 				line-height: 1.2;
-				margin: 8px 7px;
+				margin: 8px 15px;
 				width: auto;
 			}
 
@@ -521,7 +527,6 @@
 				}
 			}
 		}
-
 	}
 
 	.modal-close {

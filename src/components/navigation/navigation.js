@@ -85,10 +85,10 @@ let Navigation = {
 				let navRabbitImage = angular.element(document.querySelector('.nav__white-rabbit__image'));
 				
 				if (!$location.path() || $location.path() === '/') {
-					if (scrollTop > 120) {
+					if (scrollTop > 120 && scrollTop < 1400) {
 						navSocials.addClass('fadeOutRight');
 						navRabbitImage.addClass('fadeOutLeft');
-					} else {
+					} else if (scrollTop < 120 || scrollTop > 1400) {
 						navSocials.removeClass('fadeOutRight');
 						navRabbitImage.removeClass('fadeOutLeft');
 					}

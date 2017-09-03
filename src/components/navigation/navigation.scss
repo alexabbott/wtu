@@ -124,8 +124,10 @@ nav {
 
 		&.mobile-only {
 			.nav__white-rabbit__image {
+				@extend %transition;
 				bottom: 17vh;
 				display: block;
+				transition-property: opacity, transform;
 
 				@include tablet {
 					display: none;

@@ -16,7 +16,7 @@ let Home = {
         const introVideo = angular.element(document.querySelector('.intro__video'));
         const introGradient = angular.element(document.querySelector('.intro__gradient'));
         const blotch = angular.element(document.querySelector('.blotch'));
-        const about = angular.element(document.querySelector('.about'));
+        const services = angular.element(document.querySelector('.services'));
         const modal = angular.element(document.querySelector('.modal'));
         const modalMask = angular.element(document.querySelector('.modal-mask'));
         const modalClose = angular.element(document.querySelector('.modal-close'));
@@ -186,24 +186,24 @@ let Home = {
 		    }
 		};
 
-		let aboutPosition = 0;
-		let changeAboutOpacity = (scrollPos) => {
-			if (scrollPos > 200 && scrollPos < 2800) {
-				aboutPosition = (800*1.3) - (scrollPos);
-		    	about.css({'transform': 'translate3d(0,' + aboutPosition + 'px,0)', '-webkit-transform': 'translate3d(0,' + aboutPosition + 'px,0)'});
-			} 
-
-			if (scrollPos > 200 && scrollPos < 1500) {
-				about.removeClass('no-opacity');
+		let servicesPosition = 0;
+		let changeServicesOpacity = (scrollPos) => {
+			if (scrollPos > 200 && scrollPos < 1300) {
+				services.removeClass('no-opacity');
 			}
+
+			if (scrollPos > 200 && scrollPos < 2800) {
+				servicesPosition = (800*1.3) - (scrollPos);
+		    	services.css({'transform': 'translate3d(0,' + servicesPosition + 'px,0)', '-webkit-transform': 'translate3d(0,' + servicesPosition + 'px,0)'});
+			} 
 			
-			if (scrollPos < 201 || scrollPos > 1501) {
-				about.addClass('no-opacity');
+			if (scrollPos < 201 || scrollPos > 1301) {
+				services.addClass('no-opacity');
 			}
 		};
 
 		let changeBlotchOpacity = (scrollPos) => {
-			if (scrollPos > 1600) {
+			if (scrollPos > 1400) {
 				blotch.addClass('no-opacity');
 			} else {
 				blotch.removeClass('no-opacity');
@@ -211,7 +211,7 @@ let Home = {
 		};
 
 		let changeProjectsPosition = (scrollPos) => {
-		    if (scrollPos < 1600) {
+		    if (scrollPos < 1400) {
 		    	projects.addClass('no-opacity');
 		    	selectedWorks.addClass('no-opacity');
 				projectsContainer.addClass('no-opacity');
@@ -220,7 +220,7 @@ let Home = {
 				secondNav.removeClass('active');
 				thirdNav.removeClass('active');
 		    }
-		    if (scrollPos > 1599) {
+		    if (scrollPos > 1399) {
 				firstNav.addClass('active');
 				selectedWorks.removeClass('no-opacity');
 				projectsLoader.removeClass('no-opacity');
@@ -252,7 +252,7 @@ let Home = {
 				changeIntroImagePosition(scrollTop);
 				changeIntroGradientPosition(scrollTop);
 				changeIntroImageOpacity(scrollTop);
-				changeAboutOpacity(scrollTop);
+				changeServicesOpacity(scrollTop);
 				changeBlotchOpacity(scrollTop);
 				changeProjectsPosition(scrollTop);
 		        raf(loop);
@@ -266,7 +266,7 @@ let Home = {
 				changeIntroImageOpacity(window_.scrollY);
 				changeIntroImagePosition(window_.scrollY);
 				changeIntroGradientPosition(window_.scrollY);
-				changeAboutOpacity(window_.scrollY);
+				changeServicesOpacity(window_.scrollY);
 				changeBlotchOpacity(window_.scrollY);
 				changeProjectsPosition(window_.scrollY);
 			}, 4000)
@@ -313,7 +313,7 @@ let Home = {
 			changeIntroImageOpacity(window_.scrollY);
 			changeIntroImagePosition(window_.scrollY);
 			changeIntroGradientPosition(window_.scrollY);
-			changeAboutOpacity(window_.scrollY);
+			changeServicesOpacity(window_.scrollY);
 			changeBlotchOpacity(window_.scrollY);
 			changeProjectsPosition(window_.scrollY);
 		};

@@ -31,9 +31,9 @@
     <div class="blotch" style="background: {{ data.home.blotch_color }};
 		box-shadow: 0px 0px 340px 230px {{ data.home.blotch_color }};"></div>
 
-    <section id="about" class="about no-opacity">
-		<div class="about-container">
-			<span class="about__text" ng-bind-html="data.home.services">
+    <section id="services" class="services no-opacity">
+		<div class="services-container">
+			<span class="services__text" ng-bind-html="data.home.services">
 			</span>
 		</div>
     </section>
@@ -71,7 +71,8 @@
 	    		</div>
 	    		<div class="projects__bg no-opacity _{{project.slug}}" style="background-image: url({{ project.acf.bg_img }});">
 	    		</div>
-    		</div>
+			</div>
+			<div class="projects__hidden-bg" ng-repeat="project in data.portfolio track by $index | limitTo : 6" ng-if="project.acf.featured" style="background-image: url({{ project.acf.bg_img }});">
 			<div class="filter-trigger" ng-click="showFilter()">SEARCH / FILTER</div>
 			<a ng-href="/internal" class="nav__white-rabbit mobile-only">
 				<img ng-src="{{ data.nav.white_rabbit_image.url }}" class="nav__white-rabbit__image" alt="white rabbit">

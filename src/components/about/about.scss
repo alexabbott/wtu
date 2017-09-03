@@ -70,15 +70,16 @@
 			margin: 0 0 100px 0;
 
 			.about__client img {
-				display: block;
-				margin: 40px auto;
+				display: inline-block;
+				margin: 40px 4%;
 				max-height: 70px;
-				max-width: calc(70vw - 120px);
+				width: 42%;
 
 				@include tablet {
 					display: inline-block;
-					margin: 40px 60px;
+					margin: 40px 2%;
 					max-width: 100%;
+					width: 20%;
 				}
 			}
 		}
