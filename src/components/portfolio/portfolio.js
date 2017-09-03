@@ -38,9 +38,13 @@ let Portfolio = {
 
         const renderCurrent = () => {
             return loadMarquee($scope.current.acf.bg_img).then((url) => {
-                $scope.transitioning = false
-                $scope.$apply()
-                return
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        $scope.transitioning = false
+                        $scope.$apply()
+                        resolve(null)
+                    }, 1000)
+                })
             }).then(() => {
                 $scope.inactiveFaders = Array.from(document.querySelectorAll('.fade:not(.active)'))
                 return $scope.$apply()
@@ -63,8 +67,8 @@ let Portfolio = {
         }
 
         const checkFades = () => {
-            $scope.inactiveFaders.forEach((n) => {
-                if (n.getBoundingClientRect().top < ($window.outerHeight-($window.outerHeight*0))) {
+            $scope.inactiveFaders.forEach((n,i) => {
+                if (n.getBoundingClientRect().top < ($window.innerHeight-($window.innerHeight*0.2))) {
                     classifyActive(n)
                 }
             })

@@ -5,10 +5,12 @@
 
    .fade {
      opacity: 0;
-     transition: opacity 0.33s ease;
+     transform: translateY(10%);
+     transition: opacity 0.33s ease, transform 0.33s ease;
 
      &.active {
-       opacity: 1
+       opacity: 1;
+       transform: translateY(0%);
      }
    }
 

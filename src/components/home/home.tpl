@@ -6,7 +6,7 @@
 
   <section class="intro__bg">
 		<img ng-src="{{ data.home.intro_image.url }}" class="intro__image no-opacity" ng-show="!data.home.intro_video">
-		<video ng-src="{{ data.home.intro_video.url }}" muted poster="{{data.home.intro_image.url}}" class="intro__video no-opacity" ng-show="data.home.intro_video" autoplay loop></video>
+		<video ng-src="{{ data.home.intro_video.url }}" muted poster="{{data.home.intro_image.url}}" class="intro__video no-opacity" ng-show="data.home.intro_video" autoplay playsinline loop></video>
 		<div class="intro__gradient" style="background: {{ data.home.intro_gradient_color_1 }};
 			background: -moz-linear-gradient(top, {{ data.home.intro_gradient_color_1 }} 0%, {{ data.home.intro_gradient_color_1 }} 20%, {{ data.home.intro_gradient_color_2 }} 100%);
 			background: -webkit-gradient(left top, left bottom, color-stop(0%, {{ data.home.intro_gradient_color_1 }}), color-stop(20%, {{ data.home.intro_gradient_color_1 }}), color-stop(100%, {{ data.home.intro_gradient_color_2 }}));
@@ -67,7 +67,7 @@
 						<span ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35]">
 							{{ project.acf.short_title }}
 						</span>
-					</a> 
+					</a>
 	    		</div>
 	    		<div class="projects__bg no-opacity _{{project.slug}}" style="background-image: url({{ project.acf.bg_img }});">
 	    		</div>
