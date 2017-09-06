@@ -24,7 +24,8 @@ let Home = {
         const selectedWorks = angular.element(document.querySelector('.selected-works'));
 		const projectsLoader = angular.element(document.querySelector('.projects__loade'));
 		const projectsContainer = angular.element(document.querySelector('.projects__container'));
-		const whiteRabbit = angular.element(document.querySelector('.nav__white-rabbit.mobile-hide'));
+		const whiteRabbit = angular.element(document.querySelector('.nav__white-rabbit.mobile-only img'));
+		const filterTrigger = angular.element(document.querySelector('.filter-trigger'));
 
 		secondNav.removeClass('active');
 		thirdNav.removeClass('active');
@@ -78,16 +79,30 @@ let Home = {
 			WordpressData.fetchPortfolio().then(() => {
 				$scope.data.portfolio = WordpressData.portfolio;
 				$scope.projectsLoaded = true;
+				if (window_.scrollY > 1399 && $scope.projectsLoaded) {
+					selectedWorks.removeClass('no-opacity');
+					whiteRabbit.removeClass('no-opacity');
+					filterTrigger.removeClass('no-opacity');
+				}
 			});
 		} else {
 			$scope.data.portfolio = $rootScope.portfolio;
 			$scope.projectsLoaded = true;
+			if (window_.scrollY > 1399 && $scope.projectsLoaded) {
+				selectedWorks.removeClass('no-opacity');
+				whiteRabbit.removeClass('no-opacity');
+				filterTrigger.removeClass('no-opacity');
+			}
 		}
 
         let changeIntroTextSize = (scrollPos) => {
 		    if (scrollPos < 201) {
-	            introText.css({'transform': 'translate3d(-50%, -50%, 0) scale(' + (30 - (scrollY / 10)) + ')', '-webkit-transform': 'translate3d(-50%, -50%, 0) scale(' + (30 - (scrollY / 10)) + ')', });
-	            introText.removeClass('no-opacity');
+				if ($window.innerWidth < 600 || screen.width < 600) {
+	            	introText.css({'transform': 'translate3d(-58%, -50%, 0) scale(' + (1 - (scrollY / 300)) + ')', '-webkit-transform': 'translate3d(-58%, -50%, 0) scale(' + (1 - (scrollY / 300)) + ')', });
+	            } else {
+					introText.css({'transform': 'translate3d(-50%, -50%, 0) scale(' + (30 - (scrollY / 10)) + ')', '-webkit-transform': 'translate3d(-50%, -50%, 0) scale(' + (30 - (scrollY / 10)) + ')', });
+				}
+				introText.removeClass('no-opacity');
 	            intro.removeClass('no-opacity');
             } else {
             	introText.addClass('no-opacity');
@@ -120,7 +135,7 @@ let Home = {
 		let imageWidth = 0;
 		let imagePosition = 0;
 		let changeIntroImagePosition = (scrollPos) => {
-			if (window.innerWidth < 600 || screen.width < 600) {
+			if ($window.innerWidth < 600 || screen.width < 600) {
 				if (scrollPos < 201) {
 					introImage.css({'transform': 'scale(1) translate3d(-50%,0px,0px)', '-webkit-transform': 'scale(1) translate3d(-50%,0px,0px)'});
 					introVideo.css({'transform': 'scale(1) translate3d(-50%,0px,0px)', '-webkit-transform': 'scale(1) translate3d(-50%,0px,0px)'});
@@ -213,7 +228,9 @@ let Home = {
 		let changeProjectsPosition = (scrollPos) => {
 		    if (scrollPos < 1400) {
 		    	projects.addClass('no-opacity');
-		    	selectedWorks.addClass('no-opacity');
+				selectedWorks.addClass('no-opacity');
+				filterTrigger.addClass('no-opacity');
+				whiteRabbit.addClass('no-opacity');
 				projectsContainer.addClass('no-opacity');
 				projectsLoader.addClass('no-opacity');
 				firstNav.removeClass('active');
@@ -222,10 +239,15 @@ let Home = {
 		    }
 		    if (scrollPos > 1399) {
 				firstNav.addClass('active');
-				selectedWorks.removeClass('no-opacity');
 				projectsLoader.removeClass('no-opacity');
 		    	projects.removeClass('no-opacity');
-		    	projectsContainer.removeClass('no-opacity');
+				projectsContainer.removeClass('no-opacity');
+				
+				if (window_.scrollY > 1399 && $scope.projectsLoaded) {
+					selectedWorks.removeClass('no-opacity');
+					whiteRabbit.removeClass('no-opacity');
+					filterTrigger.removeClass('no-opacity');
+				}
 		    }
 		};
 
@@ -316,6 +338,12 @@ let Home = {
 			changeServicesOpacity(window_.scrollY);
 			changeBlotchOpacity(window_.scrollY);
 			changeProjectsPosition(window_.scrollY);
+
+			if (window_.scrollY > 1399 && $scope.projectsLoaded) {
+				selectedWorks.removeClass('no-opacity');
+				whiteRabbit.removeClass('no-opacity');
+				filterTrigger.removeClass('no-opacity');
+			}
 		};
 
     }]

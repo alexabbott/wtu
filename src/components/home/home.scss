@@ -80,7 +80,7 @@
 		.intro__text {
 			backface-visibility: hidden;
 			font-family: $druk-condensed;
-			font-size: .1em;
+			font-size: 12em;
 			font-weight: bold;
 			left: 50%;
 			line-height: 1.5em;
@@ -446,6 +446,8 @@
 		}
 
 		.filter-trigger {
+			@extend %transition-long;
+			transition-property: opacity;
 			bottom: 15vh;
 			color: $color-white;
 			cursor: pointer;
@@ -562,6 +564,8 @@
 		transform: translateX(-50%);
 
 		img {
+			@extend %transition-long;
+			transition-property: opacity;
 			width: 40px;
 		}
 	}

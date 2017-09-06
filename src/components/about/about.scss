@@ -20,7 +20,7 @@
 			text-align: center;
 			transition: opacity 1s ease-out;
 			width: 70%;
-			animation: scroll 120s linear infinite;
+			animation: scroll 270s linear infinite;
 
 			@include tablet {
 				width: 50%;
@@ -39,7 +39,7 @@
 					word-wrap: break-word;
 
 					@include tablet {
-						font-size: 3.5em;
+						font-size: 2.8em;
 					}
 				}
 
@@ -47,6 +47,7 @@
 					font-family: $druk-wide;
 					font-size: 1.2em;
 					hyphens: auto;
+					margin: .6em auto 0 auto;
 					word-wrap: break-word;
 
 					@include tablet {
@@ -55,7 +56,12 @@
 				}
 
 				p {
+					margin: 0;
 					font-family: $anonymous;
+
+					&.p1 {
+						margin: 0 auto 2em 0;
+					}
 				}
 			}
 		}
@@ -88,10 +94,10 @@
 
 @-webkit-keyframes scroll {
  0%   { -webkit-transform: translateY(100%); }
- 100% { -webkit-transform: translateY(-1910%); }
+ 100% { -webkit-transform: translateY(-2910%); }
 }
 
 @-moz-keyframes scroll {
  0%   { -moz-transform: translateY(100%); }
- 100% { -moz-transform: translateY(-1910%); }
+ 100% { -moz-transform: translateY(-2910%); }
 }

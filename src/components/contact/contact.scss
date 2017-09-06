@@ -65,6 +65,16 @@
 			font-size: 3em;
 			top: 50%;
 		}
+
+		h2 {
+			font-size: 1.4em;
+			line-height: .1;
+
+			@include tablet {
+				font-size: 1.5em;
+				line-height: initial;
+			}
+		}
 	}
 
 	.contact__email {

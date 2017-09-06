@@ -72,10 +72,10 @@
 	    		<div class="projects__bg no-opacity _{{project.slug}}" style="background-image: url({{ project.acf.bg_img }});">
 	    		</div>
 			</div>
-			<div class="projects__hidden-bg" ng-repeat="project in data.portfolio track by $index | limitTo : 6" ng-if="project.acf.featured" style="background-image: url({{ project.acf.bg_img }});">
-			<div class="filter-trigger" ng-click="showFilter()">SEARCH / FILTER</div>
+			<div class="projects__hidden-bg" ng-repeat="project in data.portfolio track by $index | limitTo : 6" ng-if="project.acf.featured" style="background-image: url({{ project.acf.bg_img }});"></div>
+			<div class="filter-trigger no-opacity" ng-click="showFilter()">SEARCH / FILTER</div>
 			<a ng-href="/internal" class="nav__white-rabbit mobile-only">
-				<img ng-src="{{ data.nav.white_rabbit_image.url }}" class="nav__white-rabbit__image" alt="white rabbit">
+				<img ng-src="{{ data.nav.white_rabbit_image.url }}" class="nav__white-rabbit__image no-opacity" alt="white rabbit">
 			</a>
 			<div class="nav__socials mobile-only">
 				<a target="_blank" ng-href="{{ data.nav.facebook_link }}">
