@@ -98,7 +98,7 @@ let Home = {
         let changeIntroTextSize = (scrollPos) => {
 		    if (scrollPos < 201) {
 				if ($window.innerWidth < 600 || screen.width < 600) {
-	            	introText.css({'transform': 'translate3d(-58%, -50%, 0) scale(' + (1 - (scrollY / 300)) + ')', '-webkit-transform': 'translate3d(-58%, -50%, 0) scale(' + (1 - (scrollY / 300)) + ')', });
+	            	introText.css({'transform': 'translate3d(-50%, -50%, 0) scale(' + (1 - (scrollY / 300)) + ')', '-webkit-transform': 'translate3d(-50%, -50%, 0) scale(' + (1 - (scrollY / 300)) + ')', });
 	            } else {
 					introText.css({'transform': 'translate3d(-50%, -50%, 0) scale(' + (30 - (scrollY / 10)) + ')', '-webkit-transform': 'translate3d(-50%, -50%, 0) scale(' + (30 - (scrollY / 10)) + ')', });
 				}
