@@ -137,47 +137,47 @@ let Home = {
 		let changeIntroImagePosition = (scrollPos) => {
 			if ($window.innerWidth < 600 || screen.width < 600) {
 				if (scrollPos < 201) {
-					introImage.css({'transform': 'scale(1) translate3d(-50%,0px,0px)', '-webkit-transform': 'scale(1) translate3d(-50%,0px,0px)'});
-					introVideo.css({'transform': 'scale(1) translate3d(-50%,0px,0px)', '-webkit-transform': 'scale(1) translate3d(-50%,0px,0px)'});
+					introImage.css({'transform': 'scale(1) translate(-50%,0px)', '-webkit-transform': 'scale(1) translate(-50%,0px)'});
+					introVideo.css({'transform': 'scale(1) translate(-50%,0px)', '-webkit-transform': 'scale(1) translate(-50%,0px)'});
 				}
 				if (scrollPos > 200 && scrollPos < 400) {
 					imageWidth = ((100 - ((scrollPos - 201)/25))*.01);
 					imagePosition = (200*.4) - (scrollPos*.4);
-					introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
-					introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+					introImage.css({'transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)', '-webkit-transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)'});
+					introVideo.css({'transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)', '-webkit-transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)'});
 				}
 				if (scrollPos > 399 && scrollPos < 500) {
 					imageWidth = ((100 - ((scrollPos - 201)/25))*.01);
 					imagePosition = (200*.4) - (scrollPos*.4);
-					introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
-					introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+					introImage.css({'transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)', '-webkit-transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)'});
+					introVideo.css({'transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)', '-webkit-transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)'});
 				}
 				if (scrollPos > 399 && scrollPos < 1900) {
 					imagePosition = (200*.4) - (scrollPos*.4);
-					introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
-					introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+					introImage.css({'transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)', '-webkit-transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)'});
+					introVideo.css({'transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)', '-webkit-transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)'});
 				}
 			} else {
 				if (scrollPos < 201) {
-					introImage.css({'transform': 'scale(1) translate3d(-50%,0px,0px)', '-webkit-transform': 'scale(1) translate3d(-50%,0px,0px)'});
-					introVideo.css({'transform': 'scale(1) translate3d(-50%,0px,0px)', '-webkit-transform': 'scale(1) translate3d(-50%,0px,0px)'});
+					introImage.css({'transform': 'scale(1) translate(-50%,0)', '-webkit-transform': 'scale(1) translate(-50%,0px)'});
+					introVideo.css({'transform': 'scale(1) translate(-50%,0,)', '-webkit-transform': 'scale(1) translate(-50%,0px)'});
 				}
 				if (scrollPos > 200 && scrollPos < 400) {
 					imageWidth = ((100 - ((scrollPos - 201)/25))*.01);
 					imagePosition = (200*2.7) - (scrollPos*2.7);
-					introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
-					introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+					introImage.css({'transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)', '-webkit-transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)'});
+					introVideo.css({'transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)', '-webkit-transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)'});
 				}
 				if (scrollPos > 399 && scrollPos < 500) {
 					imageWidth = ((100 - ((scrollPos - 201)/25))*.01);
 					imagePosition = (200*2.7) - (scrollPos*2.7);
-					introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
-					introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+					introImage.css({'transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)', '-webkit-transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)'});
+					introVideo.css({'transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)', '-webkit-transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)'});
 				}
 				if (scrollPos > 399 && scrollPos < 1900) {
 					imagePosition = (200*2.7) - (scrollPos*2.7);
-					introImage.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
-					introVideo.css({'transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)', '-webkit-transform': 'scale(' + imageWidth + ') translate3d(-50%,' + imagePosition + 'px,0)'});
+					introImage.css({'transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)', '-webkit-transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)'});
+					introVideo.css({'transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)', '-webkit-transform': 'scale(' + imageWidth + ') translate(-50%,' + imagePosition + 'px)'});
 				}
 			}
 		};
@@ -186,7 +186,7 @@ let Home = {
 		let gradientPosition = 0;
 		let changeIntroGradientPosition = (scrollPos) => {
 		    if (scrollPos < 201) {
-		    	introGradient.css({'transform': 'scale(1) translate3d(0px,0px,0px)', '-webkit-transform': 'scale(1) translate3d(0px,0px,0px)'});
+		    	introGradient.css({'transform': 'scale(1) translate(0px,0px)', '-webkit-transform': 'scale(1) translate(0px,0px)'});
 		    }
 		    if (scrollPos > 200 && scrollPos < 400) {
 				gradientWidth = ((100 - ((scrollPos - 201)/29))*.01);
@@ -194,10 +194,10 @@ let Home = {
 		    }
 		    if (scrollPos > 399 && scrollPos < 901) {
 				gradientPosition = (399*1.3) - (scrollPos*1.3);
-		    	introGradient.css({'transform': 'scale(' + gradientWidth + ') translate3d(0,' + gradientPosition + 'px,0)', '-webkit-transform': 'scale(' + gradientWidth + ') translate3d(0,' + gradientPosition + 'px,0)'});
+		    	introGradient.css({'transform': 'scale(' + gradientWidth + ') translate(0,' + gradientPosition + 'px)', '-webkit-transform': 'scale(' + gradientWidth + ') translate(0,' + gradientPosition + 'px)'});
 		    }
 		    if (scrollPos > 900 && scrollPos < 2200) {
-		    	introGradient.css({'transform': 'scale(' + gradientWidth + ') translate3d(0,' + gradientPosition + 'px,0)', '-webkit-transform': 'scale(' + gradientWidth + ') translate3d(0,' + gradientPosition + 'px,0)'});
+		    	introGradient.css({'transform': 'scale(' + gradientWidth + ') translate(0,' + gradientPosition + 'px)', '-webkit-transform': 'scale(' + gradientWidth + ') translate(0,' + gradientPosition + 'px)'});
 		    }
 		};
 
@@ -209,7 +209,7 @@ let Home = {
 
 			if (scrollPos > 200 && scrollPos < 2800) {
 				servicesPosition = (800*1.3) - (scrollPos);
-		    	services.css({'transform': 'translate3d(0,' + servicesPosition + 'px,0)', '-webkit-transform': 'translate3d(0,' + servicesPosition + 'px,0)'});
+		    	services.css({'transform': 'translate(0,' + servicesPosition + 'px)', '-webkit-transform': 'translate(0,' + servicesPosition + 'px)'});
 			} 
 			
 			if (scrollPos < 201 || scrollPos > 1301) {
